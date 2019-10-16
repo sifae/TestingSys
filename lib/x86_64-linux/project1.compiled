@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1548372422"/>
-  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/id/files/etc/TestingSys/try/lib/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/2.0.0/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/2.0.0/packager/units/x86_64-linux -Fu/home/id/files/etc/TestingSys/try/ -FU/home/id/files/etc/TestingSys/try/lib/x86_64-linux/ -FE/home/id/files/etc/TestingSys/try/ -o/home/id/files/etc/TestingSys/try/project1 -dLCL -dLCLgtk2 project1.lpr"/>
-</CONFIG>

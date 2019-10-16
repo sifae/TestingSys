@@ -1,2 +1,0 @@
-# TestingSys
-Compile testing system

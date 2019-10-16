@@ -14,7 +14,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
-    { Private declarations }
+    { Private declaration }
   public
     { Public declarations }
   end;

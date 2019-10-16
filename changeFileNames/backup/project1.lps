@@ -8,9 +8,10 @@
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="33" Y="10"/>
+        <CursorPos X="3" Y="9"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit0>
       <Unit1>
         <Filename Value="change_file_names.pas"/>
@@ -23,6 +24,19 @@
         <UsageCount Value="20"/>
       </Unit1>
       <Unit2>
+        <Filename Value="change_file_names_linux.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="18"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit2>
+      <Unit3>
         <Filename Value="../change_file_names.pas"/>
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
@@ -31,14 +45,6 @@
         <TopLine Value="100"/>
         <CursorPos X="5" Y="130"/>
         <UsageCount Value="10"/>
-      </Unit2>
-      <Unit3>
-        <Filename Value="change_file_names_linux.pas"/>
-        <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <CursorPos X="11" Y="6"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit3>
     </Units>
     <JumpHistory Count="2" HistoryIndex="1">
@@ -47,8 +53,8 @@
         <Caret Line="7" Column="71"/>
       </Position1>
       <Position2>
-        <Filename Value="project1.lpr"/>
-        <Caret Line="10" Column="33"/>
+        <Filename Value="change_file_names_linux.pas"/>
+        <Caret Line="5" Column="68"/>
       </Position2>
     </JumpHistory>
     <RunParams>

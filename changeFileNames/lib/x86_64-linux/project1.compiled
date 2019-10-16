@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <Compiler Value="/usr/bin/fpc" Date="1557783618"/>
-  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/euler/TestingSys/lib/x86_64-linux -Fu/usr/lib/lazarus/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/packager/units/x86_64-linux -Fu/home/euler/TestingSys/ -FU/home/euler/TestingSys/lib/x86_64-linux/ -FE/home/euler/TestingSys/ -o/home/euler/TestingSys/project1 -dLCL -dLCLgtk2 project1.lpr"/>
+  <Params Value=" -MDelphi -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/euler/TestingSys/changeFileNames/lib/x86_64-linux -Fu/usr/lib/lazarus/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/packager/units/x86_64-linux -Fu/home/euler/TestingSys/changeFileNames/ -FU/home/euler/TestingSys/changeFileNames/lib/x86_64-linux/ -FE/home/euler/TestingSys/changeFileNames/bin/ -o/home/euler/TestingSys/changeFileNames/bin/project1 -dLCL -dLCLgtk2 project1.lpr"/>
 </CONFIG>

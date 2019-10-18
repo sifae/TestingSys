@@ -489,15 +489,15 @@ occurrences(ss,ns,6);
 if ns[1]+ns[2]+ns[3]<>ns[4] then begin
 //showmessage('!!!'+inttostr(ns[1])+' '+inttostr(ns[2])+'@'+inttostr(ns[3])+'!'+inttostr(ns[4]));
 
-if en_rus then showmessage('Error. Amount of the words ''begin'' is not equal to amount of the words ''end''.')else showmessage('O�����. ��� ������� ����������� ������ begin end.');exit end;
+if en_rus then showmessage('Error. Amount of the words ''begin'' is not equal to amount of the words ''end''.')else showmessage('Oшибка. Нет баланса операторных скобок begin end.');exit end;
 if ns[5]<>ns[6] then begin
-if en_rus then showmessage('Error. Amount of the words ''repeat'' is not equal to amount of the words ''until''.')else showmessage('������. ��� ������� ����������� ������ repeat-until.');exit end;
+if en_rus then showmessage('Error. Amount of the words ''repeat'' is not equal to amount of the words ''until''.')else showmessage('Ошибка. Нет баланса операторных скобок repeat-until.');exit end;
 join(s);
 if s='' then exit;
 if (copy(s,length(s)-3,4)='end.')and(func_proc>0)then begin
-if en_rus then showmessage('Error: ''end.'' was found in the subroutine definition.') else showmessage('������: � �������� ������������ ���������� ''end.''');exit end;
+if en_rus then showmessage('Error: ''end.'' was found in the subroutine definition.') else showmessage('Ошибка: в описании подпрограммы обнаружено ''end.''');exit end;
 if (copy(s,length(s)-3,4)<>'end.')and(func_proc=0)then begin
-if en_rus then showmessage('Error: ''end.'' was not found in the program.') else showmessage('������: � ��������� �� ������� �������������� ''end.''');exit end;
+if en_rus then showmessage('Error: ''end.'' was not found in the program.') else showmessage('Ошибка: в программе не найдено заключительное''end.''');exit end;
 check_beginend:=true;
 end;
 
@@ -635,7 +635,7 @@ join(s);
 
 s34:=checkvalueparam(s);
 if s34<>'' then begin if en_rus then showmessage(' Error. The parameter '+s34+' must be a value parameter.') else
-showmessage(' O����a. �apa���� '+s34+' ������ ���� ����������-���������.'); exit end;
+showmessage(' Oшибкa. Пapaметр '+s34+' должен быть параметром-значением.'); exit end;
 p5:=pos('//',text_before);if p5>0 then begin p6:=pos(' ',copy(text_before,p5,100)); if p6=0 then text_before:=copy(text_before,1,p5-1)
 else text_before:=copy(text_before,1,p5-1)+copy(text_before,p6+p5,length(text_before)); end;
 
@@ -644,13 +644,13 @@ countnewdispose(s);
 p4:=pos('}',s);if p4>0 then s22:=copy(s,p4+1,length(s)) else s22:=s;
 if (copy(s22,1,10)<>'procedure ')and(copy(s22,1,9)<>'function ') then begin
 if en_rus then showmessage('Error. The program must begin with the word ''procedure'' or ''function''.') else
-showmessage('O����a. ����� ��������� ������ ���������� �� ����� ''���������'' ��� ''�������''.');
+showmessage('Oшибкa. Текст программы должен начинаться со слова ''процедура'' или ''функция''.');
 exit;
 end;
 if (varparam[1]<>'')then begin p:=pos(';type ',s);
 if (p>0)or(copy(s,1,5)='type ')then begin
 if en_rus then showmessage('Error. A type declaration is not allowed for this task.') else
-showmessage('O����a. O������� ����� � ���� ������ �� �����������.');
+showmessage('Oшибкa. Oписание типов в этой задаче не допускается.');
 exit;
 end end;
 
@@ -664,7 +664,7 @@ s17:=checkvarparam(s);
 
 if s17<>'' then begin
 if en_rus then showmessage('Error. Parameters of the type '''+s17+''' must be var parameters.') else
-showmessage('O����a. ��������� ���� '+s17+' ������ ���� var �����������.');
+showmessage('Oшибкa. Параметры типа '+s17+' должны быть var параметрами.');
 exit; end end;
 
 //showmessage('!Q!!  '+s14);
@@ -672,7 +672,7 @@ exit; end end;
 
 
 if s14='!' then begin if en_rus then showmessage('Error in the subroutine definition.  Probably, a procedure was found instead of a function or vice versa.') else
-showmessage('������ � ������������. ��������, ������� ��������� ������ ������� ��� ��������. '); exit end;
+showmessage('Ошибка в подпрограмме. Возможно, найдена процедура вместо функции или наоборот. '); exit end;
 s:=copy(s,1,pos('}',s))+' '+text_before+' '+copy(s,pos('}',s)+1,length(s));
 while p3>0 do begin
 text_after:=copy(text_after,1, p3-1)+' '+s14+' '+copy(text_after, p3+6, length(text_after));p3:=pos('<name>', text_after);
@@ -688,7 +688,7 @@ add_parentheses(s,s13);
 breaks(s,false);add_main_block:=0;exit end;
 
 if func_proc=1 then s4:='function'else s4:='procedure';
-if func_proc=1 then s5:='�������'else s5:='���������';
+if func_proc=1 then s5:='функция' else s5:='процедура';
 b:=false;//true if we are within a string
 s2:='';
 repeat if s='' then break;
@@ -706,15 +706,15 @@ if length(s2)>3 then begin s15:=s2; delete_strings(s15); s15:=' '+s15; p3:=pos('
 s2:=s2+copy(s,1,9+byte(func_proc=2)); delete(s,1,9+byte(func_proc=2));
 p:=pos('(',s); if func_proc=2 then p1:=pos(';',s) else p1:=pos(':',s);
 if p=0 then p:=p1; if p>p1 then p:=p1;
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition.'+chr(10)+s) else showmessage('������ � �������� '+s5+chr(10)+s);exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition.'+chr(10)+s) else showmessage('Ошибка в описании '+s5+chr(10)+s);exit end;
 name:=copy(s,1,p-1); delete(s,1,p-1); delete_blanks(s);
 bb:=true; for pp:=1 to length(name) do
 if not(name[pp]in alphadigit) then bb:=false;
 if not bb or not((s[1]='(')or(s[1]=';')and(func_proc=2)or(s[1]=':')and(func_proc=1))then begin
-if en_rus then showmessage('Error in the '+s4+' definition. A wrong symbol in its name or after it.'+chr(10)+name+' '+s) else showmessage('������ � �������� '+s5+'. �������� ������ � ����� ��� ����� ����. '+chr(10)+name+' '+s); exit end;
+if en_rus then showmessage('Error in the '+s4+' definition. A wrong symbol in its name or after it.'+chr(10)+name+' '+s) else showmessage('Ошибка в описании '+s5+'. Неверный символ в имени или после него. '+chr(10)+name+' '+s); exit end;
 if s[1]='(' then
 begin p:=pos(')',s);
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. '')'' is absent.'+chr(10)+name+' '+s) else showmessage('������ � �������� '+s5+'. ��� ����������� ������.'+chr(10)+name+' '+s); exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. '')'' is absent.'+chr(10)+name+' '+s) else showmessage('Ошибка в описании '+s5+'. Нет закрывающей скобки.'+chr(10)+name+' '+s); exit end;
 realb:=(func_proc=1)and (copy(s,p+1,6)=':real;');
 s6:=copy(s,1,p); delete(s,1,p);
 s3:='';s7:=copy(s6,2,length(s6)-2);
@@ -728,7 +728,7 @@ repeat
 p:=pos(';',s7); if p>0 then begin s8:=copy(s7,1,p); delete(s7,1,p); end else begin s8:=s7; s7:='' end;
 delete_blanks(s7); if copy(s8,1,3)='var' then delete(s8,1,4);
 p:=pos(':',s8);
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. A colon is absent. '+chr(10)+s8) else showmessage('������ � �������� '+s5+'. ��� ���������.'+chr(10)+s8);exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. A colon is absent. '+chr(10)+s8) else showmessage('Ошибка в описании '+s5+'. Нет двоеточия.'+chr(10)+s8);exit end;
 delete(s8,p,1000);
 s9:=s9+s8;if s7<>'' then s9:=s9+',';
 until s7='' ;s9:='('+s9+')'
@@ -896,7 +896,7 @@ insertwords(s);
 s4:=first_name(s,pos('<name2>',text_after)>0); s:=s+' ';
 if s4='!' then begin formsubroutine:=-1;
 if en_rus then showmessage('Error. Wrong name of a function or function not found.') else
-showmessage('O����a. �������� ��� ������� ��� ������� �� �������.');exit end;
+showmessage('Oшибкa. Неверное имя функции или функция не найдена.');exit end;
 
 //showmessage(s4);
 
@@ -926,7 +926,7 @@ s5:=checkvarparam(s);
 //showmessage(s5);
 if s5<>'' then begin
 if en_rus then showmessage('Error. Parameters of type '''+s5+''' must be var parameters.') else
-showmessage('O����a. ��������� ���� '+s5+' ������ ���� var �����������.');
+showmessage('Oшибкa. Параметры типа '+s5+' должны быть var параметрами.');
 formsubroutine:=-1; exit; end;
 
 j:=i;

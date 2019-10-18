@@ -130,20 +130,20 @@ const
   LF32_MOVEABLE = $00000004;
 
 {$EXTERNALSYM Heap32First}
-function Heap32First(var lphe: THeapEntry32; th32ProcessID, th32HeapID: DWORD): BOOL;
+function Heap32First(var lphe: THeapEntry32; th32ProcessID, th32HeapID: DWORD): Boolean;
 {$EXTERNALSYM Heap32Next}
-function Heap32Next(var lphe: THeapEntry32): BOOL;
+function Heap32Next(var lphe: THeapEntry32): Boolean;
 {$EXTERNALSYM Toolhelp32ReadProcessMemory}
 function Toolhelp32ReadProcessMemory(th32ProcessID: DWORD; lpBaseAddress: Pointer;
-  var lpBuffer; cbRead: DWORD; var lpNumberOfBytesRead: DWORD): BOOL;
+  var lpBuffer; cbRead: DWORD; var lpNumberOfBytesRead: DWORD): Boolean;
 
 type
   THeap32First = function (var lphe: THeapEntry32; th32ProcessID,
-    th32HeapID: DWORD): BOOL stdcall;
-  THeap32Next = function (var lphe: THeapEntry32): BOOL stdcall;
+    th32HeapID: DWORD): Boolean stdcall;
+  THeap32Next = function (var lphe: THeapEntry32): Boolean stdcall;
   TToolhelp32ReadProcessMemory = function (th32ProcessID: DWORD;
     lpBaseAddress: Pointer; var lpBuffer; cbRead: DWORD;
-    var lpNumberOfBytesRead: DWORD): BOOL stdcall;
+    var lpNumberOfBytesRead: DWORD): Boolean stdcall;
 
 (***** Process walking *************************************************)
 
@@ -170,13 +170,13 @@ type
   TProcessEntry32W = tagPROCESSENTRY32W;
 
 {$EXTERNALSYM Process32FirstW}
-function Process32FirstW(hSnapshot: THandle; var lppe: TProcessEntry32W): BOOL;
+function Process32FirstW(hSnapshot: THandle; var lppe: TProcessEntry32W): Boolean;
 {$EXTERNALSYM Process32NextW}
-function Process32NextW(hSnapshot: THandle; var lppe: TProcessEntry32W): BOOL;
+function Process32NextW(hSnapshot: THandle; var lppe: TProcessEntry32W): Boolean;
 
 type
-  TProcess32FirstW = function (hSnapshot: THandle; var lppe: TProcessEntry32W): BOOL stdcall;
-  TProcess32NextW = function (hSnapshot: THandle; var lppe: TProcessEntry32W): BOOL stdcall;
+  TProcess32FirstW = function (hSnapshot: THandle; var lppe: TProcessEntry32W): Boolean stdcall;
+  TProcess32NextW = function (hSnapshot: THandle; var lppe: TProcessEntry32W): Boolean stdcall;
 
 {$EXTERNALSYM tagPROCESSENTRY32}
   tagPROCESSENTRY32 = packed record
@@ -200,13 +200,13 @@ type
   TProcessEntry32 = tagPROCESSENTRY32;
 
 {$EXTERNALSYM Process32First}
-function Process32First(hSnapshot: THandle; var lppe: TProcessEntry32): BOOL;
+function Process32First(hSnapshot: THandle; var lppe: TProcessEntry32): Boolean;
 {$EXTERNALSYM Process32Next}
-function Process32Next(hSnapshot: THandle; var lppe: TProcessEntry32): BOOL;
+function Process32Next(hSnapshot: THandle; var lppe: TProcessEntry32): Boolean;
 
 type
-  TProcess32First = function (hSnapshot: THandle; var lppe: TProcessEntry32): BOOL stdcall;
-  TProcess32Next = function (hSnapshot: THandle; var lppe: TProcessEntry32): BOOL stdcall;
+  TProcess32First = function (hSnapshot: THandle; var lppe: TProcessEntry32): Boolean stdcall;
+  TProcess32Next = function (hSnapshot: THandle; var lppe: TProcessEntry32): Boolean stdcall;
 
 (***** Thread walking **************************************************)
 
@@ -230,13 +230,13 @@ type
   TThreadEntry32 = tagTHREADENTRY32;
 
 {$EXTERNALSYM Thread32First}
-function Thread32First(hSnapshot: THandle; var lpte: TThreadEntry32): BOOL; stdcall;
+function Thread32First(hSnapshot: THandle; var lpte: TThreadEntry32): Boolean; stdcall;
 {$EXTERNALSYM Thread32Next}
-function Thread32Next(hSnapshot: THandle; var lpte: TThreadENtry32): BOOL; stdcall;
+function Thread32Next(hSnapshot: THandle; var lpte: TThreadENtry32): Boolean; stdcall;
 
 type
-  TThread32First = function (hSnapshot: THandle; var lpte: TThreadEntry32): BOOL stdcall;
-  TThread32Next = function (hSnapshot: THandle; var lpte: TThreadENtry32): BOOL stdcall;
+  TThread32First = function (hSnapshot: THandle; var lpte: TThreadEntry32): Boolean stdcall;
+  TThread32Next = function (hSnapshot: THandle; var lpte: TThreadENtry32): Boolean stdcall;
 
 (***** Module walking *************************************************)
 
@@ -268,13 +268,13 @@ type
 //
 
 {$EXTERNALSYM Module32First}
-function Module32First(hSnapshot: THandle; var lpme: TModuleEntry32): BOOL;
+function Module32First(hSnapshot: THandle; var lpme: TModuleEntry32): Boolean;
 {$EXTERNALSYM Module32Next}
-function Module32Next(hSnapshot: THandle; var lpme: TModuleEntry32): BOOL;
+function Module32Next(hSnapshot: THandle; var lpme: TModuleEntry32): Boolean;
 
 type
-  TModule32First = function (hSnapshot: THandle; var lpme: TModuleEntry32): BOOL stdcall;
-  TModule32Next = function (hSnapshot: THandle; var lpme: TModuleEntry32): BOOL stdcall;
+  TModule32First = function (hSnapshot: THandle; var lpme: TModuleEntry32): Boolean stdcall;
+  TModule32Next = function (hSnapshot: THandle; var lpme: TModuleEntry32): Boolean stdcall;
 
 {$EXTERNALSYM tagMODULEENTRY32W}
   tagMODULEENTRY32W = record
@@ -303,13 +303,13 @@ type
 //
 
 {$EXTERNALSYM Module32FirstW}
-function Module32FirstW(hSnapshot: THandle; var lpme: TModuleEntry32W): BOOL;
+function Module32FirstW(hSnapshot: THandle; var lpme: TModuleEntry32W): Boolean;
 {$EXTERNALSYM Module32NextW}
-function Module32NextW(hSnapshot: THandle; var lpme: TModuleEntry32W): BOOL;
+function Module32NextW(hSnapshot: THandle; var lpme: TModuleEntry32W): Boolean;
 
 type
-  TModule32FirstW = function (hSnapshot: THandle; var lpme: TModuleEntry32W): BOOL stdcall;
-  TModule32NextW = function (hSnapshot: THandle; var lpme: TModuleEntry32W): BOOL stdcall;
+  TModule32FirstW = function (hSnapshot: THandle; var lpme: TModuleEntry32W): Boolean stdcall;
+  TModule32NextW = function (hSnapshot: THandle; var lpme: TModuleEntry32W): Boolean stdcall;
 
 implementation
 

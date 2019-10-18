@@ -20,7 +20,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: char);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormClose(Sender: TObject; var action1: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormDblClick(Sender: TObject);

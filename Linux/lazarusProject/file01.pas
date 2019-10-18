@@ -194,7 +194,7 @@ begin
   end;
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm1.FormClose(Sender: TObject; var action1: TCloseAction);
 begin
   delete_temp;
 end;

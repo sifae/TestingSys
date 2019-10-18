@@ -71,7 +71,7 @@ begin
   ioresult;
 end;
 
-procedure TForm3.FormClose(Sender: TObject; var action1: TCloseAction);
+procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   f: textfile;
 begin

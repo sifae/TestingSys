@@ -104,7 +104,7 @@ var
 procedure initializef(var f:t_f; var i_n, i_c:integer; var s_n:Ts_n; b:boolean);
 
 implementation
-uses file09, file01, shellapi, file03, file101, file_killprocess;
+uses file09, file01, {shellapi,} file03, file101, file_killprocess;
 
 {$R *.dfm}
 

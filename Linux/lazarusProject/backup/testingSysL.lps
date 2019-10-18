@@ -7,7 +7,7 @@
       <Unit0>
         <Filename Value="testingSysL.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="49" Y="9"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
@@ -18,12 +18,7 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="3041"/>
-        <CursorPos X="78" Y="3062"/>
         <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="tlhelp32.pas"/>
@@ -34,7 +29,8 @@
       <Unit3>
         <Filename Value="file_killprocess.pas"/>
         <UnitName Value="File_KillProcess"/>
-        <CursorPos X="45"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="17" Y="17"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -46,12 +42,7 @@
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit4>
     </Units>
-    <JumpHistory Count="1">
-      <Position1>
-        <Filename Value="file_killprocess.pas"/>
-        <Caret Column="45"/>
-      </Position1>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>

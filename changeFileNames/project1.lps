@@ -45,10 +45,10 @@
       </Unit3>
       <Unit4>
         <Filename Value="../Linux/raw/file00.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="80"/>
-        <CursorPos X="95" Y="7"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="68" Y="4"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit4>
       <Unit5>
@@ -71,18 +71,16 @@
       </Unit6>
       <Unit7>
         <Filename Value="../../.cache/.fr-JxSx8c/Testing_System_for_UNIX/file00.pas"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../.cache/.fr-eMtA8j/Testing_System_for_UNIX/file01.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit8>
     </Units>

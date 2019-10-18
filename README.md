@@ -1,2 +1,2 @@
 # TestingSys
-Compile testing system
+Compile testing system for UNIX

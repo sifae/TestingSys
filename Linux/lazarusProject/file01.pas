@@ -60,7 +60,7 @@ begin
 
   if fileexists('.\tmp\temp01.bat') then
   begin
-    s := 'Программа уже выполняется. Если это не так, удалите все файлы из подкаталога TMP, кроме directory.txt и p.txt. Пoсле этого перезапустите программу.';
+    s := 'РџСЂРѕРіСЂР°РјРјР° СѓР¶Рµ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ. Р•СЃР»Рё СЌС‚Рѕ РЅРµ С‚Р°Рє, СѓРґР°Р»РёС‚Рµ РІСЃРµ С„Р°Р№Р»С‹ РёР· РїРѕРґРєР°С‚Р°Р»РѕРіР° TMP, РєСЂРѕРјРµ directory.txt Рё p.txt. РџoСЃР»Рµ СЌС‚РѕРіРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ.';
     s2 :=
       ' The program is running already. If not, delete all files except directory.txt and p.txt in the subdirectory TMP and restart the program. ';
     ShowMessage(s + s2);
@@ -73,7 +73,7 @@ begin
   form1.Height := _height;
   left := (screen.Width - _width) div 2;
   top := (screen.Height - _height) div 2;
-  Caption := 'Cистема автоматического тестирования программ';
+  Caption := 'CРёСЃС‚РµРјР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРіРѕ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕРіСЂР°РјРј';
   label1.Top := round(_height / 3.35);
   label1.Height := _height div 13;
   label1.left := round(_width / 3);
@@ -81,7 +81,7 @@ begin
   label1.Visible := True;
   label1.Font.Size := _width div 18;
   label1.Font.Name := _fontname;
-  label1.Caption := 'Система ';
+  label1.Caption := 'РЎРёСЃС‚РµРјР° ';
   label2.Top := label1.Top + label1.Height * 8 div 7;
   label2.Height := _height div 13;
   label2.left := _width div 8;
@@ -89,7 +89,7 @@ begin
   label2.Visible := True;
   label2.Font.Size := _width div 30;
   label2.Font.Name := label1.font.Name;
-  label2.Caption := 'автоматического тестирования программ';
+  label2.Caption := 'Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРіРѕ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕРіСЂР°РјРј';
   label3.Top := round(_height * 0.83);
   label3.Height := _height div 13;
   label3.left := round(_width / 2.9);
@@ -97,7 +97,7 @@ begin
   label3.Visible := True;
   label3.Font.Size := _width div 50;
   label3.Font.Name := label1.font.Name;
-  label3.Caption := ' Автор - Новиков М.Д.';
+  label3.Caption := ' РђРІС‚РѕСЂ - РќРѕРІРёРєРѕРІ Рњ.Р”.';
   label4.Top := round(_height / 37);
   label4.Height := _height div 13;
   label4.left := round(_width / 10);
@@ -105,7 +105,7 @@ begin
   label4.Visible := True;
   label4.Font.Size := _width div 45;
   label4.Font.Name := label1.font.Name;
-  label4.Caption := ' Московский государственный университет им. М.В.Ломоносова';
+  label4.Caption := ' РњРѕСЃРєРѕРІСЃРєРёР№ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Р№ СѓРЅРёРІРµСЂСЃРёС‚РµС‚ РёРј. Рњ.Р’.Р›РѕРјРѕРЅРѕСЃРѕРІР°';
   label5.Top := round(_height / 12);
   label5.Height := _height div 13;
   label5.left := round(_width / 6);
@@ -113,7 +113,7 @@ begin
   label5.Visible := True;
   label5.Font.Size := _width div 50;
   label5.Font.Name := label1.font.Name;
-  label5.Caption := ' Факультет вычислительной математики и кибернетики';
+  label5.Caption := ' Р¤Р°РєСѓР»СЊС‚РµС‚ РІС‹С‡РёСЃР»РёС‚РµР»СЊРЅРѕР№ РјР°С‚РµРјР°С‚РёРєРё Рё РєРёР±РµСЂРЅРµС‚РёРєРё';
   label6.Top := label2.Top + label2.Height * 7 div 4;
   label6.Height := _height div 13;
   label6.left := _width div 4;
@@ -121,7 +121,7 @@ begin
   label6.Visible := True;
   label6.Font.Size := _width div 45;
   label6.Font.Name := label1.font.Name;
-  label6.Caption := ' (по материалам книги В.Н. Пильщикова';
+  label6.Caption := ' (РїРѕ РјР°С‚РµСЂРёР°Р»Р°Рј РєРЅРёРіРё Р’.Рќ. РџРёР»СЊС‰РёРєРѕРІР°';
   label7.Top := label6.Top + label6.Height * 6 div 5;
   label7.Height := _height div 13;
   label7.left := _width div 4;
@@ -129,7 +129,7 @@ begin
   label7.Visible := True;
   label7.Font.Size := _width div 45;
   label7.Font.Name := label1.font.Name;
-  label7.Caption := ' "Язык Паскаль: упражнения и задачи")';
+  label7.Caption := ' "РЇР·С‹Рє РџР°СЃРєР°Р»СЊ: СѓРїСЂР°Р¶РЅРµРЅРёСЏ Рё Р·Р°РґР°С‡Рё")';
   label8.Top := round(_height * 0.88);
   label8.Height := _height div 15;
   label8.left := round(_width / 4.1);
@@ -138,7 +138,7 @@ begin
   label8.Font.Size := _width div 65;
   label8.Font.Name := label1.font.Name;
   label8.Font.Color := $FFFFFF;
-  label8.Caption := '   Haжмите любую клавишу, ctrl+e - switch to English';
+  label8.Caption := '   HaР¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ, ctrl+e - switch to English';
   timer1.Enabled := True;
   timer1.Interval := 500;
 
@@ -147,7 +147,7 @@ begin
     b := deletefile('temp1.exe');
     if not b then
     begin
-      ShowMessage('Невозможно удалить файл Temp1.exe. Возможно, открыто DOS- окно. Закройте его и перезапустите программу. '
+      ShowMessage('РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ С„Р°Р№Р» Temp1.exe. Р’РѕР·РјРѕР¶РЅРѕ, РѕС‚РєСЂС‹С‚Рѕ DOS- РѕРєРЅРѕ. Р—Р°РєСЂРѕР№С‚Рµ РµРіРѕ Рё РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ. '
         + chr(10) +
         'It is impossible to delete the file ''Temp1.exe''. A DOS window is probably opened. Close it and restart the program.');
       halt;
@@ -266,3 +266,4 @@ begin
 end;
 
 end.
+

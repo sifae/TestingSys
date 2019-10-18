@@ -77,7 +77,7 @@ if number_of_intervals>i_max+9 then begin compi:=false;
 
 closefile(f); ioresult; form3.close; halt end;
 if en_rus then showmessage('The compilation failed. Check your compiler and restart the computer.')else
-showmessage('Компиляция невозможна. Проверьте компилятор и перезапустите компьютер.');
+showmessage('РљРѕРјРїРёР»СЏС†РёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕРјРїРёР»СЏС‚РѕСЂ Рё РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚Рµ РєРѕРјРїСЊСЋС‚РµСЂ.');
 //deletefile(current_dir+'\tmp\temp0.bat');ioresult; assignfile(f,'result.txt'); closefile(f); ioresult;
 //erase(f); ioresult;
 deletefile(current_dir+'\tmp\directory.txt');

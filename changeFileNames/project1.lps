@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="7">
+    <Units Count="9">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -28,7 +28,6 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="18"/>
         <UsageCount Value="20"/>
@@ -46,10 +45,10 @@
       </Unit3>
       <Unit4>
         <Filename Value="../Linux/raw/file00.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="80"/>
-        <CursorPos X="95" Y="7"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="68" Y="4"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit4>
       <Unit5>
@@ -60,7 +59,6 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="57" Y="5"/>
         <UsageCount Value="10"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit5>
       <Unit6>
@@ -71,6 +69,20 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="../../.cache/.fr-JxSx8c/Testing_System_for_UNIX/file00.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="70"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../.cache/.fr-eMtA8j/Testing_System_for_UNIX/file01.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit8>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
     <RunParams>

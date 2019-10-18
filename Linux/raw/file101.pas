@@ -20,7 +20,7 @@ read(f,k); read(f,k); read(f,k); s_n_2:=[k mod 10, k div 10 mod 10];
 //s_n:=[];
 read(f,k); read(f,k);read(f,k); read(f,k);
 i_c_2:=10;
- end;
- }
+  end;
+}
 
 end.

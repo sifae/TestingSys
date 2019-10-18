@@ -101,7 +101,7 @@ k:=0; if chosen_task='15_58' then k:=4;if chosen_task='15_59' then k:=3; if chos
 if copy(chosen_task,1,5)='15_63' then k:=2;
 if (pos('begin ',s)=0) or (pos('end.',s)=0) or(pos('assign',s)=0) then begin
 if en_rus then showmessage('Error in the structure of the program: at least one of the words ''begin'', ''end.'' or ''assign'' were not found.')else
-showmessage('Ошибка в структуре программы: пo крайней мере одно из слов ''begin'', ''end.'' или ''assign'' нe было найдено.');exit end;
+showmessage('РћС€РёР±РєР° РІ СЃС‚СЂСѓРєС‚СѓСЂРµ РїСЂРѕРіСЂР°РјРјС‹: Рїo РєСЂР°Р№РЅРµР№ РјРµСЂРµ РѕРґРЅРѕ РёР· СЃР»РѕРІ ''begin'', ''end.'' РёР»Рё ''assign'' РЅe Р±С‹Р»Рѕ РЅР°Р№РґРµРЅРѕ.');exit end;
 i:=0; repeat s2:='readfile'+inttostr(i);  if pos(s2,s)=0 then break; inc(i) ; until i>10000;//for a safe reason; it cannot really happen
 i:=0; repeat s3:='writefile'+inttostr(i); if pos(s3,s)=0 then break; inc(i) ; until i>10000;//for a safe reason; it cannot really happen
 if chosen_task='15_59' then
@@ -157,12 +157,12 @@ for j:=1 to k do begin
 //showmessage(inttostr(j)+'s  !! '+s);
 
 if copy(s,1,7)<>'assign('then begin if en_rus then showmessage('Not enough Assign procedures at the beginning of the program.')
-else showmessage('Недостаточно процедур assign в начале прогpaммы.'); exit end;
+else showmessage('РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂРѕС†РµРґСѓСЂ assign РІ РЅР°С‡Р°Р»Рµ РїСЂРѕРіpaРјРјС‹.'); exit end;
 s1:=s1+'assign('; delete(s,1,7);
 j2:=pos(',''',s);
-if j2<2 then begin if en_rus then showmessage('Wrong syntax of an Assign procedure.') else showmessage('Невеpный синтаксис процедуры assign.');exit end;
+if j2<2 then begin if en_rus then showmessage('Wrong syntax of an Assign procedure.') else showmessage('РќРµРІРµpРЅС‹Р№ СЃРёРЅС‚Р°РєСЃРёСЃ РїСЂРѕС†РµРґСѓСЂС‹ assign.');exit end;
 j1:=pos(''')',s);
-if (j1=0)or(j1<j2)then begin if en_rus then showmessage('Wrong syntax of an Assign procedure.') else showmessage('Невеpный синтаксис процедуры assign.');exit end;
+if (j1=0)or(j1<j2)then begin if en_rus then showmessage('Wrong syntax of an Assign procedure.') else showmessage('РќРµРІРµpРЅС‹Р№ СЃРёРЅС‚Р°РєСЃРёСЃ РїСЂРѕС†РµРґСѓСЂС‹ assign.');exit end;
 if (copy(s,j2+2,j1-j2-2)='1.txt')and(copy(chosen_task,1,5)<>'15_63') or (copy(s,j2+2,j1-j2-2)='1.std')and(copy(chosen_task,1,5)='15_63')then
 begin if sf='' then sf:=copy(s,1,j2-1)else b1:=true; s1:=s1+copy(s,1,j2)+'''temp15_1'');' end else
 if copy(s,j2+2,j1-j2-2)='2.txt'then begin if ss='' then ss:=copy(s,1,j2-1)else b1:=true; s1:=s1+copy(s,1,j2)+'''temp15_2'');' end else
@@ -184,16 +184,16 @@ showmessage('Assign procedure for the external files ''1.txt'' or ''2.txt'' was 
 else showmessage('Assign procedure for the external files ''1.std'' or ''2.txt'' was not found.')
 else
 if copy(chosen_task,1,5)<>'15_63'then
-showmessage('Не найдена процедура assign для внешних файлов 1.txt или 2.txt.') else
-showmessage('Не найдена процедура assign для внешних файлов 1.std или 2.txt.') ;exit end;
+showmessage('РќРµ РЅР°Р№РґРµРЅР° РїСЂРѕС†РµРґСѓСЂР° assign РґР»СЏ РІРЅРµС€РЅРёС… С„Р°Р№Р»РѕРІ 1.txt РёР»Рё 2.txt.') else
+showmessage('РќРµ РЅР°Р№РґРµРЅР° РїСЂРѕС†РµРґСѓСЂР° assign РґР»СЏ РІРЅРµС€РЅРёС… С„Р°Р№Р»РѕРІ 1.std РёР»Рё 2.txt.') ;exit end;
 
 if (sf='')and((chosen_task='15_62')or(chosen_task='15_61'))then begin
 if en_rus then showmessage('Assign procedure for the external file ''1.txt'' was not found.')
 else
-showmessage('Не найдена процедура assign для внешнeгo файлa 1.txt.');
+showmessage('РќРµ РЅР°Р№РґРµРЅР° РїСЂРѕС†РµРґСѓСЂР° assign РґР»СЏ РІРЅРµС€РЅeРіo С„Р°Р№Р»a 1.txt.');
 exit end;
 if b1 then begin
-if en_rus then showmessage('A wrong filename in one of the Assign procedures.') else showmessage('Невepное имя файла в пpoцeдуре assign.') ;exit end;
+if en_rus then showmessage('A wrong filename in one of the Assign procedures.') else showmessage('РќРµРІРµСЂРЅРѕСЂРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ РїСЂРѕС†РµРґСѓСЂС‹ assign.') ;exit end;
 
 if chosen_task<>'15_59' then
 s1:=s1+';'+s2+'('+sf+')'
@@ -489,15 +489,15 @@ occurrences(ss,ns,6);
 if ns[1]+ns[2]+ns[3]<>ns[4] then begin
 //showmessage('!!!'+inttostr(ns[1])+' '+inttostr(ns[2])+'@'+inttostr(ns[3])+'!'+inttostr(ns[4]));
 
-if en_rus then showmessage('Error. Amount of the words ''begin'' is not equal to amount of the words ''end''.')else showmessage('Oшибка. Нет баланса операторных скобок begin end.');exit end;
+if en_rus then showmessage('Error. Amount of the words ''begin'' is not equal to amount of the words ''end''.')else showmessage('OС€РёР±РєР°. РќРµС‚ Р±Р°Р»Р°РЅСЃР° РѕРїРµСЂР°С‚РѕСЂРЅС‹С… СЃРєРѕР±РѕРє begin end.');exit end;
 if ns[5]<>ns[6] then begin
-if en_rus then showmessage('Error. Amount of the words ''repeat'' is not equal to amount of the words ''until''.')else showmessage('Ошибка. Нет баланса операторных скобок repeat-until.');exit end;
+if en_rus then showmessage('Error. Amount of the words ''repeat'' is not equal to amount of the words ''until''.')else showmessage('РћС€РёР±РєР°. РќРµС‚ Р±Р°Р»Р°РЅСЃР° РѕРїРµСЂР°С‚РѕСЂРЅС‹С… СЃРєРѕР±РѕРє repeat-until.');exit end;
 join(s);
 if s='' then exit;
 if (copy(s,length(s)-3,4)='end.')and(func_proc>0)then begin
-if en_rus then showmessage('Error: ''end.'' was found in the subroutine definition.') else showmessage('Ошибка: в описании подпрограммы обнаружено ''end.''');exit end;
+if en_rus then showmessage('Error: ''end.'' was found in the subroutine definition.') else showmessage('РћС€РёР±РєР°: РІ РѕРїРёСЃР°РЅРёРё РїРѕРґРїСЂРѕРіСЂР°РјРјС‹ РѕР±РЅР°СЂСѓР¶РµРЅРѕ ''end.''');exit end;
 if (copy(s,length(s)-3,4)<>'end.')and(func_proc=0)then begin
-if en_rus then showmessage('Error: ''end.'' was not found in the program.') else showmessage('Ошибка: в программе не найдено заключительное ''end.''');exit end;
+if en_rus then showmessage('Error: ''end.'' was not found in the program.') else showmessage('РћС€РёР±РєР°: РІ РїСЂРѕРіСЂР°РјРјРµ РЅРµ РЅР°Р№РґРµРЅРѕ Р·Р°РєР»СЋС‡РёС‚РµР»СЊРЅРѕРµ''end.''');exit end;
 check_beginend:=true;
 end;
 
@@ -635,7 +635,7 @@ join(s);
 
 s34:=checkvalueparam(s);
 if s34<>'' then begin if en_rus then showmessage(' Error. The parameter '+s34+' must be a value parameter.') else
-showmessage(' Oшибкa. Пapaметр '+s34+' должен быть параметром-значением.'); exit end;
+showmessage(' OС€РёР±Рєa. РџapaРјРµС‚СЂ '+s34+' РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїР°СЂР°РјРµС‚СЂРѕРј-Р·РЅР°С‡РµРЅРёРµРј.'); exit end;
 p5:=pos('//',text_before);if p5>0 then begin p6:=pos(' ',copy(text_before,p5,100)); if p6=0 then text_before:=copy(text_before,1,p5-1)
 else text_before:=copy(text_before,1,p5-1)+copy(text_before,p6+p5,length(text_before)); end;
 
@@ -644,13 +644,13 @@ countnewdispose(s);
 p4:=pos('}',s);if p4>0 then s22:=copy(s,p4+1,length(s)) else s22:=s;
 if (copy(s22,1,10)<>'procedure ')and(copy(s22,1,9)<>'function ') then begin
 if en_rus then showmessage('Error. The program must begin with the word ''procedure'' or ''function''.') else
-showmessage('Oшибкa. Текст программы должен начинаться со слова ''процедура'' или ''функция''.');
+showmessage('OС€РёР±Рєa. РўРµРєСЃС‚ РїСЂРѕРіСЂР°РјРјС‹ РґРѕР»Р¶РµРЅ РЅР°С‡РёРЅР°С‚СЊСЃСЏ СЃРѕ СЃР»РѕРІР° ''РїСЂРѕС†РµРґСѓСЂР°'' РёР»Рё ''С„СѓРЅРєС†РёСЏ''.');
 exit;
 end;
 if (varparam[1]<>'')then begin p:=pos(';type ',s);
 if (p>0)or(copy(s,1,5)='type ')then begin
 if en_rus then showmessage('Error. A type declaration is not allowed for this task.') else
-showmessage('Oшибкa. Oписание типов в этой задаче не допускается.');
+showmessage('OС€РёР±Рєa. OРїРёСЃР°РЅРёРµ С‚РёРїРѕРІ РІ СЌС‚РѕР№ Р·Р°РґР°С‡Рµ РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.');
 exit;
 end end;
 
@@ -664,7 +664,7 @@ s17:=checkvarparam(s);
 
 if s17<>'' then begin
 if en_rus then showmessage('Error. Parameters of the type '''+s17+''' must be var parameters.') else
-showmessage('Oшибкa. Параметры типа '+s17+' должны быть var параметрами.');
+showmessage('OС€РёР±Рєa. РџР°СЂР°РјРµС‚СЂС‹ С‚РёРїР° '+s17+' РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ var РїР°СЂР°РјРµС‚СЂР°РјРё.');
 exit; end end;
 
 //showmessage('!Q!!  '+s14);
@@ -672,7 +672,7 @@ exit; end end;
 
 
 if s14='!' then begin if en_rus then showmessage('Error in the subroutine definition.  Probably, a procedure was found instead of a function or vice versa.') else
-showmessage('Ошибка в подпрограмме. Возможно, найдена процедура вместо функции или наоборот. '); exit end;
+showmessage('РћС€РёР±РєР° РІ РїРѕРґРїСЂРѕРіСЂР°РјРјРµ. Р’РѕР·РјРѕР¶РЅРѕ, РЅР°Р№РґРµРЅР° РїСЂРѕС†РµРґСѓСЂР° РІРјРµСЃС‚Рѕ С„СѓРЅРєС†РёРё РёР»Рё РЅР°РѕР±РѕСЂРѕС‚. '); exit end;
 s:=copy(s,1,pos('}',s))+' '+text_before+' '+copy(s,pos('}',s)+1,length(s));
 while p3>0 do begin
 text_after:=copy(text_after,1, p3-1)+' '+s14+' '+copy(text_after, p3+6, length(text_after));p3:=pos('<name>', text_after);
@@ -688,7 +688,7 @@ add_parentheses(s,s13);
 breaks(s,false);add_main_block:=0;exit end;
 
 if func_proc=1 then s4:='function'else s4:='procedure';
-if func_proc=1 then s5:='функции'else s5:='процедуры';
+if func_proc=1 then s5:='С„СѓРЅРєС†РёСЏ' else s5:='РїСЂРѕС†РµРґСѓСЂР°';
 b:=false;//true if we are within a string
 s2:='';
 repeat if s='' then break;
@@ -706,15 +706,15 @@ if length(s2)>3 then begin s15:=s2; delete_strings(s15); s15:=' '+s15; p3:=pos('
 s2:=s2+copy(s,1,9+byte(func_proc=2)); delete(s,1,9+byte(func_proc=2));
 p:=pos('(',s); if func_proc=2 then p1:=pos(';',s) else p1:=pos(':',s);
 if p=0 then p:=p1; if p>p1 then p:=p1;
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition.'+chr(10)+s) else showmessage('Ошибка в описании '+s5+chr(10)+s);exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition.'+chr(10)+s) else showmessage('РћС€РёР±РєР° РІ РѕРїРёСЃР°РЅРёРё '+s5+chr(10)+s);exit end;
 name:=copy(s,1,p-1); delete(s,1,p-1); delete_blanks(s);
 bb:=true; for pp:=1 to length(name) do
 if not(name[pp]in alphadigit) then bb:=false;
 if not bb or not((s[1]='(')or(s[1]=';')and(func_proc=2)or(s[1]=':')and(func_proc=1))then begin
-if en_rus then showmessage('Error in the '+s4+' definition. A wrong symbol in its name or after it.'+chr(10)+name+' '+s) else showmessage('Ошибка в описании '+s5+'. Неверный символ в имени или после него. '+chr(10)+name+' '+s); exit end;
+if en_rus then showmessage('Error in the '+s4+' definition. A wrong symbol in its name or after it.'+chr(10)+name+' '+s) else showmessage('РћС€РёР±РєР° РІ РѕРїРёСЃР°РЅРёРё '+s5+'. РќРµРІРµСЂРЅС‹Р№ СЃРёРјРІРѕР» РІ РёРјРµРЅРё РёР»Рё РїРѕСЃР»Рµ РЅРµРіРѕ. '+chr(10)+name+' '+s); exit end;
 if s[1]='(' then
 begin p:=pos(')',s);
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. '')'' is absent.'+chr(10)+name+' '+s) else showmessage('Ошибка в описании '+s5+'. Нет закрывающей скобки.'+chr(10)+name+' '+s); exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. '')'' is absent.'+chr(10)+name+' '+s) else showmessage('РћС€РёР±РєР° РІ РѕРїРёСЃР°РЅРёРё '+s5+'. РќРµС‚ Р·Р°РєСЂС‹РІР°СЋС‰РµР№ СЃРєРѕР±РєРё.'+chr(10)+name+' '+s); exit end;
 realb:=(func_proc=1)and (copy(s,p+1,6)=':real;');
 s6:=copy(s,1,p); delete(s,1,p);
 s3:='';s7:=copy(s6,2,length(s6)-2);
@@ -728,7 +728,7 @@ repeat
 p:=pos(';',s7); if p>0 then begin s8:=copy(s7,1,p); delete(s7,1,p); end else begin s8:=s7; s7:='' end;
 delete_blanks(s7); if copy(s8,1,3)='var' then delete(s8,1,4);
 p:=pos(':',s8);
-if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. A colon is absent. '+chr(10)+s8) else showmessage('Ошибка в описании '+s5+'. Нет двоеточия.'+chr(10)+s8);exit end;
+if p=0 then begin if en_rus then showmessage('Error in the '+s4+' definition. A colon is absent. '+chr(10)+s8) else showmessage('РћС€РёР±РєР° РІ РѕРїРёСЃР°РЅРёРё '+s5+'. РќРµС‚ РґРІРѕРµС‚РѕС‡РёСЏ.'+chr(10)+s8);exit end;
 delete(s8,p,1000);
 s9:=s9+s8;if s7<>'' then s9:=s9+',';
 until s7='' ;s9:='('+s9+')'
@@ -896,7 +896,7 @@ insertwords(s);
 s4:=first_name(s,pos('<name2>',text_after)>0); s:=s+' ';
 if s4='!' then begin formsubroutine:=-1;
 if en_rus then showmessage('Error. Wrong name of a function or function not found.') else
-showmessage('Oшибкa. Неверное имя функции или функция не найдена.');exit end;
+showmessage('OС€РёР±Рєa. РќРµРІРµСЂРЅРѕРµ РёРјСЏ С„СѓРЅРєС†РёРё РёР»Рё С„СѓРЅРєС†РёСЏ РЅРµ РЅР°Р№РґРµРЅР°.');exit end;
 
 //showmessage(s4);
 
@@ -926,7 +926,7 @@ s5:=checkvarparam(s);
 //showmessage(s5);
 if s5<>'' then begin
 if en_rus then showmessage('Error. Parameters of type '''+s5+''' must be var parameters.') else
-showmessage('Oшибкa. Параметры типа '+s5+' должны быть var параметрами.');
+showmessage('OС€РёР±Рєa. РџР°СЂР°РјРµС‚СЂС‹ С‚РёРїР° '+s5+' РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ var РїР°СЂР°РјРµС‚СЂР°РјРё.');
 formsubroutine:=-1; exit; end;
 
 j:=i;

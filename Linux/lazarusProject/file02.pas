@@ -1,26 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@4R41D4
-
-1
-1
-
-    0
-
-BachinDanila/TestingSys Private
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Security
-Insights
-TestingSys/Linux/raw/file02.pas
-@4R41D4 4R41D4 Added the raw data. b78dbcb 36 minutes ago
-5800 lines (5184 sloc) 247 KB
 unit file02;
 
 interface
@@ -133,8 +110,8 @@ uses file09, file01, shellapi, file03, file101, file_killprocess;
 
 {$I-,R+}
 var low_pos:real;//position of button1 and buttons2 and label4
-const engrus='abcdefghijklmnjpqrstuvwxyzàáâãäåæçèêëìíîïðñòóôõö÷øùúûüýþÿ';
-const ruscapsmall='ÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäå¸æçèéêëìíîïðñòóôõö÷øùúûüýþÿ';
+const engrus='abcdefghijklmnjpqrstuvwxyzабвгдежзиклмнопрстуфхцчшщъыьэюя';
+const ruscapsmall='АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя';
 //These are contents of currents items of the combo- components.
 var combo2text,combo1text:string;
 var combo2index,combo1index:integer;
@@ -174,19 +151,19 @@ s:=s+'9. The amount of rows and columns of a rectangular matrix must be specifie
 s:=s+'To guarantee a correct compilation of the program do not use any other constants for the tasks where these special constants are needed.'+chr(13)+chr(10);
 s:=s+'10. For setting a chapter number and a task number automatically, use filenames of the type ''_<chapter number>_<task number>-<subtask number (a three-digit integer)>_<any text>''. Examples: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.'
 end else begin
-s:='ÍÅÊÎÒÎÐÛÅ ÎÑÎÁÅÍÍÎÑÒÈ ÑÎÑÒÀÂËÅÍÈß ÏÐÎÃÐÀÌÌ ÄËß ÑÈÑÒÅÌÛ ÀÂÒÎÌÀÒÈ×ÅÑÊÎÃÎ ÒÅÑÒÈÐÎÂÀÍÈß'+chr(13)+chr(10);
-s:=s+'1. Íå èñïîëüçóéòå ïðîáåëû â èìåíàõ ôàéëîâ è êàòàëîãîâ.'+chr(13)+chr(10);
-s:=s+'2. Ôîðìóëèðîâêè çàäà÷, ïðåäëîæåííûx â Ñèñòåìå, ìîãóò íåìíîãî îòëè÷àòüñÿ îò ôîðìóëèðîâîê, ïðèâåäåííûõ â çàäà÷íèêå Ïèëüùèêîâà. Âíèìàòåëüíî ïðî÷òèòå òåêñò çàäà÷è ïåðåä ñîñòàâëåíèåì ïðîãðàììû. '+chr(13)+chr(10);
-s:=s+'3. Âûâîäèòå â òî÷íîñòè òó èíôîðìàöèþ, êîòîðàÿ óêàçàíà â ôîðìóëèðîâêå çàäà÷è. Â ÷àñòíîñòè, íå âûâîäèòå íèêàêèõ ïîÿñíÿþùèx ñîîáùåíèé òèïà ''Ââåäèòå x='', ''Îòâåò:'' è ò.ä.';
-s:=s+' Oäíàêî, åñëè Âû âñe æå õîòèòå èñïîëüçîâàòü äîïîëíèòåëüíûé âûâîä, ðàçìåñòèòå åão â îòäåëüíîé ñòðîêå è íà÷íèòå ñ êîììåíòàðèÿ ''{I}''. Ñèñòåìà àâòîìàòè÷åñêè óäàëÿåò òàêèå ñòðîêè.'+chr(13)+chr(10);
-s:=s+'4. Âûâîäèìûå ÷èñëà ðàçäåëÿéòå ïðîáåëàìè.'+chr(13)+chr(10);
-s:=s+'5. Êîìëåêñíîå ÷èñëî äîëæíî áûòü âûâåäåíî êàê ñîâîêóïíîñòü äâóõ âåùåñòâåííûõ ÷èñeë áåç äîïoëíèòåëüíûõ ñêîáîê, çíàêîâ ''+'' èëè ''i''.'+chr(13)+chr(10);
-s:=s+'6. Ýëåìåíòû îäíîìåðíîãî ìàññèâà äîëæíû áûòü âûâåäåíû â ïîðÿäêå âîçðàñòàíèÿ èõ èíäåêñîâ, åñëè èíîå íå óêàçàíî â ôîðìóëèðîâêå çàäà÷è.'+chr(13)+chr(10);
-s:=s+'7. Ýëåìåíòû ìàòðèöû äîëæíû áûòü âûâåäåíû ïî ñòðîêàì, åñëè èíîå íå óêàçàíî â ôîðìóëèðîâêå çàäà÷è.'+chr(13)+chr(10);
-s:=s+'8. Êîëè÷åñòâî ýëåìåíòîâ ïîñëåäîâàòåëüíîñòè, êîëè÷åñòâî ýëåìåíòîâ îäíîìåðíîãî ìàññèâà è ïîðÿäîê êâàäðàòíîé ìàòðèöû äîëæíû áûòü çàäàíû öåëîé ïîëîæèòåëüíîé êîíñòaíòîé.'+chr(13)+chr(10);
-s:=s+'9. Koëè÷åñòâà ñòðîê è ñòîëáöîâ ïðÿìîóãîëüíîé ìàòðèöû äîëæíû áûòü çàäàíû äâóìÿ öåëûìè ïîëîæèòåëüíûìè êîíñòàíòàìè; ïåðâàÿ êîíñòàíòà îçíà÷àåò êîëè÷åñòâî ñòðîê, âòîðàÿ - êîëè÷åñòâî ñòîëáöoâ.'+chr(13)+chr(10);
-s:=s+'Âî èçáåæàíèå íåïðàâèëüíîé êîìïèëÿöèè ïðîãðàììû íå ñëåäóeò îïèñûâàòü äðóãèå êîíñòàíòû â çàäà÷àõ, òðåáóþùèõ ýòèõ ñïåöèàëüíûõ êîíñòàíò.'+chr(13)+chr(10);
-s:=s+'10. Äëÿ àâòîìàòè÷åñêîãî îïðåäåëåíèÿ Ñèñòåìîé íîìåðà ãëàâû è íîìåðà çàäà÷è èñïîëüçóéòå èìåíà ôàéëîâ âèäà ''_<íîìåð ãëàâû>_<íîìåð çàäà÷è>-<íîìåð ïîäçàäà÷è (3 öèôðû)>_<ïðîèçâîëüíûé òåêñò>''. Ïðèìåðû: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.'+chr(13)+chr(10);
+s:='НЕКОТОРЫЕ ОСОБЕННОСТИ СОСТАВЛЕНИЯ ПРОГРАММ ДЛЯ СИСТЕМЫ АВТОМАТИЧЕСКОГО ТЕСТИРОВАНИЯ'+chr(13)+chr(10);
+s:=s+'1. Не используйте пробелы в именах файлов и каталогов.'+chr(13)+chr(10);
+s:=s+'2. Формулировки задач, предложенныx в Системе, могут немного отличаться от формулировок, приведенных в задачнике Пильщикова. Внимательно прочтите текст задачи перед составлением программы. '+chr(13)+chr(10);
+s:=s+'3. Выводите в точности ту информацию, которая указана в формулировке задачи. В частности, не выводите никаких поясняющиx сообщений типа ''Введите x='', ''Ответ:'' и т.д.';
+s:=s+' Oднако, если Вы всe же хотите использовать дополнительный вывод, разместите егo в отдельной строке и начните с комментария ''{I}''. Система автоматически удаляет такие строки.'+chr(13)+chr(10);
+s:=s+'4. Выводимые числа разделяйте пробелами.'+chr(13)+chr(10);
+s:=s+'5. Комлексное число должно быть выведено как совокупность двух вещественных чисeл без допoлнительных скобок, знаков ''+'' или ''i''.'+chr(13)+chr(10);
+s:=s+'6. Элементы одномерного массива должны быть выведены в порядке возрастания их индексов, если иное не указано в формулировке задачи.'+chr(13)+chr(10);
+s:=s+'7. Элементы матрицы должны быть выведены по строкам, если иное не указано в формулировке задачи.'+chr(13)+chr(10);
+s:=s+'8. Количество элементов последовательности, количество элементов одномерного массива и порядок квадратной матрицы должны быть заданы целой положительной констaнтой.'+chr(13)+chr(10);
+s:=s+'9. Koличества строк и столбцов прямоугольной матрицы должны быть заданы двумя целыми положительными константами; первая константа означает количество строк, вторая - количество столбцoв.'+chr(13)+chr(10);
+s:=s+'Во избежание неправильной компиляции программы не следуeт описывать другие константы в задачах, требующих этих специальных констант.'+chr(13)+chr(10);
+s:=s+'10. Для автоматического определения Системой номера главы и номера задачи используйте имена файлов вида ''_<номер главы>_<номер задачи>-<номер подзадачи (3 цифры)>_<произвольный текст>''. Примеры: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.'+chr(13)+chr(10);
 end;
 showmessage(s);
 end;
@@ -223,8 +200,8 @@ if (p1>0)and(p2=0)then p2:=p1+1;
 //showmessage('wait'+inttostr(p1)+'   '+inttostr(p2));
 
 if (pos ('\''e0\''ef\''e8\''f1\''e0\''f2\''fc',s)>0)and(pos('\''ef\''f0\''ee\''e3\''f0\''e0\''ec\''ec',s)>0)then goto 1;
-if p1<p2 then if en_rus then s:=copy(s,1,p1)+'WRITE A PASCAL PROGRAM. '+copy(s,p1+1,length(s)) else s:=copy(s,1,p1)+'Íàïèñàòü ïðîãðàììó íà Ïàñêàëå. '+copy(s,p1+1,length(s));
-if p1>p2 then if en_rus then s:=copy(s,1,p2-1)+'WRITE A PASCAL PROGRAM. '+copy(s,p2,length(s)) else s:=copy(s,1,p2-1)+'Íàïècàòü ïðîãðàììó íà Ïàñêàëå. '+copy(s,p2,length(s));
+if p1<p2 then if en_rus then s:=copy(s,1,p1)+'WRITE A PASCAL PROGRAM. '+copy(s,p1+1,length(s)) else s:=copy(s,1,p1)+'Написать программу на Паскале. '+copy(s,p1+1,length(s));
+if p1>p2 then if en_rus then s:=copy(s,1,p2-1)+'WRITE A PASCAL PROGRAM. '+copy(s,p2,length(s)) else s:=copy(s,1,p2-1)+'Напиcать программу на Паскале. '+copy(s,p2,length(s));
 writeln(f2,s);
 while not(eof(f)) do begin readln(f,s);writeln(f2,s) end;
 closefile(f); ioresult; closefile(f2); ioresult; erase(f); ioresult;
@@ -420,8 +397,8 @@ begin
 form2.Memo2.Clear;form2.memo2.width:=_width*2;//i2:=0;
 for i:=1 to 2*max_test_number do begin
 k1:=linetest[i]-1; k2:=linetest[i+1]-2;b:=k2<=0; if k2<=0 then k2:=form2.Memo1.Lines.Count-2;
-while(k2>0)and((copy(form2.memo1.Lines[k2],1,2)='  ')or(form2.memo1.Lines[k2]=' ')or(copy(form2.memo1.Lines[k2],1,7)='Warning')or(copy(form2.memo1.Lines[k2],1,7)='Ïðåäóïð'))
-or(copy(form2.memo1.Lines[k2],1,5)='Hint:')or(copy(form2.memo1.Lines[k2],1,7)='Çàìå÷àí')do dec(k2);
+while(k2>0)and((copy(form2.memo1.Lines[k2],1,2)='  ')or(form2.memo1.Lines[k2]=' ')or(copy(form2.memo1.Lines[k2],1,7)='Warning')or(copy(form2.memo1.Lines[k2],1,7)='Предупр'))
+or(copy(form2.memo1.Lines[k2],1,5)='Hint:')or(copy(form2.memo1.Lines[k2],1,7)='Замечан')do dec(k2);
 
 if (form2.Memo1.Lines[k2]<>'Ok')then
 for j1:=k1 to k2 do begin s:=form2.Memo1.Lines[j1];//delete_blanks(s);
@@ -431,8 +408,8 @@ end;
 if  linetest[i+1]<=0 then break;
 end;
 j:=-1;
-for i:=form2.Memo1.Lines.Count-1 downto form2.Memo1.Lines.Count div 2 do if (copy(form2.Memo1.Lines[i],1,7)='Warning')or(copy(form2.Memo1.Lines[i],1,7)='Ïðåäóïð')
-or(copy(form2.memo1.Lines[i],1,5)='Hint:')or(copy(form2.memo1.Lines[i],1,7)='Çàìå÷àí')
+for i:=form2.Memo1.Lines.Count-1 downto form2.Memo1.Lines.Count div 2 do if (copy(form2.Memo1.Lines[i],1,7)='Warning')or(copy(form2.Memo1.Lines[i],1,7)='Предупр')
+or(copy(form2.memo1.Lines[i],1,5)='Hint:')or(copy(form2.memo1.Lines[i],1,7)='Замечан')
 then j:=i;
 if j>-1 then for i:=j to form2.Memo1.Lines.Count-1 do form2.Memo2.Lines.Add(form2.Memo1.Lines[i]);
 form2.Memo1.clear;
@@ -574,7 +551,7 @@ while not eof(h) do begin
 readlnf(h,s);
 while(s<>'')and(s[1]=' ')do delete(s,1,1);
 if (length(s)<3)or(s[1]=' ') then begin if en_rus then showmessage('Fatal error with claims to the chosen task or with amount of the tests. A line is too short or its first character is blank.')else
-showmessage('Ôàòàëüíàÿ îøèáêà â ñòðîêå, ñîäåðæàùåé òðåáîâàíèÿ ê çàäà÷å èëè êîëè÷åñòâî òåñòîâ. '); exit end;
+showmessage('Фатальная ошибка в строке, содержащей требования к задаче или количество тестов. '); exit end;
 
 if (s[1]in['0'..'9'])or(eof(h))then break;
 task_claims[task_claims_amount+1].b:=false;
@@ -582,7 +559,7 @@ if (s[1]in ['w','W'])and(s[2]=' ')then begin
 task_claims[task_claims_amount+1].b1:=true;delete(s,1,2); end else
 task_claims[task_claims_amount+1].b1:=false;task_claims[task_claims_amount+1].s1:=s;
 readlnf(h,s);if (length(s)<3)or(s[1]=' ') then begin if en_rus then showmessage('Fatal error with claims to the chosen task.')
-else showmessage('Ôàòàëüíàÿ îøèáêà â ñòðîêå, ñîäåðæàùåé òðåáîâàíèÿ ê çàäà÷å.');exit; end;
+else showmessage('Фатальная ошибка в строке, содержащей требования к задаче.');exit; end;
 
 pp:=pos('!',s); if pp=0 then begin task_claims[task_claims_amount+1].s2:=s;task_claims[task_claims_amount+1].s3:=s; end else
 begin task_claims[task_claims_amount+1].s2:=copy(s,1,pp-1);task_claims[task_claims_amount+1].s3:=copy(s,pp+1,200);end;
@@ -599,17 +576,17 @@ ioresult;if (s<>'')and(pos(';',s)>0) then s:=copy(s,1,pos(';',s)-1);
 
 if (pos('program+sub',s)>0)and((pos('procedure',s)>0)or(pos('Procedure',s)>0)or (pos('function',s)>0)or (pos('Function',s)>0))
 then begin if en_rus then showmessage('Error. The algorithm cannot be both a program and a subprogram.')else
-showmessage('Îøèáêà. Àëãîðèòì íå ìîæåò áûòü ïðîãðàììîé è ïîäïðîãðàììîé îäíîâðåìåííî.');exit end;
+showmessage('Ошибка. Алгоритм не может быть программой и подпрограммой одновременно.');exit end;
 p:=pos('program+sub',s);program_sub:=p>0; number_of_tests:=0; number_of_subtests:=0;
 if program_sub then s:=copy(s,1,p-1)+copy(s,p+11, length(s));
 for xx29:=1 to 1+byte(program_sub) do begin
 delete_blanks(s);
 p:=pos(' ',s); if p<=1 then begin closefile(h); ioresult;if en_rus then showmessage('Error with amount of the tests - no number '+inttostr(xx29)+'.')
-else showmessage('Îøèáêà â çàäàíèè êîëè÷åñòâà òåñòîâ - íåò ÷èñëà ¹'+inttostr(xx29)+'.');exit end;
+else showmessage('Ошибка в задании количества тестов - нет числа №'+inttostr(xx29)+'.');exit end;
 //k - the current number of tests
 val(copy(s,1,p-1),k,q);
 if (q<>0)or not(k in [1..max_test_number])then begin closefile(h); ioresult;
-if en_rus then showmessage('Error with amount of the tests.')else showmessage('Îøèáêà â êîëè÷åñòâå òåñòîâ.'); exit end;
+if en_rus then showmessage('Error with amount of the tests.')else showmessage('Ошибка в количестве тестов.'); exit end;
 if xx29=1 then Number_of_tests:=k else Number_of_subtests:=k;
 s:=copy(s,p+1,200);
 end;
@@ -642,7 +619,7 @@ p:=pos('matrixin',s);
 if p=0 then p:=pos('Matrixin',s);
 if p=0 then begin matrixin:=0; matrixins:=0 end else begin if (length(s)<p+8)or(not(s[p+8]in['0'..'9']))then
 begin if en_rus then showmessage('Error in line '+s+' . An amount of matrices in the input data must be specified after the word ''Matrixin''')
-else showmessage('Oøèáêà â ñòðîêå '+ s+' . Ïîñëå ñëîâà ''Matrixin'' äîëæíî áûòü óêàçàíî êîëè÷åñòâî ìàòðèö âî âõîäíîì ïîòîêå.'); exit;end;
+else showmessage('Oшибка в строке '+ s+' . После слова ''Matrixin'' должно быть указано количество матриц во входном потоке.'); exit;end;
 if program_sub and(length(s)>p+8)and(s[p+9]in ['0'..'9'])then begin dif:=1;matrixin:=strtoint(s[p+8]); matrixins:=strtoint(s[p+9]);end else begin dif:=0; matrixin:=strtoint(s[p+8]); matrixins:=strtoint(s[p+8])end;
 delete(s,p,9+dif);end;
 delete_blanks(s);
@@ -650,7 +627,7 @@ p:=pos('matrixout',s);
 if p=0 then p:=pos('Matrixout',s);
 if p=0 then begin matrixout:=0; matrixouts:=0 end else begin if (length(s)<p+9)or(not(s[p+9]in['0'..'9']))then
 begin if en_rus then showmessage('Error in line '+s+' . An amount of matrices in the output data must be specified after the word ''Matrixout''')
-else showmessage('Oøèáêà â ñòðîêå '+ s+' . Ïîñëå ñëîâà ''Matrixout'' äîëæíî áûòü óêàçàíî êîëè÷åñòâî ìàòðèö â âûõîäíîì ïîòîêå.'); exit;end;
+else showmessage('Oшибка в строке '+ s+' . После слова ''Matrixout'' должно быть указано количество матриц в выходном потоке.'); exit;end;
 if program_sub and(length(s)>p+9)and(s[p+10]in ['0'..'9'])then begin dif:=1;matrixout:=strtoint(s[p+9]); matrixouts:=strtoint(s[p+10]);end else begin dif:=0;matrixout:=strtoint(s[p+9]); matrixouts:=strtoint(s[p+9])end;
 delete(s,p,10+dif);end;
 delete_blanks(s);
@@ -659,7 +636,7 @@ p:=pos('Arrayin',s);
 if p=0 then p:=pos('arrayin',s);
 if p=0 then begin arrayin:=0;arrayins:=0 end else begin if (length(s)<p+7)or(not(s[p+7]in['0'..'9']))then
 begin if en_rus then showmessage('Error in line '+s+' . An amount of arrays (1 - 9) in the input data must be specified after the word ''Arrayin''')
-else showmessage('Oøèáêà â ñòðîêå '+ s+' . Ïîñëå ñëîâà ''Arrayin'' äîëæíî áûòü óêàçàíî êîëè÷åñòâî ìàññèâîâ (1 - 9) âî âõîäíîì ïîòîêå.'); exit;
+else showmessage('Oшибка в строке '+ s+' . После слова ''Arrayin'' должно быть указано количество массивов (1 - 9) во входном потоке.'); exit;
 end;
 if program_sub and(length(s)>p+7)and(s[p+8]in ['0'..'9'])then begin dif:=1; arrayin:=strtoint(s[p+7]); arrayins:=strtoint(s[p+8]);end else begin dif:=0; arrayin:=strtoint(s[p+7]); arrayins:=strtoint(s[p+7])end;
 delete(s,p,8+dif);end;
@@ -669,7 +646,7 @@ p:=pos('Arrayout',s);
 if p=0 then p:=pos('arrayout',s);
 if p=0 then begin arrayout:=0;arrayouts:=0 end else begin if (length(s)<p+8)or(not(s[p+8]in['0'..'9']))then
 begin if en_rus then showmessage('Error in line '+s+' . An amount of arrays (1 - 9) in the output data must be specified after the word ''Arrayout''')
-else showmessage('Oøèáêà â ñòðîêå '+ s+' . Ïîñëå ñëîâà ''Arrayout'' äîëæíî áûòü óêàçàíî êîëè÷åñòâî ìàññèâîâ (1 - 9) â âûõîäíîì ïîòîêå.'); exit;end;
+else showmessage('Oшибка в строке '+ s+' . После слова ''Arrayout'' должно быть указано количество массивов (1 - 9) в выходном потоке.'); exit;end;
 if program_sub and(length(s)>p+8)and(s[p+9]in ['0'..'9'])then begin dif:=1; arrayout:=strtoint(s[p+8]); arrayouts:=strtoint(s[p+9]);end else begin dif:=0; arrayout:=strtoint(s[p+8]); arrayouts:=strtoint(s[p+8])end;
 delete(s,p,9+dif);end;
 delete_blanks(s);
@@ -678,7 +655,7 @@ delete_blanks(s);
 p:=pos('Fileinc',s); if p=0 then p:=pos('fileinc',s);
 if (p>0)and((arrayin>0)or(matrixin>0))then begin
 if en_rus then showmessage('Error. Input data cannot be both a binary file and an array.' )
-else showmessage('Îøèáêà. Âõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî òèïèçèðîâàííûì ôaéëîì è ìàññèâîì.');
+else showmessage('Ошибка. Входные данные не могут быть одновременно типизированным фaйлом и массивом.');
 exit
 end;
 filein:=byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
@@ -686,7 +663,7 @@ filein:=byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
 if filein=0 then begin p:=pos('Fileini',s); if p=0 then p:=pos('fileini',s);
 if (p>0)and((arrayin>0)or(matrixin>0))then begin
 if en_rus then showmessage('Error. Input data cannot be both a binary file and an array.' )
-else showmessage('Îøèáêà. Âõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî òèïèçèðîâàííûì ôaéëîì è ìàññèâîì.');
+else showmessage('Ошибка. Входные данные не могут быть одновременно типизированным фaйлом и массивом.');
 exit
 end;
 filein:=2*byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
@@ -695,7 +672,7 @@ end;
 p:=pos('Fileout',s); if p=0 then p:=pos('fileout',s);
 if (p>0)and((arrayout>0)or(matrixout>0))then begin
 if en_rus then showmessage('Error. Output data cannot be both a binary file and an array.' )
-else showmessage('Îøèáêà. Âûõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî òèïèçèðîâàííûì ôaéëîì è ìàññèâîì.');
+else showmessage('Ошибка. Выходные данные не могут быть одновременно типизированным фaйлом и массивом.');
 exit
 end;
 fileout:=byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
@@ -704,7 +681,7 @@ fileout:=byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
 textsin:=0; p:=pos('textin',s); if p=0 then p:=pos('Textin',s);
 if (p>0)and((arrayin>0)or(matrixin>0)or(filein>0))then begin
 if en_rus then showmessage('Error. Input data cannot be both a text file and an array or a binary file.' )
-else showmessage('Îøèáêà. Âõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî òåêñòîâûì ôaéëîì è ìàññèâîì èëè òèïèçèðîâàííûì ôàéëîì.');
+else showmessage('Ошибка. Входные данные не могут быть одновременно текстовым фaйлом и массивом или типизированным файлом.');
 exit
 end;
 textsin:=byte(p>0); if p>0 then begin delete(s,p,6); delete_blanks(s) end;
@@ -712,7 +689,7 @@ textsin:=byte(p>0); if p>0 then begin delete(s,p,6); delete_blanks(s) end;
 textsout:=0; p:=pos('textout',s); if p=0 then p:=pos('Textout',s);
 if (p>0)and((arrayout>0)or(matrixout>0)or(fileout>0))then begin
 if en_rus then showmessage('Error. Output data cannot be both a text file and an array or a binary file.' )
-else showmessage('Îøèáêà. Âûõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî òåêñòîâûì ôaéëîì è ìàññèâîì èëè òèïèçèðîâàííûì ôàéëîì.');
+else showmessage('Ошибка. Выходные данные не могут быть одновременно текстовым фaйлом и массивом или типизированным файлом.');
 exit
 end;
 textsout:=byte(p>0); if p>0 then begin delete(s,p,7); delete_blanks(s) end;
@@ -727,7 +704,7 @@ end;
 p:=pos('Error',s);
 if(arrayin>0)and((matrixin>0)or(matrixout>0))or(arrayout>0)and((matrixin>0)or(matrixout>0))then
 begin if en_rus then showmessage('Error. Input or output data cannot be both a one-dimensional array and a matrix.' )
-else showmessage('Îøèáêà. Âõîäíûå èëè âûõîäíûå äàííûå íå ìîãóò áûòü îäíîâðåìåííî îäíîìåðíûì ìàññèâîì è ìàòðèöåé.');
+else showmessage('Ошибка. Входные или выходные данные не могут быть одновременно одномерным массивом и матрицей.');
 exit end;
 
 if p=0 then p:=pos('error',s);
@@ -738,7 +715,7 @@ if p=0 then sorts:=0
 else begin
 delete(s,p-1,1000);if (pos('b',s)>0)or(pos('c',s)>0)or(pos('s',s)>0)or(pos('i',s)>0)and(pos('r',s)>0)then begin
 if en_rus then showmessage('Error in line '+ s+' . Only numerical data of type either integer or real can be sorted.') else
-showmessage('Oøèáêà â ñòðîêå '+ s+' . Copòèðîâàòü ìîæíî òîëüêî äàííûå ëèáî âåùåñòâåííîãî, ëèáî öåëîãî òèïà.'); exit;
+showmessage('Oшибка в строке '+ s+' . Copтировать можно только данные либо вещественного, либо целого типа.'); exit;
 end;
 if pos('i', s)>0 then sorts:=2 else sorts:=1;
 end;
@@ -773,7 +750,7 @@ b:=true;
 for i:=1 to number_of_results[1] do b:=b and(result_type[1,i]in ['s','i','r','c','b']);
 for i:=1 to number_of_results[2] do b:=b and(result_type[2,i]in ['s','i','r','c','b']);
 //showmessage(inttostr(number_of_results[1])+' '+inttostr(number_of_results[2])+' '+inttostr(byte(b)));
-if not b  then begin closefile(h); ioresult;if en_rus then showmessage('Fatal error 4! Wrong type of data. Types s i r c b are allowed only.')else showmessage('Íåâåðíûé òèï äàííûõ. Äîïóñòèìû òîëüêî s i r c b.'); exit end;
+if not b  then begin closefile(h); ioresult;if en_rus then showmessage('Fatal error 4! Wrong type of data. Types s i r c b are allowed only.')else showmessage('Неверный тип данных. Допустимы только s i r c b.'); exit end;
 readlnf(h,s);//Information about the current task - the second line - eight constants or 'N' if no constants are needed; can be the main program text (two lines, the first one begins with the word 'Text'
 //if the algorithm must be presented as a procedure or a function
 if (s='')or(s[1]=' ')then begin closefile(h); ioresult; showmessage('Fatal error 6!'); exit end;
@@ -781,21 +758,21 @@ for i:=1 to 4 do begin consts[i,1]:=0; consts[i,2]:=0 end;
 while(s[length(s)]=' ')do s:=copy(s,1,length(s)-1);
 
 if program_sub then if (copy(s,1,4)<>'Text')and (copy(s,1,4)<>'text')
-then begin if en_rus then showmessage('Error. No program text was found after the first line.')else showmessage('Îøèáêa. Íå íàéäåí òåêñò ïðîãðàììû ïîñëå ïåðâîé ñòðîêè.'); exit end;
+then begin if en_rus then showmessage('Error. No program text was found after the first line.')else showmessage('Ошибкa. Не найден текст программы после первой строки.'); exit end;
 if ((copy(s,1,4)='Text')or (copy(s,1,4)='text'))and((func_proc0>0)or program_sub) then begin
 text_before:=copy(s,5,length(s)); delete_blanks(text_before); setvarparam(text_before);
 readlnf(h,text_after);delete_blanks(text_after);
 text_before0:=text_before;text_after0:=text_after;
 if (text_after='')or(copy(text_after,length(text_after)-3,4)<>'end.') then begin
 if en_rus then showmessage('Error in line '''+text_after+'''. It must end with ''end.''') else
-showmessage('Oøèáêà â ñòðîêå '+text_after+'; oíà äîëæíà çàêàí÷èâàòüñÿ ñèìâîëàìè ''end.''');exit end;
+showmessage('Oшибка в строке '+text_after+'; oна должна заканчиваться символами ''end.''');exit end;
 
 p3:=pos('<name>',text_after); if (p3=0)then begin if en_rus then showmessage('Error in line '''+text_after+'''. No strings ''<name>'' were found. The string ''<name>'' must be present in the text; it is replaced by the function/procedure name.') else
-showmessage('Îøèáêà â ñòðîêå '+text_after+'. Íå íàéäåía ïoäñòðîêà ''<name>''. Òàêàÿ ïîäñòðîêà äîëæíà ïðèñóòñòâîâàòü â òåêñòå; îíà çàìåíÿåòñÿ íà èìÿ ïðîöåäóðû/ôóíêöèè.'); exit end;
+showmessage('Ошибка в строке '+text_after+'. Не найденa пoдстрока ''<name>''. Такая подстрока должна присутствовать в тексте; она заменяется на имя процедуры/функции.'); exit end;
 
 if text_after='' then begin
 if en_rus then showmessage('Error. A part of the program to be inserted after the function/procedure is empty.')
-else showmessage('Îøèáêa. ×àñòü ïðîãðàììû, êîòîðàÿ äîëæíà áûòü âñòàâëåíà ïîñëå ïðîöåäóðû/ôóíêöèè, ÿâëÿåòñÿ ïóñòîé.');exit end;
+else showmessage('Ошибкa. Часть программы, которая должна быть вставлена после процедуры/функции, является пустой.');exit end;
 readlnf(h,s) end;
 
 //showmessage(s);
@@ -804,7 +781,7 @@ if s[1]<>'N' then for i:=1 to 8 do begin p:=pos(' ',s);
 if (i<8)and(p=0)or(i=8)and(p>0)then begin closefile(h); ioresult; showmessage('Fatal error 8! The line '''+s+''' must contain 8 constants or the capital letter N only if no constants are needed.'); exit end;
 if p=0 then val(s,j,q) else val(copy(s,1,p-1),j,q); if p<>0 then s:=copy(s,p+1,200);
 if q<>0 then begin closefile(h); ioresult; if en_rus then showmessage('Fatal error 9! The line '''+s+''' must contain 8 constants or the capital letter N only if no constants are needed.')
-else showmessage('Fatal error 9! Ñòðîêà '''+s+''' äîëæíà ñîäåðæàòü 8 êîíñòàíò èëè çàãëàâíóþ áóêâó N, åñëè êîíñòàíòû íå íóæíû.')
+else showmessage('Fatal error 9! Строка '''+s+''' должна содержать 8 констант или заглавную букву N, если константы не нужны.')
 
 ; exit end;
 consts[(i+1) div 2,2-i mod 2]:=j; if p=0 then break; end;
@@ -897,10 +874,10 @@ if copy(chosen_task,1,4)='5_20' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx:=(random(100)+20)/130;
-if (chosen_task[6]='á')or(copy(chosen_task,6,3)='002') then yy:=(exp(xx)-exp(-xx))/2;
-if (chosen_task[6]='â')or(copy(chosen_task,6,3)='003') then yy:=cos(xx);
-if (chosen_task[6]='ã')or(copy(chosen_task,6,3)='004') then yy:=ln(1+xx);
-if (chosen_task[6]='ä')or(copy(chosen_task,6,3)='005') then yy:=arctan(xx);
+if (chosen_task[6]='б')or(copy(chosen_task,6,3)='002') then yy:=(exp(xx)-exp(-xx))/2;
+if (chosen_task[6]='в')or(copy(chosen_task,6,3)='003') then yy:=cos(xx);
+if (chosen_task[6]='г')or(copy(chosen_task,6,3)='004') then yy:=ln(1+xx);
+if (chosen_task[6]='д')or(copy(chosen_task,6,3)='005') then yy:=arctan(xx);
 assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx:1:10);closefile(g);
 assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, yy:1:10); closefile(g);
 end;
@@ -915,8 +892,8 @@ assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, -xx22:1,' ',-xx21:1,
 end;
 
 
-{A special random test for the task 8.29â}
-if chosen_task='8_29_â' then begin
+{A special random test for the task 8.29в}
+if chosen_task='8_29_в' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10;
@@ -924,8 +901,8 @@ assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1);
 assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, xx2:1:1,' ',xx1:1:1); closefile(g);
 end;
 
-{A special random test for the task 8.29ä}
-if chosen_task='8_29_ä' then begin
+{A special random test for the task 8.29д}
+if chosen_task='8_29_д' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
@@ -933,8 +910,8 @@ assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1, 
 assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, yy1:1:1, ' ', xx1:1:1,' ',xx2:1:1); closefile(g);
 end;
 
-{A special random test for the task 8.29å}
-if chosen_task='8_29_å' then begin
+{A special random test for the task 8.29е}
+if chosen_task='8_29_е' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
@@ -945,8 +922,8 @@ assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
 writeln(g, yy1:1:1, ' ', xx:1:1,' ',yy:1:1,' ',xx1:1:1,' ',xx2:1:1); closefile(g);
 end;
 
-{A special random test for the task 8.29æ}
-if chosen_task='8_29_æ' then begin
+{A special random test for the task 8.29ж}
+if chosen_task='8_29_ж' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
@@ -959,7 +936,7 @@ closefile(g);
 end;
 
 {A special random test for the task 8.30a}
-if chosen_task='8_30_à' then begin
+if chosen_task='8_30_а' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=-(random(100)+20)/10; yy1:=(random(100)+20)/10;
@@ -1664,7 +1641,7 @@ write(g,chr(xx21));xx23:=random(5)+3; for xx24:=1 to xx23 do begin xx22:=random(
 xx22:=random(10)+98; if xx22=xx21 then inc(xx22);
 write(g,chr(xx22));xx23:=random(5)+3; for xx24:=1 to xx23 do begin xx25:=random(12)+100; write(g,chr(xx25)); end;write(g,'!');closefile(g);
 assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
-if xx21>xx22 then write(g,'False')else write(g,'True');
+if xx21>xx22 then write(g,'False')else write(g,'True');  
 closefile(g);
 end;
 
@@ -2052,7 +2029,7 @@ xx23:=random(30)+50;
 for xx22:=1 to xx23 do begin xx24:=random(20)+65; write(g, chr(xx24)); end; write(g, chr(2)+'.');
 xx25:=random(30)+50; if xx25=xx23 then inc(xx25);
 for xx22:=1 to xx25 do begin xx24:=random(20)+65; write(g, chr(xx24)); end; write(g, chr(2)+'.');
-closefile(g);
+closefile(g); 
 end;
 end;
 
@@ -2324,7 +2301,7 @@ assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(10)+5;
 for xx21:=1 to 12*xx24 do begin
 xx22:=random(20)+98; write(g, chr(xx22));end;
-write(g,'.');write(g1, xx24);
+write(g,'.');write(g1, xx24);  
 closefile(g); closefile(g1);
 
 end;
@@ -2499,7 +2476,7 @@ assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
 assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(3)+98;write(g,chr(xx24));
 xx25:=random(3)+98;write(g,chr(xx25));
-if xx24=xx25 then write(g1,'True') else write(g1,'False');
+if xx24=xx25 then write(g1,'True') else write(g1,'False');  
 write(g, '.'); closefile(g); closefile(g1);
 end; end;
 
@@ -2520,7 +2497,7 @@ begin assign(f, s); closefile(f); ioresult; //form2.button3.enabled:=false;
 reset(f); if (ioresult<>0)or(eof(f))then
 begin closefile(f);ioresult;fileexistsf:=false;
 if en_rus then messagedlg('The file does not exist.',mtinformation,[mbOK],0)else
-messagedlg('Ôàéë íå ñóùåñòâóåò.',mtinformation,[mbOK],0);end
+messagedlg('Файл не существует.',mtinformation,[mbOK],0);end
 else begin fileexistsf:=true;form2.button3.enabled:=true;
 form2.button8.enabled:=true;
 form2.button9.enabled:=true;closefile(f); ioresult;
@@ -2560,7 +2537,7 @@ if k=1 then delete_extra(s2);
 if s2='' then continue;
 while (s2<>'')and (s2[1]=' ')do s2:=copy(s2,2,255);
 if s2='' then continue;
-if (length(s2)>3)and((copy(s2,1,3)='{I}')or(copy(s2,1,3)='{i}')) then s2:='//'+s2;
+if (length(s2)>3)and((copy(s2,1,3)='{I}')or(copy(s2,1,3)='{i}')) then s2:='//'+s2; 
 while (s2<>'')and (s2[length(s2)]=' ')do s2:=copy(s2,1,length(s2)-1);
 if s2='' then continue;
 writeln(fo,s2);
@@ -2747,7 +2724,7 @@ begin bbb:=nested_loops;
 if bbb then begin preliminary_analysis3:=false;
 if en_rus then
 form2.Memo1.lines.add('Error. Nested loops or loops within conditional statements are not allowed for this task.')else
-form2.Memo1.lines.add('Îøèáêà. Âëîæåííûå öèêëû è öèêëû âíóòðè ócëoâíûõ îïåðàòîðîâ â ýòîé çàäà÷å íå äîïóñêàþòñÿ.');
+form2.Memo1.lines.add('Ошибка. Вложенные циклы и циклы внутри уcлoвных операторов в этой задаче не допускаются.');
 exit end;end;
 //Analysis of the tasks 15_32- from 2 to 8 - only a file with the name 'temp15_2' can be assigned; a temporary file can be renamed to 'temp15_1' only; the corresponding replacements are made in the pascal program
 if (copy(chosen_task,1,5)='15_32') or(copy(chosen_task,1,5)='15_49')or(copy(chosen_task,1,5)='15_50') then replace15_32_and_others;
@@ -2756,7 +2733,7 @@ if chosen_task='6_30' then begin
 if not(char_output) then begin preliminary_analysis3:=false;
 if en_rus then
 form2.Memo1.lines.add('Error. Only output of a character or of the type ''writeln(chr(...))'' is allowed in this task.')else
-form2.Memo1.lines.add('Îøèáêà. Â ýòîé çàäà÷å äîïóñêàåòñÿ òîëüêî âûâîä ñèìâîëà èëè âûâîä âèäà write(chr(...)).');
+form2.Memo1.lines.add('Ошибка. В этой задаче допускается только вывод символа или вывод вида write(chr(...)).');
 exit end;
 end;
 
@@ -2765,7 +2742,7 @@ end;
 if (copy(chosen_task,1,2)='11') or (copy(chosen_task,1,2)='12')or(copy(chosen_task,1,2)='16')then
 if findglobal then begin preliminary_analysis3:=false;
 if en_rus then form2.memo1.lines.add('Error: variable declarations are not allowed before procedure of function definitions for this task.')else
-form2.memo1.lines.add('Oøèáêa. Îïèñàíèå ïåðåìåííûõ ïåðåä îïèñàíèåì ôóíêöèè èëè ïðîöåäóðû â ýòîé çàäà÷å íå äîïóñêàåòñÿ.');exit;end;
+form2.memo1.lines.add('Oшибкa. Описание переменных перед описанием функции или процедуры в этой задаче не допускается.');exit;end;
 
 for i:=1 to css do ns[i]:=0;
 an_res:=analysis;
@@ -2786,23 +2763,23 @@ if i9<>0 then preliminary_analysis3:=false;
 //Different results of add_main_block
 //i9=-1 means that no additional information must be output
 if i9=1 then begin        //no subroutines were found
-if func_proc=1 then begin if en_rus then form2.Memo1.lines.add('Error. No functions were found.')else form2.Memo1.lines.add('Îøèáêà. Ôóêíöèÿ íå íàéäåíà.'); exit end;
-if func_proc=2 then begin if en_rus then form2.Memo1.lines.add('Error. No procedures were found.')else form2.Memo1.lines.add('Îøèáêà. Ïpoöåäóðà íå íàéäåíà.');exit end;
+if func_proc=1 then begin if en_rus then form2.Memo1.lines.add('Error. No functions were found.')else form2.Memo1.lines.add('Ошибка. Фукнция не найдена.'); exit end;
+if func_proc=2 then begin if en_rus then form2.Memo1.lines.add('Error. No procedures were found.')else form2.Memo1.lines.add('Ошибка. Пpoцедура не найдена.');exit end;
 end;
 if i9=2 then begin //a wrong type of the subroutine
-if func_proc=1 then begin if en_rus then form2.Memo1.lines.add('Error. A procedure was found instead of a function.')else form2.Memo1.lines.add('Îøèáêà. Íàéäåíà ïðîöåäóðà âìåñòî ôóíêöèè.'); exit end;
-if func_proc=2 then begin if en_rus then form2.Memo1.lines.add('Error. A function was found instead of a procedure.')else form2.Memo1.lines.add('Îøèáêà. Íàéäåíà ôóíêöèÿ âìåñòî ïpoöåäóðû.');exit end;
+if func_proc=1 then begin if en_rus then form2.Memo1.lines.add('Error. A procedure was found instead of a function.')else form2.Memo1.lines.add('Ошибка. Найдена процедура вместо функции.'); exit end;
+if func_proc=2 then begin if en_rus then form2.Memo1.lines.add('Error. A function was found instead of a procedure.')else form2.Memo1.lines.add('Ошибка. Найдена функция вместо пpoцедуры.');exit end;
 end;
 if i9=3 then begin //global variables were found
 if func_proc=1 then begin
-if en_rus then form2.Memo1.lines.add('Error. Variable declaration is not allowed before the function.')else form2.Memo1.lines.add('Îøèáêà. Oïèñàíèå ïåðåìåííûõ ïåðåä ôóíêöèåé íå äîïóñêàåòñÿ.'); exit end;
+if en_rus then form2.Memo1.lines.add('Error. Variable declaration is not allowed before the function.')else form2.Memo1.lines.add('Ошибка. Oписание переменных перед функцией не допускается.'); exit end;
 if func_proc=2 then begin
-if en_rus then form2.Memo1.lines.add('Error. Variable declaration is not allowed before the procedure.')else form2.Memo1.lines.add('Îøèáêà. Oïèñàíèå ïåðåìåííûõ ïåðåä ïðîöåäóðîé íå äîïóñêàåòñÿ.'); exit end;
+if en_rus then form2.Memo1.lines.add('Error. Variable declaration is not allowed before the procedure.')else form2.Memo1.lines.add('Ошибка. Oписание переменных перед процедурой не допускается.'); exit end;
 end;
 if i9=4 then begin //integer or real output in task 12.12.7
 if en_rus then
 form2.Memo1.lines.add('Error. Only output of a character or of the type ''writeln(chr(...))'' is allowed in this task.')else
-form2.Memo1.lines.add('Îøèáêà. Â ýòîé çàäà÷å äîïóñêàåòñÿ òîëüêî âûâîä ñèìâîëà èëè âûâîä âèäà write(chr(...)).'); exit end;
+form2.Memo1.lines.add('Ошибка. В этой задаче допускается только вывод символа или вывод вида write(chr(...)).'); exit end;
 end;
 
 //showmessage('Beginning of analysis3');
@@ -2810,14 +2787,14 @@ end;
 if program_sub then begin i9:=formsubroutine;
 if i9<>0 then preliminary_analysis3:=false;
 if i9=1 then begin
-if en_rus then form2.Memo1.lines.add('Syntax errors were found in the program. Please, check your program.') else form2.Memo1.lines.add('Â ïðîãðàììå áûëè íàéäåíû ñèíòàêñè÷åñêèå oøèáêè. Ïðîâepüòå åå.'); exit end;
+if en_rus then form2.Memo1.lines.add('Syntax errors were found in the program. Please, check your program.') else form2.Memo1.lines.add('В программе были найдены синтаксические oшибки. Провepьте ее.'); exit end;
 end;
 //check for inadmissible output of the form write(6,x);
 //if chosen_task='5_6-010' then begin
 //if not check56010 then begin
 //preliminary_analysis3:=false;
 //if en_rus then form2.Memo1.Lines.add('Error. An output of only one integer expression is allowed for this task.') else
-//form2.Memo1.Lines.add('Îøèáêà. Â ýòîé çàäà÷å äîïóñêàåòñÿ âûâîä òîëüêî îäíîãî öåëî÷èñëåííîãî âûðàæåíèÿ.');
+//form2.Memo1.Lines.add('Ошибка. В этой задаче допускается вывод только одного целочисленного выражения.');
 //exit end;
 //end;
 if chosen_task='11_55'then begin
@@ -2825,12 +2802,12 @@ ii:=callsp;
 if ii<0 then preliminary_analysis3:=false;
 if ii=0 then begin preliminary_analysis3:=false;
 if en_rus then form2.Memo1.Lines.Add('Error: no function calls were found.')
-else form2.Memo1.Lines.Add('Oøèáêa: íåò îáðàùåíèé ê ôóíêöèè.')
+else form2.Memo1.Lines.Add('Oшибкa: нет обращений к функции.')
 end;
 if ii>1 then begin
 form2.Memo1.Lines.Add('  ');preliminary_analysis3:=false;
 if en_rus then form2.Memo1.Lines.Add('Error: two or more calls of a function or a procedure are not allowed for this task.')
-else form2.Memo1.Lines.Add('Oøèáêa: â ýòîé çàäà÷å äîïóñêàåòñÿ íe áîëee oäíoão oápàùåíèÿ ê ïðoöeäóðe èëè ôóíêöèè.')
+else form2.Memo1.Lines.Add('Oшибкa: в этой задаче допускается нe болee oднoгo oбpащения к прoцeдурe или функции.')
 end;
 end;
 
@@ -2841,11 +2818,11 @@ if chapter_claims[i].b then
 if not chapter_claims[i].b1 then begin
 form2.Memo1.Lines.Add('  ');preliminary_analysis3:=false;
 if en_rus then form2.Memo1.Lines.Add('Error: '+chapter_claims[i].s3)
-else form2.Memo1.Lines.Add('Oøèáêa: '+chapter_claims[i].s2)
+else form2.Memo1.Lines.Add('Oшибкa: '+chapter_claims[i].s2)
 end
 else begin
 form2.Memo1.Lines.Add('  ');//preliminary_analysis3:=false;
-if en_rus then ss2:='Warning: '+chapter_claims[i].s3 else ss2:='Ïðåäóïðåæäåíèå: '+chapter_claims[i].s2;
+if en_rus then ss2:='Warning: '+chapter_claims[i].s3 else ss2:='Предупреждение: '+chapter_claims[i].s2;
 form2.Memo1.Lines.Add(ss2);inc(warnings_amount);warnings[warnings_amount]:=ss2
 end;
 end;
@@ -2858,12 +2835,12 @@ if task_claims[i].b then
 if not task_claims[i].b1 then begin
 form2.Memo1.Lines.Add('  ');preliminary_analysis3:=false;
 if en_rus then form2.Memo1.Lines.Add('Error: '+task_claims[i].s3)
-else form2.Memo1.Lines.Add('Oøèáêa: '+task_claims[i].s2)
+else form2.Memo1.Lines.Add('Oшибкa: '+task_claims[i].s2)
 end
 else
 begin
 form2.Memo1.Lines.Add('  ');//preliminary_analysis3:=false;
-if en_rus then ss2:='Warning: '+task_claims[i].s3 else ss2:='Ïðåäóïðåæäåíèå: '+task_claims[i].s2;
+if en_rus then ss2:='Warning: '+task_claims[i].s3 else ss2:='Предупреждение: '+task_claims[i].s2;
 form2.Memo1.Lines.Add(ss2);inc(warnings_amount);warnings[warnings_amount]:=ss2
 end
 end;
@@ -2873,15 +2850,15 @@ if an_res[1]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=fals
 {arrays or strings in tasks of chapters 5 or 6}
 if en_rus then begin form2.memo1.lines.add('Error: arrays are not allowed  ');
 form2.memo1.lines.add('for this task.')end
-else begin form2.memo1.lines.add('Îøèáêà: èñïîëüçîâàíèå ìàññèâîâ ');
-form2.memo1.lines.add('â ýòîé çàäà÷e íå äîïóñêàåòñÿ.');end;end;
+else begin form2.memo1.lines.add('Ошибка: использование массивов ');
+form2.memo1.lines.add('в этой задачe не допускается.');end;end;
 
 if an_res[7]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {arrays or strings in tasks of chapters 5 or 6}
 if en_rus then begin form2.memo1.lines.add('Error: strings are not allowed  ');
 form2.memo1.lines.add('for this task.')end
-else begin form2.memo1.lines.add('Îøèáêà: èñïîëüçîâàíèå ñòðîê ');
-form2.memo1.lines.add('â ýòîé çàäà÷e íå äîïóñêàåòñÿ.');end;end;
+else begin form2.memo1.lines.add('Ошибка: использование строк ');
+form2.memo1.lines.add('в этой задачe не допускается.');end;end;
 
 //showmessage(inttostr(an_res[2]));
 
@@ -2893,36 +2870,36 @@ form2.memo1.lines.add('Error: amount of numbers must ');
 form2.memo1.lines.add('be defined as a constant ');
 form2.memo1.lines.add('for this task.' );end
 else begin if copy(chosen_task,1,4)='5_20'
-then begin form2.memo1.lines.add('Îøèáêà: òî÷íîñòü eps');
-form2.memo1.lines.add('â ýòîé çàäà÷å äîëæía áûòü ');
-form2.memo1.lines.add('çàäàía êîíñòàíòîé.')end
+then begin form2.memo1.lines.add('Ошибка: точность eps');
+form2.memo1.lines.add('в этой задаче должнa быть ');
+form2.memo1.lines.add('заданa константой.')end
 else begin
-form2.memo1.lines.add('Îøèáêà: êîëè÷åñòâî ÷èñåë ');;
-form2.memo1.lines.add('â ýòîé çàäà÷å äîëæíî áûòü ');
-form2.memo1.lines.add('çàäàíî êîíñòàíòîé.');end;
+form2.memo1.lines.add('Ошибка: количество чисел ');;
+form2.memo1.lines.add('в этой задаче должно быть ');
+form2.memo1.lines.add('задано константой.');end;
 end; end;
 if an_res[3]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {More than 1 loop in tasks 5_20'}
 if en_rus then begin form2.memo1.lines.add('Error: more than one loop ');
 form2.memo1.lines.add('or nested loops are not ');
 form2.memo1.lines.add('allowed for this task.' );end
-else begin form2.memo1.lines.add('Îøèáêà: áîëåå îäíîãî öèêëà èëè ');
-form2.memo1.lines.add('âëîæåííûå öèêëû â ýòîé çàäà÷å ');
-form2.memo1.lines.add('íå äîïóñêàþòñÿ. ');
+else begin form2.memo1.lines.add('Ошибка: более одного цикла или ');
+form2.memo1.lines.add('вложенные циклы в этой задаче ');
+form2.memo1.lines.add('не допускаются. ');
 end; end;
 if an_res[4]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {Standard functions in tasks 5_20'}
 if en_rus then begin form2.memo1.lines.add('Error: standard functions (except abs) are not');
 form2.memo1.lines.add('allowed for this task.' );end
-else begin form2.memo1.lines.add('Îøèáêà: ñòàíäàðòíûå ôóíêöèè (êpoìe abs) â ýòîé');
-form2.memo1.lines.add('çàäà÷å íå äîïóñêàþòñÿ. ');
+else begin form2.memo1.lines.add('Ошибка: стандартные функции (кpoмe abs) в этой');
+form2.memo1.lines.add('задаче не допускаются. ');
 end end;
 if an_res[5]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {Standard functuion in tasks 5_20'}
 if en_rus then begin form2.memo1.lines.add('Error: procedures or functions are');
 form2.memo1.lines.add('not allowed for this task.' );end
-else begin form2.memo1.lines.add('Îøèáêà: ïðîöåäóðû è ôóíêöèè ');
-form2.memo1.lines.add('â ýòîé çàäà÷å íå äîïóñêàþòñÿ. ');
+else begin form2.memo1.lines.add('Ошибка: процедуры и функции ');
+form2.memo1.lines.add('в этой задаче не допускаются. ');
 end end;
 if an_res[6]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {Not enough constants for a rectangular matrix'}
@@ -2931,17 +2908,17 @@ form2.memo1.lines.add('columns of the matrix ');
 form2.memo1.lines.add('must be defined as two ' );
 form2.memo1.lines.add('different constants.' );
 end
-else begin form2.memo1.lines.add('Îøèáêà: ÷èñëî ñòðîê è ñòîëáöîâ ');
-form2.memo1.lines.add('ìàòðèöû äîëæíî áûòü çàäàíî ');
-form2.memo1.lines.add('äâóìÿ ðàçíûìè êîíñòàíòàìè.');
+else begin form2.memo1.lines.add('Ошибка: число строк и столбцов ');
+form2.memo1.lines.add('матрицы должно быть задано ');
+form2.memo1.lines.add('двумя разными константами.');
 end end;
 
 if an_res[8]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
 {No loops in tasks from chapters 5,6,8,9,10}
 if en_rus then begin form2.memo1.lines.add('Error: no loop statements ');
 form2.memo1.lines.add('were found in the program.');
-end else begin form2.memo1.lines.add('Îøèáêà: â ïðîãðàììå îòñóòñòâóþò ');
-form2.memo1.lines.add('îïåðàòîðû öèêëà.');
+end else begin form2.memo1.lines.add('Ошибка: в программе отсутствуют ');
+form2.memo1.lines.add('операторы цикла.');
 end end;
 
 if an_res[9]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
@@ -2951,9 +2928,9 @@ form2.memo1.lines.add('Error: amount of array elements must ');
 form2.memo1.lines.add('be defined as a constant ');
 form2.memo1.lines.add('for this task.' );end
 else begin
-form2.memo1.lines.add('Îøèáêà: êîëè÷åñòâî ýëåìåíòîâ');;
-form2.memo1.lines.add('ìàññèâà â ýòîé çàäà÷å äîëæíî');
-form2.memo1.lines.add('áûòü çàäàíî êîíñòàíòîé.');
+form2.memo1.lines.add('Ошибка: количество элементов');;
+form2.memo1.lines.add('массива в этой задаче должно');
+form2.memo1.lines.add('быть задано константой.');
 end end;
 
 if an_res[10]=1 then begin form2.memo1.lines.add(' ');preliminary_analysis3:=false;
@@ -2962,9 +2939,9 @@ form2.memo1.lines.add('Error: the order of the square matrix ');
 form2.memo1.lines.add('must be defined as a constant ');
 form2.memo1.lines.add('for this task.' );end
 else begin
-form2.memo1.lines.add('Îøèáêà: ïîðÿäîê êâàäðàòíîé ');;
-form2.memo1.lines.add('ìàòðèöû â ýòîé çàäà÷å äîëæåí');
-form2.memo1.lines.add('áûòü çàäàí êîíñòàíòîé.');
+form2.memo1.lines.add('Ошибка: порядок квадратной ');;
+form2.memo1.lines.add('матрицы в этой задаче должен');
+form2.memo1.lines.add('быть задан константой.');
 end
 end;
 
@@ -2973,6 +2950,7 @@ if en_rus then begin
 s8:='Warning: no break, repeat, while or goto statements were found in the program.';
 warnings_amount:=warnings_amount+1;
 warnings[warnings_amount]:='Warning: no break, repeat, while or goto statements were found in the program.';
+
 if (chosen_task='9_20')or(chosen_task='9_27')or(chosen_task='9_30') or(chosen_task='9_31')  then
 begin s8:=s8+' Note that the program must be terminated ');
 warnings[warnings_amount]:='Note that the program must be terminated ' end
@@ -2984,23 +2962,24 @@ form2.memo1.lines.add('when the result of the calculation becomes known.');
 warnings_amount:=warnings_amount+1;
 warnings[warnings_amount]:='when the result of the calculation becomes known.' end
 else begin
-form2.memo1.lines.add('Ïðåäóïðåæäåíèå: â ïðîãðàììå îòñóòñòâóåò îïåðàòîð break, repeat, while èëè goto.');
+form2.memo1.lines.add('Предупреждение: в программе отсутствует оператор break, repeat, while или goto.');
 warnings_amount:=warnings_amount+1;
-warnings[warnings_amount]:='Ïðåäóïðåæäåíèå: â ïðîãðàììå îòñóòñòâóåò îïåðàòîð break, repeat, while èëè goto.';
+warnings[warnings_amount]:='Предупреждение: в программе отсутствует оператор break, repeat, while или goto.';
+
 if (chosen_task='9_20')or(chosen_task='9_27')or(chosen_task='9_30') or(chosen_task='9_31')   then
-begin form2.memo1.lines.add('Oáðàòèòå âíèìàíèå, ÷òî âûïîëíåíèå ïðîãðàììû ');
+begin form2.memo1.lines.add('Oбратите внимание, что выполнение программы ');
 warnings_amount:=warnings_amount+1;
-warnings[warnings_amount]:='Oáðàòèòå âíèìàíèå, ÷òî âûïîëíåíèå ïðîãðàììû ';
+warnings[warnings_amount]:='Oбратите внимание, что выполнение программы ';
 end
 else
 begin
-form2.memo1.lines.add('Oáðàòèòå âíèìàíèå, ÷òî âûïîëíåíèå  âíóòðåííåãî öèêëà');
+form2.memo1.lines.add('Oбратите внимание, что выполнение  внутреннего цикла');
 warnings_amount:=warnings_amount+1;
-warnings[warnings_amount]:='Oáðàòèòå âíèìàíèå, ÷òî âûïîëíåíèå âíóòðåííåãî öèêëa ';
+warnings[warnings_amount]:='Oбратите внимание, что выполнение внутреннего циклa ';
 end;
-form2.memo1.lines.add('äîëæíî çàâåðøàòüñÿ, êàê òîëüêî peçóëüòàò âû÷èñëåíèÿ èçâåñòåí.');
+form2.memo1.lines.add('должно завершаться, как только peзультат вычисления известен.');
 warnings_amount:=warnings_amount+1;
-warnings[warnings_amount]:='äîëæíî çàâåðøàòüñÿ, êàê òîëüêî peçóëüòàò âû÷èñëåíèÿ èçâåñòåí. ';
+warnings[warnings_amount]:='должно завершаться, как только peзультат вычисления известен. ';
 end }
 end;
 
@@ -3008,7 +2987,7 @@ if an_res[12]=1 then begin form2.memo1.lines.add(' ');//preliminary_analysis3:=f
 if en_rus then begin
 form2.memo1.lines.add('Warning: no array definitions were found in the task. ');
 end  else begin
-form2.memo1.lines.add('Ïðåäóïðåæäåíèå: â çàäà÷å îòñóòñòâóþò ìàññèâû. ');
+form2.memo1.lines.add('Предупреждение: в задаче отсутствуют массивы. ');
 end
 end;
 end;
@@ -3023,8 +3002,8 @@ memo.clear;
 if en_rus then
 begin memo.lines.add('All comments are removed from the tested program.');
 memo.lines.add('The directive {I+,R+} is added to its beginning.');memo.Lines.Add('  ') end else
-begin memo.lines.add('Âñå êîììåíòàðèè èç òåñòèðóåìîé ïðîãðàììû óäàëÿþòñÿ. ');
-memo.lines.add('Äèðeêòèâa {I+,R+} äîáàâëÿåòñÿ â ee íà÷àëî. ');memo.Lines.Add('  ')end;
+begin memo.lines.add('Все комментарии из тестируемой программы удаляются. ');
+memo.lines.add('Дирeктивa {I+,R+} добавляется в ee начало. ');memo.Lines.Add('  ')end;
 k:=0; while not eof(f) do begin inc(k); readln(f,s);if k=1 then delete_extra(s);
 memo.lines.add(s); end; closefile(f);
 end;
@@ -3094,35 +3073,35 @@ compilation:=false;
 
 assignfile(f,current_dir+'\tmp\temp2.exe'); closefile(f); ioresult; rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp2.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp2.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp2.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp3.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp3.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp3.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp3.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp4.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp4.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp4.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp4.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp5.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp5.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp5.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp5.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp20.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp20.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp20.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp20.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp30.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp30.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp30.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp30.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp40.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp40.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp40.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp40.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 assignfile(f,current_dir+'\tmp\temp50.exe'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp50.exe''. Restart your computer.')else
-showmessage('Îøèáêà. Íåâîçìîæíî óäàëèòü ôàéë temp50.exe. Ïåðåçàãðóçèòå êîìïüþòåð.');exit end else closefile(f);
+showmessage('Ошибка. Невозможно удалить файл temp50.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
 deletefile(current_dir+'\tmp\temp2.exe');ioresult;deletefile(current_dir+'\tmp\temp3.exe');ioresult;
 deletefile(current_dir+'\tmp\temp4.exe');ioresult;deletefile(current_dir+'\tmp\temp5.exe');ioresult;
@@ -3162,15 +3141,15 @@ closefile(f); ioresult;
 end;
 
 //Is it necessary to add the next line?
-//if b then if en_rus then showmessage ('Press any key to continue.')else showmessage('Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êëàâèøó.');
+//if b then if en_rus then showmessage ('Press any key to continue.')else showmessage('Для продолжения нажмите любую клавишу.');
 if not b then begin //not b
 if en_rus then m:=messagedlg('FPC-compiler was not found. Do you want to find it? ',mterror, [mbyes, mbno],0)
-else m:=messagedlg('FPC- êîìïèëÿòîð íå íàéäåí. Âû õîòèòå íàéòè åãî ñàìè? ',mterror, [mbyes, mbno],0);
+else m:=messagedlg('FPC- компилятор не найден. Вы хотите найти его сами? ',mterror, [mbyes, mbno],0);
 closefile(f);ioresult; if m<>6 then begin setcurrentdir(current_dir);exit;end;
 b:=form2.OpenDialog2.Execute;if not b then exit else s1:=form2.OpenDialog2.filename;
 if pos(' ',s1)>0 then if en_rus then begin showmessage('The path to the files contains blank characters. It is not allowed. Rename the directories.');form1.close end
 else begin
-showmessage('Ïóòü ê ôàéëàì ñîäåðæèò ïðîáåëû, ÷òî íåäîïóñòèìî. Ïåðåèìåíóéòå ïîäêàòàëîãè.'); form1.close
+showmessage('Путь к файлам содержит пробелы, что недопустимо. Переименуйте подкаталоги.'); form1.close
 end;
 setcurrentdir(current_dir);
 for p2:=1 to length(s1) do if s1[p2]in ['A'..'Z']then s1[p2]:=chr(ord(s1[p2])+32);
@@ -3224,10 +3203,10 @@ if en_rus then begin form3.caption:='Compilation';
 if program_sub then if i2=1 then form3.label1.caption:='The main file is being compiled.'+chr(10)+'Please, wait.'
 else form3.label1.caption:='The file with the subprogram is being compiled.'+chr(10)+'Please, wait.'else
 form3.label1.caption:='The file is being compiled.'+chr(10)+'Please, wait.'end else
-begin form3.caption:='Êîìïèëÿöèÿ';
-if program_sub then if i2=1 then form3.label1.caption:='Îñíîâíîé ôàéë êîìïèëèðóåòñÿ. Æäèòå.'
-else form3.label1.caption:='Ôàéë ñ ïîäïðîãðàììîé êîìïèëèðóåòñÿ. Æäèòå.'else
-form3.label1.caption:='Ôàéë êîìïèëèðóåòñÿ. Æäèòå.'end;
+begin form3.caption:='Компиляция';
+if program_sub then if i2=1 then form3.label1.caption:='Основной файл компилируется. Ждите.'
+else form3.label1.caption:='Файл с подпрограммой компилируется. Ждите.'else
+form3.label1.caption:='Файл компилируется. Ждите.'end;
 form3.showmodal;
 closefile(f); ioresult;
 //showmessage(inttostr(byte(compi)));
@@ -3241,7 +3220,7 @@ end; closefile(f) end;end
 else
 begin closefile(f); ioresult;
 //if en_rus then showmessage('The compilation failed. Check your compiler.')else
-//showmessage('Êîìïèëÿöèÿ íåâîçìîæíà. Ïðîâåðüòå êîìïèëÿòîð.');
+//showmessage('Компиляция невозможна. Проверьте компилятор.');
 //deletefile(current_dir+'\tmp\temp0.bat');halt
 end;
 closefile(f);ioresult;
@@ -3259,8 +3238,8 @@ assignfile(f,'.\tmp\temp50.exe'); closefile(f); ioresult; reset(f); k9:=ioresult
 
 end;
 //showmessage(inttostr(k));
-if i2=1 then if en_rus then s45:=' of the main file ' else s45:=' îñíîâíîãî ôàéëà ';
-if i2=2 then if en_rus then s45:=' of the file with the subprogram ' else s45:=' ôàéëà ñ ïîäïðîãðàììîé ';
+if i2=1 then if en_rus then s45:=' of the main file ' else s45:=' основного файла ';
+if i2=2 then if en_rus then s45:=' of the file with the subprogram ' else s45:=' файла с подпрограммой ';
 if not program_sub then s45:=' ';
 
 //k6:=0; k7:=0; k8:=0; k9:=0;
@@ -3268,17 +3247,17 @@ if not program_sub then s45:=' ';
 //showmessage(inttostr(k6)+' '+inttostr(k7)+' '+inttostr(k8)+inttostr(k9));
 
 if (k6=0)and(k7=0)and(k8=0)and(k9=0) then begin set_initial_text(form2.Memo5);
-if not en_rus then form2.memo1.lines.add('Êîìïèëÿöèÿ'+s45+'ïðîøëà óñïåøíî.') else
+if not en_rus then form2.memo1.lines.add('Компиляция'+s45+'прошла успешно.') else
 form2.memo1.lines.add('The compilation'+s45+'was successful.')end
 else begin
-if i2=1 then if en_rus then s45:='main file'else s45:=' ocíîâíîãî ôàéëà';
-if i2=2 then if en_rus then s45:='file with the subprogram'else s45:=' ôàéëà ñ ïîäïðoãðàììîé';
+if i2=1 then if en_rus then s45:='main file'else s45:=' ocновного файла';
+if i2=2 then if en_rus then s45:='file with the subprogram'else s45:=' файла с подпрoграммой';
 if not program_sub then if en_rus then s45:='program' else s45:='';
 
 if i2=1 then s44:=''else s44:='0';
 fill_file_text_err(current_dir+'\tmp\temp1'+s44+'.pas', current_dir+'\tmp\result.txt');
 if en_rus then showmessage (' Errors were found while compiling the '+s45+'. It cannot be executed.')else
-showmessage('Áûëè îøèáêè ïðè êîìïèëÿöèè'+s45+'. Âûïîëíåíèå ïpîãðàììû íåâîçìîæíî. ')end;
+showmessage('Были ошибки при компиляции'+s45+'. Выполнение пpограммы невозможно. ')end;
 if (k6<>0)or(k7<>0)or(k8<>0)or(k9<>0)then break;
 end;//of i2 from 1 to 2
 compilation:=(k6=0)and(k7=0)and(k8=0)and(k9=0);
@@ -3290,34 +3269,34 @@ procedure testing(handle:hwnd);
 //Break and output the input or output files; the exclamation mark is the separator; i=1,2,3 - input, received, correct respectively.
 procedure output_multifiles(si:string;k:integer);
 var ar,ae:array[1..10]of string[30];j,i:integer;sa,sb:string;
-begin i:=1;if en_rus then sb:='file: ' else sb:='ôaéë: ';delete_blanks(si);
-ar[1]:='ïåðâûé ';ar[2]:='âòîðîé ';
-ar[3]:='òðeòèé ';ar[4]:='÷åòâåðòûé ';
-ar[5]:='ïÿòûé ';ar[6]:='øeñòîé ';
-ar[7]:='ceäüìîé ';ar[8]:='âocüìîé ';
-ar[9]:='äåâÿòûé ';ar[10]:='äåñÿòûé ';
+begin i:=1;if en_rus then sb:='file: ' else sb:='фaйл: ';delete_blanks(si);
+ar[1]:='первый ';ar[2]:='второй ';
+ar[3]:='трeтий ';ar[4]:='четвертый ';
+ar[5]:='пятый ';ar[6]:='шeстой ';
+ar[7]:='ceдьмой ';ar[8]:='вocьмой ';
+ar[9]:='девятый ';ar[10]:='десятый ';
 ae[1]:='the first ';ae[2]:='the second ';
 ae[3]:='the third ';ae[4]:='the fourth ';
 ae[5]:='the fifth ';ae[6]:='the sixth ';
 ae[7]:='the seventh ';ae[8]:='the eighth ';
 ae[9]:='the ninth ';ae[10]:='the tenth ';
 if k=1 then
-if en_rus then form2.Memo1.Lines.Add('Initial data: ') else form2.Memo1.Lines.Add('Èñõîäíûå äàííûå: ');
+if en_rus then form2.Memo1.Lines.Add('Initial data: ') else form2.Memo1.Lines.Add('Исходные данные: ');
 if k=2 then
-if en_rus then form2.Memo1.Lines.Add('Obtained result: ') else form2.Memo1.Lines.Add('Ïîëó÷åííûé ðåçóëüòàò: ');
+if en_rus then form2.Memo1.Lines.Add('Obtained result: ') else form2.Memo1.Lines.Add('Полученный результат: ');
 if k=3 then
-if en_rus then form2.Memo1.Lines.Add('Correct result: ') else form2.Memo1.Lines.Add('Ïðàâèëüíûé ðåçóëüòàò: ');
+if en_rus then form2.Memo1.Lines.Add('Correct result: ') else form2.Memo1.Lines.Add('Правильный результат: ');
 if (chosen_task='15_32-002')or(chosen_task='15_32-004') then begin if si[1]='.' then si:='-'+si;
-if en_rus then form2.memo1.Lines.Add('the file: '+copy(si,1,length(si)-2)) else form2.memo1.Lines.Add('ôàéë: '+copy(si,1,length(si)-2));
-if en_rus then form2.memo1.Lines.Add('the character: '+si[length(si)])else form2.memo1.Lines.Add('ñèìâîë: '+si[length(si)]);
+if en_rus then form2.memo1.Lines.Add('the file: '+copy(si,1,length(si)-2)) else form2.memo1.Lines.Add('файл: '+copy(si,1,length(si)-2));
+if en_rus then form2.memo1.Lines.Add('the character: '+si[length(si)])else form2.memo1.Lines.Add('символ: '+si[length(si)]);
 exit; end;
 
 if chosen_task='15_11' then begin j:=pos(' ',si);
 if en_rus then form2.memo1.lines.add('the key: '+copy(si,1,j-1))
-else form2.Memo1.Lines.add('êëþ÷: '+copy(si,1,j-1));  delete(si,1,j); delete_blanks(si); if si='' then si:='-';
+else form2.Memo1.Lines.add('ключ: '+copy(si,1,j-1));  delete(si,1,j); delete_blanks(si); if si='' then si:='-';
 end;
 if chosen_task='15_10-002' then begin j:=pos('!',si); if j=1 then begin inc(j); si:='-'+si; end;if j>0 then begin if en_rus then form2.memo1.lines.add('the file for comparing: '+copy(si,1,j-1))
-else form2.Memo1.Lines.add('ôàéë äëÿ ñðàâíåíèÿ: '+copy(si,1,j-1)); delete(si,1,j); end;end;
+else form2.Memo1.Lines.add('файл для сравнения: '+copy(si,1,j-1)); delete(si,1,j); end;end;
 repeat
 delete_blanks(si); if (si<>'')and((si[1]='!')and((filein=1)or(k>1))or(copy(si,1,6)='-10000')and(filein=2))then si:='-'+si;
 
@@ -3349,7 +3328,7 @@ end;
 
 var q1,q2,q,p:integer;bc:boolean;s1,s2:string;
 begin
-if (copy(chosen_task,1,5)='15_63')and(k=3)and(s='Too many records.') then begin if not en_rus then s:='Êîëè÷åñòâî çàïèñåé áîëüøå ìàêñèìàëüíî äîïóñòèìîãî.';end;
+if (copy(chosen_task,1,5)='15_63')and(k=3)and(s='Too many records.') then begin if not en_rus then s:='Количество записей больше максимально допустимого.';end;
 //if (s<>'')and(s[1]=' ')then delete(s,1,1);
 
 //if (length(s)<40)and(length(s)>10)  then begin q:=pos('.',s); showmessage(copy(s,1,q)+' '+inttostr(length(copy(s,1,q)))+' '+copy(s,q+1,1000)+' '+inttostr(length(copy(s,q+1,10000))));end;
@@ -3370,26 +3349,26 @@ s1:=s; if bc then begin s2:=copy(s1,q1+1, length(s1)); s1:=copy(s1,1,q1-1) end;
 form2.Memo1.Font.Name:='Courier New';
 //showmessage('!'+s+'!');
 if k=1 then
-if en_rus then form2.Memo1.Lines.Add('Initial data: ') else form2.Memo1.Lines.Add('Èñõîäíûå äàííûå: ');
+if en_rus then form2.Memo1.Lines.Add('Initial data: ') else form2.Memo1.Lines.Add('Исходные данные: ');
 if k=2 then
-if en_rus then form2.Memo1.Lines.Add('Obtained result: ') else form2.Memo1.Lines.Add('Ïîëó÷åííûé ðåçóëüòàò: ');
+if en_rus then form2.Memo1.Lines.Add('Obtained result: ') else form2.Memo1.Lines.Add('Полученный результат: ');
 if k=3 then
-if en_rus then form2.Memo1.Lines.Add('Correct result: ') else form2.Memo1.Lines.Add('Ïðàâèëüíûé ðåçóëüòàò: ');
+if en_rus then form2.Memo1.Lines.Add('Correct result: ') else form2.Memo1.Lines.Add('Правильный результат: ');
 for q2:=1 to 1+byte(bc) do begin
 if q2=1 then s:=s1 else s:=s2;
 case q2 of
-2:begin if en_rus then form2.Memo1.Lines.Add('The second file: ') else form2.Memo1.Lines.Add('Âòîpoé ôàéë: ')end;
-1:begin if bc then if en_rus then form2.Memo1.Lines.Add('The first file: ') else form2.Memo1.Lines.Add('Ïåðâûé ôàéë: ')end;
+2:begin if en_rus then form2.Memo1.Lines.Add('The second file: ') else form2.Memo1.Lines.Add('Втоpoй файл: ')end;
+1:begin if bc then if en_rus then form2.Memo1.Lines.Add('The first file: ') else form2.Memo1.Lines.Add('Первый файл: ')end;
 end;{of case}
 
-if s='' then if en_rus then form2.Memo1.Lines.add('<Empty file>') else form2.Memo1.Lines.add('<Ïóñòoé ôaéë>')else
+if s='' then if en_rus then form2.Memo1.Lines.add('<Empty file>') else form2.Memo1.Lines.add('<Пустoй фaйл>')else
 repeat
 p:=pos(chr(2),s);
-if p=1 then begin if en_rus then form2.Memo1.Lines.add('<Empty line>') else form2.Memo1.Lines.add('<Ïóñòàÿ ñòðîêà>');
+if p=1 then begin if en_rus then form2.Memo1.Lines.add('<Empty line>') else form2.Memo1.Lines.add('<Пустая строка>');
 delete(s,1,1);continue end;
 if copy(chosen_task,1,5)='15_63' then begin
 if not((pos('Too',s)>0)and(pos('many',s)>0)and(pos('records',s)>0) or
-(pos('çàïèñåé',s)>0)and(pos('áîëüøå',s)>0)and(pos('ìàêñèìàëüíî',s)>0))
+(pos('записей',s)>0)and(pos('больше',s)>0)and(pos('максимально',s)>0))
 then addblanks(s)else if k=3 then s:=s+'.'else if length(s)>2 then s:=copy(s,1,length(s)-1)+'.'+s[length(s)];
 p:=pos(chr(2),s); end;
 if p=0 then begin form2.memo1.Lines.Add(s); s:='' end else begin
@@ -3505,18 +3484,18 @@ var string_out:array[1..100]of string;number_of_lines:integer;
 procedure correct11_22a(s:string; ii5:integer);
 var p:integer;
 begin
-if en_rus then string_out[1]:='Initial data:' else string_out[1]:='Èñõîäíûå äàííûå:';
+if en_rus then string_out[1]:='Initial data:' else string_out[1]:='Исходные данные:';
 if ii5=1 then begin
-if en_rus then string_out[2]:='the first string: ' else string_out[2]:='ïåðâaÿ ñòðîêà: ';
+if en_rus then string_out[2]:='the first string: ' else string_out[2]:='первaя строка: ';
 string_out[2]:=string_out[2]+copy(s,1,length(s) div 2);
-if en_rus then string_out[3]:='the second string: ' else string_out[3]:='âòîðàÿ ñòðîêà: ';
+if en_rus then string_out[3]:='the second string: ' else string_out[3]:='вторая строка: ';
 string_out[3]:=string_out[3]+copy(s,length(s) div 2+1,length(s));end
 else begin p:=pos(chr(10),s);if p=0 then begin showmessage('Error! No ''\n'' in tests for the subroutine.'); p:=1 end;
-if en_rus then string_out[2]:='the string: '+copy(s,1,p-1)else string_out[2]:='ñòðîêà: '+copy(s,1,p-1);s:=copy(s,p+1,length(s));
+if en_rus then string_out[2]:='the string: '+copy(s,1,p-1)else string_out[2]:='строка: '+copy(s,1,p-1);s:=copy(s,p+1,length(s));
 p:=pos(chr(10),s);if p=0 then begin showmessage('Error! No ''\n'' in tests for the subroutine.'); p:=1 end;
 if length(s)<p+2 then s:=s+'!!!!!!!!';
-if en_rus then string_out[3]:='substring bounds: '+copy(s,1,p-1)else string_out[3]:='ãðaíèöû ïoäñòpoêè: '+copy(s,1,p-1);
-if en_rus then string_out[4]:='character range: '+s[p+1]+' '+s[p+2]else string_out[4]:='äèàïàçîí ñèìâîëîâ: '+s[p+1]+' '+s[p+2];
+if en_rus then string_out[3]:='substring bounds: '+copy(s,1,p-1)else string_out[3]:='грaницы пoдстpoки: '+copy(s,1,p-1);
+if en_rus then string_out[4]:='character range: '+s[p+1]+' '+s[p+2]else string_out[4]:='диапазон символов: '+s[p+1]+' '+s[p+2];
 
 //string_out[3]:=copy(s,p+1,length(s));
 
@@ -3527,12 +3506,12 @@ var p,i:integer;s:string;
 begin s:='';
 for i:=1 to consts[it,1] do begin p:=pos(' ',si);if p=0 then begin s:=s+si; si:='';break end else begin s:=s+' '+copy(si,1,p-1); delete(si,1,p);
 if si=''then break end;end;
-if en_rus then string_out[1]:='The first array: '+s else string_out[1]:='Ïåðâûé ìàññèâ: '+s;
+if en_rus then string_out[1]:='The first array: '+s else string_out[1]:='Первый массив: '+s;
 s:='';
 for i:=1 to consts[it,1] do begin p:=pos(' ',si);if p=0 then begin s:=s+si; si:='';break end else begin s:=s+' '+copy(si,1,p-1); delete(si,1,p);
 if si=''then break end;end;
-if en_rus then string_out[2]:='The second array: '+s else string_out[2]:='Âòîpoé ìàññèâ: '+s;
-if en_rus then string_out[3]:='The range of indices: '+si else string_out[3]:='Äèàïàçîí èíäåêñîâ : '+si;
+if en_rus then string_out[2]:='The second array: '+s else string_out[2]:='Втоpoй массив: '+s;
+if en_rus then string_out[3]:='The range of indices: '+si else string_out[3]:='Диапазон индексов : '+si;
 end;
 
 //A special correction of input and output data for the tasks 6_24, 15_25 and 15_49 - all blanks are replaced by '_' and all tab characters are replaced by '~'.
@@ -3583,12 +3562,12 @@ i:=pos('!',s);
 if (s<>'') and(i>0)and((chosen_task='16_16-001')or(chosen_task='16_16-004')or(chosen_task='16_16-007'))  then begin
 if en_rus then s:=copy(s,1,i-2)+'.'+
 ' The pointers to the strings were changed. It is not allowed.' else
-s:=copy(s,1,i-2)+'.'+' Áûëè èçìåíåíû óêàçàòåëè â ìàññèâå ññûëîê, ÷òî íåäîïóñòèìî.'
+s:=copy(s,1,i-2)+'.'+' Были изменены указатели в массиве ссылок, что недопустимо.'
 end;
 if (s<>'') and(i>0)and(chosen_task<>'16_16-001')and (chosen_task<>'16_16-007')and (chosen_task<>'16_16-004')then begin
 if en_rus then s:=copy(s,1,i-2)+'.'+
 ' The subroutine changed pointers to the strings incorrectly.' else
-s:=copy(s,1,i-2)+'.'+' Â ïîäïðîãðàììå áûëè íåêîððåêòíî èçìåíåíû çíà÷åíèÿ óêàçàòåëeé â ìàññèâå ññûëîê.'
+s:=copy(s,1,i-2)+'.'+' В подпрограмме были некорректно изменены значения указателeй в массиве ссылок.'
 end;
 end;
 
@@ -3599,7 +3578,7 @@ var i:integer;
 begin i:=pos('1E',s); if i>0 then begin delete(s,i,4);exit end;
 i:=pos('!',s); if i>0 then if en_rus then s:=copy(s,1,i-2)+'.'+
 ' The pointer to the first node of the list was changed. It is not allowed.' else
-s:=copy(s,1,i-2)+'.'+' Áûëà èçìåíåíà ññûëêà íà ïåðâîå çâåíî ñïèñêà, ÷òî íåäîïóñòèìî.'
+s:=copy(s,1,i-2)+'.'+' Была изменена ссылка на первое звено списка, что недопустимо.'
 end;
 
 //A special correction for the tasks 16_19 - removal of the last @ and analysis if the pointer was changed.
@@ -3608,7 +3587,7 @@ var i:integer;
 begin i:=pos('@',s); if i>0 then begin delete(s,i,1);exit end;
 i:=pos(' !',s); if i>0 then if en_rus then s:=copy(s,1,i-1)+'.'+
 ' The pointer to the first node of the list was changed. It is not allowed.' else
-s:=copy(s,1,i-1)+'.'+' Áûëà èçìåíåíà ññûëêà íà ïåðâîå çâåíî ñïèñêà, ÷òî íåäîïóñòèìî.'
+s:=copy(s,1,i-1)+'.'+' Была изменена ссылка на первое звено списка, что недопустимо.'
 end;
 
 
@@ -3626,17 +3605,17 @@ if check_new and not check_dispose and (p1>0) then begin
 s:=copy(s,1,p1-1);s1:=s;delete_blanks(s1);
 if s1<>'' then s:=s+'.';
 if en_rus then s:=s+' The New procedure was called a wrong number of times.' else
-s:=s+' Áûëî çàôèêñèðîâàíî íåâåðíîå êîëè÷åñòâî îáðàùåíèé ê ïðîöåäóðå New.';end;
+s:=s+' Было зафиксировано неверное количество обращений к процедуре New.';end;
 if check_dispose and not check_new and (p1>0) then begin
 s:=copy(s,1,p1-1);s1:=s; delete_blanks(s1);
 if s1<>'' then s:=s+'.';
 if en_rus then s:=s+' The Dispose procedure was called a wrong number of times.' else
-s:=s+' Áûëî çàôèêñèðîâàíî íåâåðíîå êîëè÷åñòâî îáðàùåíèé ê ïðîöåäóðå Dispose.';end;
+s:=s+' Было зафиксировано неверное количество обращений к процедуре Dispose.';end;
 if check_dispose and check_new and (p1>0) then begin
 s:=copy(s,1,p1-1);s1:=s;delete_blanks(s1);
 if s1<>'' then s:=s+'.';
 if en_rus then s:=s+' The New and Dispose procedures were called a wrong number of times.' else
-s:=s+' Áûëî çàôèêñèðîâàíî íåâåðíîå êîëè÷åñòâî îáðàùåíèé ê ïðîöåäóðaì New è Dispose.';end;
+s:=s+' Было зафиксировано неверное количество обращений к процедурaм New и Dispose.';end;
 end;
 
 
@@ -3653,7 +3632,7 @@ begin
 if en_rus then
 case p1 of 1: s3:='January'; 2:s3:='February'; 3: s3:='March'; 4:s3:='April'; 5:s3:='May'; 6:s3:='June'; 7:s3:='July'; 8:s3:='August'; 9:s3:='September'; 10:s3:='October'; 11:s3:='November'; 12:s3:='December';end
 else
-case p1 of 1: s3:='ÿíâàðÿ'; 2:s3:='ôeâðàëÿ'; 3: s3:='ìàðòa'; 4:s3:='aïðåëÿ'; 5:s3:='ìaÿ'; 6:s3:='èþíÿ'; 7:s3:='èþëÿ'; 8:s3:='aâãócòa'; 9:s3:='ceíòÿáðÿ'; 10:s3:='oêòÿápÿ'; 11:s3:='íoÿápÿ'; 12:s3:='äeêàápÿ';end;
+case p1 of 1: s3:='января'; 2:s3:='фeвраля'; 3: s3:='мартa'; 4:s3:='aпреля'; 5:s3:='мaя'; 6:s3:='июня'; 7:s3:='июля'; 8:s3:='aвгуcтa'; 9:s3:='ceнтября'; 10:s3:='oктябpя'; 11:s3:='нoябpя'; 12:s3:='дeкабpя';end;
 end;
 
 //A special correction of the input data (removing two last zeroes and inserting pairs of square brackets, replacing numbers by month names) for the task 15.8 and 15.23
@@ -3678,11 +3657,11 @@ begin
 b1:=false; b2:=false;
 b3:=false; s1:='';delete_blanks(s);
 if k=1 then
-if en_rus then form2.Memo1.Lines.Add('Obtained result:')else form2.Memo1.Lines.Add('Ïîëó÷åííûé ðåçóëüòàò:')
+if en_rus then form2.Memo1.Lines.Add('Obtained result:')else form2.Memo1.Lines.Add('Полученный результат:')
 else
-if en_rus then form2.Memo1.Lines.Add('Correct result:')else form2.Memo1.Lines.Add('Ïðàâèëüíûé ðåçóëüòàò:');
-if en_rus then s1:='summer dates: 'else s1:='ëeòíèe äaòû: ';
-if en_rus then s4:='winter dates: 'else s4:='çèìíèå äaòû: ';
+if en_rus then form2.Memo1.Lines.Add('Correct result:')else form2.Memo1.Lines.Add('Правильный результат:');
+if en_rus then s1:='summer dates: 'else s1:='лeтниe дaты: ';
+if en_rus then s4:='winter dates: 'else s4:='зимние дaты: ';
 
 while s<>'' do begin p:=pos(' ',s); s2:=copy(s,1,p-1); delete(s,1,p); p:=pos(' ',s);if p>0 then begin s3:=copy(s,1,p-1); delete(s,1,p)end else begin s3:=s; s:='' end; delete_blanks(s);
 val(s3,p1,p2);         //if p2<>0 then showmessage('Error!');
@@ -3707,9 +3686,9 @@ correct10_21_22(sa); form2.memo1.Font.Name:='Courier New';
 //showmessage('!!');
 if length(sa)<64 then for i:=1 to 64 do sa:=sa+' ';
 if p=1 then
-if en_rus then form2.Memo1.Lines.Add('Obtained result:')else form2.Memo1.Lines.Add('Ïîëó÷åííûé ðåçóëüòàò:')
+if en_rus then form2.Memo1.Lines.Add('Obtained result:')else form2.Memo1.Lines.Add('Полученный результат:')
 else
-if en_rus then form2.Memo1.Lines.Add('Correct result:')else form2.Memo1.Lines.Add('Ïðàâèëüíûé ðåçóëüòàò:');
+if en_rus then form2.Memo1.Lines.Add('Correct result:')else form2.Memo1.Lines.Add('Правильный результат:');
 for i:=1 to 8 do begin s:=''; for j:=1 to 8 do s:=s+' '+sa[(i-1)*8+j]; form2.Memo1.Lines.Add(s);end;
 if length(sa)>64 then form2.Memo1.Lines.Add(copy(sa,65,length(sa)))
 //showmessage('@@');
@@ -3745,7 +3724,7 @@ var s1:string;
 begin delete_blanks(s);
 if(s<>'')and(s[length(s)]='.') then delete(s,length(s),1);
 s1:=' '; while s<>'' do begin s1:=s1+s[1]+' '; delete(s,1,1) end;
-s:=s1 end;
+s:=s1 end; 
 
 //A special correction of the data containing two or more one-dimensional arrays.
 procedure correct_multi_arrays(s:string;n,t,ntest:integer);
@@ -3754,9 +3733,9 @@ var m,k,p,q,i:integer;s1:string;
 begin
 delete_blanks(s);
 case t of
-0:if en_rus then string_out[1]:='Initial data: ' else string_out[1]:='Èñõîäíûå äàííûå: ';
-1:if en_rus then string_out[1]:='Obtained result: ' else string_out[1]:='Ïîëó÷åííûé ðåçóëüòàò: ';
-2:if en_rus then string_out[1]:='Correct result: ' else string_out[1]:='Ïðàâèëüíûé ðåçóëüòàò: ';
+0:if en_rus then string_out[1]:='Initial data: ' else string_out[1]:='Исходные данные: ';
+1:if en_rus then string_out[1]:='Obtained result: ' else string_out[1]:='Полученный результат: ';
+2:if en_rus then string_out[1]:='Correct result: ' else string_out[1]:='Правильный результат: ';
 end;{case}
 for i:=2 to n+1 do string_out[i]:='';
 m:=consts[1+(ntest-1) mod 4,1]*n;
@@ -3767,10 +3746,10 @@ begin p:=pos(' ',s); if p=0 then begin s1:=s1+s+' ';s:='';end else
 begin s1:=s1+copy(s,1,p-1)+' '; delete(s,1,p)end;
 inc(k);if (k=m div n)or (s='') then begin k:=0;inc(q);
 case q of
-1: if en_rus then s1:='the first array: '+s1 else s1:='ïåðâûé ìàññèâ: '+s1;
-2: if en_rus then s1:='the second array: '+s1 else s1:='âòîðîé ìàññèâ: '+s1;
-3: if en_rus then s1:='the third array: '+s1 else s1:='òðåòèé ìàññèâ: '+s1;
-4: if en_rus then s1:='the fourth array: '+s1 else s1:='÷åòâåðòûé ìàññèâ: '+s1;
+1: if en_rus then s1:='the first array: '+s1 else s1:='первый массив: '+s1;
+2: if en_rus then s1:='the second array: '+s1 else s1:='второй массив: '+s1;
+3: if en_rus then s1:='the third array: '+s1 else s1:='третий массив: '+s1;
+4: if en_rus then s1:='the fourth array: '+s1 else s1:='четвертый массив: '+s1;
 end;
 if q=n then begin string_out[1+q]:=s1+s;s:=''end else string_out[1+q]:=s1;s1:='' end;
 end //of while
@@ -3783,9 +3762,9 @@ var j,j0, matcols, matrows, p,j3,j1,j2,ii2:integer; rr2:real; si2,si1,s1:string;
 begin
 j:=1; //current line of the array string_out
 case t of
-0:if en_rus then string_out[1]:='Initial data: ' else string_out[1]:='Èñõîäíûå äàííûå: ';
-1:if en_rus then string_out[1]:='Obtained result: ' else string_out[1]:='Ïîëó÷åííûé ðåçóëüòàò: ';
-2:if en_rus then string_out[1]:='Correct result: ' else string_out[1]:='Ïðàâèëüíûé ðåçóëüòàò: ';
+0:if en_rus then string_out[1]:='Initial data: ' else string_out[1]:='Исходные данные: ';
+1:if en_rus then string_out[1]:='Obtained result: ' else string_out[1]:='Полученный результат: ';
+2:if en_rus then string_out[1]:='Correct result: ' else string_out[1]:='Правильный результат: ';
 end;{case}
 delete_blanks(s);
 matrows:=consts[(ntest-1)mod 4+1,1];
@@ -3801,10 +3780,10 @@ if bi=-1 then bi:=ord(pos('.',s)=0);
 for j0:=1 to n do begin //j0 - the currect matrix
 if n>1 then begin
 case j0 of
-1: if en_rus then s1:='the first matrix: ' else s1:='ïåðâàÿ ìàòðèöà: ';
-2: if en_rus then s1:='the second matrix: ' else s1:='âòîðàÿ ìàòðèöà: ';
-3: if en_rus then s1:='the third matrix: ' else s1:='òðåòüÿ ìàòðèöà: ';
-4: if en_rus then s1:='the fourth matrix: ' else s1:='÷åòâåðòàÿ ìàòðèöà: ';
+1: if en_rus then s1:='the first matrix: ' else s1:='первая матрица: ';
+2: if en_rus then s1:='the second matrix: ' else s1:='вторая матрица: ';
+3: if en_rus then s1:='the third matrix: ' else s1:='третья матрица: ';
+4: if en_rus then s1:='the fourth matrix: ' else s1:='четвертая матрица: ';
 end;
 inc(j); string_out[j]:=s1;
 end;
@@ -3876,27 +3855,27 @@ diff:=0;exit end;
 end;end;
 
 if errorr
-then if (so='Error')and ((sr='Error')or(sr='Îøèáêà'))then begin
+then if (so='Error')and ((sr='Error')or(sr='Ошибка'))then begin
 diff:=0;exit end;
 
 if chosen_task='4_12-005' then begin
-if ((sr='No roots')or(copy(sr,1,3)='Íåò'))and(so='No roots') then begin
+if ((sr='No roots')or(copy(sr,1,3)='Нет'))and(so='No roots') then begin
 diff:=0;
-//if en_rus then sr:='No roots' else begin sr:='Íåò êîðíåé'; so:=sr end;
+//if en_rus then sr:='No roots' else begin sr:='Нет корней'; so:=sr end;
 exit end;
-if ((sr='Error')or(sr='Îøèáêà'))and(so='Error') then begin
+if ((sr='Error')or(sr='Ошибка'))and(so='Error') then begin
 diff:=0;
-//if en_rus then sr:='Error' else begin sr:='Îøèáêà'; so:=sr ;end;
+//if en_rus then sr:='Error' else begin sr:='Ошибка'; so:=sr ;end;
 exit end
 end;
 
 //A special correction for the tasks 14.38
 if copy(chosen_task,1,5)='14_38' then correct14_38(sr);
 
-//A special correction of the result for the task 8_47_á
+//A special correction of the result for the task 8_47_б
 if chosen_task='8_47-002' then correct847(sr,so);
 
-//A special correction of the result for the task 8_46_á
+//A special correction of the result for the task 8_46_б
 if chosen_task='8_46' then correct846(sr);
 
 //A special correction of the result for the task 8_56 and 8_59
@@ -3950,7 +3929,7 @@ correctcapitalsmall(sr);
 //showmessage(sr);
 
 if (pos('Too',sr)>0)and(pos('many',sr)>0)and(pos('records',sr)>0)and(length(sr)<60) or
-(pos('çàïèñåé',sr)>0)and(pos('áîëüøå',sr)>0)and(pos('ìàêñèìàëüíî',sr)>0)and(length(sr)<60)
+(pos('записей',sr)>0)and(pos('больше',sr)>0)and(pos('максимально',sr)>0)and(length(sr)<60)
 then begin diff:=0; exit end;
 
 end;
@@ -3991,8 +3970,8 @@ case result_type[ii5,L]of
 'c':begin if(length(s1)<>1)or(length(s2)<>1)or(s1<>s2)then begin diff:=1; exit end;end;
 'i':begin val(s1,i1,p1);val(s2,i2,p2);if (p1<>0)or(p2<>0)or(i1<>i2)then begin diff:=1; exit end;end;
 'b':begin while (s2<>'')and(s2[1]=' ') do s2:=copy(s2,2,100);delete_blanks(s2); if length(s2)>5 then begin diff:=1; exit end;
-if (s1='true')or(s1='True') then iii:=integer(pos(s2[1],'YyÄäTt')=0)
-else if (s1='false')or(s1='False')then iii:=integer(pos(s2[1],'ÍíFfNn')=0) else begin diff:=1;exit end;
+if (s1='true')or(s1='True') then iii:=integer(pos(s2[1],'YyДдTt')=0)
+else if (s1='false')or(s1='False')then iii:=integer(pos(s2[1],'НнFfNn')=0) else begin diff:=1;exit end;
 diff:=iii; if iii<>0 then exit;
 end;
 'r':begin val(s1,r1,p1);val(s2,r2,p2);if (p1<>0)or(p2<>0) then begin diff:=1;
@@ -4030,7 +4009,7 @@ var p,j:integer;s2,s1:string;
 begin
 form2.Memo1.Font.Name:='Courier New';if s='' then exit;
 if en_rus then form2.memo1.lines.add('Initial data:')
-else  form2.memo1.lines.add('Èñõîäíûå äàííûå:');
+else  form2.memo1.lines.add('Исходные данные:');
 if chosen_task='16_16-001' then begin
 //showmessage(s);
 if (s<>'')and(s[1]='.')then begin form2.memo1.lines.add('-');exit end;
@@ -4039,11 +4018,11 @@ end;
 
 if (chosen_task='16_16-003')or(chosen_task='16_16-005')or(chosen_task='16_16-004')or (chosen_task='16_16-006')or (chosen_task='16_16-007') then
 if en_rus then form2.Memo1.Lines.Add('The text:')
-else form2.Memo1.Lines.Add('Teêcò:');
+else form2.Memo1.Lines.Add('Teкcт:');
 
 if (chosen_task='16_16-003')or(chosen_task='16_16-004')or(chosen_task='16_16-005')or(chosen_task='16_16-006')or (chosen_task='16_16-007')
 then begin
-if (s<>'')and(s[1]='.')then if en_rus then form2.memo1.lines.add('<Empty text>')else form2.memo1.lines.add('<Ïóñòîé òåêñò>');
+if (s<>'')and(s[1]='.')then if en_rus then form2.memo1.lines.add('<Empty text>')else form2.memo1.lines.add('<Пустой текст>');
 p:=pos('.',s); delete(s,p,1);
 p:=pos(' ',s); if p=0 then exit; s1:=copy(s,p+1,100); delete_blanks(s1); delete(s,p+1,100);end;
 
@@ -4077,16 +4056,16 @@ delete_blanks(s);
 form2.Memo1.Font.Name:='Courier New';
 case kkk of
 2:begin if en_rus then form2.memo1.lines.add('Obtained result:')
-else  form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò:')end;
+else  form2.memo1.lines.add('Полученный результат:')end;
 3:begin if en_rus then form2.memo1.lines.add('Correct result:')
-else  form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò:')end
+else  form2.memo1.lines.add('Правильный результат:')end
 end;
 p:=pos(' ',s);if p>0 then begin s2:=copy(s,p+1,1000); delete(s,p,1000) end else s2:='';
 delete_blanks(s);
 
 //if i=32 then showmessage(s+'@'+inttostr(length(s)));
 
-if (s='')or(s='.')then begin if en_rus then form2.Memo1.Lines.Add('<Empty text>')else form2.Memo1.Lines.Add('<Ïóñòoé òeêñò>')end else
+if (s='')or(s='.')then begin if en_rus then form2.Memo1.Lines.Add('<Empty text>')else form2.Memo1.Lines.Add('<Пустoй тeкст>')end else
 for j:=1 to length(s) div consts[(i-1)mod 4+1,2] do
 form2.Memo1.Lines.Add(copy(s,1+(j-1)*consts[(i-1)mod 4+1,2],consts[(i-1)mod 4+1,2]));
 if s2<>'' then form2.Memo1.Lines.Add(s2);
@@ -4262,16 +4241,16 @@ number_of_intervals:=0;
 end;
 
 //if bloop then begin if en_rus then showmessage('Time is out. Possible infinite loop. Please, close the dos window and restart the program.') else
-//showmessage ('Âðåìÿ èñòåêëî. Âîçìîæíî çàöèêëèâàíèå. Çàêðîéòå DOS-îêíî è çàïóñòèòå ïðîãðàììó âíîâü.'); delete_temp; form2.Close;end;
+//showmessage ('Время истекло. Возможно зацикливание. Закройте DOS-окно и запустите программу вновь.'); delete_temp; form2.Close;end;
 
 //showmessage(inttostr(i));
 if not program_sub then
-if en_rus then s:='Test number '+inttostr(i)+'. ' else s:='Òåñò íîìåð '+inttostr(i)+'. '
+if en_rus then s:='Test number '+inttostr(i)+'. ' else s:='Тест номер '+inttostr(i)+'. '
 else
 if ii5=1 then
-if en_rus then s:='Test number '+inttostr(i)+' for the main program. ' else s:='Òåñò íîìåð '+inttostr(i)+' äëÿ îñíîâíîé ïðîãðàììû. '
+if en_rus then s:='Test number '+inttostr(i)+' for the main program. ' else s:='Тест номер '+inttostr(i)+' для основной программы. '
 else
-if en_rus then s:='Test number '+inttostr(i)+' for the subprogram. ' else s:='Òåñò íîìåð '+inttostr(i)+' äëÿ ïîäïðîãðàììû. ';
+if en_rus then s:='Test number '+inttostr(i)+' for the subprogram. ' else s:='Тест номер '+inttostr(i)+' для подпрограммы. ';
 form2.Memo1.Lines.add(s);
 if not program_sub or (ii5=1)then begin linetest[i]:=form2.Memo1.Lines.Count; linetest[i+1]:=0 end else
 begin linetest[i+number_of_tests]:=form2.Memo1.Lines.Count; linetest[i+number_of_tests+1]:=0;end;
@@ -4321,7 +4300,7 @@ if notblank(si)and
 then si:=copy(si,1,length(si) div 2)+'  '+copy(si,length(si)div 2+1,100);
 
 if notblank(si)and
-(chosen_task='8_47_à')
+(chosen_task='8_47_а')
 then si:=copy(si,1,length(si)-4)+'  '+copy(si,length(si)-3,10);
 
 if notblank(si)and (length(si)>1)and
@@ -4333,10 +4312,10 @@ if (kk=9) and (i mod 2=1)or (kk=8)and (i mod 2=0) then begin si:=copy(si,1,ii)+'
 
 if (chosen_task[1]='9')and(chosen_task<>'9_32') then begin form2.Memo1.Font.Name:='Courier New'; forminout(si,true);
 if notblank(si) then if en_rus then form2.memo1.lines.add('Initial data: ')
-else form2.memo1.lines.add('Èñõîäíûå äàííûå: ');
+else form2.memo1.lines.add('Исходные данные: ');
 if (chosen_task='9_20')or(chosen_task='9_26') then begin
 if en_rus then form2.memo1.lines.add('The matrix : ')
-else form2.memo1.lines.add('Maòðèöà: ');
+else form2.memo1.lines.add('Maтрица: ');
 //showmessage(outmatr[matrows]);
 if chosen_task='9_20' then begin ccc:=outmatr[matrows,length(outmatr[matrows])];
 outmatr[matrows]:=copy(outmatr[matrows],1, length(outmatr[matrows])-2)end;
@@ -4347,11 +4326,11 @@ for ii:=1 to matrows do form2.Memo1.Lines.add(outmatr[ii]);
 
 if chosen_task='9_20'then
 if en_rus then form2.memo1.lines.add('The checked character: '+ccc)
-else form2.memo1.lines.add('Ïðîâåðÿåìûé ñèìâîë: '+ccc);
+else form2.memo1.lines.add('Проверяемый символ: '+ccc);
 
 if chosen_task='9_26'then
 if en_rus then form2.memo1.lines.add('The power: '+ccc)
-else form2.memo1.lines.add('Còåïåíü: '+ccc);
+else form2.memo1.lines.add('Cтепень: '+ccc);
 
 end //of chapter 9
 else begin
@@ -4378,7 +4357,7 @@ if ii5=1 then matrixin0:=matrixin else matrixin0:=matrixins;correct_matrices(si,
 //A special correction of the input data for the task 11_61
 if (chosen_task='11_61')and(ii5=1) then begin
 if en_rus then string_out[number_of_lines]:='The power P='+string_out[number_of_lines]+'.' else
-string_out[number_of_lines]:='Ñòåïåíü P='+string_out[number_of_lines]+'.'
+string_out[number_of_lines]:='Степень P='+string_out[number_of_lines]+'.'
 end;
 //A special correction of the input data for the task 14_16
 if chosen_task='14_16' then begin
@@ -4388,7 +4367,7 @@ se:=copy(se,pq+1, length(se));delete_blanks(se);
 delete(string_out[number_of_lines],pq, length(string_out[number_of_lines]));if string_out[number_of_lines]='' then string_out[number_of_lines]:=' - ';
 inc(number_of_lines); pq:=pos('0',se); if pq=0 then pq:=1; string_out[number_of_lines]:=copy(se,1,pq-1);if string_out[number_of_lines]='' then string_out[number_of_lines]:=' - ';
 if en_rus then begin string_out[number_of_lines-1]:='The set of rows: '+string_out[number_of_lines-1];string_out[number_of_lines]:='The set of columns: '+string_out[number_of_lines] end else
-begin string_out[number_of_lines-1]:='Ìíîæåñòâî ñòpoê: '+string_out[number_of_lines-1];string_out[number_of_lines]:='Ìíoæåñòâo còoëáöoâ: '+string_out[number_of_lines]
+begin string_out[number_of_lines-1]:='Множество стpoк: '+string_out[number_of_lines-1];string_out[number_of_lines]:='Мнoжествo cтoлбцoв: '+string_out[number_of_lines]
 end; end;
 
 for iii:=1 to number_of_lines do
@@ -4424,22 +4403,22 @@ if ii5=1 then begin
 pp:=pos('array',string_out[pp1]);
 if pp>0 then begin delete(string_out[pp1],pp,5);
 insert('polinomial',string_out[pp1],pp);end;
-pp:=pos('ìàññèâ',string_out[pp1]);
+pp:=pos('массив',string_out[pp1]);
 if pp>0 then begin delete(string_out[pp1],pp,6);
-insert('ïîëèíîì',string_out[pp1],pp);end;end;
+insert('полином',string_out[pp1],pp);end;end;
 if ii5=2 then begin
 pp:=pos('first array',string_out[pp1]);
 if pp>0 then begin delete(string_out[pp1],pp,11);
 insert('polinomial',string_out[pp1],pp);end;
-pp:=pos('ïåðâûé ìàññèâ',string_out[pp1]);
+pp:=pos('первый массив',string_out[pp1]);
 if pp>0 then begin delete(string_out[pp1],pp,13);
-insert('ïîëèíîì',string_out[pp1],pp);end;
+insert('полином',string_out[pp1],pp);end;
 end;
 end;
 pp:=pos(':',string_out[4-byte(ii5=2)]);
 if pp>0 then
 if en_rus then string_out[4-byte(2=ii5)]:='the point'+copy(string_out[4-byte(2=ii5)],pp,1000)else
-string_out[4-byte(ii5=2)]:='òo÷êà'+copy(string_out[4-byte(ii5=2)],pp,1000);
+string_out[4-byte(ii5=2)]:='тoчка'+copy(string_out[4-byte(ii5=2)],pp,1000);
 for iii:=1 to 1+arrayin do
 form2.Memo1.Lines.Add(string_out[iii]);
 arrayin:=arrayin1;dec(consts[(i-1)mod 4+1,1]);
@@ -4449,9 +4428,9 @@ else if chosen_task='11_29-004' then begin
 ppa:=length(si); ppa2:=0; for ppa1:=ppa downto 1 do if si[ppa1]=' ' then begin ppa2:=ppa1; break end;
 if ppa2>0 then begin if en_rus then
 form2.memo1.lines.add('Initial array: '+copy(si,1,ppa2-1))else
-form2.memo1.lines.add('Èñõîäíûé ìàññèâ: '+copy(si,1,ppa2-1));
+form2.memo1.lines.add('Исходный массив: '+copy(si,1,ppa2-1));
 if en_rus then form2.memo1.lines.add('Amount of positions of the shift: '+copy(si,ppa2+1,100))else
-form2.memo1.lines.add('Koëè÷åñòâo ïoçèöèé cäâèãa: '+copy(si,ppa2+1,100));
+form2.memo1.lines.add('Koличествo пoзиций cдвигa: '+copy(si,ppa2+1,100));
 end;
 end //of 11_29-004
 //A special correction of the input data for the tasks where more than one input file is needed
@@ -4474,16 +4453,16 @@ begin output16_16input(si) end
 
 else
 if notblank(si) then begin if pos(chr(10),si)=0then if en_rus then form2.memo1.lines.add('Initial data: '+si)
-else  form2.memo1.lines.add('Èñõîäíûå äàííûå: '+si) else
+else  form2.memo1.lines.add('Исходные данные: '+si) else
 begin
 if en_rus then form2.memo1.lines.add('Initial data: ')else
-form2.memo1.lines.add('Èñõîäíûå äàííûå: ');
+form2.memo1.lines.add('Исходные данные: ');
 repeat if si='' then pa:=0 else pa:=pos(chr(10), si); if pa>0 then begin sp:=copy(si,1,pa-1);delete_blanks(sp);
 //if i<10 then showmessage(sp);
-if sp='' then if en_rus then sp:='<Empty line>' else sp:='<Ïóñòàÿ ñòðîêà>'; end;
+if sp='' then if en_rus then sp:='<Empty line>' else sp:='<Пустая строка>'; end;
 if pa<>0 then begin form2.Memo1.Lines.add(sp);delete(si,1,pa) end else
 begin
-delete_blanks(si); if si='' then if en_rus then si:='<Empty line>' else si:='<Ïóñòàÿ ñòðîêà>';
+delete_blanks(si); if si='' then if en_rus then si:='<Empty line>' else si:='<Пустая строка>';
 form2.Memo1.Lines.add(si);
 end;
 //if i=51 then showmessage('!'+si+'!'+inttostr(pa));
@@ -4492,7 +4471,7 @@ end //of pos(chr(10),si)<>0
 end //of not blank si
 else //of not blank si
 if en_rus then if (chosen_task<>'6_24')and(chosen_task<>'15_25')and(chosen_task<>'15_32-006')then form2.memo1.lines.add('Initial data: -')else form2.memo1.lines.add('Initial data: <Empty line>')
-else if (chosen_task<>'6_24')and(chosen_task<>'15_25')then form2.memo1.lines.add('Èñõîäíûå äàííûå: -')else form2.memo1.lines.add('Èñõîäíûå äàííûå: <Ïócòàÿ ñòpoêà>')
+else if (chosen_task<>'6_24')and(chosen_task<>'15_25')then form2.memo1.lines.add('Исходные данные: -')else form2.memo1.lines.add('Исходные данные: <Пуcтая стpoка>')
 end;
 
 //{of else from chapter 9
@@ -4507,10 +4486,10 @@ begin i42:=1; delete(sr,length(sr),1) end;
 
 
 if notblank(sr)and
-(chosen_task='8_47_á')
+(chosen_task='8_47_б')
 then sr:=copy(sr,1,length(sr)-4)+'  '+copy(sr,length(sr)-3,10);
 if notblank(so)and
-(chosen_task='8_47_á')
+(chosen_task='8_47_б')
 then so:=copy(so,1,length(so)-4)+'  '+copy(so,length(so)-3,10);
 if notblank(sr)and(chosen_task='9_32') then
 for k2:=1 to length(sr)-1 do if (sr[k2]<>' ')and(sr[k2+1]<>' ')then begin
@@ -4548,7 +4527,7 @@ if i43=1 then begin i43:=0; m:=7 end;
 
 //if (sr<>'')and(sr[1]>':') then showmessage(sr+'!'+so);
 
-if ((sr='Îøèáêà')and(so='Error')or(sr='Íåò êîðíåé')and(so='No roots'))and not en_rus and (m=0)and errorr then so:=sr else begin
+if ((sr='Ошибка')and(so='Error')or(sr='Нет корней')and(so='No roots'))and not en_rus and (m=0)and errorr then so:=sr else begin
 
 sr:=sv; so:=sw;
 
@@ -4600,10 +4579,10 @@ or(copy(chosen_task,1,4)='9_26')
 // we shall add other tasks here
 then begin forminout (sr,false);
 if notblank(sr) then begin if en_rus then form2.memo1.lines.add('Obtained result: ')
-else form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò: ');
+else form2.memo1.lines.add('Полученный результат: ');
 for ii:=1 to matrows do form2.Memo1.Lines.add(outmatr[ii]);end else
 if en_rus then form2.memo1.lines.add('Obtained result: -')
-else form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò: -');
+else form2.memo1.lines.add('Полученный результат: -');
 end
 else
 if chosen_task='15_23'then output15_23(sr,1)
@@ -4615,7 +4594,7 @@ else
 if textsout>0 then outputtextfile(sr,2)
 else
 if (chosen_task='16_16-003')or(chosen_task='16_16-004')or(chosen_task='16_16-005')or(chosen_task='16_16-006')
-then begin
+then begin 
 correct_16_16(sr);form2.memo1.Font.Name:='Courier New';
 output16_16output(sr,2)
 end
@@ -4634,10 +4613,10 @@ if check_new or check_dispose then checknewdispose(sr);
 
 if (chosen_task='15_8')and(notblank(sr))then begin delete_blanks(sr); sr:='['+sr+']';end;
 if notblank(sr)then
-if en_rus then form2.memo1.lines.add('Obtained result: '+sr) else form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò: '+sr)
+if en_rus then form2.memo1.lines.add('Obtained result: '+sr) else form2.memo1.lines.add('Полученный результат: '+sr)
 else if en_rus then if (chosen_task<>'6_24')and(chosen_task<>'15_25')and(chosen_task<>'15_32-006') then form2.memo1.lines.add('Obtained result: -')else
 form2.memo1.lines.add('Obtained result: <Empty line>')
-else if (chosen_task<>'6_24')and(chosen_task<>'15_25') then form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò: -')else form2.memo1.lines.add('Ïîëó÷åííûé ðåçóëüòàò: <Ïóñòàÿ ñòðîêà>');
+else if (chosen_task<>'6_24')and(chosen_task<>'15_25') then form2.memo1.lines.add('Полученный результат: -')else form2.memo1.lines.add('Полученный результат: <Пустая строка>');
 end;
 
 if (arrayout>0)and(ii5=1)or(arrayouts>0)and(ii5=2) then begin
@@ -4663,10 +4642,10 @@ or(copy(chosen_task,1,4)='9_26')
 // we shall add other tasks here
 then begin forminout (so,false);
 if notblank(so) then begin if en_rus then form2.memo1.lines.add('Correct result: ')
-else form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò: ');
+else form2.memo1.lines.add('Правильный результат: ');
 for ii:=1 to matrows do form2.Memo1.Lines.add(outmatr[ii]);end else
 if en_rus then form2.memo1.lines.add('Correct result: -')
-else form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò: -');
+else form2.memo1.lines.add('Правильный результат: -');
 end
 else
 if chosen_task='15_23' then output15_23(so,2)
@@ -4686,9 +4665,9 @@ output10_21_22(so,2)
 else begin
 if(chosen_task='15_8')and(notblank(so))then begin delete_blanks(so); so:='['+so+']';end;
 if notblank(so)then
-if en_rus then form2.memo1.lines.add('Correct result: '+so) else form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò: '+so)
+if en_rus then form2.memo1.lines.add('Correct result: '+so) else form2.memo1.lines.add('Правильный результат: '+so)
 else if en_rus then if (chosen_task<>'6_24')and(chosen_task<>'15_25') and (chosen_task<>'15_32-006')then form2.memo1.lines.add('Correct result: -') else form2.memo1.lines.add('Correct result: <Empty line>')
-else if (chosen_task<>'6_24')and(chosen_task<>'15_25') then form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò: -')else form2.memo1.lines.add('Ïðàâèëüíûé ðåçóëüòàò: <Ïóñòàÿ ñòðîêà>')
+else if (chosen_task<>'6_24')and(chosen_task<>'15_25') then form2.memo1.lines.add('Правильный результат: -')else form2.memo1.lines.add('Правильный результат: <Пустая строка>')
 end;
 //l:=1;m:=0;//l - the number of received/correct value; m - the final result of the current testing
 
@@ -4696,14 +4675,14 @@ end;
 
 
 case m of
-8:begin if en_rus then s:='A temporary file has not been deleted and some files have not been closed.' else s:='Âpeìåííûé ôàéë íå áûë óäàëeí è íåêîòîðûå ôàéëû íå áûëè çàêðûòû.'end;
-7:begin if en_rus then s:='A temporary file has not been deleted.'else s:='Âpeìåííûé ôàéë íå áûë óäàëeí.' end;
-6:begin if en_rus then s:='Some of the files have not been closed.' else s:='Íåêîòîðûå ôàéëû íå áûëè çàêðûòû.' end;
-5:begin if en_rus then s:='An admissible permutation.'else s:='Äîïóñòèìàÿ ïåðåñòàíîâêà.';bb:=true; m:=0 end;
-3:if en_rus then s:='Excessive output.' else s:='Èçáûòî÷íûé âûâîä.';
-4:if en_rus then s:='Not enough output data.' else s:='Ìàëî ðåçóëüòèðóþùèõ äàííûõ.';
-2:if en_rus then s:='Accuracy is not reached.' else s:='Òî÷íîñòü íå äîñòèãíóòà.';
-1:if en_rus then s:='ERROR.'else s:='ÎØÈÁKA.';
+8:begin if en_rus then s:='A temporary file has not been deleted and some files have not been closed.' else s:='Вpeменный файл не был удалeн и некоторые файлы не были закрыты.'end;
+7:begin if en_rus then s:='A temporary file has not been deleted.'else s:='Вpeменный файл не был удалeн.' end;
+6:begin if en_rus then s:='Some of the files have not been closed.' else s:='Некоторые файлы не были закрыты.' end;
+5:begin if en_rus then s:='An admissible permutation.'else s:='Допустимая перестановка.';bb:=true; m:=0 end;
+3:if en_rus then s:='Excessive output.' else s:='Избыточный вывод.';
+4:if en_rus then s:='Not enough output data.' else s:='Мало результирующих данных.';
+2:if en_rus then s:='Accuracy is not reached.' else s:='Точность не достигнута.';
+1:if en_rus then s:='ERROR.'else s:='ОШИБKA.';
 0:s:='Ok';end;//of case
 if ii5=1 then n_err:=n_err+byte(m<>0)else n_err1:=n_err1+byte(m<>0);
 
@@ -4715,7 +4694,7 @@ closefile(f);closefile(g); form2.memo1.lines.add(s);
 end
 
 else begin
-if en_rus then s:='Time is out. Possible infinite loop.' else s:='Èñòåêëî âðåìÿ. Âîçìîæíî çàöèêëèâàíèå.';
+if en_rus then s:='Time is out. Possible infinite loop.' else s:='Истекло время. Возможно зацикливание.';
 closefile(f);closefile(g);//form2.memo1.lines.add('   ');
 form2.Memo1.Lines.Add(s);if ii5=1 then n_err:=n_err+1 else n_err1:=n_err1+1;
 //assignfile(f1,current_dir+'\tmp\temp2.exe'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
@@ -4740,12 +4719,12 @@ end;//of for external from 1 to 1+byte(program_sub)
 //It is blocked now
 //if en_rus then form2.memo1.Lines.Add('The total tests execution time is '+inttostr(time_tests)+' sec.')
 //else
-//form2.memo1.Lines.Add('Îáùåå âðåìÿ âûïîëíåíèÿ òåñòîâ -  '+inttostr(time_tests)+' ñåê.');
+//form2.memo1.Lines.Add('Общее время выполнения тестов -  '+inttostr(time_tests)+' сек.');
 
 form2.Memo1.Lines.Add('  ');
 for i:=1 to warnings_amount do form2.memo1.lines.add(warnings[i]);
 if incorrect_boolean then if en_rus then form2.Memo1.Lines.Add('Hint: an expression <variable>=true or <variable>=false was found in the program.')else
-form2.Memo1.Lines.Add('Çàìå÷àíèå: â ïðîãðàììå íàéäåíî âûðàæåíèå <ïåðåìåííàÿ>=true or <ïåðåìåííaÿ>=false.');
+form2.Memo1.Lines.Add('Замечание: в программе найдено выражение <переменная>=true or <переменнaя>=false.');
 form2.Memo1.Lines.Add('  ');
 
 
@@ -4753,20 +4732,20 @@ for ii5:=1 to 1+byte(program_sub) do begin
 if ii5=1 then n_err2:=n_err else n_err2:=n_err1;
 if ii5=1 then nummm:=number_of_tests else nummm:=number_of_subtests;
 if ii5=1 then s8:='' else s8:=s8+chr(10);
-if not program_sub then s7:='' else if ii5=1 then if en_rus then s7:=' for the main program' else s7:=' äëÿ îñíîâíîé ïðîãðàììû' else
-if en_rus then s7:=' for the subprogram' else s7:=' äëÿ ïoäïðîãðàììû';
+if not program_sub then s7:='' else if ii5=1 then if en_rus then s7:=' for the main program' else s7:=' для основной программы' else
+if en_rus then s7:=' for the subprogram' else s7:=' для пoдпрограммы';
 if (n_err2>0)then begin if en_rus then if n_err2=1 then s8:=s8+inttostr(n_err2)+' wrong result out of '+inttostr(nummm)+s7+'.'else
 s8:=s8+inttostr(n_err2)+' wrong results out of '+inttostr(nummm)+s7+'.'
 else if (n_err2=1)or(n_err2>20)and(n_err2 mod 10=1)then
-s8:=s8+inttostr(n_err2)+' îøèáî÷íûé îòâåò èç '+inttostr(nummm)+s7+'.'else if (n_err2<5)
+s8:=s8+inttostr(n_err2)+' ошибочный ответ из '+inttostr(nummm)+s7+'.'else if (n_err2<5)
 or(n_err2>20)and(n_err2 mod 10 in [2..4]) then
-s8:=s8+inttostr(n_err2)+' îøèáî÷íûõ îòâåòa èç '+inttostr(nummm)+s7+'.'else
-s8:=s8+inttostr(n_err2)+' îøèáî÷íûõ îòâåòoâ èç '+inttostr(nummm)+s7+'.'end
-else if en_rus then s8:=s8+'All the results are correct'+s7+'.' else s8:=s8+'Bce îòâåòû '+s7+' ïðàâèëüíûå.';
+s8:=s8+inttostr(n_err2)+' ошибочных ответa из '+inttostr(nummm)+s7+'.'else
+s8:=s8+inttostr(n_err2)+' ошибочных ответoв из '+inttostr(nummm)+s7+'.'end
+else if en_rus then s8:=s8+'All the results are correct'+s7+'.' else s8:=s8+'Bce ответы '+s7+' правильные.';
 //showmessage('We are here'+inttostr(ii5));
 end;
 if bb and (n_err=0)and(n_err1=0)then if en_rus then s8:=s8+' Admissible permutations of elements in the resulting array were found.' else
-s8:=s8+' Áûëè íàéäåíû äîïóñòèìûå ïåðåñòàíîâêè ýëåìåíòîâ â ðåçóëüòèðóþùåì ìàññèâå.';
+s8:=s8+' Были найдены допустимые перестановки элементов в результирующем массиве.';
 showmessage(s8);
 closefile(f); ioresult;closefile(g); ioresult;closefile(h); ioresult;
 if (form2.checkbox2.checked)then delete_correct_results;
@@ -4786,11 +4765,11 @@ current_width:=_width;current_height:=_height;
 left:=(screen.Width-_width)div 2;
 top:=(screen.height-_height)div 2;
 //Initializing of the array with the chapters' names - it is done before the choosing of a chapter
-{chapter_names[3,1]:='Ââîä è âûâîä';
+{chapter_names[3,1]:='Ввод и вывод';
 chapter_names[3,2]:='Input and output';
-chapter_names[4,1]:='Óñëîâíûé îïåðàòîð ';
+chapter_names[4,1]:='Условный оператор ';
 chapter_names[4,2]:='Conditional statement';
-chapter_names[5,1]:='Oператоры цикла        ';
+chapter_names[5,1]:='Oператоры цикла';
 chapter_names[5,2]:='Loop statements';
 chapter_names[6,1]:='Тип char ';
 chapter_names[6,2]:='Character type';
@@ -5044,7 +5023,7 @@ button11.font.Name:=button7.font.Name;
 button11.Visible:=true;
 button11.Enabled:=false;
 button11.visible:=false;
-task_size:=false;
+task_size:=false; 
 text_size:=false;
 //test_size:=false;
 chosen_task:='';
@@ -5168,6 +5147,7 @@ procedure test1;
 var i:integer;searchresult:tsearchrec;
 begin
 //it is an experimental part we will delete it after it ends
+
 if FindFirst('*', faDirectory, searchResult) = 0 then
    begin
      repeat
@@ -5175,6 +5155,8 @@ if FindFirst('*', faDirectory, searchResult) = 0 then
        if (searchResult.attr and faDirectory) = faDirectory
        then ShowMessage('Directory = '+searchResult.Name);
      until FindNext(searchResult) <> 0;
+
+
  end;
 findclose(searchresult);
 end;
@@ -5292,7 +5274,7 @@ warnings_amount:=0;
 text_after:='';
 text_before:='';
 check_new:=false;
-check_dispose:=false;
+check_dispose:=false; 
 edit1.clear;
 memo1.clear;
 //memo3.clear;memo2.clear;
@@ -5342,7 +5324,7 @@ break end;end;
 while(chosen_task<>'')and(chosen_task[length(chosen_task)]=' ') do chosen_task:=copy(chosen_task,1,length(chosen_task)-1);
 //showmessage(chosen_task+' before the extract');
 b:=extract_data;
-//showmessage('!!!!');
+//showmessage('!!!!'); 
 if not b and initial then initial:=false;//error in extract_data while initializing; the further initialization must be stopped in this case
 //showmessage('1939 after the extract data');
 if not b then begin button6.Enabled:=false; button7.Enabled:=false; button3.Enabled:=false; button5.Enabled:=false; exit end;
@@ -5412,9 +5394,11 @@ begin
 {if chosen_task='' then begin
 if en_rus then messagedlg('You have not chosen a task.',mtinformation,[mbOK],0)else
 messagedlg('Вы не выбрали задачу.',mtinformation,[mbOK],0);exit end;
+
 if filename='' then begin
 if en_rus then messagedlg('You have not entered a file name.',mtinformation,[mbOK],0)else
 messagedlg('Вы не ввели имя файла.',mtinformation,[mbOK],0);exit end;
+
 if not(pr_an) then
 if en_rus then messagedlg('You have not made a preliminary analysis.',mtinformation,[mbOK],0)else
 messagedlg('Вы не cделали предварительный анализ.',mtinformation,[mbOK],0);
@@ -5503,7 +5487,7 @@ end;
 
 //showmessage('!!!');
 
-if (form2.ComboBox1.ItemIndex=-1)or(form2.ComboBox2.ItemIndex=-1)then begin if en_rus then showmessage('You have not chosen a task.')else showmessage('Bû íå âûáðaëè çaäa÷ó. ');exit;end;
+if (form2.ComboBox1.ItemIndex=-1)or(form2.ComboBox2.ItemIndex=-1)then begin if en_rus then showmessage('You have not chosen a task.')else showmessage('Bы не выбрaли зaдaчу. ');exit;end;
 
 //showmessage(current_dir);
 for i:=1 to max_test_number do deletefile(current_dir+'\tmp\rrr'+inttostr(i));
@@ -5812,5 +5796,4 @@ combobox2.ItemIndex:=combo2index;
 end;
 
 end.
-
 

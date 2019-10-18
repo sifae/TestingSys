@@ -35,7 +35,7 @@ type
     CheckBox2: TCheckBox;
     Memo2: TMemo;
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action1: TCloseAction);
+    procedure FormClose(Sender: TObject; var action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);

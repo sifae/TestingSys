@@ -1288,9 +1288,6 @@ analysis:=an_res;
 analysis:=an_res;
 end;{of the function}
 }}
-
-end;
-
 procedure delete_temp;
 var i:integer;
 begin

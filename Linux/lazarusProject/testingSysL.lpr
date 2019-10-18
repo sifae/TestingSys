@@ -6,7 +6,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
-  file02 { you can add units after this };
+  file02, tlhelp32 { you can add units after this };
 
 {$R *.res}
 

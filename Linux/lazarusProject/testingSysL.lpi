@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="3">
       <Unit0>
         <Filename Value="testingSysL.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -45,6 +45,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="tlhelp32.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TLHelp32"/>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

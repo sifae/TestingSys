@@ -3,7 +3,7 @@ unit file02;
 interface
 
 uses
-  file00,LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
+  file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo;
 
 type

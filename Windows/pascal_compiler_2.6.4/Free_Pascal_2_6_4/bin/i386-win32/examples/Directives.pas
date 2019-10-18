@@ -1,0 +1,89 @@
+program Directives;
+   uses Crt,Windows,SysUtils;
+
+   {$Assertions ON}             // Включить формальные утверждения
+   {$AsmMode Intel}             // Ассемблер MASM
+   {$GOTO+}                     // {$GOTO-} - label L; Goto L; Нельзя !!!
+   {$R+}
+   {$I+} //    {=$IOChecks+}
+   {$Calling stdcall}
+// По умолчанию {$B+} (сокращенное вычисление boolean) Shot-cut Evaluated
+   {$B+}
+   {$COperators ON}             // Разрешить Cи подобные операторы
+// Упаковка для packed переменных, поля НЕЛЬЗЯ передавать по var
+   {$BitPacking ON}
+   {$InLine ON}
+   {$PackEnum 1}                // 1 байт для типа Week, иначе 4
+   {$TypedAddress ON}
+   {$S+}                        // Stack checking, default OFF
+// {$X+}={$EXTENDEDSYNTAX ON}
+// + по умолчанию; вызов ПОЛЬЗОВАТЕЛЬСКИХ функций как процедур
+   {$EXTENDEDSYNTAX OFF}        // не работает !
+// {$J-} Запрет ПРИСВАИВАНИЯ для типизированных констант
+   {$J-} {=$WriteableConst OFF - нельзя Const N:integer=100;}
+   {$Macro ON}                  // По умолчанию OFF
+   {V+} {=$VarStringChecks ON}  // Строгая проверка типов строк по ссылке
+   {$H-} {=$LongString OFF По умолчанию, тогда String=ShortString,
+           если $H+ тогда String=AnsiString }
+   {$T+} {=$TypedAddress ON}    // var x:Tip; @x возвр. ^Tip, иначе Pointer
+   {MaxStackSize 4096}          // <= $7FFFFFFFF
+// {$M 4096,4996}               // StackSize,HeapSize
+
+   Label L;
+
+   var   Arr:array[1..100] of byte;
+   Const N=10; M=10; &const=100; // Использование служебного имени !
+         NBit=%10110011;         // Двоичное число
+         R:real=0;               // {$J-} - Нельзя R:=1
+
+// Константы времени компиляции
+         N1=2*N+1; N2=sqr(N1)+abs(trunc(sin(N1)));
+         N3=low(Arr); N4=high(Arr);
+         S1='A'; S2=S1+#10+^A;
+// Константы времени выполнения
+//       N5=pos('B','ABCD'); Ошибка !
+
+   type Week=(Monday=1, { теперь нельзя succ,pred,array[Week] ! }
+           Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday=0);
+           { for w:=Monday to Sunday do; Пустой цикл ! }
+
+   var
+{ AnsiString дин.строка с нулём,-4=длина,-8=число ссылок }
+     AnsiStr: AnsiString='Строка типа AnsiString';
+     sCap: pChar='Заголовок'; { строка с нулём как в C }
+     pTxt: Pchar;
+     wTxt: WideString='Строка Unicode';
+     fmt: string='dd.mm.yyyy hh:mm:ss';
+     Color:(cRed,cGreen,cBlue);
+
+// Сравнение на равенство переменных любого типа
+   function Equal(var x,y; Len:Longword):boolean;
+     type Bytes=array [0..MaxLongint-1] of byte;
+     var i:Longword;
+   begin i:=1;
+     while (i<Len) and (Bytes(x)[i]=Bytes(y)[i]) do inc(i);
+     Equal:=i=Len;
+//   i:=LocalVar - имя LocalVar здесь не видно !
+   end;
+
+
+// Локальные имена begin ... end. Их не видно ВЫШЕ по тексту !
+   var LocalVar: Longint;
+       LocalChar: char;
+
+
+begin
+   ClrScr;
+
+// {$EXTENDEDSYNTAX OFF} не работает !
+   { bool3:= } Equal(LocalVar,LocalVar,4);
+
+   SetConsoleTitle ('Директивы компилятора');
+   GotoXY(WindMaxX div 2,WindMaxY div 2);
+   Writeln('WindMaxX=',WindMaxX,' WindMaxY=',WindMaxY);
+   GotoXY(1,3);
+   Writeln('high(Arr)=',N4);
+
+   readln;
+
+end.

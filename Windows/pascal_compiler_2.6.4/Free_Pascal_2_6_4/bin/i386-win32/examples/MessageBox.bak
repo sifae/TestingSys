@@ -1,0 +1,41 @@
+program MsgBox;
+   uses Crt,Windows;
+
+   var
+     sCap: pChar='Заголовок'; { строка с нулём как в C }
+     sText: pChar='Hi! Привет!'+#13+#10+'Вторая строка';
+     sTxt: String='Hi! Привет!'#13#10'Вторая строка в String';
+     handle: integer; ButtonCode: word;
+
+begin
+   ClrScr;
+   SetConsoleTitle ('Окно сообщений');
+// Перекодировка в Windows
+   OemToChar(sText,sText); OemToChar(sCap,sCap);
+
+   ButtonCode:=MessageBox(handle,sText,sCap,
+                          MB_YESNOCANCEL+MB_ICONQUESTION+MB_HELP);
+
+   ButtonCode:=MessageBox(handle,'Hello!'+#13+#10+'Second Line',
+                         '╟руюыютюъ',MB_ABORTRETRYIGNORE+MB_ICONASTERISK);
+
+// Кнопки:
+//   MB_OK (0h),MB_OKCANCEL (1h),MB_ABORTRETRYIGNORE (2h)
+//   MB_YESNOCANCEL (3h),MB_YESNO (4h),MB_RETRYCANCEL (5h)
+//   MB_CANCELTRYCONTINUE (6h)
+// Значок:
+//   MB_ICONSTOP (10h - крест-стоп),MB_ICONQUESTION (20h - ? (вопрос))
+//   MB_ICONEXCLAMATION (30h - !), MB_ICONASTERISK (40h - i в круге)
+//   MB_HELP (4000h кнопка справки без кода возврата)
+// Номер кнопки по умолчанию:
+//   MB_DEFBUTTON1,2,3,4 (0h,100h,200h,300h)
+// Код кнопки:
+//   IDOK(1),IDCANCEL(2) [или ESC или крестик закрытия окна]
+//   IDABORT(3),IDRETRY(4),IDIGNORE(5),IDYES(6),IDNO(7)
+//   IDTRYAGAIN(10),IDCONTINUE(11)
+
+   GotoXY(10,5); Writeln('Button Code=',ButtonCode);
+
+   readln;
+
+end.

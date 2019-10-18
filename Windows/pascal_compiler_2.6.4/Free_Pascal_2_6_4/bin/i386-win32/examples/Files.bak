@@ -1,0 +1,41 @@
+program Files;
+   uses Crt,Windows;
+
+   Const N=10; M=10;
+
+   Type
+     Mas=array[1..N] of Longint;
+
+   Var
+     x: Longword; y: Longint;
+     x1,x2,x3,x4: integer;
+     fi:File of integer; f1:Text; f2:TextFile; f: file;
+
+begin
+   ClrScr; GotoXY(1,5); SetConsoleTitle ('Работа с файлами');
+
+   Assign(fi,'programs\f.int'); ReWrite(fi);
+   x1:=1; x2:=2; x3:=3; x4:=-2;
+   Write(fi,x1,x2,x3);
+   Writeln('FilePos=',FilePos(fi),' FileSize=',FileSize(fi),#13);
+
+   Reset(fi); Writeln('FilePos=',FilePos(fi),' FileSize=',FileSize(fi));
+   Seek(fi,1); // На ВТОРУЮ позицию
+   x1:=fi^; Writeln('ВТОРОЕ число в файле=',x1);
+   Read(fi,x1); Writeln('ВТОРОЕ число в файле=',x1); close(fi);
+// FileMode=2, Reset открывает файл на ЧТЕНИЕ и ЗАПИСЬ
+// FileMode=0, Reset открывает файл только на ЧТЕНИЕ
+   Writeln('FileMode=',FileMode);
+   Reset(fi); Seek(fi,1); // На ВТОРУЮ позицию
+   Read(fi,x1); Writeln('ВТОРОЕ число в файле=',x1);
+   Seek(fi,1); Write(fi,x4); Seek(fi,1);
+   Read(fi,x1); Writeln('ВТОРОЕ число в файле=',x1);
+
+   FileMode:=0; Reset(fi); Seek(fi,1); // На ВТОРУЮ позицию
+{$I-}
+   Write(fi,x4); x:=IOResult;
+   Writeln('FileMode=',FileMode,' IOResult=',x);
+   Writeln('FileMode=0, был Reset, НЕЛЬЗЯ писать в ТИПИЗИРОВАННЫЙ файл');
+
+   readln
+end.

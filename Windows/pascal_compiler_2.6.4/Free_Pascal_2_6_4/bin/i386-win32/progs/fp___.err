@@ -1,0 +1,5 @@
+Warning: .drectve `-defaultlib:masm32.lib ' unrecognized
+Warning: .drectve `-defaultlib:user32.lib ' unrecognized
+Warning: .drectve `-defaultlib:kernel32.lib ' unrecognized
+Warning: .drectve `-defaultlib:msvcrt.lib ' unrecognized
+Warning: .drectve `-defaultlib:io_proc.lib ' unrecognized

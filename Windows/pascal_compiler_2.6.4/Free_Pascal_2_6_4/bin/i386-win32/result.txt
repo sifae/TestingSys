@@ -1,0 +1,41 @@
+(PROGRAM)  Registering new unit SYSTEM
+(PROGRAM)  Load from PROGRAM (implementation) unit SYSTEM
+(SYSTEM)   Loading unit SYSTEM
+(SYSTEM)   PPU Name: D:\allprogs\delphi_testing_system_version_2_started_24_10_2017\pascal_compiler_2_6_4\Free_Pascal_2_6_4\units\i386-win32\rtl\system.ppu
+(SYSTEM)   PPU Time: 2014/03/06 16:21:32
+(SYSTEM)   PPU Flags: 159873
+(SYSTEM)   PPU Crc: 79E7EF42
+(SYSTEM)   PPU Crc: 873371E1 (intfc)
+(SYSTEM)   PPU Crc: ED3D496F (indc)
+(SYSTEM)   Number of definitions: 4255
+(SYSTEM)   Number of symbols: 10550
+(SYSTEM)   Finished loading unit SYSTEM
+(PROGRAM)  Registering new unit FPINTRES
+(PROGRAM)  Load from PROGRAM (implementation) unit FPINTRES
+(FPINTRES) Loading unit FPINTRES
+(FPINTRES) PPU Name: D:\allprogs\delphi_testing_system_version_2_started_24_10_2017\pascal_compiler_2_6_4\Free_Pascal_2_6_4\units\i386-win32\rtl\fpintres.ppu
+(FPINTRES) PPU Time: 2014/03/06 16:21:34
+(FPINTRES) PPU Flags: 159873
+(FPINTRES) PPU Crc: 95E08111
+(FPINTRES) PPU Crc: 9AB7D85B (intfc)
+(FPINTRES) PPU Crc: ED3D496F (indc)
+(FPINTRES) Number of definitions: 51
+(FPINTRES) Number of symbols: 124
+(FPINTRES) Load from FPINTRES (interface) unit SYSTEM
+(FPINTRES) Adding dependency: FPINTRES depends on SYSTEM
+(FPINTRES) Finished loading unit FPINTRES
+temp2.pas(2,4) (PROGRAM)  Parsing implementation of temp2.pas
+(PROGRAM)  Registering new unit SYSINITPAS
+(PROGRAM)  Load from PROGRAM (implementation) unit SYSINITPAS
+(SYSINITPAS) Loading unit SYSINITPAS
+(SYSINITPAS) PPU Name: D:\allprogs\delphi_testing_system_version_2_started_24_10_2017\pascal_compiler_2_6_4\Free_Pascal_2_6_4\units\i386-win32\rtl\sysinitpas.ppu
+(SYSINITPAS) PPU Time: 2014/03/06 16:21:32
+(SYSINITPAS) PPU Flags: 159872
+(SYSINITPAS) PPU Crc: D32C02F4
+(SYSINITPAS) PPU Crc: 3416BF55 (intfc)
+(SYSINITPAS) PPU Crc: ED3D496F (indc)
+(SYSINITPAS) Number of definitions: 32
+(SYSINITPAS) Number of symbols: 31
+(SYSINITPAS) Load from SYSINITPAS (interface) unit SYSTEM
+(SYSINITPAS) Adding dependency: SYSINITPAS depends on SYSTEM
+(SYSINITPAS) Finished loading unit SYSINITPAS

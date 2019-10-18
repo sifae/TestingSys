@@ -1,0 +1,43 @@
+  uses  Crt,Windows {Для SetConsoleTitle};
+  {$I-} {Блокируем ошибку ввода}
+  const MaxInput=3;
+  var   x,y,OldColors,ReturnCode,InpNum: integer;
+        Temp: Longint; Sym: char;
+begin
+repeat {Главный цикл}
+  SetConsoleTitle ('       Ввод целого Х, вывод значения Y=Х+1');
+  ClrScr; {Очистка экрана} InpNum:=0; {Число попыток ввода}
+  GotoXY(8,2);{Заголовок программы}
+  repeat {Цикл ввода числа}
+    GotoXY(8,5); Write('Введите X = '); ReadLn(Temp);
+    ReturnCode:=IOResult; {Получения кода возврата}
+    InpNum:=InpNum+1;
+    if ReturnCode<>0 then begin {Плохое число}
+      OldColors:=TextAttr; {Запоминаем текущие цвета}
+      TextAttr:=16*Blue+Yellow; {Цвета диагностики}
+      GotoXY(8,25); Write('Плохое число, повторите ввод');
+      TextAttr:=OldColors; {Восстановим текущие цвета}
+      ClrEol
+    end else
+    if (Temp<-MaxInt-1) or (Temp>=MaxInt) then begin
+      OldColors:=TextAttr; TextAttr:=16*Black+LightRed;
+      GotoXY(8,25); Write('Большое число, повторите ввод');
+      TextAttr:=OldColors; ReturnCode:=1; {Был плохой ввод}
+      ClrEol
+    end
+  until (ReturnCode=0) or (InpNum=MaxInput);
+  if (ReturnCode<>0) then begin {Много попыток ввода}
+    OldColors:=TextAttr; TextAttr:=16*Blue+White;
+    GotoXY(8,25); WriteLn('Превышено число попыток ввода');
+    WriteLn(#13#10,'КОНЕЦ ПРОГРАММЫ');
+    ReadLn; ReadLn; TextAttr:=OldColors
+  end else begin {Всё хорошо !}
+    x:=Temp; y:=x+1;
+    GotoXY(8,10); Write('Ответ Y = ',y);
+    GotoXY(8,5); Write('Введите X = ',x); ClrEol;
+    GotoXY(8,25); Write('Повторить Y/N ?');
+    ClrEol; Read(Sym)
+  end
+until (ReturnCode<>0) or (Sym<>'Y') and (Sym<>'y')
+end.
+

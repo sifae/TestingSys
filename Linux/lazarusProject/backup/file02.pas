@@ -3108,9 +3108,9 @@ if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to 
 showmessage('Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');exit end else closefile(f);
 
 deletefile(current_dir+'\tmp\temp2');ioresult;deletefile(current_dir+'\tmp\temp3');ioresult;
-deletefile(current_dir+'\tmp\temp4');ioresult;deletefile(current_dir+'\tmp\temp5');ioresult;
-deletefile(current_dir+'\tmp\temp20');ioresult;deletefile(current_dir+'\tmp\temp30');ioresult;
-deletefile(current_dir+'\tmp\temp40');ioresult;deletefile(current_dir+'\tmp\temp50');ioresult;
+deletefile(current_dir+'\tmp\temp4.exe');ioresult;deletefile(current_dir+'\tmp\temp5.exe');ioresult;
+deletefile(current_dir+'\tmp\temp20.exe');ioresult;deletefile(current_dir+'\tmp\temp30.exe');ioresult;
+deletefile(current_dir+'\tmp\temp40.exe');ioresult;deletefile(current_dir+'\tmp\temp50.exe');ioresult;
 deletefile(current_dir+'\tmp\result.txt');ioresult;
 //Creation of the files temp0.bat and temp00.bat
 assign(f,current_dir+'\tmp\directory.txt');closefile(f); ioresult;

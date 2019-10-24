@@ -4,7 +4,7 @@ interface
 
 uses
   file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo;
 
 type
   TForm2 = class(TForm)
@@ -104,7 +104,7 @@ var
 procedure initializef(var f:t_f; var i_n, i_c:integer; var s_n:Ts_n; b:boolean);
 
 implementation
-uses file09, file01, {shellapi,} file03, file101, file_killprocess;
+uses file09, file01, {shellapi,} file03, file101, file_killprocess, process;
 
 {$R *.dfm}
 
@@ -3052,21 +3052,17 @@ end;{of procedure}
 
 {Compilation}
 function compilation(handle:hwnd):boolean;
-var b:boolean;
-    i2,p3,p2,ii,ii2,pp,k6,k7,k8,k9,m,k: integer;
-    s45,s46,s44,s3,s4,s2,s1:string;
-    f,g:textfile;
-
+var b:boolean;i2,p3,p2,ii,ii2,pp,k6,k7,k8,k9,m,k:integer;s45,s46,s44,s3,s4,s2,s1:string;f,g:textfile;
 begin
 setcurrentdir(current_dir);form2.button5.enabled:=false;
 form2.button10.enabled:=false;
 form2.button11.enabled:=false;
 //form2.memo1.clear;
-deletefile(current_dir+'\tmp\temp1');deletefile(current_dir+'\tmp\temp10');
-deletefile(current_dir+'\tmp\temp2');deletefile(current_dir+'\tmp\temp3');
-deletefile(current_dir+'\tmp\temp4');deletefile(current_dir+'\tmp\temp5');
-deletefile(current_dir+'\tmp\temp20');deletefile(current_dir+'\tmp\temp30');
-deletefile(current_dir+'\tmp\temp40');deletefile(current_dir+'\tmp\temp50');
+deletefile(current_dir+'\tmp\temp1.exe');deletefile(current_dir+'\tmp\temp10.exe');
+deletefile(current_dir+'\tmp\temp2.exe');deletefile(current_dir+'\tmp\temp3.exe');
+deletefile(current_dir+'\tmp\temp4.exe');deletefile(current_dir+'\tmp\temp5.exe');
+deletefile(current_dir+'\tmp\temp20.exe');deletefile(current_dir+'\tmp\temp30.exe');
+deletefile(current_dir+'\tmp\temp40.exe');deletefile(current_dir+'\tmp\temp50.exe');
 deletefile(current_dir+'\tmp\temp1.o');deletefile(current_dir+'\tmp\temp10.o');
 deletefile(current_dir+'\tmp\temp2.o');deletefile(current_dir+'\tmp\temp3.o');
 deletefile(current_dir+'\tmp\temp4.o');deletefile(current_dir+'\tmp\temp5.o');
@@ -3075,42 +3071,42 @@ deletefile(current_dir+'\tmp\temp40.o');deletefile(current_dir+'\tmp\temp50.o');
 //showmessage('we are here');
 compilation:=false;
 
-assignfile(f,current_dir+'\tmp\temp2'); closefile(f); ioresult; rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp2''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp2. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp2.exe'); closefile(f); ioresult; rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp2.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp2.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp3'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp3''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp3. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp3.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp3.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp3.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp4'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp4''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp4. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp4.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp4.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp4.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp5'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp5''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp5. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp5.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp5.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp5.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp20'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp20''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp20. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp20.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp20.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp20.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp30'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp30''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp30. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp30.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp30.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp30.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp40'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp40''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp40. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp40.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp40.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp40.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp50'); rewrite(f); k:=ioresult;
-if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp50''. Restart your computer.')else
-showmessage('Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');exit end else closefile(f);
+assignfile(f,current_dir+'\tmp\temp50.exe'); rewrite(f); k:=ioresult;
+if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp50.exe''. Restart your computer.')else
+showmessage('Ошибка. Невозможно удалить файл temp50.exe. Перезагрузите компьютер.');exit end else closefile(f);
 
-deletefile(current_dir+'\tmp\temp2');ioresult;deletefile(current_dir+'\tmp\temp3');ioresult;
-deletefile(current_dir+'\tmp\temp4');ioresult;deletefile(current_dir+'\tmp\temp5');ioresult;
-deletefile(current_dir+'\tmp\temp20');ioresult;deletefile(current_dir+'\tmp\temp30');ioresult;
-deletefile(current_dir+'\tmp\temp40');ioresult;deletefile(current_dir+'\tmp\temp50');ioresult;
+deletefile(current_dir+'\tmp\temp2.exe');ioresult;deletefile(current_dir+'\tmp\temp3.exe');ioresult;
+deletefile(current_dir+'\tmp\temp4.exe');ioresult;deletefile(current_dir+'\tmp\temp5.exe');ioresult;
+deletefile(current_dir+'\tmp\temp20.exe');ioresult;deletefile(current_dir+'\tmp\temp30.exe');ioresult;
+deletefile(current_dir+'\tmp\temp40.exe');ioresult;deletefile(current_dir+'\tmp\temp50.exe');ioresult;
 deletefile(current_dir+'\tmp\result.txt');ioresult;
 //Creation of the files temp0.bat and temp00.bat
 assign(f,current_dir+'\tmp\directory.txt');closefile(f); ioresult;
@@ -3121,10 +3117,10 @@ case i2 of
 2:begin assign(f,'.\tmp\temp00.bat');rewrite(f);s4:='0' end;
 end; //of case
 if s3=chr(1)then begin
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp3'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp4'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp5'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f,'.\pascal_compiler_2.6.4\free_pascal_2_6_4\bin\i386-win32\fpc.exe'+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f, '.\pascal_compiler_2.6.4\free_pascal_2_6_4\bin\i386-win32\fpc.exe'+' -vu -Sg w '+current_dir+'\tmp\temp3'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f, '.\pascal_compiler_2.6.4\free_pascal_2_6_4\bin\i386-win32\fpc.exe'+' -vu -Sg w '+current_dir+'\tmp\temp4'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f, '.\pascal_compiler_2.6.4\free_pascal_2_6_4\bin\i386-win32\fpc.exe'+' -vu -Sg w '+current_dir+'\tmp\temp5'+s4+'.pas > '+current_dir+'\tmp\result.txt');
 end
 else begin
 writeln(f,s3+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');

@@ -3108,17 +3108,17 @@ if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to 
 showmessage('Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');exit end else closefile(f);
 
 deletefile(current_dir+'\tmp\temp2');ioresult;deletefile(current_dir+'\tmp\temp3');ioresult;
-deletefile(current_dir+'\tmp\temp4.exe');ioresult;deletefile(current_dir+'\tmp\temp5.exe');ioresult;
-deletefile(current_dir+'\tmp\temp20.exe');ioresult;deletefile(current_dir+'\tmp\temp30.exe');ioresult;
-deletefile(current_dir+'\tmp\temp40.exe');ioresult;deletefile(current_dir+'\tmp\temp50.exe');ioresult;
+deletefile(current_dir+'\tmp\temp4');ioresult;deletefile(current_dir+'\tmp\temp5');ioresult;
+deletefile(current_dir+'\tmp\temp20');ioresult;deletefile(current_dir+'\tmp\temp30');ioresult;
+deletefile(current_dir+'\tmp\temp40');ioresult;deletefile(current_dir+'\tmp\temp50');ioresult;
 deletefile(current_dir+'\tmp\result.txt');ioresult;
-//Creation of the files temp0.bat and temp00.bat
+//Creation of the files temp0.sh and temp00.sh
 assign(f,current_dir+'\tmp\directory.txt');closefile(f); ioresult;
 reset(f); if (ioresult=0) and(not(eof(f))) then readln(f,s3)else s3:=chr(1); closefile(f); ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.\tmp\temp0.bat');rewrite(f);s4:='';end;
-2:begin assign(f,'.\tmp\temp00.bat');rewrite(f);s4:='0' end;
+1:begin assign(f,'.\tmp\temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,'.\tmp\temp00.sh');rewrite(f);s4:='0' end;
 end; //of case
 if s3=chr(1)then begin
 writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
@@ -3135,7 +3135,7 @@ end;
 closefile(f);ioresult;
 end;
 
-assignfile(f,current_dir+'\tmp\temp0.bat'); closefile(f); ioresult; reset(f);
+assignfile(f,current_dir+'\tmp\temp0.sh'); closefile(f); ioresult; reset(f);
 b:=(ioresult=0)and not eof(f);
 if not b then begin closefile(f); ioresult end else
 begin readln(f,s1); k:=pos(' ',s1);
@@ -3184,8 +3184,8 @@ closefile(g);ioresult;
 closefile(f);ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.\tmp\temp0.bat');rewrite(f);s4:='';end;
-2:begin assign(f,'.\tmp\temp00.bat');rewrite(f);s4:='0';end;
+1:begin assign(f,'.\tmp\temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,'.\tmp\temp00.sh');rewrite(f);s4:='0';end;
 end; //of case
 closefile(f); ioresult; rewrite(f); if ioresult<>0 then exit;
 writeln(f,s1+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
@@ -3201,8 +3201,8 @@ for k:=1 to max_test_number do deletefile(current_dir+'\tmp\rrrr'+inttostr(k));
 
 compilation:=false;//form2.memo2.clear; form2.memo3.clear;
 for i2:=1 to 2-byte(not(program_sub))do begin
-if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp0.bat'), nil, nil,sw_hide);
-if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp00.bat'), nil, nil,sw_hide);
+if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp0.sh'), nil, nil,sw_hide);
+if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp00.sh'), nil, nil,sw_hide);
 if en_rus then begin form3.caption:='Compilation';
 if program_sub then if i2=1 then form3.label1.caption:='The main file is being compiled.'+chr(10)+'Please, wait.'
 else form3.label1.caption:='The file with the subprogram is being compiled.'+chr(10)+'Please, wait.'else
@@ -3225,20 +3225,20 @@ else
 begin closefile(f); ioresult;
 //if en_rus then showmessage('The compilation failed. Check your compiler.')else
 //showmessage('Компиляция невозможна. Проверьте компилятор.');
-//deletefile(current_dir+'\tmp\temp0.bat');halt
+//deletefile(current_dir+'\tmp\temp0.sh');halt
 end;
 closefile(f);ioresult;
 if i2=1 then begin
-assignfile(f,'.\tmp\temp2.exe'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp3.exe'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp4.exe'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp5.exe'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;end
+assignfile(f,'.\tmp\temp2'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp3'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp4'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp5'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;end
 else begin
 //showmessage('We are here');
-assignfile(f,'.\tmp\temp20.exe'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp30.exe'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp40.exe'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp50.exe'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp20'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp30'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp40'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
+assignfile(f,'.\tmp\temp50'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;
 
 end;
 //showmessage(inttostr(k));
@@ -4193,9 +4193,9 @@ cc1:=timetostr(time_test);if cc1[2]=':' then cc1:='0'+cc1;
 application.processmessages;
 
 if ii5=1 then
-k:=ShellExecute(Handle, 'open',pchar('temp0'+inttostr(i)+'.bat'), nil, nil,sw_hide)
+k:=ShellExecute(Handle, 'open',pchar('temp0'+inttostr(i)+'.sh'), nil, nil,sw_hide)
 else
-k:=ShellExecute(Handle, 'open',pchar('temp00'+inttostr(i)+'.bat'), nil, nil,sw_hide);
+k:=ShellExecute(Handle, 'open',pchar('temp00'+inttostr(i)+'.sh'), nil, nil,sw_hide);
 
 application.processmessages;
 setcurrentdir(current_dir);
@@ -5061,10 +5061,10 @@ button1.click; initial:=true;
 createdir('tmp');ioresult;
 //creation of files temp01, temp02,...  in the directory tmp
 for i:=1 to max_test_number do begin
-assignfile(f,current_dir+'\tmp\temp0'+inttostr(i)+'.bat'); rewrite(f); ioresult;
-writeln(f,'temp'+inttostr(2+(i-1)mod 4)+'.exe <iii'+inttostr(i)+' >rrr'+inttostr(i));closefile(f);
-assignfile(f,current_dir+'\tmp\temp00'+inttostr(i)+'.bat'); rewrite(f); ioresult;
-writeln(f,'temp'+inttostr(2+(i-1)mod 4)+'0.exe <iiii'+inttostr(i)+' >rrrr'+inttostr(i));closefile(f);
+assignfile(f,current_dir+'\tmp\temp0'+inttostr(i)+'.sh'); rewrite(f); ioresult;
+writeln(f,'temp'+inttostr(2+(i-1)mod 4)+' <iii'+inttostr(i)+' >rrr'+inttostr(i));closefile(f);
+assignfile(f,current_dir+'\tmp\temp00'+inttostr(i)+'.sh'); rewrite(f); ioresult;
+writeln(f,'temp'+inttostr(2+(i-1)mod 4)+'0 <iiii'+inttostr(i)+' >rrrr'+inttostr(i));closefile(f);
 deletefile(current_dir+'\tmp\iii'+inttostr(i));
 deletefile(current_dir+'\tmp\ooo'+inttostr(i));
 deletefile(current_dir+'\tmp\rrr'+inttostr(i));
@@ -5072,8 +5072,8 @@ deletefile(current_dir+'\tmp\iiii'+inttostr(i));
 deletefile(current_dir+'\tmp\oooo'+inttostr(i));
 deletefile(current_dir+'\tmp\rrrr'+inttostr(i));
 end;
-//forming of the file temp0.bat - let us remove it for quite a while
-{assignfile(f,current_dir+'\temp0.bat'); rewrite(f);
+//forming of the file temp0.sh - let us remove it for quite a while
+{assignfile(f,current_dir+'\temp0.sh'); rewrite(f);
 writeln(f, current_dir+'\Pascal_compiler\2.0.4\bin\i386-win32\fpc.exe '+current_dir+'\tmp\temp2.pas '+current_dir+'\tmp\result.txt');
 writeln(f, current_dir+'\Pascal_compiler\2.0.4\bin\i386-win32\fpc.exe '+current_dir+'\tmp\temp3.pas '+current_dir+'\tmp\result.txt');
 closefile(f);}
@@ -5104,7 +5104,7 @@ end;
 procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
 var f:textfile;label 1;
 begin
-deletefile('.\tmp\temp0.bat');
+deletefile('.\tmp\temp0.sh');
 assignfile(f, current_dir+'\tmp\tests.ini'); rewrite(f);
 if form2.checkbox1.checked then writeln(f,'1')else writeln(f,'0');
 if form2.checkbox2.checked then writeln(f,'1')else writeln(f,'0');

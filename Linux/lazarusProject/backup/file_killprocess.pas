@@ -29,7 +29,7 @@ function KillProc(FileName: string): integer;
       s := TStringList.Create;
         try
           s.LoadFromStream(t.Output);
-          Result := Pos(FileName, s.Text);
+          Result := Pos(ExeName, s.Text);
         finally
           s.Free;
           Application.ProcessMessages;

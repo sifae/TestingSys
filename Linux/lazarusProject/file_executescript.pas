@@ -34,8 +34,9 @@ function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
     // Execute script
     AProcess.Execute;
 
-    executeScript := AProcess.ProcessID;
     handle := AProcess.ThreadHandle;
+    //executeScript := AProcess.ProcessID;
+    executeScript := handle;
 
     // This line run after script execution
     AProcess.Free;
@@ -45,6 +46,6 @@ function readShellFile(var handle : THandle; ShellScript : PChar) : Integer;
   var
     AProcess : TProcess;
   begin
-
+    readShellFile := 1;
   end;
 end.

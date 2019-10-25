@@ -8,7 +8,7 @@ function readShellFile(var handle : THandle; ShellScript : PChar) : Integer;
 implementation
 
 uses
-   Classes, SysUtils, Process, cthreads;
+   Classes, SysUtils, Process, cthreads, cmem;
 
 function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
   var
@@ -34,8 +34,9 @@ function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
     // Execute script
     AProcess.Execute;
 
-    executeScript := AProcess.ProcessID;
     handle := AProcess.ThreadHandle;
+    //executeScript := AProcess.ProcessID;
+    executeScript := handle;
 
     // This line run after script execution
     AProcess.Free;

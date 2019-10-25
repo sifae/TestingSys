@@ -193,7 +193,6 @@ begin
       form2.button2.Visible := True;
       form2.button2.Click;
     end;
-    showMessage('HERE');
     form2 := TForm2.Create(Self);
     form2.Show;
     form1.hide;

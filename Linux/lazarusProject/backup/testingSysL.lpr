@@ -3,9 +3,9 @@ program testingSysL;
 {$mode objfpc}{$H+}
 
 uses
+  cthreads,
   Interfaces, // this includes the LCL widgetset
   Forms,
-  cthreads,
   cmem,
   file02,
   file01;
@@ -13,7 +13,7 @@ uses
 {$R *.res}
 
 begin
-  RequireDerivedFormResource := True;
+  RequireDerivedFormResource := False;
   Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);

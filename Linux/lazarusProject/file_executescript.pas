@@ -8,7 +8,7 @@ function readShellFile(var handle : THandle; ShellScript : PChar) : Integer;
 implementation
 
 uses
-   Classes, SysUtils, Process;
+   Classes, SysUtils, Process, cthreads, cmem;
 
 function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
   var

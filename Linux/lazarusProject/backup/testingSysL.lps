@@ -7,10 +7,9 @@
       <Unit0>
         <Filename Value="testingSysL.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="10" Y="9"/>
-        <UsageCount Value="24"/>
+        <CursorPos X="90" Y="10"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -19,10 +18,10 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="4192"/>
-        <CursorPos X="45" Y="4197"/>
-        <UsageCount Value="24"/>
+        <CursorPos X="75" Y="7"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -30,9 +29,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="File_ExecuteScript"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="24"/>
-        <CursorPos X="28" Y="44"/>
-        <UsageCount Value="22"/>
+        <CursorPos X="42" Y="10"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -43,8 +41,7 @@
       <Unit4>
         <Filename Value="file_killprocess.pas"/>
         <UnitName Value="File_KillProcess"/>
-        <TopLine Value="14"/>
-        <CursorPos X="34" Y="29"/>
+        <CursorPos X="55" Y="13"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -71,8 +68,7 @@
       <Unit8>
         <Filename Value="file00.pas"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="27"/>
-        <CursorPos X="60" Y="31"/>
+        <CursorPos X="54" Y="41"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit8>

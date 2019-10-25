@@ -104,7 +104,7 @@ var
 procedure initializef(var f:t_f; var i_n, i_c:integer; var s_n:Ts_n; b:boolean);
 
 implementation
-uses file09, file01, file03, file101, file_killProcess, file_executeScript;
+uses file09, file01, file03, file101, file_killProcess, file_executeScript, cthreads, cmem;
 
 {$R *.dfm}
 
@@ -4197,10 +4197,10 @@ application.processmessages;
 
 if ii5=1 then
  //k:=ShellExecute(Handle, 'open',pchar('temp0'+inttostr(i)+'.sh'), nil, nil,sw_hide)
- k := executeScript(pchar('temp0'+inttostr(i)+'.sh'))
+ k := executeScript(handle, pchar('temp0'+inttostr(i)+'.sh'))
 else
  //k:=ShellExecute(Handle, 'open',pchar('temp00'+inttostr(i)+'.sh'), nil, nil,sw_hide);
- k := executeScript(pchar('temp00'+inttostr(i)+'.sh'));
+ k := executeScript(handle, pchar('temp00'+inttostr(i)+'.sh'));
 
 application.processmessages;
 setcurrentdir(current_dir);

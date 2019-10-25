@@ -2,15 +2,15 @@ unit File_ExecuteScript;
 
 interface
 
-function executeScript(handle : THandle; ShellScript : PChar) : Integer;
-function readShellFile(handle : THandle; ShellScript : PChar) : Integer;
+function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
+function readShellFile(var handle : THandle; ShellScript : PChar) : Integer;
 
 implementation
 
 uses
-   Classes, SysUtils, Process;
+   Classes, SysUtils, Process, cthreads;
 
-function executeScript(handle : THandle; ShellScript : PChar) : Integer;
+function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
   var
     AProcess: TProcess;
 
@@ -41,7 +41,7 @@ function executeScript(handle : THandle; ShellScript : PChar) : Integer;
     AProcess.Free;
   end;
 
-function readShellFile(handle : THandle; ShellScript : PChar) : Integer;
+function readShellFile(var handle : THandle; ShellScript : PChar) : Integer;
   var
     AProcess : TProcess;
   begin

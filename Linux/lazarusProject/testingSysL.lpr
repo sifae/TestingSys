@@ -2,10 +2,11 @@ program testingSysL;
 
 {$mode objfpc}{$H+}
 
-uses {$IFDEF UNIX} {$IFDEF UseCThreads}
-  cthreads, {$ENDIF} {$ENDIF}
+uses
+  cthreads,
   Interfaces, // this includes the LCL widgetset
   Forms,
+  cmem,
   file02,
   file01;
 

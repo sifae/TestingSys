@@ -4,7 +4,7 @@ interface
 
 uses
   file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process, cthreads, cmem;
 
 type
   TForm2 = class(TForm)

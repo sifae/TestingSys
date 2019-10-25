@@ -104,7 +104,7 @@ var
 procedure initializef(var f:t_f; var i_n, i_c:integer; var s_n:Ts_n; b:boolean);
 
 implementation
-uses file09, file01, {shellapi,} file03, file101, file_killprocess;
+uses file09, file01, file03, file101, file_killProcess, file_executeScript;
 
 {$R *.dfm}
 
@@ -3051,7 +3051,7 @@ end;//of for i2 from 1 to 2
 end;{of procedure}
 
 {Compilation}
-function compilation(handle:hwnd):boolean;
+function compilation(handle : THandle):boolean;
 var b:boolean;
     i2,p3,p2,ii,ii2,pp,k6,k7,k8,k9,m,k: integer;
     s45,s46,s44,s3,s4,s2,s1:string;
@@ -3201,8 +3201,11 @@ for k:=1 to max_test_number do deletefile(current_dir+'\tmp\rrrr'+inttostr(k));
 
 compilation:=false;//form2.memo2.clear; form2.memo3.clear;
 for i2:=1 to 2-byte(not(program_sub))do begin
-if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp0.sh'), nil, nil,sw_hide);
-if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp00.sh'), nil, nil,sw_hide);
+//if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp0.sh'), nil, nil,sw_hide);
+//if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp00.sh'), nil, nil,sw_hide);
+if i2 = 1 then k := executeScript(handle, pchar(current_dir+'\tmp\temp00.sh'));
+if i2 = 2 then k := executeScript(handle, pchar(current_dir+'\tmp\temp00.sh'));
+
 if en_rus then begin form3.caption:='Compilation';
 if program_sub then if i2=1 then form3.label1.caption:='The main file is being compiled.'+chr(10)+'Please, wait.'
 else form3.label1.caption:='The file with the subprogram is being compiled.'+chr(10)+'Please, wait.'else
@@ -3268,7 +3271,7 @@ compilation:=(k6=0)and(k7=0)and(k8=0)and(k9=0);
 end;
 
 {Testing}
-procedure testing(handle:hwnd);
+procedure testing(handle : THandle);
 
 //Break and output the input or output files; the exclamation mark is the separator; i=1,2,3 - input, received, correct respectively.
 procedure output_multifiles(si:string;k:integer);
@@ -4193,9 +4196,11 @@ cc1:=timetostr(time_test);if cc1[2]=':' then cc1:='0'+cc1;
 application.processmessages;
 
 if ii5=1 then
-k:=ShellExecute(Handle, 'open',pchar('temp0'+inttostr(i)+'.sh'), nil, nil,sw_hide)
+ //k:=ShellExecute(Handle, 'open',pchar('temp0'+inttostr(i)+'.sh'), nil, nil,sw_hide)
+ k := executeScript(pchar('temp0'+inttostr(i)+'.sh'))
 else
-k:=ShellExecute(Handle, 'open',pchar('temp00'+inttostr(i)+'.sh'), nil, nil,sw_hide);
+ //k:=ShellExecute(Handle, 'open',pchar('temp00'+inttostr(i)+'.sh'), nil, nil,sw_hide);
+ k := executeScript(pchar('temp00'+inttostr(i)+'.sh'));
 
 application.processmessages;
 setcurrentdir(current_dir);
@@ -4224,17 +4229,17 @@ application.ProcessMessages;
 if bloop then begin inc(amount_of_loops);
 if ii5=1 then
 case i mod 4 of
-1: killproc('temp2.exe');
-2: killproc('temp3.exe');
-3: killproc('temp4.exe');
-0: killproc('temp5.exe')
+1: killproc('temp2');
+2: killproc('temp3');
+3: killproc('temp4');
+0: killproc('temp5')
 end
 else
 case i mod 4 of
-1: killproc('temp20.exe');
-2: killproc('temp30.exe');
-3: killproc('temp40.exe');
-0: killproc('temp50.exe')
+1: killproc('temp20');
+2: killproc('temp30');
+3: killproc('temp40');
+0: killproc('temp50')
 end;
 
 form2.Timer1.Enabled:=false;
@@ -4701,21 +4706,21 @@ else begin
 if en_rus then s:='Time is out. Possible infinite loop.' else s:='Истекло время. Возможно зацикливание.';
 closefile(f);closefile(g);//form2.memo1.lines.add('   ');
 form2.Memo1.Lines.Add(s);if ii5=1 then n_err:=n_err+1 else n_err1:=n_err1+1;
-//assignfile(f1,current_dir+'\tmp\temp2.exe'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp3.exe'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp4.exe'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp5.exe'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'\tmp\temp2'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'\tmp\temp3'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'\tmp\temp4'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'\tmp\temp5'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
 was_loop:=true;
 end;
 
 closefile(h); ioresult; closefile(f); ioresult;closefile(g); ioresult;
-//killproc('temp2.exe');
+//killproc('temp2');
 application.ProcessMessages;
-//killproc('temp3.exe');
+//killproc('temp3');
 application.ProcessMessages;
-//killproc('temp4.exe');
+//killproc('temp4');
 application.ProcessMessages;
-//killproc('temp5.exe');
+//killproc('temp5');
 application.ProcessMessages;
 
 end;//of for from 1 to number of tests
@@ -5101,7 +5106,7 @@ showmessage('Путь к текущему каталогу содержит пр
 end;
 end;
 
-procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm2.FormClose(Sender: TObject; var Action1: TCloseAction);
 var f:textfile;label 1;
 begin
 deletefile('.\tmp\temp0.sh');
@@ -5550,11 +5555,11 @@ deletefile('.\tmp\temp20.pas');
 deletefile('.\tmp\temp30.pas');
 deletefile('.\tmp\temp40.pas');
 deletefile('.\tmp\temp50.pas');
-deletefile(current_dir+'\tmp\temp1.exe');deletefile(current_dir+'\tmp\temp10.exe');
-deletefile(current_dir+'\tmp\temp2.exe');deletefile(current_dir+'\tmp\temp3.exe');
-deletefile(current_dir+'\tmp\temp4.exe');deletefile(current_dir+'\tmp\temp5.exe');
-deletefile(current_dir+'\tmp\temp20.exe');deletefile(current_dir+'\tmp\temp30.exe');
-deletefile(current_dir+'\tmp\temp40.exe');deletefile(current_dir+'\tmp\temp50.exe');
+deletefile(current_dir+'\tmp\temp1');deletefile(current_dir+'\tmp\temp10');
+deletefile(current_dir+'\tmp\temp2');deletefile(current_dir+'\tmp\temp3');
+deletefile(current_dir+'\tmp\temp4');deletefile(current_dir+'\tmp\temp5');
+deletefile(current_dir+'\tmp\temp20');deletefile(current_dir+'\tmp\temp30');
+deletefile(current_dir+'\tmp\temp40');deletefile(current_dir+'\tmp\temp50');
 deletefile(current_dir+'\tmp\temp1.o');deletefile(current_dir+'\tmp\temp10.o');
 deletefile(current_dir+'\tmp\temp2.o');deletefile(current_dir+'\tmp\temp3.o');
 deletefile(current_dir+'\tmp\temp4.o');deletefile(current_dir+'\tmp\temp5.o');

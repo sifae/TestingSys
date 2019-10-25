@@ -6,7 +6,8 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
-  file02, file_executescript;
+  file02;
+  file01;
 
 {$R *.res}
 

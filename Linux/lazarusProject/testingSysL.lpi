@@ -48,6 +48,7 @@
       <Unit2>
         <Filename Value="file_executescript.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="File_ExecuteScript"/>
       </Unit2>
     </Units>
   </ProjectOptions>

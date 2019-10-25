@@ -2,41 +2,49 @@ unit File_ExecuteScript;
 
 interface
 
-function executeScript() : Integer;
+function executeScript(handle : THandle; ShellScript : PChar) : Integer;
+function readShellFile(handle : THandle; ShellScript : PChar) : Integer;
 
 implementation
 
 uses
    Classes, SysUtils, Process;
 
-function executeScript();
- // Опишем переменную "AProcess"
- // типа "TProcess"
- var
-   AProcess: TProcess;
+function executeScript(handle : THandle; ShellScript : PChar) : Integer;
+  var
+    AProcess: TProcess;
 
- // Здесь наша программа начинается
- begin
-   // Создаем объект  TProcess и
-   // присваиваем его переменной AProcess.
-   AProcess := TProcess.Create(nil);
+  begin
+    // Create object TProcess and assign it to AProcess var.
+    AProcess := TProcess.Create(nil);
 
-   // Сообщаем новому AProcess, что это за команда для выполнения.
-   // Давайте использовать компилятор Free Pascal (версия i386)
-   AProcess.Executable:= 'fpc';
+    // Set executable command
+    //AProcess.Executable:= 'fpc';
+    AProcess.Executable := ShellScript;
 
-   // Передаеv -vu -Sg w вместе с fpc, чтобы фактически выполнить 'fpc -vu -Sg w':
-   AProcess.Parameters.Add(' -vu -Sg w');
+    // Set command parameters to '-vu -Sg w'. In fact, it run 'fpc -vu -Sg w':
+    //AProcess.Parameters.Add(' -vu -Sg w');
 
-   // Мы определим опцию, когда программа
-   // будет запущена. Эта опция гарантирует, что наша программа
-   // не продолжит работу, пока программа, которую мы запустили,
-   // не перестанет работать. vvvvvvvvvvvvvv
-   AProcess.Options := AProcess.Options + [poWaitOnExit];
+    // We will define an option when the program
+    // will be launched. This option ensures that our program
+    // will not continue until the program we started,
+    // will not stop working.
+    AProcess.Options := AProcess.Options + [poWaitOnExit];
 
-   // Теперь пусть Process запустит программу
-   AProcess.Execute;
+    // Execute script
+    AProcess.Execute;
 
-   // Пока ppc386 не прекратит работу, мы досюда не дойдем
-   AProcess.Free;
- end.
+    executeScript := AProcess.ProcessID;
+    handle := AProcess.ThreadHandle;
+
+    // This line run after script execution
+    AProcess.Free;
+  end;
+
+function readShellFile(handle : THandle; ShellScript : PChar) : Integer;
+  var
+    AProcess : TProcess;
+  begin
+
+  end;
+end.

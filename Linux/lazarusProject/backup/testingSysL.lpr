@@ -8,14 +8,15 @@ uses
   Forms,
   cmem,
   file02,
-  file01;
+  file01, unit1;
 
 {$R *.res}
 
 begin
-  RequireDerivedFormResource := False;
+  RequireDerivedFormResource := True;
   Application.Scaled := True;
   Application.Initialize;
+  Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

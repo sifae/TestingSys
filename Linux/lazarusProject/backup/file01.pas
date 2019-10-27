@@ -163,6 +163,7 @@ end;
 procedure TForm1.FormClick(Sender: TObject);
 begin
   timer1.Enabled := False;
+  form2 := Tform2.Create(Application);
   form2.Show;
   form1.hide;
   form2.button1.Visible := False;
@@ -173,15 +174,17 @@ end;
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: char);
 begin
   form1.Timer1.Enabled := False;
-  if key = chr(27) then
-    form1.Close
+  if key = chr(27) then begin
+    form1.Close;
+    form1.Free;
+  end
   else
   begin
     if key <> chr(5) then
     begin
       en_rus := False;
       form2.button1.Visible := True;
-      //form2.Button1 := form2.Button1.Create(Self);
+      //form2 := form2.Create(Self);
       form2.button1.Click;
       form2.button1.Hide;
       form2.button2.Hide;
@@ -193,7 +196,6 @@ begin
       form2.button2.Visible := True;
       form2.button2.Click;
     end;
-    form2 := TForm2.Create(Self);
     form2.Show;
     form1.hide;
     initialize_screen;
@@ -203,6 +205,7 @@ end;
 procedure TForm1.FormClose(Sender: TObject; var action1: TCloseAction);
 begin
   delete_temp;
+  //form1.Free;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);

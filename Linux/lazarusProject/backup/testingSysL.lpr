@@ -8,7 +8,7 @@ uses
   Forms,
   cmem,
   file02,
-  file01, unit1;
+  file01;
 
 {$R *.res}
 

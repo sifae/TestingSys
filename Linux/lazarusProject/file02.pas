@@ -292,6 +292,7 @@ compi:=false;
 chosen_task:=''; filename:='';chosen_chapter:=0;
 form2.combobox1.clear;
 form2.combobox2.clear;k:=0;setcurrentdir(current_dir);
+//TODO: Fix bug
 p:=findfirst(current_dir+'/tests/*',fadirectory,searchresult); if p<>0 then begin showmessage('Fatal error. No subdirectories in the directory ''tests''');halt end;
 if p=0 then begin  repeat  //if true or ((searchResult.attr and faDirectory) = faDirectory)
 //showmessage(searchresult.name);

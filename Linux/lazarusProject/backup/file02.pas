@@ -185,7 +185,7 @@ if (p1>0)and(p2=0)then p2:=p1+1;
 
 //showmessage('wait'+inttostr(p1)+'   '+inttostr(p2));
 
-if (pos ('\''e0\''ef\''e8\''f1\''e0\''f2\''fc',s)>0)and(pos('\''ef\''f0\''ee\''e3\''f0\''e0\''ec\''ec',s)>0)then goto 1;
+if (pos ('/''e0/''ef/''e8/''f1/''e0/''f2/''fc',s)>0)and(pos('/''ef/''f0/''ee/''e3/''f0/''e0/''ec/''ec',s)>0)then goto 1;
 if p1<p2 then if en_rus then s:=copy(s,1,p1)+'WRITE A PASCAL PROGRAM. '+copy(s,p1+1,length(s)) else s:=copy(s,1,p1)+'Написать программу на Паскале. '+copy(s,p1+1,length(s));
 if p1>p2 then if en_rus then s:=copy(s,1,p2-1)+'WRITE A PASCAL PROGRAM. '+copy(s,p2,length(s)) else s:=copy(s,1,p2-1)+'Напиcать программу на Паскале. '+copy(s,p2,length(s));
 writeln(f2,s);
@@ -223,12 +223,12 @@ procedure claims_fill(var aclaim:Tclaims; var count:integer);
 var b:boolean;s:string;f:t_f;p,i:integer;
 begin
 count:=0;
-assignfile(f,current_dir+'\tests\'+directory_names[chosen_chapter]+'\claims.cde');
+assignfile(f,current_dir+'/tests/'+directory_names[chosen_chapter]+'/claims.cde');
 reset(f); if ioresult<>0 then exit;
 initializef(f, i_n_2, i_c_2, s_n_2, false);
 //showmessage('We are here!');
 
-//showmessage(current_dir+'\tests\'+directory_names[chosen_chapter]+'\claims.cde');
+//showmessage(current_dir+'/tests/'+directory_names[chosen_chapter]+'/claims.cde');
 //showmessage(inttostr(p));
 i:=0;
 while not(eof(f)) do begin
@@ -257,9 +257,9 @@ begin
 //showmessage('we are here');
 combo1text:='';combo2text:='';  b:=false;
 combo1index:=-1;combo2index:=-1;
-assign(f, current_dir+'\tmp\tests.ini'); reset(f);
+assign(f, current_dir+'/tmp/tests.ini'); reset(f);
 p:=ioresult;
-//showmessage(current_dir+'\test.ini'+'!'+inttostr(p));
+//showmessage(current_dir+'/test.ini'+'!'+inttostr(p));
 if p<>0 then goto 1;
 readln(f,s);b:=s='1';
 if eof(f) then begin closefile(f); ioresult; goto 1 end;
@@ -292,13 +292,13 @@ compi:=false;
 chosen_task:=''; filename:='';chosen_chapter:=0;
 form2.combobox1.clear;
 form2.combobox2.clear;k:=0;setcurrentdir(current_dir);
-p:=findfirst(current_dir+'\tests\*',fadirectory,searchresult); if p<>0 then begin showmessage('Fatal error. No subdirectories in the directory ''tests''');halt end;
+p:=findfirst(current_dir+'/tests/*',fadirectory,searchresult); if p<>0 then begin showmessage('Fatal error. No subdirectories in the directory ''tests''');halt end;
 if p=0 then begin  repeat  //if true or ((searchResult.attr and faDirectory) = faDirectory)
 //showmessage(searchresult.name);
 if (searchresult.name='')or(searchresult.Name[1]='.')then continue;
 s2:=searchresult.name;
 
-closefile(f); ioresult; assignfile(f,current_dir+'\tests\'+s2+'\tests.cde'); reset(f); if ioresult<>0 then continue;
+closefile(f); ioresult; assignfile(f,current_dir+'/tests/'+s2+'/tests.cde'); reset(f); if ioresult<>0 then continue;
 j:=pos('!',s2);inc(k);
 directory_names[k]:=s2;
 if j>=2 then begin chapter_names[k,1]:=copy(s2,1,j-1); chapter_names[k,2]:=copy(s2,j+1,1111)end else
@@ -382,10 +382,10 @@ form2.combobox2.clear;
 pr_an:=false;
 compi:=false;
 chosen_task:=''; filename:='';  closefile(f); ioresult;
-assignfile(f,current_dir+'\tests\'+directory_names[chosen_chapter]+'\claims.cde');
+assignfile(f,current_dir+'/tests/'+directory_names[chosen_chapter]+'/claims.cde');
 initializef(f, i_n_2, i_c_2, s_n_2,false);
-assignfile(f,current_dir+'\tests\'+directory_names[chosen_chapter]+'\tests.cde'); //..'Tests_chapter_'+chosen+'.cde');
-//reset(f); if ioresult<>0 then showmessage(current_dir+'\tests'+directory_names[form2.ComboBox1.itemindex+1]+'\tests.cde');
+assignfile(f,current_dir+'/tests/'+directory_names[chosen_chapter]+'/tests.cde'); //..'Tests_chapter_'+chosen+'.cde');
+//reset(f); if ioresult<>0 then showmessage(current_dir+'/tests'+directory_names[form2.ComboBox1.itemindex+1]+'/tests.cde');
 
 b:=false;initializef(f,i_n, i_c, s_n,true);
 //I wrote the next line for a safe reason because this error cannot occur
@@ -480,7 +480,7 @@ form2.memo1.clear;
 setcurrentdir(current_dir);
 
 assignfile(fi, filename);
-assignfile(fo, current_dir+'\\tmp\\Temp0.pas');
+assignfile(fo, current_dir+'//tmp//Temp0.pas');
 reset(fi); if ioresult<>0 then begin showmessage('The input file cannot be opened'); exit end;
 rewrite(fo); if ioresult<>0 then begin showmessage('The output file cannot be opened'); closefile(fi); ioresult; exit end;
 k:=0; while not(eof(fi))do begin inc(k);
@@ -500,8 +500,8 @@ end;
 //showmessage('we are here');
 
 closefile(fi);ioresult;closefile(fo);ioresult;
-assign(fi, current_dir+'\\tmp\\Temp0.pas');reset(fi);
-assign(fo, current_dir+'\\tmp\\Temp1.pas'); rewrite(fo);
+assign(fi, current_dir+'//tmp//Temp0.pas');reset(fi);
+assign(fo, current_dir+'//tmp//Temp1.pas'); rewrite(fo);
 b_comm1:=false; b_comm2:=false;b_str:=false;
 while not(eof(fi))do
 begin
@@ -547,7 +547,7 @@ begin
 //s1:=getcurrentdir;
 //setcurrentdir(current_dir);
 bc:=not((textsin<>0)or(textsout<>0)); //not((chosen_task='15_38')or(copy(chosen_task,1,4)='15_4')or(copy(chosen_task,1,4)='15_5')or(copy(chosen_task,1,4)='15_6'));
-assignfile(fi,current_dir+'\tmp\Temp1.pas');reset(fi); assignfile(fo,current_dir+'\tmp\Temp0.pas');rewrite(fo);
+assignfile(fi,current_dir+'/tmp/Temp1.pas');reset(fi); assignfile(fo,current_dir+'/tmp/Temp0.pas');rewrite(fo);
 k:=0; j:=0; while not(eof(fi)) do begin readln(fi,s2);
 //removal all read; readln; write; and writeln;
 i:=1;inc(j);
@@ -638,7 +638,7 @@ var s2{,s1}:string;fi,fo:textfile;i,l,m,n,k{,j}:integer;
 begin
 //s1:=getcurrentdir;
 //setcurrentdir(current_dir);
-assignfile(fi,current_dir+'\tmp\Temp0.pas');reset(fi); assignfile(fo,current_dir+'\tmp\Temp1.pas');rewrite(fo);
+assignfile(fi,current_dir+'/tmp/Temp0.pas');reset(fi); assignfile(fo,current_dir+'/tmp/Temp1.pas');rewrite(fo);
 {Search the last 'begin' with zero balance; n is the line number, m is the position of the 'begin' in the found line,
 l is the current balance}
 k:=0;l:=0;m:=0; n:=0;
@@ -974,11 +974,11 @@ case i2 of
 1: s4:='';
 2: s4:='0'
 end;
-assign(f,current_dir+'\tmp\temp1'+s4+'.pas');reset(f); if ioresult<>0 then begin showmessage('Fatal error 14');halt;end;
-assign(g,current_dir+'\tmp\temp2'+s4+'.pas');rewrite(g); if ioresult<>0 then begin showmessage('Fatal error 15');halt;end;
-assign(h,current_dir+'\tmp\temp3'+s4+'.pas');rewrite(h); if ioresult<>0 then begin showmessage('Fatal error 16');halt;end;
-assign(g1,current_dir+'\tmp\temp4'+s4+'.pas');rewrite(g1); if ioresult<>0 then begin showmessage('Fatal error 17');halt;end;
-assign(h1,current_dir+'\tmp\temp5'+s4+'.pas');rewrite(h1); if ioresult<>0 then begin showmessage('Fatal error 18');halt;end;
+assign(f,current_dir+'/tmp/temp1'+s4+'.pas');reset(f); if ioresult<>0 then begin showmessage('Fatal error 14');halt;end;
+assign(g,current_dir+'/tmp/temp2'+s4+'.pas');rewrite(g); if ioresult<>0 then begin showmessage('Fatal error 15');halt;end;
+assign(h,current_dir+'/tmp/temp3'+s4+'.pas');rewrite(h); if ioresult<>0 then begin showmessage('Fatal error 16');halt;end;
+assign(g1,current_dir+'/tmp/temp4'+s4+'.pas');rewrite(g1); if ioresult<>0 then begin showmessage('Fatal error 17');halt;end;
+assign(h1,current_dir+'/tmp/temp5'+s4+'.pas');rewrite(h1); if ioresult<>0 then begin showmessage('Fatal error 18');halt;end;
 
 if consts[1,1]=0 then begin
 while not eof(f) do begin readln(f,s); writeln(g,s); writeln(h,s);writeln(g1,s); writeln(h1,s)  end;
@@ -1018,80 +1018,80 @@ setcurrentdir(current_dir);form2.button5.enabled:=false;
 form2.button10.enabled:=false;
 form2.button11.enabled:=false;
 //form2.memo1.clear;
-deletefile(current_dir+'\tmp\temp1');deletefile(current_dir+'\tmp\temp10');
-deletefile(current_dir+'\tmp\temp2');deletefile(current_dir+'\tmp\temp3');
-deletefile(current_dir+'\tmp\temp4');deletefile(current_dir+'\tmp\temp5');
-deletefile(current_dir+'\tmp\temp20');deletefile(current_dir+'\tmp\temp30');
-deletefile(current_dir+'\tmp\temp40');deletefile(current_dir+'\tmp\temp50');
-deletefile(current_dir+'\tmp\temp1.o');deletefile(current_dir+'\tmp\temp10.o');
-deletefile(current_dir+'\tmp\temp2.o');deletefile(current_dir+'\tmp\temp3.o');
-deletefile(current_dir+'\tmp\temp4.o');deletefile(current_dir+'\tmp\temp5.o');
-deletefile(current_dir+'\tmp\temp20.o');deletefile(current_dir+'\tmp\temp30.o');
-deletefile(current_dir+'\tmp\temp40.o');deletefile(current_dir+'\tmp\temp50.o');
+deletefile(current_dir+'/tmp/temp1');deletefile(current_dir+'/tmp/temp10');
+deletefile(current_dir+'/tmp/temp2');deletefile(current_dir+'/tmp/temp3');
+deletefile(current_dir+'/tmp/temp4');deletefile(current_dir+'/tmp/temp5');
+deletefile(current_dir+'/tmp/temp20');deletefile(current_dir+'/tmp/temp30');
+deletefile(current_dir+'/tmp/temp40');deletefile(current_dir+'/tmp/temp50');
+deletefile(current_dir+'/tmp/temp1.o');deletefile(current_dir+'/tmp/temp10.o');
+deletefile(current_dir+'/tmp/temp2.o');deletefile(current_dir+'/tmp/temp3.o');
+deletefile(current_dir+'/tmp/temp4.o');deletefile(current_dir+'/tmp/temp5.o');
+deletefile(current_dir+'/tmp/temp20.o');deletefile(current_dir+'/tmp/temp30.o');
+deletefile(current_dir+'/tmp/temp40.o');deletefile(current_dir+'/tmp/temp50.o');
 //showmessage('we are here');
 compilation:=false;
 
-assignfile(f,current_dir+'\tmp\temp2'); closefile(f); ioresult; rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp2'); closefile(f); ioresult; rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp2''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp2. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp3'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp3'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp3''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp3. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp4'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp4'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp4''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp4. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp5'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp5'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp5''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp5. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp20'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp20'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp20''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp20. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp30'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp30'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp30''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp30. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp40'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp40'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp40''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp40. Перезагрузите компьютер.');exit end else closefile(f);
 
-assignfile(f,current_dir+'\tmp\temp50'); rewrite(f); k:=ioresult;
+assignfile(f,current_dir+'/tmp/temp50'); rewrite(f); k:=ioresult;
 if k<>0 then begin if en_rus then showmessage('Fatal error. It is impossible to delete ''temp50''. Restart your computer.')else
 showmessage('Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');exit end else closefile(f);
 
-deletefile(current_dir+'\tmp\temp2');ioresult;deletefile(current_dir+'\tmp\temp3');ioresult;
-deletefile(current_dir+'\tmp\temp4');ioresult;deletefile(current_dir+'\tmp\temp5');ioresult;
-deletefile(current_dir+'\tmp\temp20');ioresult;deletefile(current_dir+'\tmp\temp30');ioresult;
-deletefile(current_dir+'\tmp\temp40');ioresult;deletefile(current_dir+'\tmp\temp50');ioresult;
-deletefile(current_dir+'\tmp\result.txt');ioresult;
+deletefile(current_dir+'/tmp/temp2');ioresult;deletefile(current_dir+'/tmp/temp3');ioresult;
+deletefile(current_dir+'/tmp/temp4');ioresult;deletefile(current_dir+'/tmp/temp5');ioresult;
+deletefile(current_dir+'/tmp/temp20');ioresult;deletefile(current_dir+'/tmp/temp30');ioresult;
+deletefile(current_dir+'/tmp/temp40');ioresult;deletefile(current_dir+'/tmp/temp50');ioresult;
+deletefile(current_dir+'/tmp/result.txt');ioresult;
 //Creation of the files temp0.sh and temp00.sh
-assign(f,current_dir+'\tmp\directory.txt');closefile(f); ioresult;
+assign(f,current_dir+'/tmp/directory.txt');closefile(f); ioresult;
 reset(f); if (ioresult=0) and(not(eof(f))) then readln(f,s3)else s3:=chr(1); closefile(f); ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.\\tmp\\temp0.sh');rewrite(f);s4:='';end;
-2:begin assign(f,'.\\tmp\\temp00.sh');rewrite(f);s4:='0' end;
+1:begin assign(f,'.//tmp//temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,'.//tmp//temp00.sh');rewrite(f);s4:='0' end;
 end; //of case
 if s3=chr(1)then begin
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp3'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp4'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp5'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'/tmp/temp2'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'/tmp/temp3'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'/tmp/temp4'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'/tmp/temp5'+s4+'.pas > '+current_dir+'/tmp/result.txt');
 end
 else begin
-writeln(f,s3+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s3+' -vu -Sg w '+current_dir+'\tmp\temp3'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s3+' -vu -Sg w '+current_dir+'\tmp\temp4'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s3+' -vu -Sg w '+current_dir+'\tmp\temp5'+s4+'.pas > '+current_dir+'\tmp\result.txt');
+writeln(f,s3+' -vu -Sg w '+current_dir+'/tmp/temp2'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s3+' -vu -Sg w '+current_dir+'/tmp/temp3'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s3+' -vu -Sg w '+current_dir+'/tmp/temp4'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s3+' -vu -Sg w '+current_dir+'/tmp/temp5'+s4+'.pas > '+current_dir+'/tmp/result.txt');
 end;
 closefile(f);ioresult;
 end;
 
-assignfile(f,current_dir+'\\tmp\\temp0.sh'); closefile(f); ioresult; reset(f);
+assignfile(f,current_dir+'//tmp//temp0.sh'); closefile(f); ioresult; reset(f);
 b:=(ioresult=0)and not eof(f);
 if not b then begin closefile(f); ioresult end else
 begin readln(f,s1); k:=pos(' ',s1);
@@ -1140,27 +1140,27 @@ closefile(g);ioresult;
 closefile(f);ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.\tmp\temp0.sh');rewrite(f);s4:='';end;
-2:begin assign(f,'.\tmp\temp00.sh');rewrite(f);s4:='0';end;
+1:begin assign(f,'./tmp/temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,'./tmp/temp00.sh');rewrite(f);s4:='0';end;
 end; //of case
 closefile(f); ioresult; rewrite(f); if ioresult<>0 then exit;
-writeln(f,s1+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s1+' -vu -Sg w '+current_dir+'\tmp\temp3'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s1+' -vu -Sg w '+current_dir+'\tmp\temp4'+s4+'.pas > '+current_dir+'\tmp\result.txt');
-writeln(f,s1+' -vu -Sg w '+current_dir+'\tmp\temp5'+s4+'.pas > '+current_dir+'\tmp\result.txt'); closefile(f); ioresult;
+writeln(f,s1+' -vu -Sg w '+current_dir+'/tmp/temp2'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s1+' -vu -Sg w '+current_dir+'/tmp/temp3'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s1+' -vu -Sg w '+current_dir+'/tmp/temp4'+s4+'.pas > '+current_dir+'/tmp/result.txt');
+writeln(f,s1+' -vu -Sg w '+current_dir+'/tmp/temp5'+s4+'.pas > '+current_dir+'/tmp/result.txt'); closefile(f); ioresult;
 end;//of i2:=1 to 2
 end; //of not b
 closefile(f);ioresult;
 
-for k:=1 to max_test_number do deletefile(current_dir+'\tmp\rrr'+inttostr(k));
-for k:=1 to max_test_number do deletefile(current_dir+'\tmp\rrrr'+inttostr(k));
+for k:=1 to max_test_number do deletefile(current_dir+'/tmp/rrr'+inttostr(k));
+for k:=1 to max_test_number do deletefile(current_dir+'/tmp/rrrr'+inttostr(k));
 
 compilation:=false;//form2.memo2.clear; form2.memo3.clear;
 for i2:=1 to 2-byte(not(program_sub))do begin
-//if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp0.sh'), nil, nil,sw_hide);
-//if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'\tmp\temp00.sh'), nil, nil,sw_hide);
-if i2 = 1 then k := executeScript(handle, pchar(current_dir+'\tmp\temp00.sh'));
-if i2 = 2 then k := executeScript(handle, pchar(current_dir+'\tmp\temp00.sh'));
+//if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp0.sh'), nil, nil,sw_hide);
+//if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp00.sh'), nil, nil,sw_hide);
+if i2 = 1 then k := executeScript(handle, pchar(current_dir+'/tmp/temp00.sh'));
+if i2 = 2 then k := executeScript(handle, pchar(current_dir+'/tmp/temp00.sh'));
 
 if en_rus then begin form3.caption:='Compilation';
 if program_sub then if i2=1 then form3.label1.caption:='The main file is being compiled.'+chr(10)+'Please, wait.'
@@ -1173,7 +1173,7 @@ form3.label1.caption:='Файл компилируется. Ждите.'end;
 form3.showmodal;
 closefile(f); ioresult;
 //showmessage(inttostr(byte(compi)));
-if compi then begin assignfile(f,current_dir+'\tmp\result.txt'); closefile(f); ioresult; reset(f); k:=ioresult;
+if compi then begin assignfile(f,current_dir+'/tmp/result.txt'); closefile(f); ioresult; reset(f); k:=ioresult;
 //showmessage(inttostr(k));
 
 if k=0 then begin while not eof(f) do begin
@@ -1184,20 +1184,20 @@ else
 begin closefile(f); ioresult;
 //if en_rus then showmessage('The compilation failed. Check your compiler.')else
 //showmessage('Компиляция невозможна. Проверьте компилятор.');
-//deletefile(current_dir+'\tmp\temp0.sh');halt
+//deletefile(current_dir+'/tmp/temp0.sh');halt
 end;
 closefile(f);ioresult;
 if i2=1 then begin
-assignfile(f,'.\tmp\temp2'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp3'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp4'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp5'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;end
+assignfile(f,'./tmp/temp2'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp3'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp4'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp5'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;end
 else begin
 //showmessage('We are here');
-assignfile(f,'.\tmp\temp20'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp30'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp40'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
-assignfile(f,'.\tmp\temp50'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp20'); closefile(f); ioresult; reset(f); k6:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp30'); closefile(f); ioresult; reset(f); k7:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp40'); closefile(f); ioresult; reset(f); k8:=ioresult;closefile(f); ioresult;
+assignfile(f,'./tmp/temp50'); closefile(f); ioresult; reset(f); k9:=ioresult;closefile(f); ioresult;
 
 end;
 //showmessage(inttostr(k));
@@ -1218,7 +1218,7 @@ if i2=2 then if en_rus then s45:='file with the subprogram'else s45:=' файл�
 if not program_sub then if en_rus then s45:='program' else s45:='';
 
 if i2=1 then s44:=''else s44:='0';
-fill_file_text_err(current_dir+'\tmp\temp1'+s44+'.pas', current_dir+'\tmp\result.txt');
+fill_file_text_err(current_dir+'/tmp/temp1'+s44+'.pas', current_dir+'/tmp/result.txt');
 if en_rus then showmessage (' Errors were found while compiling the '+s45+'. It cannot be executed.')else
 showmessage('Были ошибки при компиляции'+s45+'. Выполнение пpограммы невозможно. ')end;
 if (k6<>0)or(k7<>0)or(k8<>0)or(k9<>0)then break;
@@ -1527,24 +1527,24 @@ button1.click; initial:=true;
 createdir('tmp');ioresult;
 //creation of files temp01, temp02,...  in the directory tmp
 for i:=1 to max_test_number do begin
-assignfile(f,current_dir+'\tmp\temp0'+inttostr(i)+'.sh'); rewrite(f); ioresult;
+assignfile(f,current_dir+'/tmp/temp0'+inttostr(i)+'.sh'); rewrite(f); ioresult;
 writeln(f,'temp'+inttostr(2+(i-1)mod 4)+' <iii'+inttostr(i)+' >rrr'+inttostr(i));closefile(f);
-assignfile(f,current_dir+'\tmp\temp00'+inttostr(i)+'.sh'); rewrite(f); ioresult;
+assignfile(f,current_dir+'/tmp/temp00'+inttostr(i)+'.sh'); rewrite(f); ioresult;
 writeln(f,'temp'+inttostr(2+(i-1)mod 4)+'0 <iiii'+inttostr(i)+' >rrrr'+inttostr(i));closefile(f);
-deletefile(current_dir+'\tmp\iii'+inttostr(i));
-deletefile(current_dir+'\tmp\ooo'+inttostr(i));
-deletefile(current_dir+'\tmp\rrr'+inttostr(i));
-deletefile(current_dir+'\tmp\iiii'+inttostr(i));
-deletefile(current_dir+'\tmp\oooo'+inttostr(i));
-deletefile(current_dir+'\tmp\rrrr'+inttostr(i));
+deletefile(current_dir+'/tmp/iii'+inttostr(i));
+deletefile(current_dir+'/tmp/ooo'+inttostr(i));
+deletefile(current_dir+'/tmp/rrr'+inttostr(i));
+deletefile(current_dir+'/tmp/iiii'+inttostr(i));
+deletefile(current_dir+'/tmp/oooo'+inttostr(i));
+deletefile(current_dir+'/tmp/rrrr'+inttostr(i));
 end;
 //forming of the file temp0.sh - let us remove it for quite a while
-{assignfile(f,current_dir+'\temp0.sh'); rewrite(f);
-writeln(f, current_dir+'\Pascal_compiler\2.0.4\bin\i386-win32\fpc.exe '+current_dir+'\tmp\temp2.pas '+current_dir+'\tmp\result.txt');
-writeln(f, current_dir+'\Pascal_compiler\2.0.4\bin\i386-win32\fpc.exe '+current_dir+'\tmp\temp3.pas '+current_dir+'\tmp\result.txt');
+{assignfile(f,current_dir+'/temp0.sh'); rewrite(f);
+writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp2.pas '+current_dir+'/tmp/result.txt');
+writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp3.pas '+current_dir+'/tmp/result.txt');
 closefile(f);}
 //showmessage(inttostr(ioresult)+' '+current_dir);
-assignfile(ff,current_dir+'\tmp\p.txt'); reset(ff); ii:=ioresult; closefile(ff);ioresult;
+assignfile(ff,current_dir+'/tmp/p.txt'); reset(ff); ii:=ioresult; closefile(ff);ioresult;
 form1.label6.Visible:=ii=0;
 form1.label7.Visible:=ii=0;
 sorts:=0;
@@ -1570,8 +1570,8 @@ end;
 procedure TForm2.FormClose(Sender: TObject; var Action1: TCloseAction);
 var f:textfile;label 1;
 begin
-deletefile('.\tmp\temp0.sh');
-assignfile(f, current_dir+'\tmp\tests.ini'); rewrite(f);
+deletefile('./tmp/temp0.sh');
+assignfile(f, current_dir+'/tmp/tests.ini'); rewrite(f);
 if form2.checkbox1.checked then writeln(f,'1')else writeln(f,'0');
 if form2.checkbox2.checked then writeln(f,'1')else writeln(f,'0');
 //showmessage(inttostr(ioresult));
@@ -1826,7 +1826,7 @@ if task_size then button9.Click;
 //button11.Click;
 setcurrentdir(current_dir);
 form2.Memo1.Font.Name:=_fontname;
-for i:=1 to max_test_number do deletefile('current_dir'+'\tmp\rrr'+inttostr(i));
+for i:=1 to max_test_number do deletefile('current_dir'+'/tmp/rrr'+inttostr(i));
 button5.Enabled:=false;memo1.Clear; //memo2.Clear; memo3.clear;
 button10.Enabled:=false;
 button11.Enabled:=false;
@@ -1844,7 +1844,7 @@ pr_an:=preliminary_analysis3;
 //if pr_an then if en_rus then memo1.Lines.Add('No errors have been found.')else
 //memo1.Lines.Add('Ошибoк не обнаружeнo.');
 //button4.Enabled:=pr_an;
-if pr_an then fill_file_text(current_dir+'\tmp\temp1.pas');
+if pr_an then fill_file_text(current_dir+'/tmp/temp1.pas');
 //showmessage('Before precompile!');
 //if pr_an then showmessage('!!!!!!!!!!!!!!');
 if pr_an then precompile else exit;
@@ -1960,7 +1960,7 @@ end;
 if (form2.ComboBox1.ItemIndex=-1)or(form2.ComboBox2.ItemIndex=-1)then begin if en_rus then showmessage('You have not chosen a task.')else showmessage('Bы не выбрaли зaдaчу. ');exit;end;
 
 //showmessage(current_dir);
-for i:=1 to max_test_number do deletefile(current_dir+'\tmp\rrr'+inttostr(i));
+for i:=1 to max_test_number do deletefile(current_dir+'/tmp/rrr'+inttostr(i));
 //button4.Enabled:=false;
 button5.Enabled:=false;
 
@@ -1968,16 +1968,16 @@ button5.Enabled:=false;
 setcurrentdir(current_dir);
 if s3<>''then begin b:=fileexistsf(s3); if not b then exit;end;
 filename:=s3;
-deletefile('.\tmp\temp1.pas');
-deletefile('.\tmp\temp2.pas');
-deletefile('.\tmp\temp3.pas');
-deletefile('.\tmp\temp4.pas');
-deletefile('.\tmp\temp5.pas');
-deletefile('.\tmp\temp10.pas');
-deletefile('.\tmp\temp20.pas');
-deletefile('.\tmp\temp30.pas');
-deletefile('.\tmp\temp40.pas');
-deletefile('.\tmp\temp50.pas');
+deletefile('./tmp/temp1.pas');
+deletefile('./tmp/temp2.pas');
+deletefile('./tmp/temp3.pas');
+deletefile('./tmp/temp4.pas');
+deletefile('./tmp/temp5.pas');
+deletefile('./tmp/temp10.pas');
+deletefile('./tmp/temp20.pas');
+deletefile('./tmp/temp30.pas');
+deletefile('./tmp/temp40.pas');
+deletefile('./tmp/temp50.pas');
 if filename<>'' then begin memo1.Clear; memo5.clear;func_proc:=func_proc0; fill_file_text(filename);edit1.text:=filename;
 if form2.checkbox1.Checked then form2.Button3.click;
 
@@ -2006,26 +2006,26 @@ button9.Enabled:=true;
 button10.Enabled:=false;
 button11.Enabled:=false;
 memo5.clear; memo1.clear;
-deletefile('.\tmp\temp1.pas');
-deletefile('.\tmp\temp2.pas');
-deletefile('.\tmp\temp3.pas');
-deletefile('.\tmp\temp4.pas');
-deletefile('.\tmp\temp5.pas');
-deletefile('.\tmp\temp10.pas');
-deletefile('.\tmp\temp20.pas');
-deletefile('.\tmp\temp30.pas');
-deletefile('.\tmp\temp40.pas');
-deletefile('.\tmp\temp50.pas');
-deletefile(current_dir+'\tmp\temp1');deletefile(current_dir+'\tmp\temp10');
-deletefile(current_dir+'\tmp\temp2');deletefile(current_dir+'\tmp\temp3');
-deletefile(current_dir+'\tmp\temp4');deletefile(current_dir+'\tmp\temp5');
-deletefile(current_dir+'\tmp\temp20');deletefile(current_dir+'\tmp\temp30');
-deletefile(current_dir+'\tmp\temp40');deletefile(current_dir+'\tmp\temp50');
-deletefile(current_dir+'\tmp\temp1.o');deletefile(current_dir+'\tmp\temp10.o');
-deletefile(current_dir+'\tmp\temp2.o');deletefile(current_dir+'\tmp\temp3.o');
-deletefile(current_dir+'\tmp\temp4.o');deletefile(current_dir+'\tmp\temp5.o');
-deletefile(current_dir+'\tmp\temp20.o');deletefile(current_dir+'\tmp\temp30.o');
-deletefile(current_dir+'\tmp\temp40.o');deletefile(current_dir+'\tmp\temp50.o');
+deletefile('./tmp/temp1.pas');
+deletefile('./tmp/temp2.pas');
+deletefile('./tmp/temp3.pas');
+deletefile('./tmp/temp4.pas');
+deletefile('./tmp/temp5.pas');
+deletefile('./tmp/temp10.pas');
+deletefile('./tmp/temp20.pas');
+deletefile('./tmp/temp30.pas');
+deletefile('./tmp/temp40.pas');
+deletefile('./tmp/temp50.pas');
+deletefile(current_dir+'/tmp/temp1');deletefile(current_dir+'/tmp/temp10');
+deletefile(current_dir+'/tmp/temp2');deletefile(current_dir+'/tmp/temp3');
+deletefile(current_dir+'/tmp/temp4');deletefile(current_dir+'/tmp/temp5');
+deletefile(current_dir+'/tmp/temp20');deletefile(current_dir+'/tmp/temp30');
+deletefile(current_dir+'/tmp/temp40');deletefile(current_dir+'/tmp/temp50');
+deletefile(current_dir+'/tmp/temp1.o');deletefile(current_dir+'/tmp/temp10.o');
+deletefile(current_dir+'/tmp/temp2.o');deletefile(current_dir+'/tmp/temp3.o');
+deletefile(current_dir+'/tmp/temp4.o');deletefile(current_dir+'/tmp/temp5.o');
+deletefile(current_dir+'/tmp/temp20.o');deletefile(current_dir+'/tmp/temp30.o');
+deletefile(current_dir+'/tmp/temp40.o');deletefile(current_dir+'/tmp/temp50.o');
 filename:=s;func_proc:=func_proc0;fill_file_text(filename);
 
 if form2.checkbox1.Checked then form2.Button3.click;

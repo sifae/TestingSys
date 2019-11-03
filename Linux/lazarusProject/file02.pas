@@ -3,8 +3,8 @@ unit file02;
 interface
 
 uses
-  file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process, cthreads, cmem;
+  cthreads, cmem, file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process;
 
 type
   TForm2 = class(TForm)
@@ -962,7 +962,9 @@ k:=0; while not eof(f) do begin inc(k); readln(f,s);if k=1 then delete_extra(s);
 memo.lines.add(s); end; closefile(f);
 end;
 
-procedure precompile;//this procedure forms files temp2.pas, temp3.pas, temp4.pas and temp5.pas from temp1.pas and files temp20.pas, temp30.pas, temp40.pas and temp50.pas from temp10.pas
+procedure precompile;
+//this procedure forms files temp2.pas, temp3.pas, temp4.pas and temp5.pas from temp1.pas and
+//files temp20.pas, temp30.pas, temp40.pas and temp50.pas from temp10.pas
 var f,g,h,g1,h1:textfile;s8,s4,s5,s6,s7,s:string;k1,p,q,i2:integer;
 begin
 

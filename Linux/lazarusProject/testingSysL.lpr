@@ -4,11 +4,12 @@ program testingSysL;
 
 uses
   cthreads,
+  cmem,
+  richmemo,
   Interfaces, // this includes the LCL widgetset
   Forms,
-  cmem,
-  file02,
-  file01;
+  file01,
+  file02;
 
 {$R *.res}
 
@@ -18,5 +19,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
+  Form1.Show;
   Application.Run;
 end.

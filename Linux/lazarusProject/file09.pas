@@ -1287,9 +1287,9 @@ analysis:=an_res;
 //if ns[1]+ns[2]+ns[3]+ns[4]>2 then an_res[7]:=1;end;
 analysis:=an_res;
 end;{of the function}
-}}
+//}}
 
-end;
+//end;
 
 procedure delete_temp;
 var i:integer;

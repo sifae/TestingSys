@@ -4,7 +4,7 @@ interface
 
 uses
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  Dialogs, StdCtrls, ExtCtrls, RichMemo;
 
 type
   TForm1 = class(TForm)
@@ -62,6 +62,7 @@ var
   s, s2: string;
 begin
 
+  //form2 := Tform2.Create(self);
   if fileexists('.\tmp\temp01.sh') then
   begin
     s := 'Программа уже выполняется. Если это не так, удалите все файлы из подкаталога TMP, кроме directory.txt и p.txt. Пoсле этого перезапустите программу.';
@@ -163,6 +164,7 @@ end;
 procedure TForm1.FormClick(Sender: TObject);
 begin
   timer1.Enabled := False;
+  //form2 := TForm2.Create(Application);
   form2.Show;
   form1.hide;
   form2.button1.Visible := False;

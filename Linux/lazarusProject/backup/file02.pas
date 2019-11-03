@@ -108,7 +108,7 @@ procedure initialize_screen;
 procedure initializef(var f:t_f; var i_n, i_c:integer; var s_n:Ts_n; b:boolean);
 
 implementation
-uses file09, file01, file03, file101, file_killProcess, file_executeScript, testing_main, data;
+uses file09, file01, file03, file_executeScript, testing_main, data;
 
 {$R *.dfm}
 
@@ -962,7 +962,9 @@ k:=0; while not eof(f) do begin inc(k); readln(f,s);if k=1 then delete_extra(s);
 memo.lines.add(s); end; closefile(f);
 end;
 
-procedure precompile;//this procedure forms files temp2.pas, temp3.pas, temp4.pas and temp5.pas from temp1.pas and files temp20.pas, temp30.pas, temp40.pas and temp50.pas from temp10.pas
+procedure precompile;
+//this procedure forms files temp2.pas, temp3.pas, temp4.pas and temp5.pas from temp1.pas and
+//files temp20.pas, temp30.pas, temp40.pas and temp50.pas from temp10.pas
 var f,g,h,g1,h1:textfile;s8,s4,s5,s6,s7,s:string;k1,p,q,i2:integer;
 begin
 

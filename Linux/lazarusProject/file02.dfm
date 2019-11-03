@@ -7,7 +7,7 @@ object Form2: TForm2
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = 15
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -80,7 +80,7 @@ object Form2: TForm2
   end
   object ComboBox2: TComboBox
     Left = 232
-    Top = 120
+    Top = 125
     Width = 145
     Height = 21
     ItemHeight = 13

@@ -161,7 +161,7 @@ object Form2: TForm2
     TabOrder = 10
     OnKeyDown = Memo5KeyDown
   end
-  object RichEdit1: TCustomRichMemo
+  object RichEdit1: TRichMemo
     Left = 896
     Top = 152
     Width = 185

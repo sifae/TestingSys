@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="13">
       <Unit0>
         <Filename Value="testingSysL.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -51,24 +51,51 @@
         <UnitName Value="File_ExecuteScript"/>
       </Unit2>
       <Unit3>
-        <Filename Value="testing.pas"/>
+        <Filename Value="data.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="evaluate_accuracy.pas"/>
+        <Filename Value="file_killprocess.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="File_KillProcess"/>
       </Unit4>
       <Unit5>
-        <Filename Value="data.pas"/>
+        <Filename Value="file00.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit5>
       <Unit6>
+        <Filename Value="file01.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="testing_utils.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="file09.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="testing_main.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="file101.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="form3.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form2"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-      </Unit6>
+      </Unit11>
+      <Unit12>
+        <Filename Value="file03.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -4,7 +4,7 @@ interface
 
 uses
   cthreads, cmem, file00, LCLIntf, Messages, SysUtils, Classes,Variants,  Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, Process;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, RichMemoUtils, Process;
 
 type
   TForm2 = class(TForm)
@@ -25,7 +25,7 @@ type
     Timer1: TTimer;
     OpenDialog2: TOpenDialog;
     Memo5: TMemo;
-    RichEdit1: TRichMemo;
+    RichEdit1: TCustomRichMemo;
     Button8: TButton;
     Button9: TButton;
     Button10: TButton;

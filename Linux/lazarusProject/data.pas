@@ -31,14 +31,14 @@ form2.button3.Enabled:=false; form2.button5.Enabled:=false; form2.button6.Enable
 //showmessage(inttostr(task_claims_amount));
 for i:=1 to max_test_number do
 begin
-assignfile(f,current_dir+'\tmp\iii'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
-assignfile(f,current_dir+'\tmp\ooo'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
-assignfile(f,current_dir+'\tmp\rrr'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
-assignfile(f,current_dir+'\tmp\iiii'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
-assignfile(f,current_dir+'\tmp\oooo'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
-assignfile(f,current_dir+'\tmp\rrrr'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/iii'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/ooo'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/rrr'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/iiii'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/oooo'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
+assignfile(f,current_dir+'/tmp/rrrr'+inttostr(i));closefile(f); ioresult; erase(f); ioresult;
 end; {of for}
-b:=true; if chosen_task<>'' then begin assign(h,current_dir+'\tests\'+directory_names[chosen_chapter]+'\tests.cde');
+b:=true; if chosen_task<>'' then begin assign(h,current_dir+'/tests/'+directory_names[chosen_chapter]+'/tests.cde');
 initializef(h,i_n, i_c, s_n,true);// Is it necessary here?
   end else b:=false; if not b then begin closefile(f); ioresult;
 showmessage('Fatal error 1!'); exit end;b:=false;
@@ -301,18 +301,18 @@ s1:=getcurrentdir;
 for ii2i:=1 to 1+byte(program_sub) do begin
 if ii2i=1 then k:=number_of_tests else k:=number_of_subtests;
 for i:=1 to k do begin
-if ii2i=1 then assign(g,s1+'\tmp\iii'+inttostr(i))else assign(g,s1+'\tmp\iiii'+inttostr(i)); rewrite(g); readlnf(h,s7);ioresult;
+if ii2i=1 then assign(g,s1+'/tmp/iii'+inttostr(i))else assign(g,s1+'/tmp/iiii'+inttostr(i)); rewrite(g); readlnf(h,s7);ioresult;
 j:=pos(';',s7);if j>0 then s7:=copy(s7,1,j-1);
 //if (copy(chosen_task,1,4)='8_44') then begin
 //kk:=pos(' ',s7); if kk>0 then begin writeln(g, copy(s7,1, kk-1)); writeln(g,copy(s7, kk+1,100)) end
 //else writeln(g,s7);
 //end
 //else
-repeat j:=pos(' \n', s7);
+repeat j:=pos(' /n', s7);
 if j=0 then begin writeln(g,s7);break end else begin writeln(g,copy(s7,1,j-1)); delete(s7,1,j+2) end;
 until j=0;
 closefile(g);
-if ii2i=1 then assign(g,s1+'\tmp\ooo'+inttostr(i))else assign(g,s1+'\tmp\oooo'+inttostr(i)); rewrite(g); readlnf(h,s7);ioresult;
+if ii2i=1 then assign(g,s1+'/tmp/ooo'+inttostr(i))else assign(g,s1+'/tmp/oooo'+inttostr(i)); rewrite(g); readlnf(h,s7);ioresult;
 j:=pos(';',s7);if j>0 then s7:=copy(s7,1,j-1); writeln(g,s7); closefile(g);
 end; //of for from 1 to number of tests or subtests}
 end; //of for from 1 to 1+byte(program+sub)
@@ -322,8 +322,8 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx14:=random(30)/10+3;
 xx15:=-abs(xx14-1)/2/xx14;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:10);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, xx15:1:10); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:10);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, xx15:1:10); closefile(g);
 end;
 k:=number_of_tests;
 //A special random test for the task 4.12-003
@@ -336,16 +336,16 @@ xx16:=random(30)/10+3;
 xx17:=xx14*2-0.1;
 xx18:=xx15*2;
 xx19:=xx16*2+2+random(10)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:5, '  ', xx15:1:5,'  ',xx16:1:5,'  ',xx17:1:5,'  ',xx18:1:5,'  ',xx19:1:5,' ');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, (xx16*xx18-xx19*xx15)/(xx14*xx18-xx17*xx15):1:10,'  ',(xx14*xx19-xx17*xx16)/(xx14*xx18-xx17*xx15):1:10); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:5, '  ', xx15:1:5,'  ',xx16:1:5,'  ',xx17:1:5,'  ',xx18:1:5,'  ',xx19:1:5,' ');closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, (xx16*xx18-xx19*xx15)/(xx14*xx18-xx17*xx15):1:10,'  ',(xx14*xx19-xx17*xx16)/(xx14*xx18-xx17*xx15):1:10); closefile(g);
 end;
 //A special random test for the task 4.12-006
 if chosen_task='4_12-006'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx14:=random(30)/10+3;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:5,'  ',xx14-0.01:1:5,'  ',xx14+0.04:1:5  );closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, 1); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx14:1:5,'  ',xx14-0.01:1:5,'  ',xx14+0.04:1:5  );closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, 1); closefile(g);
 end;
 
 //A random test for the task 4.12-007
@@ -357,8 +357,8 @@ xx22:=random (20)+3;
 xx23:=random (20)+3;
 xx24:=random(12)+4;
 xx25:=random(12)+4;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx21,'  ',xx22,'  ',xx23,' ',xx24*60+xx25);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, xx21,' ', xx22+xx24,' ', xx23+xx25);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx21,'  ',xx22,'  ',xx23,' ',xx24*60+xx25);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, xx21,' ', xx22+xx24,' ', xx23+xx25);
 end;
 
 //4 random tests for the task 4.12-009
@@ -367,14 +367,14 @@ number_of_tests:=number_of_tests+4;
 k:=k+4;randomize;
 xx21:=(random (25)+25)*2+1;
 xx22:=(xx21*xx21+7)div 8;
-assign(g,s1+'\tmp\iii'+inttostr(k-3)); rewrite(g);writeln(g, xx22);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k-3)); rewrite(g); writeln(g, 1);closefile(g);
-assign(g,s1+'\tmp\iii'+inttostr(k-2)); rewrite(g);writeln(g, 2+xx22);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k-2)); rewrite(g); writeln(g, 0);closefile(g);
-assign(g,s1+'\tmp\iii'+inttostr(k-1)); rewrite(g);writeln(g, xx22-2);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k-1)); rewrite(g); writeln(g, 0);closefile(g);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g,((xx21+2)*(xx21+2)+7)div 8);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, 1);closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k-3)); rewrite(g);writeln(g, xx22);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k-3)); rewrite(g); writeln(g, 1);closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k-2)); rewrite(g);writeln(g, 2+xx22);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k-2)); rewrite(g); writeln(g, 0);closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k-1)); rewrite(g);writeln(g, xx22-2);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k-1)); rewrite(g); writeln(g, 0);closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g,((xx21+2)*(xx21+2)+7)div 8);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, 1);closefile(g);
 end;
 
 {A special random test for tasks 5.20...}
@@ -386,8 +386,8 @@ if (chosen_task[6]='б')or(copy(chosen_task,6,3)='002') then yy:=(exp(xx)-exp(-x
 if (chosen_task[6]='в')or(copy(chosen_task,6,3)='003') then yy:=cos(xx);
 if (chosen_task[6]='г')or(copy(chosen_task,6,3)='004') then yy:=ln(1+xx);
 if (chosen_task[6]='д')or(copy(chosen_task,6,3)='005') then yy:=arctan(xx);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx:1:10);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, yy:1:10); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx:1:10);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, yy:1:10); closefile(g);
 end;
 
 {A randon testr for the task 5.52}
@@ -395,8 +395,8 @@ if chosen_task='5_52' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx21:=random(5)+4; xx22:=xx21+random(3)+1; xx23:=-random(5)-4;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, 1,' ',xx21+xx22+xx23,' ',xx21*xx22+(xx21+xx22)*xx23,' ',xx21*xx22*xx23);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, -xx22:1,' ',-xx21:1,' ',-xx23:1); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, 1,' ',xx21+xx22+xx23,' ',xx21*xx22+(xx21+xx22)*xx23,' ',xx21*xx22*xx23);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, -xx22:1,' ',-xx21:1,' ',-xx23:1); closefile(g);
 end;
 
 
@@ -405,8 +405,8 @@ if chosen_task='8_29_в' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, xx2:1:1,' ',xx1:1:1); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, xx2:1:1,' ',xx1:1:1); closefile(g);
 end;
 
 {A special random test for the task 8.29д}
@@ -414,8 +414,8 @@ if chosen_task='8_29_д' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g); writeln(g, yy1:1:1, ' ', xx1:1:1,' ',xx2:1:1); closefile(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g); writeln(g, yy1:1:1, ' ', xx1:1:1,' ',xx2:1:1); closefile(g);
 end;
 
 {A special random test for the task 8.29е}
@@ -424,9 +424,9 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
 xx:=(random(100)+20)/10; yy:=(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g, yy1:1:1, ' ', xx:1:1,' ',yy:1:1,' ',xx1:1:1,' ',xx2:1:1); closefile(g);
 end;
 
@@ -436,9 +436,9 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=(random(100)+20)/10; yy1:=(random(100)+20)/10;
 xx:=(random(100)+20)/10; yy:=(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, '0 ', xx1:1:1,' 0 0 ',xx2:1:1, ' 0 ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, '0 ', xx1:1:1,' 0 0 ',xx2:1:1, ' 0 ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1,' 0 0 0 0');
 closefile(g);
 end;
@@ -449,9 +449,9 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=-(random(100)+20)/10; yy1:=(random(100)+20)/10;
 xx:=(random(100)+20)/10; yy:=-(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' 0 ',xx2:1:1, ' 0 ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);writeln(g, xx1:1:1,' 0 ',xx2:1:1, ' 0 ',yy1:1:1, ' ',xx:1:1,' ',yy:1:1);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g, xx2:1:1,' ', yy:1:1, ' ', xx1:1:1,' 0 0 ',yy1:1:1, ' ',xx:1:1);
 closefile(g);
 end;
@@ -462,11 +462,11 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20)/10;xx2:=xx1+(random(100)+20)/10; yy1:=xx2+(random(100)+20)/10;
 yy2:=yy1+(random(100)+20)/10;xx:=yy2+(random(100)+20)/10;yy:=xx+(random(100)+20)/10;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 writeln(g, xx1:1:1,' ',xx2:1:1, ' ',yy1:1:1, ' ', yy2:1:1, ' ',xx:1:1,' ',yy:1:1,' ',
 -xx1-xx2:1:1, ' ',xx+yy:1:1);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g, '6');
 closefile(g);
 end;
@@ -477,13 +477,13 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=(random(100)+20);xx2:=xx1+(random(100)+20); yy1:=xx2+(random(100)+20);
 yy2:=yy1+(random(100)+20);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 if random(100)<50 then begin xx:=0;
 writeln(g, xx1:1:0,' ',xx2:1:0, ' ',yy1:1:0, ' ', xx2:1:0, ' ',yy1:1:0,' ',yy2:1:0)
 end else begin xx:=-1;
 writeln(g, yy1:1:0,' ',xx2:1:0, ' ',yy1:1:0, ' ', xx2+3:1:0, ' ',xx1:1:0,' ',yy2:1:0);end;
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx=0 then writeln(g, '4')else writeln(g,'5');
 closefile(g);
 end;
@@ -493,7 +493,7 @@ if chosen_task='9_5-005' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;
 randomize; xx1:=random(100)+20;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 if random(100)<50 then begin xx:=0;
 writeln(g, xx1:1:0,' ',xx1+1:1:0, ' ',xx1+2:1:0, ' ', xx1+3:1:0, ' ',xx1+4:1:0,' ',xx1+5:1:0,' ',
 xx1+7:1:0,' ',xx1+9:1:0, ' ',xx1+12:1:0, ' ', xx1+13:1:0, ' ',xx1+14:1:0,' ',xx1+17:1:0,' ',
@@ -503,7 +503,7 @@ writeln(g, xx1:1:0,' ',xx1+21:1:0, ' ',xx1+2:1:0, ' ', xx1+3:1:0, ' ',xx1-5:1:0,
 xx1+7:1:0,' ',xx1+9:1:0, ' ',xx1+12:1:0, ' ', xx1+13:1:0, ' ',xx1+14:1:0,' ',xx1+17:1:0, ' ',
 xx1-3:1:0, ' ',xx1+11:1:0,' ', xx1+19:1:0, ' ', xx1+18:1:0);end;
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx=0 then
 writeln(g, xx1:1:0,' ',xx1+1:1:0, ' ',xx1+2:1:0, ' ', xx1+3:1:0, ' ',xx1+4:1:0,' ',xx1+5:1:0,' ',
 xx1+7:1:0,' ',xx1+9:1:0, ' ',xx1+12:1:0, ' ', xx1+13:1:0, ' ',xx1+14:1:0,' ',xx1+17:1:0,    ' ',
@@ -523,10 +523,10 @@ xx1:=random(100)+20;xx2:=random (100)+35;
 xx3:=random(100)+20;xx4:=random (100)+35;
 xx5:=random(100)+20;xx6:=random (100)+35;
 xx7:=random(100)+20;xx8:=random (100)+35;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 writeln(g, xx1,' ', xx2,' ', xx3,' ', xx4, ' ', xx5,' ', xx6,' ',xx7,' ',xx8,' ',xx3-0.1);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if chosen_task='9_17-002' then write(g,xx1+xx3+xx5+xx7+xx3-0.1:1:3);
 if chosen_task='9_17-003' then write(g,xx1+xx2+xx3+xx5+xx7+xx8+xx3-0.1:1:3);
 if chosen_task='9_17-004' then write(g,xx2+xx4+xx5+xx6+xx8:1:3);
@@ -541,7 +541,7 @@ k:=k+1;
 randomize;
 if chosen_task='9_18-003' then begin
 xx1:=random(400)+20;xx3:=random(400)+20;xx2:=random(400)+20;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx1:1:0,' ', xx1+10:1:0,' ', xx1+34:1:0,' ', xx1+10:1:0,' ', xx1:1:0,' ');
 write(g, xx2:1:0,' ', xx2:1:0,' ', xx2+1:1:0,' ', xx2:1:0,' ', xx2:1:0,' ');
 write(g, xx3:1:0,' ', xx3+1:1:0,' ', xx3:1:0,' ', xx3+1:1:0,' ', xx3:1:0,' ');
@@ -554,7 +554,7 @@ end;
 
 if chosen_task='9_18-004' then begin
 xx1:=random(400)+20;xx3:=random(400)+20;xx2:=random(400)+20;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx1:1:0,' ', xx1+1:1:0,' ', xx1+2:1:0,' ', -xx1:1:0,' ', -xx1*2:1:0,' ');
 write(g, xx2:1:0,' ', xx2-1:1:0,' ', xx2+1:1:0,' ', xx2-1:1:0,' ', -xx2:1:0,' ');
 write(g, xx3:1:0,' ', xx3+1:1:0,' ', xx3:1:0,' ', xx3+1:1:0,' ', xx3:1:0,' ');
@@ -564,7 +564,7 @@ write(g, xx2-2:1:0,' ', xx2-20:1:0,' ', xx2-32:1:0,' ', xx2+1:1:0,' ', xx2+1:1:0
 writeln(g, xx3:1:0,' ', xx3:1:0,' ', xx3-1:1:0,' ', xx3-22:1:0,' ', xx3-24:1:0);
 closefile(g);
 end;
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if chosen_task='9_18-003' then write(g,'true true true false false false');
 if chosen_task='9_18-004' then write(g,'false true true true true true');
 closefile(g);
@@ -593,11 +593,11 @@ if (xx11>xx3+xx7)then inc (xx13);
 if (xx4>xx8+xx12)then inc (xx13);
 if (xx8>xx4+xx12)then inc (xx13);
 if (xx12>xx4+xx8)then inc (xx13);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx1:1:0,' ', xx2:1:0,' ', xx3:1:0,' ', xx4:1:0,' ', xx5:1:0,' ', xx6:1:0,'  ');
 writeln(g, xx7:1:0,' ', xx8:1:0,' ', xx9:1:0,' ', xx10:1:0,' ', xx11:1:0,' ', xx12:1:0);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g, xx13);
 closefile(g);
 end;
@@ -607,7 +607,7 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx1:=random(100)+25; xx2:=random(100)+24;
 xx3:=random(100)+25; xx4:=random(100)+24;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx1:1:0,' ', xx1-1:1:0,' ', xx1+1:1:0,' ', xx1+12:1:0,' ', xx1+15:1:0,' ');
 write(g, xx2-11:1:0,' ', xx2-9:1:0,' ', xx2+1:1:0,' ', xx2:1:0,' ', xx2+15:1:0,' ');
 if xx3>xx4 then
@@ -615,7 +615,7 @@ writeln(g, xx3:1:0,' ', xx4:1:0,' ', xx3:1:0,' ', xx4:1:0,' ', xx3+xx4:1:0)
 else
 writeln(g, -xx3-1:1:0,' ', -xx3:1:0,' ', xx3:1:0,' ', xx4:1:0,' ', xx3:1:0);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx3>xx4 then writeln(g, '7')else writeln(g,'8');
 closefile(g);
 end;
@@ -625,7 +625,7 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx2:=random(100);
 xx1:=random(100)+25;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 if xx2<50 then begin
 write(g, xx1:1:0,' ', xx1+1:1:0,' ', xx1+1:1:0,' ', xx1+2:1:0,' ');
 write(g, xx1+1:1:0,' ',xx1+1:1:0,' ',xx1+2:1:0,' ', xx1+1:1:0,'  ');
@@ -638,7 +638,7 @@ write(g, xx1+1:1:0,' ',xx1:1:0,' ',xx1+2:1:0,' ', xx1+1:1:0,' ');
 writeln(g, xx1:1:0,' ', xx1+10:1:0,' ', xx1:1:0,' ', xx1+15:1:0);
 end;
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx2<50 then writeln(g, '4')else writeln(g, '5');
 closefile(g);
 end;
@@ -660,14 +660,14 @@ xx10:=random(1000)-250;
 xx11:=random(1000)-250;
 xx12:=random(1000)-250;
 xx13:=random(1000)-250;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx1:1:0, ' ', xx2:1:0, ' ', xx3:1:0, ' ',xx4:1:0,' ', xx5:1:0,' ');
 write(g, xx6+1:1:0, ' ', xx7:1:0, ' ', xx8:1:0, ' ',xx9:1:0,' ', xx10:1:0,' ');
 write(g, xx11:1:0, ' ', xx12:1:0, ' ', -xx1:1:0, ' ',-xx2:1:0,' ', -xx3:1:0,' ');
 write(g, -xx4:1:0, ' ', -xx5-1:1:0, ' ', -xx6+1:1:0, ' ',-xx7:1:0,' ', -xx8:1:0,' ');
 writeln(g, -xx9-1:1:0, ' ', -xx10:1:0, ' ', -xx11:1:0, ' ',-xx12:1:0,' ', xx13:1,' ');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g, xx5:1:0, ' ', xx10:1:0, ' ', -xx3:1:0, ' ',-xx8:1:0,' ', xx13:1,' ');
 write(g, xx4:1:0, ' ', xx9:1:0, ' ', -xx2:1:0, ' ',-xx7:1:0,' ', -xx12:1:0,' ');
 write(g, xx3:1:0, ' ', xx8:1:0, ' ', -xx1:1:0, ' ',-xx6+1:1:0,' ', -xx11:1:0,' ');
@@ -683,7 +683,7 @@ k:=k+1;randomize;
 xx31:=random(10)/10+5;
 xx32:=random(10)/10+5;
 xx33:=random(10)/10+5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:8, ' ', xx32:1:8, ' ', xx33:1:8, ' ');
 closefile(g);
 xx34:=0.5*sqrt(2*xx31*xx31+2*xx32*xx32-xx33*xx33);
@@ -692,7 +692,7 @@ xx36:=0.5*sqrt(2*xx32*xx32+2*xx33*xx33-xx31*xx31);
 xx31:=0.5*sqrt(2*xx34*xx34+2*xx35*xx35-xx36*xx36);
 xx32:=0.5*sqrt(2*xx34*xx34+2*xx36*xx36-xx35*xx35);
 xx33:=0.5*sqrt(2*xx35*xx35+2*xx36*xx36-xx34*xx34);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx31>xx32 then begin xx34:=xx31; xx31:=xx32; xx32:=xx34;end;
 if xx32>xx33 then begin xx34:=xx32; xx32:=xx33; xx33:=xx34;end;
 if xx31>xx32 then begin xx34:=xx31; xx31:=xx32; xx32:=xx34;end;
@@ -711,11 +711,11 @@ xx25:=random(10)+5;
 xx26:=random(10)+5;
 xx27:=random(10)+5;
 xx28:=random(10)+5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21:1, ' ', xx22:1, ' ', xx23:1, ' ',xx24:1, ' ', xx25:1, ' ', xx26:1, ' ',xx27:1, ' ', xx28:1,
 ' ', 12+xx24 div 7, xx21+xx22:1,' ',25-xx25 div 10,' ', 45+xx26 div 3,' ', xx23 div 5+122,' ', 766+xx21 div 2,' ',-135+xx21,' ',-201+xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g, xx21*xx21+xx22*xx22+xx23*xx23+xx24*xx24+xx25*xx25+xx26*xx26+xx27*xx27+xx28*xx28);
 closefile(g);
 end;
@@ -727,12 +727,12 @@ k:=k+1;randomize;
 xx31:=random(10)/4+5;
 xx32:=random(10)/4+5;
 xx33:=random(10)/4+5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:4, ' ', xx31+1:1:4, ' ', xx31-3:1:4, ' ',xx31-4:1:4, ' ',
 xx32+4:1:4, ' ', xx32+1:1:4, ' ', xx32-3:1:4, ' ',xx32-52:1:4, ' ',
 xx33:1:4, ' ', xx33+1:1:4, ' ', xx33+3:1:4, ' ',xx33*2:1:4, ' ');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g, (xx31+1)*(xx33*4)+sqr(xx32+4):1:4);
 closefile(g);
 end;
@@ -749,10 +749,10 @@ xx25:=random(10)+5;
 xx26:=random(10)+5;
 xx27:=random(10)+5;
 xx28:=random(2)+1;if (xx28<1)or(xx28>2)then xx28:=2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21, ' ', xx22, ' ', xx23,' ',  xx24, ' ',xx25, ' ', xx26, ' ', xx27, ' ',xx26+xx25, ' ',xx21+xx28,' ',xx28,' ', xx23+xx28,' ', xx24+xx25,' ', xx28);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx28=1 then
 write(g, xx22, ' ', xx23,' ',  xx24, ' ',xx25, ' ', xx26, ' ', xx27, ' ',xx26+xx25, ' ',xx21+xx28,' ',xx28,' ', xx23+xx28,' ', xx24+xx25,' ',xx21)
 else
@@ -772,10 +772,10 @@ xx35:=-(random(100)+1)/4;
 xx36:=(random(100)+1)/4;
 xx21:=random(10)+50;
 if xx21 mod 2=1 then xx36:=-xx36;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:4, ' ', xx32:1:4, ' ', xx33:1:4,' ',  xx34:1:4, ' ',xx35:1:4, ' ', xx36:1:4 );
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx36<0 then
 write(g, xx33:1:4, ' ', xx35:1:4, ' ',xx36:1:4,' ', xx31:1:4, ' ',xx32:1:4, ' ', xx34:1:4, ' ')else
 write(g, xx33:1:4, ' ', xx35:1:4, ' ', xx31:1:4, ' ',xx32:1:4, ' ', xx34:1:4, ' ',xx36:1:4);
@@ -790,10 +790,10 @@ xx31:=(random(8)-4)/2;xx32:=(random(10)-5)/2;xx33:=(random(10)-5)/2;xx34:=(rando
 if xx31=0 then xx31:=0.5;if xx32=0 then xx32:=-0.5;
 if xx33=0 then xx33:=-0.5;if xx34=0 then xx34:=-0.5;
 if xx35=0 then xx35:=0.5;if xx36=0 then xx36:=-0.5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:1, ' 0 0 ', xx32:1:1, ' ', xx33:1:1, ' 0 0  ',xx34:1:1, ' ', xx35:1:1, ' 0 0 ', xx36:1:1,' 3');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g, sqr(xx31*xx33*xx35)*(xx31*xx33*xx35):1:9, ' 0 0 ', (xx32*xx34*xx36)*sqr(xx32*xx34*xx36):1:9);
 closefile(g);
 end;
@@ -802,10 +802,10 @@ if chosen_task='11_62'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx31:=-random(20)-2;xx32:=random(20)+2;xx34:=-random(20)-2;xx33:=random(20)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,' 0 ',xx31:1:1, ' 0 0 0 0 0 0 0 0 0 0 ','0 0 0 0 0 0 0 0 0 0 ', xx32:1:1, ' 0  ',' 0 ',xx33:1:1, ' 0 0 0 0 ',xx34:1:1, ' 0 0 0 0 0 ');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 xx35:=xx32;
 if abs(xx32)>abs(xx34)then xx32:=abs(xx32)else xx32:=abs(xx34);
 write(g, (abs(xx31)+abs(xx35)+abs(xx33)+abs(xx34))/(abs(xx31+xx33)+xx32):1:9);
@@ -817,10 +817,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx31:=random(20) /10+0.3;
 xx21:=random(10);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:9,' ',2+xx21 mod 2);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21 mod 2=0 then xx31:=cos(cos(xx31))else xx31:=cos(cos(cos(xx31)));
 write(g,xx31:1:9);
 closefile(g);
@@ -831,10 +831,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx31:=random(20) /10+0.3;
 xx21:=random(4)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx31:1:9,' ',xx21 mod 2+3);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21 mod 2=1 then xx31:=xx31*xx31*xx31*xx31/24 else xx31:=xx31*xx31*xx31/6;
 write(g,xx31:1:9);
 closefile(g);
@@ -844,10 +844,10 @@ if chosen_task='12_12-001'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+80;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21<100 then writeln(g,2)else writeln(g,3);
 closefile(g);
 end;
@@ -856,10 +856,10 @@ if chosen_task='12_12-002'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+80;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21>=100 then writeln(g,1)else writeln(g,xx21 div 10);
 closefile(g);
 end;
@@ -868,10 +868,10 @@ if chosen_task='12_12-003'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+50;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21 mod 10>xx21 div 10 then writeln(g,xx21 mod 10)else writeln(g,xx21 div 10);
 closefile(g);
 end;
@@ -880,10 +880,10 @@ if chosen_task='12_12-004'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+50;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if (xx21 mod 10=5)or(xx21 div 10=5) then writeln(g,'true')else writeln(g,'false');
 closefile(g);
 end;
@@ -892,10 +892,10 @@ if chosen_task='12_12-005'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+50;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if (xx21 mod 10<>8)and(xx21 div 10<>8) then writeln(g,0)else if (xx21 mod 10=8)and(xx21 div 10=8)then writeln(g,2)else writeln(g,1);
 closefile(g);
 end;
@@ -905,10 +905,10 @@ if chosen_task='12_12-007'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(200)-100;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 writeln(g,xx21);
 closefile(g);
 end;
@@ -918,10 +918,10 @@ if chosen_task='12_12-008'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(200)+11;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21<100 then writeln(g,xx21 div 10)else writeln(g,xx21 div 100+xx21 mod 10);
 closefile(g);
 end;
@@ -932,10 +932,10 @@ if chosen_task='12_14'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(40)+5;xx22:=random(40)+5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21,' ',-xx21,' ', xx21 div 2, ' ', xx21*2, ' ', xx22,' ', -xx22,' ', xx22*3,' ',xx22*2,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21*2>xx22*3 then writeln(g,2*xx21)else writeln(g,xx22*3);
 closefile(g);
 end;
@@ -945,10 +945,10 @@ if chosen_task='12_17'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx25:=random(20)-10; if xx25=0 then xx25:=1; xx21:=random(40)+5;xx22:=random(40)+5;xx23:=random(40)+5;xx24:=random(40)+5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx25,' ',xx21,' ',-xx22,' ',xx23, ' ', -xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx25>0 then
 write(g, -xx22,' ',-xx24,' ',xx23, ' ', xx21,' ', xx25)
 else
@@ -962,10 +962,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(6)+1; xx22:=random(6)+1;
 xx23:=random(6)+1; xx24:=random(6)+1;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21*10+xx22,' ',xx23*10+xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21+xx22>=xx23+xx24 then
 write(g, xx21*10+xx22)
 else
@@ -979,10 +979,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(3)+2; xx22:=random(3)+2;
 xx23:=random(4)+2; xx24:=random(4)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21*10+xx22,' ',xx23*10+xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if (xx21<>xx22)and(xx23<>xx24)then
 write(g, 2)
 else if (xx21=xx22)and(xx23=xx24)then write(g,0) else write(g,1);
@@ -995,10 +995,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(3)+2; xx22:=random(3)+2;
 xx23:=random(4)+2; xx24:=random(4)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21*10+xx21+xx22*100,' ', xx23*10+xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if (xx21<>xx22)and(xx23<>xx24)then
 write(g, 0)
 else if (xx21=xx22)and(xx23=xx24)then write(g,2) else write(g,1);
@@ -1011,10 +1011,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(4)+2; xx22:=random(4)+2;
 xx23:=random(4)+2; xx24:=random(4)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21*10+xx22,' ', xx23*10+xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21*xx22>=xx23*xx24 then
 write(g, xx21*10+xx22)
 else write(g,xx23*10+xx24);
@@ -1027,10 +1027,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(7)+2; xx22:=random(7)+2;
 xx23:=random(7)+2; xx24:=random(7)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21*10+xx22,' ', xx23*10+xx24,' 0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 xx25:=0;
 if xx21 mod 2<>xx22 mod 2 then inc(xx25);
 if xx23 mod 2<>xx24 mod 2 then inc(xx25);
@@ -1043,10 +1043,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(17)+2; xx22:=random(17)+2;
 xx23:=random(17)+2; xx24:=random(17)+2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21,' ', xx22,' ',xx23,' ',xx24);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g, xx21*xx24+xx22*xx23,' ', xx22*xx24);
 closefile(g);
 end;
@@ -1056,10 +1056,10 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(17)+2; xx22:=random(17)+2;
 xx23:=random(17)+2; xx24:=random(17)+2;if xx21/xx22 = xx23/xx24 then inc(xx24);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, xx21,' ', xx22,' ',xx23,' ',xx24);
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21/xx22>xx23/xx24 then write(g, xx21, ' ',xx22) else write(g, xx23, ' ',xx24) ;
 closefile(g);
 end;
@@ -1069,10 +1069,10 @@ if chosen_task='14_15-002'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(17)+98; xx22:=random(17)+98;//if xx21=xx22 then inc(xx22);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g, chr(xx21),chr(xx22),'.');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21>xx22 then write(g, chr(xx22),chr(xx21)) else if xx21=xx22 then write(g, chr(xx22)) else write(g, chr(xx21),chr(xx22));
 closefile(g);
 end;
@@ -1082,11 +1082,11 @@ if chosen_task='14_16'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx31:=random(17)/2;xx32:=random(17)/2;xx33:=random(17)/2;xx34:=random(17)/2;xx35:=random(17)/2;xx36:=random(17)/2;xx37:=random(17)/2;xx38:=random(17)/2;xx35:=random(17)/2;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,xx31:1:2,' ',xx32:1:2,' ',xx33:1:2,' ',xx34:1:2,' ',xx35:1:2, ' ', xx36:1:2,' ',xx37:1:2,' ',xx38:1:2,' ',xx39:1:2,' ');
 xx21:=random(3)+1; if not xx21 in [1..3] then xx21:=1; write(g,'1 2 3 0 ',xx21,'  0');
 closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21=1 then write(g, xx31+xx34+xx37:1:7);if xx21=2 then write(g, xx32+xx35+xx38:1:7);if xx21=3 then write(g, xx33+xx36+xx39:1:7);
 closefile(g);
 end;
@@ -1096,9 +1096,9 @@ if chosen_task='14_26-002'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(7)+1; if not(xx21 in [1..7]) then xx21:=5;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,xx21);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 for xx22:=0 to 9 do if xx21<>xx22 then write(g,xx22,' ');
 closefile(g);
 end;
@@ -1109,9 +1109,9 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(17)+97; if not(xx21 in [97..122]) then xx21:=100;
 xx22:=random(17)+97; if not(xx22 in [97..122]) then xx22:=100;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,chr(xx21),chr(xx21),chr(xx22),'.');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);write(g,chr(xx21));
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);write(g,chr(xx21));
 closefile(g);
 end;
 
@@ -1121,9 +1121,9 @@ number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(17)+97; if not(xx21 in [97..122]) then xx21:=100;
 xx22:=random(17)+97; if not(xx22 in [97..122]) then xx22:=100;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,chr(xx21),chr(xx22),chr(xx22),'.');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx22<>xx21 then write(g,chr(xx21));
 closefile(g);
 end;
@@ -1133,9 +1133,9 @@ if chosen_task='15_8'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
 xx21:=random(177)+37; xx22:=random(17)+37; xx23:=random(177)+37; xx24:=random(17)+37; if xx23=xx21 then xx23:=xx21+1;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,xx21,' ',xx22,' ',xx23,' ',xx24,' 0 0 ');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21>xx23 then write(g,xx23,' ', xx24,' ')else write(g,xx21,' ',xx22,' ');
 closefile(g);
 end;
@@ -1144,11 +1144,11 @@ end;
 if chosen_task='15_9-002'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-xx21:=random(10)+98; assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+xx21:=random(10)+98; assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,chr(xx21));xx23:=random(5)+3; for xx24:=1 to xx23 do begin xx22:=random(12)+100; write(g,chr(xx22)); end;write(g,'!');
 xx22:=random(10)+98; if xx22=xx21 then inc(xx22);
 write(g,chr(xx22));xx23:=random(5)+3; for xx24:=1 to xx23 do begin xx25:=random(12)+100; write(g,chr(xx25)); end;write(g,'!');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if xx21>xx22 then write(g,'False')else write(g,'True');
 closefile(g);
 end;
@@ -1157,13 +1157,13 @@ end;
 if chosen_task='15_10-002'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-xx21:=random(10)+98; assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+xx21:=random(10)+98; assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,chr(xx21));write(g,'!');
 xx22:=random(10)+98;
 write(g,chr(xx22));write(g,'!');
 xx23:=random(10)+98;
 write(g,chr(xx23));write(g,'!');closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 if (xx21=xx22)or(xx21=xx23) then write(g,'True')else write(g,'False');
 closefile(g);
 end;
@@ -1172,13 +1172,13 @@ end;
 if chosen_task='15_11'then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-xx21:=random(10)-5; assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+xx21:=random(10)-5; assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 write(g,xx21,' ');
 xx22:=random(10)+5;xx25:=0;
 for xx23:=1 to xx22 do begin xx24:=random(10)-5;
 if xx24=xx21 then inc(xx25);
 write(g,xx24,' ')end;write(g,-32768); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k)); rewrite(g);
 write(g,xx25);
 closefile(g);
 end;
@@ -1187,12 +1187,12 @@ end;
 if (chosen_task='15_12-001')or(chosen_task='6_17')then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-xx21:=random(5)+3; assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+xx21:=random(5)+3; assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx24:=0;
 for xx22:=1 to xx21 do begin xx23:=random(3)+40;if xx23=40 then inc(xx24);
 if xx23=41 then dec(xx24); if xx24<0 then xx24:=-1000;
 write(g,chr(xx23))end; write(g,'.'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 if xx24=0 then write(g,'true') else write(g,'false');
 closefile(g);
 end;
@@ -1201,7 +1201,7 @@ end;
 if chosen_task='15_12-002' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(15)+3;
 for xx22:=1 to xx21 do write(g,'(');
 for xx22:=1 to xx21 do write(g,')');
@@ -1209,7 +1209,7 @@ xx23:=random(15)+3;
 for xx22:=1 to xx23 do write(g,'(');
 for xx22:=1 to xx23 do write(g,')');
 write(g,'.'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 if xx23>xx21 then write(g,xx23) else write(g,xx21);
 closefile(g);
 end;
@@ -1218,13 +1218,13 @@ end;
 if chosen_task='15_13-002' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(15)+3;
 xx23:=random(15)+3;
 xx22:=random(2);
 if xx22=0 then write(g, xx21, ' ', xx23,' ', xx23*2-xx21) else write(g, xx21, ' ', xx23, ' ', xx23*2-xx21-1);
 write(g,' -32768'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 if xx22=0 then write(g,'true') else write(g,'false');
 closefile(g);
 end;
@@ -1233,12 +1233,12 @@ end;
 if chosen_task='15_13-003' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(15)+3;
 xx22:=random(2);
 if xx22=0 then write(g, xx21, ' ', xx21*3,' ', xx21*9) else write(g, xx21, ' ', xx21+1, ' ', xx21+2);
 write(g,' -32768'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 if xx22=0 then write(g,'true') else write(g,'false');
 closefile(g);
 end;
@@ -1248,19 +1248,19 @@ end;
 if chosen_task='15_14' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+204;xx23:=0;
 xx26:=1; for xx25:=1 to xx22 do begin xx21:=random(3)+65;write(g,chr(xx21));
 if (xx21=66)and(xx26=65) then inc(xx23); xx26:=xx21 end;write(g,'.'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,xx23);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,xx23);
 closefile(g);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+204;xx23:=0;
 xx26:=1; for xx25:=1 to xx22 do begin xx21:=random(7)+65;write(g,chr(xx21));
 if (xx21=66)and(xx26=65) then inc(xx23); xx26:=xx21 end;write(g,'.'); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,xx23);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,xx23);
 closefile(g);
 end;
 
@@ -1268,19 +1268,19 @@ end;
 if chosen_task='15_15' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(44)+259;
 for xx25:=1 to xx22 do begin xx21:=random(14)+65;write(g,xx21/2:1:1,' ');
 if xx25=xx22-1 then xx33:=xx21/2;end; write(g,'-100000 '); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,xx33:1:1);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,xx33:1:1);
 closefile(g);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+87;
 for xx25:=1 to xx22 do begin xx21:=random(24)+65;write(g,xx21/4:1:2,' ');
 if xx25=xx22-1 then xx33:=xx21/4;end; write(g,'-100000 '); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,xx33:1:2);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,xx33:1:2);
 closefile(g);
 end;
 
@@ -1288,17 +1288,17 @@ end;
 if chosen_task='15_16' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+260;
 for xx25:=1 to xx22 do write(g,xx25/10:1:2,' '); write(g,' -100000 '); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,xx22);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,xx22);
 closefile(g);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+260; xx23:=random(14)+260;
 write(g, xx22/2:1:2,' '); write(g,xx23/2:1:2); write(g,' -100000 '); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);if xx22<xx23 then write(g,2)else write(g,1);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);if xx22<xx23 then write(g,2)else write(g,1);
 closefile(g);
 end;
 
@@ -1306,8 +1306,8 @@ end;
 if chosen_task='15_22' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g1,s1+'\tmp\ooo'+inttostr(k));rewrite(g1);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k));rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(14)+260;
 for xx25:=1 to xx22 do begin xx23:=random(20)+65; write(g,char(xx23)); write(g1,char(xx23)); end; write(g,'!');
 xx22:=random(14)+260;
@@ -1319,19 +1319,19 @@ end;
 if chosen_task='15_23' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(18)+60;
 for xx25:=1 to xx22 do begin xx23:=random(20)+1; xx24:=random(12)+1; write(g,xx23, ' ', xx24,' '); end; write(g,' 0 0 ');
-assign(g1,s1+'\tmp\ooo'+inttostr(k));rewrite(g1);
+assign(g1,s1+'/tmp/ooo'+inttostr(k));rewrite(g1);
 reset(g); while not eof(g) do begin read(g, xx26); read(g,xx27); if xx27 in [6..8] then write(g1, xx26,' ', xx27,' ');end; closefile(g);  write(g1,' -1 -1 ');
 reset(g); while not eof(g) do begin read(g, xx26); read(g,xx27); if xx27 in [1,2,12] then write(g1, xx26,' ', xx27,' ');end; closefile(g);
 closefile(g1);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(18)+60;
 for xx25:=1 to xx22 do begin xx23:=random(20)+1; xx24:=random(12)+1; write(g,xx23, ' ', xx24,' '); end; write(g,'0 0');
-assign(g1,s1+'\tmp\ooo'+inttostr(k));rewrite(g1);
+assign(g1,s1+'/tmp/ooo'+inttostr(k));rewrite(g1);
 reset(g); while not eof(g) do begin read(g, xx26); read(g,xx27); if xx27 in [6..8] then write(g1, xx26,' ', xx27,' ');end; closefile(g);write(g1,' -1 -1 ');
 reset(g); while not eof(g) do begin read(g, xx26); read(g,xx27); if xx27 in [1,2,12] then write(g1, xx26,' ', xx27,' ');end; closefile(g);
 closefile(g1);
@@ -1341,8 +1341,8 @@ end;
 if chosen_task='15_24' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g1,s1+'\tmp\ooo'+inttostr(k));rewrite(g1);
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k));rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 for xx26:=1 to 4 do begin xx22:=random(70)+270;
 for xx25:=1 to xx22 do begin xx23:=random(21)+65; write(g,char(xx23)); write(g1,char(xx23)); end; write(g,'!'); write(g1,'!');end;
 closefile(g);closefile(g1);
@@ -1352,18 +1352,18 @@ end;
 if chosen_task='15_27' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(12)+108; xx22:=random(3)+1;xx24:=random(3)-1;
 for xx23:=1 to xx21 do write(g,xx23*xx22*3,' '); write(g,-10000,' ');
 for xx23:=1 to xx21 do write(g,xx23*xx22*3+xx24,' '); write(g,-10000);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 for xx23:=1 to xx21 do if xx24=-1 then write(g,xx23*xx22*3-1,' ',xx23*xx22*3,' ')else write(g,xx23*xx22*3,' ',xx23*xx22*3+xx24,' ');
 closefile(g);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(500)-250; xx22:=random(500)-250; write(g,xx21,' ',-10000,' ',xx22,' ', -10000);closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 if xx21<=xx22 then write(g, xx21,' ',xx22)else write(g, xx22,' ',xx21);closefile(g);
 end;
 
@@ -1371,11 +1371,11 @@ end;
 if chosen_task='15_28-002' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(5)-2;xx23:=random(5)-2;
 write(g,xx23/2:1:1,' ');write(g,xx22/2:1:1,' ');
 write(g,'-10000 '); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,1+byte(xx22=xx23));
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,1+byte(xx22=xx23));
 closefile(g);
 end;
 
@@ -1383,26 +1383,26 @@ end;
 if chosen_task='15_28-003' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(25)+57;
 for xx24:=1 to xx22*2 do begin xx21:=random(1000)-500;write(g,xx21/5:1:1,' ');end; write(g, -10000); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,'false');closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,'false');closefile(g);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx22:=random(25)+57;
 for xx24:=1 to xx22*2-1 do begin xx21:=random(1000)-500;write(g,xx21/5:1:1,' ');if xx24=xx22 then xx23:=xx21; end; write(g, -10000); closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);write(g,'true',' ',xx23/5:1:1);closefile(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);write(g,'true',' ',xx23/5:1:1);closefile(g);
 end;
 
 //A special random test for the task 15.29
 if chosen_task='15_29' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
 xx21:=random(3);
 case xx21 of 0: write(g,'Ethan 21, Jake 23.'); 1: write(g,'Mason 24.') else write(g,'Harrison 35, Jacob 34, Oliver 36.')end;closefile(g);
-assign(g,s1+'\tmp\ooo'+inttostr(k));rewrite(g);
+assign(g,s1+'/tmp/ooo'+inttostr(k));rewrite(g);
 case xx21 of 0: write(g,'Ethan'); 1: write(g,'Mason') else write(g,'Jacob')end;
 closefile(g);
 end;
@@ -1411,8 +1411,8 @@ end;
 if chosen_task='15_32-002' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(20)+67; write(g,chr(xx23));write(g1,chr(xx23))end;
 xx23:=random(20)+98; write(g,'.'); write(g,chr(xx23)); write(g1,chr(xx23)); closefile(g); closefile(g1);
@@ -1422,8 +1422,8 @@ end;
 if chosen_task='15_32-003' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(30)+48; if xx23=59 then xx23:=58; write(g,chr(xx23));write(g1,chr(xx23)); if xx23 in [48..57] then write(g1,chr(xx23)); end;
 write(g,'.'); closefile(g1);closefile(g);
@@ -1433,8 +1433,8 @@ end;
 if chosen_task='15_32-004' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(20)+67; write(g,chr(xx23)); if xx22<>xx21 then write(g1,chr(xx23))end;
 xx23:=random(22)+97;write(g,'.'); write(g,chr(xx23)); write(g1,chr(xx23));
@@ -1445,8 +1445,8 @@ end;
 if chosen_task='15_32-005' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(30)+47; if xx23=59 then xx23:=58; write(g,chr(xx23));if xx23 in [48..56] then write(g1,chr(xx23+1))else if xx23=57 then write(g1,'0')else write(g1,chr(xx23))end;
 write(g,'.'); closefile(g); closefile(g1);
@@ -1456,8 +1456,8 @@ end;
 if chosen_task='15_32-006' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+150;
 for xx22:=1 to xx21 do begin xx23:=random(17)+40; if xx23=46 then xx23:=45; write(g,chr(xx23));if not(xx23 in [43,45]) then write(g1,chr(xx23))end;
 write(g,'.'); closefile(g); closefile(g1);
@@ -1467,22 +1467,22 @@ end;
 if chosen_task='15_32-007' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(23)+65;  write(g,chr(xx23)); if xx22<>xx21-1 then write(g1,chr(xx23))end;
 write(g,'.'); closefile(g); closefile(g1);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(23)+98; write(g,chr(xx23));  if xx22<>xx21-1 then write(g1,chr(xx23))end;
 write(g,'.'); closefile(g); closefile(g1);
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+50;
 for xx22:=1 to xx21 do begin xx23:=random(10)+48; write(g,chr(xx23));  if xx22<>xx21-1 then write(g1,chr(xx23))end;
 write(g,'.'); closefile(g); closefile(g1);
@@ -1492,8 +1492,8 @@ end;
 if chosen_task='15_32-008' then begin sd:=[];
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(30)+90;
 for xx22:=1 to xx21 do begin xx23:=random(28)+65; write(g,chr(xx23)); if not(chr(xx23) in sd) then begin write(g1,chr(xx23));sd:=sd+[chr(xx23)]end;end;
 write(g,'.'); closefile(g); closefile(g1);
@@ -1503,8 +1503,8 @@ end;
 if chosen_task='15_34' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(9); xx22:=random(3); xx23:=random(9); write(g,'(',xx21:1);
 if xx22=0 then write(g,'+');if xx22=1 then write(g,'-');if xx22=2 then write(g,'*');
 write(g,xx23:1,').'); closefile(g);
@@ -1516,8 +1516,8 @@ end;
 if chosen_task='15_35' then begin sd:=[];
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(3)+5;xx24:=0;
 for xx22:=1 to xx21 do begin xx23:=random(23)+65; write(g,chr(xx23)); if not(chr(xx23) in sd) then sd:=sd+[chr(xx23)]else xx24:=1; end;
 write(g,'.'); closefile(g); if xx24=0 then write(g1,'false')else write(g1,'true'); closefile(g1);
@@ -1527,8 +1527,8 @@ end;
 if chosen_task='15_42-003' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(3);
 if xx21=1 then write(g1,'true')else write(g1,'false'); closefile(g1);
 if xx21=1 then begin xx24:=random(20)+65; write(g,'wervc'+chr(xx24)+chr(2)+'.'+'wervc'+chr(xx24)+chr(2)+'.'); closefile(g) end else
@@ -1546,8 +1546,8 @@ if chosen_task='15_44-002' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+300;
 for xx23:=1 to xx22 do begin xx24:=random(30)+300; for xx25:=1 to xx24 do begin xx26:=-random(10)+122; write(g, chr(xx26)); end; if xx26=122 then inc(xx21); write(g,chr(2));end;
 write(g,'.'); write(g1,xx21); closefile(g); closefile(g1);
@@ -1558,8 +1558,8 @@ if chosen_task='15_44-003' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+300;
 for xx23:=1 to xx22 do begin xx24:=random(30)+300; for xx25:=1 to xx24 do begin xx26:=-random(10)+122; if xx25=1 then xx27:=xx26; write(g, chr(xx26)); end; if xx26=xx27 then inc(xx21); write(g,chr(2));end;
 write(g,'.'); write(g1,xx21); closefile(g); closefile(g1);
@@ -1570,8 +1570,8 @@ if chosen_task='15_44-004' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+300;
 for xx23:=1 to xx22 do begin xx24:=random(30)+300; xx27:=0; xx29:=0;
 for xx25:=1 to xx24 do begin xx26:=random(100); if xx26=90 then write(g, chr(xx24 mod 17 +66))else write(g,chr(xx24 mod 17 +67)); if xx26=90 then xx27:=1 else xx29:=1; end; if xx27*xx29=0 then inc(xx21); write(g,chr(2));end;
@@ -1583,8 +1583,8 @@ if chosen_task='15_45' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+300; xx27:=0;
 for xx23:=1 to xx22 do begin xx24:=random(30);if xx24=3 then begin for xx29:=1 to random(13)+5 do write(g, chr(random(23)+65)); xx27:=1; end; write(g,chr(2));if xx27=0 then inc(xx21); end;
 write(g,'.'); write(g1,xx21); closefile(g); closefile(g1);
@@ -1595,8 +1595,8 @@ if chosen_task='15_47' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+30;
 for xx23:=1 to xx22 do begin  xx24:=random(30)+300; xx27:=random(10); if xx27<3 then write(g,chr(2)); for xx25:=1 to xx24 do begin xx29:=random(20)+65; write(g,chr(xx29)); write(g1,chr(xx29)); end;
 write(g,chr(2)); write(g1,chr(2));end;
@@ -1608,8 +1608,8 @@ if chosen_task='15_48' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=0; xx22:=random(30)+30;
 for xx23:=1 to xx22 do begin  xx24:=random(30)+65; for xx25:=1 to xx24 do begin xx29:=random(20)+97; write(g,chr(xx29)); if xx25<=80 then write(g1,chr(xx29));end;
 if xx24<80 then for xx25:=xx24+1 to 80 do write(g1,'_');
@@ -1621,8 +1621,8 @@ end end;
 if chosen_task='15_50-001' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(10)+10;
 for xx22:=1 to xx21 do begin  xx23:=random(12)+65; xx24:=random(112)+34; if odd(xx22)then xx23:=xx23+32; for xx25:=1 to xx24 do write(g,chr(xx23));write(g1, ' ',xx24,' ',chr(xx23)); end;
 write(g,'.'); closefile(g); closefile(g1);
@@ -1632,8 +1632,8 @@ end;
 if chosen_task='15_50-002' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(10)+10;
 for xx22:=1 to xx21 do begin  xx23:=random(12)+65; xx24:=random(112)+34; if odd(xx22)then xx23:=xx23+32; for xx25:=1 to xx24 do write(g1,chr(xx23));write(g, ' ',xx24,' ',chr(xx23)); end;
 write(g,' 1 .'); closefile(g); closefile(g1);
@@ -1644,8 +1644,8 @@ if chosen_task='15_54' then begin
 for xx28:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(10)+300;
 for xx27:=1 to xx26 do begin
 xx21:=random(1000)-500; xx22:=random(1000)-500;
@@ -1662,8 +1662,8 @@ sa[4]:='What is the central hall like?';
 sa[5]:='When were several of the galleries destroyed?';
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(25)+1100;
 for xx27:=1 to xx26 do begin
 xx21:=random(5)+1;
@@ -1676,8 +1676,8 @@ if chosen_task='15_58' then begin
 for xx29:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(25)+25;
 for xx27:=1 to xx26 do begin
 sf:='';se:='';xx25:=random(16);
@@ -1697,8 +1697,8 @@ sa[4]:='Do you like to live in the capital?';
 sa[5]:='What time does this train leave?';
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(25)+260;ss31:=''; ss32:='';
 for xx27:=1 to xx26 do begin
 xx21:=random(6);
@@ -1722,8 +1722,8 @@ sa[4]:='Whale';
 sa[5]:='Walrus';
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(25)+260;
 for xx27:=1 to xx26 do begin
 xx21:=random(100); if odd(xx21) then write(g,'It is an experimental text.'+chr(2)) else write(g,'It contains lines of different lengths.'+chr(2))end;
@@ -1742,8 +1742,8 @@ if chosen_task='15_62' then begin
 for xx29:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(257)+25;
 for xx27:=1 to xx26 do begin
 xx28:=random(1000)-500;write(g,' ',xx28);xx28:=random(1000)-500;write(g,' ',xx28);
@@ -1764,8 +1764,8 @@ sa[4]:='Whale';
 sa[5]:='Walrus';
 number_of_tests:=number_of_tests+1;
 xx21:=0; k:=k+1;randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx26:=random(280)+26;
 for xx27:=1 to xx26 do begin
  xx25:=random(5)+1;
@@ -1778,8 +1778,8 @@ end;
 if (chosen_task='16_15-001')or(chosen_task='16_18-003')or(chosen_task='16_18-004') then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(1000)-444;
 xx22:=random(1000)-444;
 write(g,xx21,' ',xx22);
@@ -1792,8 +1792,8 @@ end;
 if chosen_task='16_15-003' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(4)+14;
 xx22:=random(4)+14;
 write(g,xx21,' ',xx22);
@@ -1804,8 +1804,8 @@ end;
 if chosen_task='16_16-001' then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(10)+5;
 for xx21:=1 to 12*xx24 do begin
 xx22:=random(20)+98; write(g, chr(xx22));end;
@@ -1817,8 +1817,8 @@ end;
 if (chosen_task='16_18-006') then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(10)+5;xx31:=random(1000)/5-90;xx32:=random(1000)/5-90;
 write(g, xx31:1:3,' '); write(g1, xx32:1:3,' ');
 for xx21:=1 to xx24 do begin xx33:=random(1000)/5-90;
@@ -1831,8 +1831,8 @@ end;
 if (chosen_task='16_18-008') then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx31:=random(1000)/5-90;xx32:=random(1000)/5-90;
 write(g, xx31:1:3,' '); write(g, (xx31+xx32)/2:1:3,' ');
 write(g1, xx32:1:3,' '); write(g1, (xx31+xx32)/2:1:3,' ');
@@ -1844,8 +1844,8 @@ end;
 if (chosen_task='16_18-010') then begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx21:=random(1000)-90;xx22:=random(1000)-90; if xx21=xx22 then xx21:=xx21+1;
 write(g, xx21,' '); write(g, (xx21+xx22)div 2,' ');write(g, xx22,' ');
 write(g,'1E20'); if (xx21+xx22) mod 2=0 then write(g1,'True') else write(g1,'False');
@@ -1856,8 +1856,8 @@ if (chosen_task='16_18-011') then begin
 for xx21:=1 to 3 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(15)+12;
 for xx25:=1 to xx24 do begin xx31:=random(1000)/4-90;write(g,xx31:1:3,' ');end;
 xx31:=random(1000)/5-90;write(g,xx31:1:3,' ');
@@ -1870,8 +1870,8 @@ if (chosen_task='16_18-012') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx31:=random(4)-2;write(g,xx31:1:3,' ');
 xx32:=random(4)-2;write(g,xx32:1:3,' '); if xx31=xx32 then write(g1,2)else write(g1,1);
 write(g,'1E20');
@@ -1884,8 +1884,8 @@ if (chosen_task='16_20-002') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=random(10000)+24;
 write(g,xx22); write(g1,'1 1 '); xx23:=1; xx24:=1;
 repeat xx24:=xx24+xx23; xx23:=xx24-xx23; if xx24<=xx22 then write(g1,xx24,' ')else break; until false;
@@ -1896,8 +1896,8 @@ if (chosen_task='16_20-004') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=250+random(2000);write(g,xx22);
 xx23:=xx22 div 1000; xx24:=xx22 mod 1000 div 100;
 xx25:=xx22 mod 100 div 10; xx26:=xx22 mod 10;
@@ -1910,8 +1910,8 @@ if (chosen_task='16_20-005') or (chosen_task='16_29-009') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx31:=random(1000)/10-50;
 xx32:=random(1000)/10-50;
 xx33:=random(1000)/10-50;
@@ -1927,8 +1927,8 @@ if (chosen_task='16_23-007') then begin
 for xx21:=1 to 3 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=random(20)+5;
 for xx23:=1 to xx22 do begin
 xx31:=(random(200)-100)/5;
@@ -1940,8 +1940,8 @@ if (chosen_task='16_29-005') then begin
 for xx21:=1 to 3 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=random(20)+5; xx32:=(random(200)-100)/5; write(g, xx32:1:3,' ');
 for xx23:=1 to xx22 do begin
 xx31:=(random(200)-100)/5;
@@ -1953,8 +1953,8 @@ if (chosen_task='16_29-006') then begin
 for xx21:=1 to 3 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=random(20)+5; xx32:=(random(200)-100)/5; write(g1, xx32:1:3,' ');
 for xx23:=1 to xx22 do begin
 xx31:=(random(200)-100)/5;
@@ -1966,8 +1966,8 @@ if (chosen_task='16_29-010') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx22:=random(20)+15;
 for xx23:=1 to xx22 do begin
 xx24:=random(3);write(g,xx24,' ');
@@ -1980,8 +1980,8 @@ if (chosen_task='16_31-002') then begin
 for xx21:=1 to 2 do begin
 number_of_tests:=number_of_tests+1;
 k:=k+1; randomize;
-assign(g,s1+'\tmp\iii'+inttostr(k)); rewrite(g);
-assign(g1,s1+'\tmp\ooo'+inttostr(k)); rewrite(g1);
+assign(g,s1+'/tmp/iii'+inttostr(k)); rewrite(g);
+assign(g1,s1+'/tmp/ooo'+inttostr(k)); rewrite(g1);
 xx24:=random(3)+98;write(g,chr(xx24));
 xx25:=random(3)+98;write(g,chr(xx25));
 if xx24=xx25 then write(g1,'True') else write(g1,'False');

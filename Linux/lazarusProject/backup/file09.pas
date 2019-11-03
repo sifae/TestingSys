@@ -1289,52 +1289,52 @@ analysis:=an_res;
 end;{of the function}
 //}}
 
-end;
+//end;
 
 procedure delete_temp;
 var i:integer;
 begin
-deletefile(current_dir+'\tmp\temp1.exe');
+deletefile(current_dir+'\tmp\temp1');
 deletefile(current_dir+'\tmp\temp1.pas');
 deletefile(current_dir+'\tmp\temp1.o');
-deletefile(current_dir+'\tmp\temp2.exe');
+deletefile(current_dir+'\tmp\temp2');
 deletefile(current_dir+'\tmp\temp2.pas');
 deletefile(current_dir+'\tmp\temp2.o');
-deletefile(current_dir+'\tmp\temp3.exe');
+deletefile(current_dir+'\tmp\temp3');
 deletefile(current_dir+'\tmp\temp3.pas');
 deletefile(current_dir+'\tmp\temp3.o');
-deletefile(current_dir+'\tmp\temp4.exe');
+deletefile(current_dir+'\tmp\temp4');
 deletefile(current_dir+'\tmp\temp4.pas');
 deletefile(current_dir+'\tmp\temp4.o');
-deletefile(current_dir+'\tmp\temp5.exe');
+deletefile(current_dir+'\tmp\temp5');
 deletefile(current_dir+'\tmp\temp5.pas');
 deletefile(current_dir+'\tmp\temp5.o');
-deletefile(current_dir+'\tmp\temp0.bat');
-deletefile(current_dir+'\tmp\temp10.exe');
+deletefile(current_dir+'\tmp\temp0.sh');
+deletefile(current_dir+'\tmp\temp10');
 deletefile(current_dir+'\tmp\temp10.pas');
 deletefile(current_dir+'\tmp\temp10.o');
-deletefile(current_dir+'\tmp\temp20.exe');
+deletefile(current_dir+'\tmp\temp20');
 deletefile(current_dir+'\tmp\temp20.pas');
 deletefile(current_dir+'\tmp\temp20.o');
-deletefile(current_dir+'\tmp\temp30.exe');
+deletefile(current_dir+'\tmp\temp30');
 deletefile(current_dir+'\tmp\temp30.pas');
 deletefile(current_dir+'\tmp\temp30.o');
-deletefile(current_dir+'\tmp\temp40.exe');
+deletefile(current_dir+'\tmp\temp40');
 deletefile(current_dir+'\tmp\temp40.pas');
 deletefile(current_dir+'\tmp\temp40.o');
-deletefile(current_dir+'\tmp\temp50.exe');
+deletefile(current_dir+'\tmp\temp50');
 deletefile(current_dir+'\tmp\temp50.pas');
 deletefile(current_dir+'\tmp\temp50.o');
-deletefile(current_dir+'\tmp\temp00.bat');
+deletefile(current_dir+'\tmp\temp00.sh');
 deletefile(current_dir+'\tmp\result.txt');
 for i:=1 to max_test_number do begin
 deletefile(current_dir+'\tmp\iii'+inttostr(i));
 deletefile(current_dir+'\tmp\ooo'+inttostr(i));
 deletefile(current_dir+'\tmp\rrr'+inttostr(i));
-deletefile(current_dir+'\tmp\temp0'+inttostr(i)+'.bat');
+deletefile(current_dir+'\tmp\temp0'+inttostr(i)+'.sh');
 deletefile(current_dir+'\tmp\iiii'+inttostr(i));
 deletefile(current_dir+'\tmp\oooo'+inttostr(i));
 deletefile(current_dir+'\tmp\rrrr'+inttostr(i));
-deletefile(current_dir+'\tmp\temp00'+inttostr(i)+'.bat');
+deletefile(current_dir+'\tmp\temp00'+inttostr(i)+'.sh');
 end;end;
 end.

@@ -31,8 +31,8 @@ for i:=1 to ii6 do
 begin
 
 bloop:=false;
-if ii5=1 then assignfile(h,current_dir+'\tmp\iii'+inttostr(i))
-else assignfile(h,current_dir+'\tmp\iiii'+inttostr(i));
+if ii5=1 then assignfile(h,current_dir+'/tmp/iii'+inttostr(i))
+else assignfile(h,current_dir+'/tmp/iiii'+inttostr(i));
 closefile(h); ioresult;
 
 reset(h); si:=''; if (ioresult<>0)then begin showmessage('Fatal!'+inttostr(i)); halt; end;
@@ -59,11 +59,11 @@ if (chosen_task='16_20-005')or(copy(chosen_task,1,5)='16_18')or(copy(chosen_task
 if copy(chosen_task,1,5)='16_19' then begin correct_16_19(si);form2.memo1.Font.Name:='Courier New'; end;
 
 if ii5=1 then
-begin assignfile(f,current_dir+'\tmp\ooo'+inttostr(i));assignfile(g,current_dir+'\tmp\rrr'+inttostr(i));end else
-begin assignfile(f,current_dir+'\tmp\oooo'+inttostr(i));assignfile(g,current_dir+'\tmp\rrrr'+inttostr(i));end;
+begin assignfile(f,current_dir+'/tmp/ooo'+inttostr(i));assignfile(g,current_dir+'/tmp/rrr'+inttostr(i));end else
+begin assignfile(f,current_dir+'/tmp/oooo'+inttostr(i));assignfile(g,current_dir+'/tmp/rrrr'+inttostr(i));end;
 
 closefile(f); ioresult; closefile(g); ioresult;
-setcurrentdir(current_dir+'\tmp\');
+setcurrentdir(current_dir+'/tmp/');
 time_test:=now;
 cc1:=timetostr(time_test);if cc1[2]=':' then cc1:='0'+cc1;
 application.processmessages;
@@ -97,7 +97,7 @@ until number_of_intervals>=75;
 form2.Timer1.Enabled:=false;
 number_of_intervals:=0;
 application.ProcessMessages;
-//if bloop then  begin j:=FindWindow(nil, 'c:\windows\system32\cmd.exe');
+//if bloop then  begin j:=FindWindow(nil, 'c:/windows/system32/cmd.exe');
 //  SendMessage(j, WM_CLOSE, 0, 0);end;
 if bloop then begin inc(amount_of_loops);
 if ii5=1 then
@@ -579,10 +579,10 @@ else begin
 if en_rus then s:='Time is out. Possible infinite loop.' else s:='Истекло время. Возможно зацикливание.';
 closefile(f);closefile(g);//form2.memo1.lines.add('   ');
 form2.Memo1.Lines.Add(s);if ii5=1 then n_err:=n_err+1 else n_err1:=n_err1+1;
-//assignfile(f1,current_dir+'\tmp\temp2'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp3'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp4'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
-//assignfile(f1,current_dir+'\tmp\temp5'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'/tmp/temp2'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'/tmp/temp3'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'/tmp/temp4'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
+//assignfile(f1,current_dir+'/tmp/temp5'); closefile(f1); ioresult; reset(f1); ioresult;closefile(f1); ioresult;
 was_loop:=true;
 end;
 

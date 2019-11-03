@@ -63,7 +63,7 @@ var
 begin
 
   //form2 := Tform2.Create(self);
-  if fileexists('.\tmp\temp01.sh') then
+  if fileexists('./tmp/temp01.sh') then
   begin
     s := 'Программа уже выполняется. Если это не так, удалите все файлы из подкаталога TMP, кроме directory.txt и p.txt. Пoсле этого перезапустите программу.';
     s2 :=

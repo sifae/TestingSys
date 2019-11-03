@@ -25,7 +25,7 @@ type
     Timer1: TTimer;
     OpenDialog2: TOpenDialog;
     Memo5: TMemo;
-    RichEdit1: TCustomRichMemo;
+    RichEdit1: TRichMemo;
     Button8: TButton;
     Button9: TButton;
     Button10: TButton;
@@ -160,7 +160,7 @@ var f2,f:textfile;s,sf:string;
 var p1,p2:integer;label 1;
 begin
 form2.RichEdit1.clear; if chosen_task='' then exit;
-sf:=current_dir+'\tests\'+directory_names[chosen_chapter]+'\'+chosen_task;
+sf:=current_dir+'/tests/'+directory_names[chosen_chapter]+'/'+chosen_task;
 if en_rus then sf:=sf+'_e.rtf' else sf:=sf+'_r.rtf';
 assign(f,sf);
 //showmessage (sf);
@@ -170,15 +170,15 @@ form2.richedit1.lines.LoadFromFile(sf);
 closefile(f);ioresult;
 if not en_rus then exit;
 if func_proc0>0 then exit;
-form2.richedit1.lines.savetofile(current_dir+'\tmp\addtext.txt');
-assign(f,current_dir+'\tmp\addtext.txt');reset(f);
+form2.richedit1.lines.savetofile(current_dir+'/tmp/addtext.txt');
+assign(f,current_dir+'/tmp/addtext.txt');reset(f);
 if ioresult<>0 then goto 1;
 if (eof(f))then goto 1;
-assign(f2,current_dir+'\tmp\addtext1.txt');rewrite(f2);
+assign(f2,current_dir+'/tmp/addtext1.txt');rewrite(f2);
 if ioresult<>0 then goto 1;
 while not eof(f)  do begin readln(f,s); if s='' then goto 1; if s[1]='{' then writeln(f2,s) else break; end;
 if eof(f) then goto 1;
-p1:=pos(' ',s); p2:=pos('\''',s);
+p1:=pos(' ',s); p2:=pos('/''',s);
 if (p1=0) and (p2=0) then goto 1;
 if (p1=0)and(p2>0)then p1:=p2+1 else
 if (p1>0)and(p2=0)then p2:=p1+1;
@@ -194,7 +194,7 @@ closefile(f); ioresult; closefile(f2); ioresult; erase(f); ioresult;
 
 //showmessage(inttostr(p1)+'  !! '+inttostr(p2));
 
-form2.richedit1.lines.LoadFromFile(current_dir+'\tmp\addtext1.txt');
+form2.richedit1.lines.LoadFromFile(current_dir+'/tmp/addtext1.txt');
 1:closefile(f); ioresult; closefile(f2); ioresult; erase(f);ioresult; erase(f2);ioresult;
 end;
 
@@ -480,7 +480,7 @@ form2.memo1.clear;
 setcurrentdir(current_dir);
 
 assignfile(fi, filename);
-assignfile(fo, current_dir+'\tmp\Temp0.pas');
+assignfile(fo, current_dir+'\\tmp\\Temp0.pas');
 reset(fi); if ioresult<>0 then begin showmessage('The input file cannot be opened'); exit end;
 rewrite(fo); if ioresult<>0 then begin showmessage('The output file cannot be opened'); closefile(fi); ioresult; exit end;
 k:=0; while not(eof(fi))do begin inc(k);
@@ -500,8 +500,8 @@ end;
 //showmessage('we are here');
 
 closefile(fi);ioresult;closefile(fo);ioresult;
-assign(fi, current_dir+'\tmp\Temp0.pas');reset(fi);
-assign(fo, current_dir+'\tmp\Temp1.pas'); rewrite(fo);
+assign(fi, current_dir+'\\tmp\\Temp0.pas');reset(fi);
+assign(fo, current_dir+'\\tmp\\Temp1.pas'); rewrite(fo);
 b_comm1:=false; b_comm2:=false;b_str:=false;
 while not(eof(fi))do
 begin
@@ -1073,8 +1073,8 @@ assign(f,current_dir+'\tmp\directory.txt');closefile(f); ioresult;
 reset(f); if (ioresult=0) and(not(eof(f))) then readln(f,s3)else s3:=chr(1); closefile(f); ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.\tmp\temp0.sh');rewrite(f);s4:='';end;
-2:begin assign(f,'.\tmp\temp00.sh');rewrite(f);s4:='0' end;
+1:begin assign(f,'.\\tmp\\temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,'.\\tmp\\temp00.sh');rewrite(f);s4:='0' end;
 end; //of case
 if s3=chr(1)then begin
 writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'\tmp\temp2'+s4+'.pas > '+current_dir+'\tmp\result.txt');
@@ -1091,7 +1091,7 @@ end;
 closefile(f);ioresult;
 end;
 
-assignfile(f,current_dir+'\tmp\temp0.sh'); closefile(f); ioresult; reset(f);
+assignfile(f,current_dir+'\\tmp\\temp0.sh'); closefile(f); ioresult; reset(f);
 b:=(ioresult=0)and not eof(f);
 if not b then begin closefile(f); ioresult end else
 begin readln(f,s1); k:=pos(' ',s1);
@@ -1115,7 +1115,7 @@ setcurrentdir(current_dir);
 for p2:=1 to length(s1) do if s1[p2]in ['A'..'Z']then s1[p2]:=chr(ord(s1[p2])+32);
 if (length(s1)<4)or(copy(s1,length(s1)-2,3)<>'exe')then exit;
 closefile(f);ioresult;setcurrentdir(current_dir);
-assign(g,'.\tmp\directory.txt');rewrite(g);
+assign(g,'./tmp/directory.txt');rewrite(g);
 
 //showmessage(current_dir+'!!!!'+s1);
 //showmessage(s1);

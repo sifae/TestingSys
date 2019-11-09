@@ -93,8 +93,6 @@ begin
     if number_of_intervals > i_max + 9 then
     begin
       compi := False;
-
-
       closefile(f);
       ioresult;
       form3.Close;

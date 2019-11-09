@@ -53,6 +53,7 @@
       <Unit3>
         <Filename Value="data.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="Data"/>
       </Unit3>
       <Unit4>
         <Filename Value="file_killprocess.pas"/>

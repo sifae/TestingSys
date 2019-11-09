@@ -167,7 +167,7 @@ var arrayin0,matrixin0,arrayout0,matrixout0,amount_of_loops:integer;
 
 implementation
 
-uses file02, file09, file00, Dialogs, SysUtils;
+uses file02, file09, file00, Dialogs, SysUtils, Forms;
 
 //Break and output the input or output files; the exclamation mark is the separator; i=1,2,3 - input, received, correct respectively.
 procedure output_multifiles(si:string;k:integer);
@@ -396,10 +396,10 @@ procedure correct11_22a(s:string; ii5:integer);
     end
     else begin
       p:=pos(chr(10),s);
-      if p=0 then begin showmessage('Error! No ''\n'' in tests for the subroutine.'); p:=1 end;
+      if p=0 then begin showmessage('Error! No ''/n'' in tests for the subroutine.'); p:=1 end;
       if en_rus then string_out[2]:='the string: '+copy(s,1,p-1)else string_out[2]:='строка: '+copy(s,1,p-1);s:=copy(s,p+1,length(s));
       p:=pos(chr(10),s);
-      if p=0 then begin showmessage('Error! No ''\n'' in tests for the subroutine.'); p:=1 end;
+      if p=0 then begin showmessage('Error! No ''/n'' in tests for the subroutine.'); p:=1 end;
       if length(s)<p+2 then s:=s+'!!!!!!!!';
       if en_rus then string_out[3]:='substring bounds: '+copy(s,1,p-1)else string_out[3]:='грaницы пoдстpoки: '+copy(s,1,p-1);
       if en_rus then string_out[4]:='character range: '+s[p+1]+' '+s[p+2]else string_out[4]:='диапазон символов: '+s[p+1]+' '+s[p+2];

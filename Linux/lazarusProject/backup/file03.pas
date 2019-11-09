@@ -105,15 +105,15 @@ begin
     else
       ShowMessage(
         'Компиляция невозможна. Проверьте компилятор и перезапустите компьютер.');
-    //deletefile(current_dir+'\tmp\temp0.bat');ioresult; assignfile(f,'result.txt'); closefile(f); ioresult;
+    //deletefile(current_dir+'/tmp/temp0.bat');ioresult; assignfile(f,'result.txt'); closefile(f); ioresult;
     //erase(f); ioresult;
-    deletefile(current_dir + '\tmp\directory.txt');
+    deletefile(current_dir + '/tmp/directory.txt');
     delete_temp;
     halt;
   end;
   closefile(f);
   ioresult;
-  assignfile(f, current_dir + '\tmp\' + 'result.txt');
+  assignfile(f, current_dir + '/tmp/' + 'result.txt');
   reset(f);
   i := ioresult;
   //showmessage(inttostr(i));
@@ -141,7 +141,7 @@ begin
   if key = chr(27) then
   begin
     timer1.Enabled := False;
-    assignfile(f, current_dir + '\tmp\' + 'result.txt');
+    assignfile(f, current_dir + '/tmp/' + 'result.txt');
     closefile(f);
     ioresult;
     erase(f);

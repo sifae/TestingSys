@@ -62,15 +62,16 @@ var
   s, s2: string;
 begin
 
-  delete_temp;
+  //delete_temp;
   //form2 := Tform2.Create(self);
-  if fileexists(current_dir+'/tmp/temp01.sh') then
+  if fileexists('./tmp/temp01.sh') then
   begin
     s := 'Программа уже выполняется. Если это не так, удалите все файлы из подкаталога TMP, кроме directory.txt и p.txt. Пoсле этого перезапустите программу.';
     s2 :=
       ' The program is running already. If not, delete all files except directory.txt and p.txt in the subdirectory TMP and restart the program. ';
     ShowMessage(s + s2);
-    halt;
+    Application.Terminate;
+    exit;
   end;
 
   count_time := 0;
@@ -153,9 +154,9 @@ begin
     b := deletefile('temp1');
     if not b then
     begin
-      ShowMessage('Невозможно удалить файл Temp1. Возможно, открыто DOS- окно. Закройте его и перезапустите программу. '
+      ShowMessage('Невозможно удалить файл temp1. Возможно, открыто DOS- окно. Закройте его и перезапустите программу. '
         + chr(10) +
-        'It is impossible to delete the file ''Temp1''. A DOS window is probably opened. Close it and restart the program.');
+        'It is impossible to delete the file ''temp1''. A DOS window is probably opened. Close it and restart the program.');
       halt;
       form1.Close;
     end;

@@ -255,6 +255,7 @@ procedure initialize_screen;
 var f:text;var b:boolean; var sender:tobject;p:integer; label 1;var s:string;
 begin
 //showmessage('we are here');
+sender := tobject.newInstance;
 combo1text:='';combo2text:='';  b:=false;
 combo1index:=-1;combo2index:=-1;
 assign(f, current_dir+'/tmp/tests.ini'); reset(f);
@@ -266,7 +267,7 @@ if eof(f) then begin closefile(f); ioresult; goto 1 end;
 readln(f,s);form2.CheckBox2.Checked:=s='1';
 if eof(f) then begin closefile(f); ioresult; goto 1 end;
 readln(f,chosen_chapter);
-//showmessage(inttostr(chosen_chapter));
+showmessage(inttostr(chosen_chapter));
 if ioresult<>0 then begin chosen_chapter:=0; goto 1 end; form2.combobox1click(sender);
 if (eof(f)) or(chosen_chapter=0)then goto 1;
 readln(f, chosen_task); if ioresult<>0 then begin chosen_task:=''; goto 1;end;
@@ -306,6 +307,8 @@ if j>=2 then begin chapter_names[k,1]:=copy(s2,1,j-1); chapter_names[k,2]:=copy(
 begin chapter_names[k,2]:=s2;chapter_names[k,1]:=s2;end;
 form2.combobox1.items.add(chapter_names[k,1+byte(en_rus)]);
      closefile(f); ioresult;
+     //showmessage(form2.combobox1.items[k-1]);
+     //form2.combobox1.text := form2.combobox1.items[k-1];
      until (FindNext(searchResult)<> 0);
      findclose(searchresult);end;
 
@@ -378,6 +381,7 @@ end;
 procedure task_names_fill;//(chosen:string);
 var f:t_f;i:integer;s:string;b:boolean;
 begin
+showmessage('Task_names_fill');
 task_amount:=0;
 form2.combobox2.clear;
 pr_an:=false;
@@ -481,7 +485,7 @@ form2.memo1.clear;
 setcurrentdir(current_dir);
 
 assignfile(fi, filename);
-assignfile(fo, current_dir+'//tmp//Temp0.pas');
+assignfile(fo, current_dir+'/tmp/temp0.pas');
 reset(fi); if ioresult<>0 then begin showmessage('The input file cannot be opened'); exit end;
 rewrite(fo); if ioresult<>0 then begin showmessage('The output file cannot be opened'); closefile(fi); ioresult; exit end;
 k:=0; while not(eof(fi))do begin inc(k);
@@ -501,8 +505,8 @@ end;
 //showmessage('we are here');
 
 closefile(fi);ioresult;closefile(fo);ioresult;
-assign(fi, current_dir+'//tmp//Temp0.pas');reset(fi);
-assign(fo, current_dir+'//tmp//Temp1.pas'); rewrite(fo);
+assign(fi, current_dir+'/tmp/temp0.pas');reset(fi);
+assign(fo, current_dir+'/tmp/temp1.pas'); rewrite(fo);
 b_comm1:=false; b_comm2:=false;b_str:=false;
 while not(eof(fi))do
 begin
@@ -548,7 +552,7 @@ begin
 //s1:=getcurrentdir;
 //setcurrentdir(current_dir);
 bc:=not((textsin<>0)or(textsout<>0)); //not((chosen_task='15_38')or(copy(chosen_task,1,4)='15_4')or(copy(chosen_task,1,4)='15_5')or(copy(chosen_task,1,4)='15_6'));
-assignfile(fi,current_dir+'/tmp/Temp1.pas');reset(fi); assignfile(fo,current_dir+'/tmp/Temp0.pas');rewrite(fo);
+assignfile(fi,current_dir+'/tmp/temp1.pas');reset(fi); assignfile(fo,current_dir+'/tmp/temp0.pas');rewrite(fo);
 k:=0; j:=0; while not(eof(fi)) do begin readln(fi,s2);
 //removal all read; readln; write; and writeln;
 i:=1;inc(j);
@@ -639,7 +643,7 @@ var s2{,s1}:string;fi,fo:textfile;i,l,m,n,k{,j}:integer;
 begin
 //s1:=getcurrentdir;
 //setcurrentdir(current_dir);
-assignfile(fi,current_dir+'/tmp/Temp0.pas');reset(fi); assignfile(fo,current_dir+'/tmp/Temp1.pas');rewrite(fo);
+assignfile(fi,current_dir+'/tmp/temp0.pas');reset(fi); assignfile(fo,current_dir+'/tmp/temp1.pas');rewrite(fo);
 {Search the last 'begin' with zero balance; n is the line number, m is the position of the 'begin' in the found line,
 l is the current balance}
 k:=0;l:=0;m:=0; n:=0;
@@ -1074,8 +1078,8 @@ assign(f,current_dir+'/tmp/directory.txt');closefile(f); ioresult;
 reset(f); if (ioresult=0) and(not(eof(f))) then readln(f,s3)else s3:=chr(1); closefile(f); ioresult;
 for i2:=1 to 2 do begin
 case i2 of
-1:begin assign(f,'.//tmp//temp0.sh');rewrite(f);s4:='';end;
-2:begin assign(f,'.//tmp//temp00.sh');rewrite(f);s4:='0' end;
+1:begin assign(f,current_dir+'/tmp/temp0.sh');rewrite(f);s4:='';end;
+2:begin assign(f,current_dir+'/tmp/temp00.sh');rewrite(f);s4:='0' end;
 end; //of case
 if s3=chr(1)then begin
 writeln(f, 'fpc'+' -vu -Sg w '+current_dir+'/tmp/temp2'+s4+'.pas > '+current_dir+'/tmp/result.txt');
@@ -1092,7 +1096,7 @@ end;
 closefile(f);ioresult;
 end;
 
-assignfile(f,current_dir+'//tmp//temp0.sh'); closefile(f); ioresult; reset(f);
+assignfile(f,current_dir+'/tmp/temp0.sh'); closefile(f); ioresult; reset(f);
 b:=(ioresult=0)and not eof(f);
 if not b then begin closefile(f); ioresult end else
 begin readln(f,s1); k:=pos(' ',s1);
@@ -1724,6 +1728,7 @@ end;
 procedure TForm2.ComboBox2Click(Sender: TObject);
 var b:boolean;i1,p,i,k,j:integer;
 begin
+showmessage('ClickEvent');
 if text_size then button8.click;
 if task_size then button9.click;
 
@@ -1827,7 +1832,7 @@ if task_size then button9.Click;
 //button11.Click;
 setcurrentdir(current_dir);
 form2.Memo1.Font.Name:=_fontname;
-for i:=1 to max_test_number do deletefile('current_dir'+'/tmp/rrr'+inttostr(i));
+for i:=1 to max_test_number do deletefile(current_dir+'/tmp/rrr'+inttostr(i));
 button5.Enabled:=false;memo1.Clear; //memo2.Clear; memo3.clear;
 button10.Enabled:=false;
 button11.Enabled:=false;
@@ -2007,16 +2012,16 @@ button9.Enabled:=true;
 button10.Enabled:=false;
 button11.Enabled:=false;
 memo5.clear; memo1.clear;
-deletefile('./tmp/temp1.pas');
-deletefile('./tmp/temp2.pas');
-deletefile('./tmp/temp3.pas');
-deletefile('./tmp/temp4.pas');
-deletefile('./tmp/temp5.pas');
-deletefile('./tmp/temp10.pas');
-deletefile('./tmp/temp20.pas');
-deletefile('./tmp/temp30.pas');
-deletefile('./tmp/temp40.pas');
-deletefile('./tmp/temp50.pas');
+deletefile(current_dir+'/tmp/temp1.pas');
+deletefile(current_dir+'/tmp/temp2.pas');
+deletefile(current_dir+'/tmp/temp3.pas');
+deletefile(current_dir+'/tmp/temp4.pas');
+deletefile(current_dir+'/tmp/temp5.pas');
+deletefile(current_dir+'/tmp/temp10.pas');
+deletefile(current_dir+'/tmp/temp20.pas');
+deletefile(current_dir+'/tmp/temp30.pas');
+deletefile(current_dir+'/tmp/temp40.pas');
+deletefile(current_dir+'/tmp/temp50.pas');
 deletefile(current_dir+'/tmp/temp1');deletefile(current_dir+'/tmp/temp10');
 deletefile(current_dir+'/tmp/temp2');deletefile(current_dir+'/tmp/temp3');
 deletefile(current_dir+'/tmp/temp4');deletefile(current_dir+'/tmp/temp5');
@@ -2256,8 +2261,9 @@ end;
 
 procedure TForm2.ComboBox1Change(Sender: TObject);
 begin
-combobox1.Text:=combo1text;
-combobox1.ItemIndex:=combo1index;
+//showMessage(Sender.UnitName);
+form2.combobox1.Text:=combo1text;
+form2.combobox1.ItemIndex:=combo1index;
 end;
 
 procedure TForm2.ComboBox2Change(Sender: TObject);

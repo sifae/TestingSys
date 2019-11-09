@@ -15,6 +15,8 @@ implementation
 
 uses SysUtils, file00, Forms, file02, Dialogs, file09;
 
+{$I-,R+}
+
 {procedure extracting tests from the file 'tests_chapter_<chosen number>' and forming files with the
 initial data and correct results}
 function extract_data: boolean;

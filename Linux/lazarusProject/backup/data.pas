@@ -34,8 +34,8 @@ var
   jj3, jj5, jj6, jj7: boolean;
 var
   ii4, dif, ii2i, p3, xx13: integer;
-  xx16, xx17, xx18, xx19, xx14, xx15, xx9, xx10, xx11, xx12, xx3, xx4, xx5, xx6, xx7,
-  xx8, xx1, yy1, xx2, yy2, yy, xx: real;
+  xx16, xx17, xx18, xx19, xx14, xx15, xx9, xx10, xx11, xx12, xx3, xx4,
+  xx5, xx6, xx7, xx8, xx1, yy1, xx2, yy2, yy, xx: real;
 var
   g1, g, f: textfile;
   b1, b: boolean;
@@ -168,7 +168,8 @@ begin
           if en_rus then
             ShowMessage('Fatal error with claims to the chosen task.')
           else
-            ShowMessage('Фатальная ошибка в строке, содержащей требования к задаче.');
+            ShowMessage(
+              'Фатальная ошибка в строке, содержащей требования к задаче.');
           exit;
         end;
 
@@ -200,8 +201,9 @@ begin
       //showmessage(s);
       //showmessage(inttostr(task_claims_amount));
 
-      if (pos('program+sub', s) > 0) and ((pos('procedure', s) > 0) or (pos('Procedure', s) > 0) or
-        (pos('function', s) > 0) or (pos('Function', s) > 0)) then
+      if (pos('program+sub', s) > 0) and ((pos('procedure', s) > 0) or
+        (pos('Procedure', s) > 0) or (pos('function', s) > 0) or
+        (pos('Function', s) > 0)) then
       begin
         if en_rus then
           ShowMessage('Error. The algorithm cannot be both a program and a subprogram.')
@@ -225,11 +227,12 @@ begin
           closefile(h);
           ioresult;
           if en_rus then
-            ShowMessage('Error with amount of the tests - no number ' + IntToStr(xx29) + '.')
+            ShowMessage('Error with amount of the tests - no number ' +
+              IntToStr(xx29) + '.')
           else
-            ShowMessage('Ошибка в задании количества тестов - нет числа №'
-              +
-              IntToStr(xx29) + '.');
+            ShowMessage(
+              'Ошибка в задании количества тестов - нет числа №'
+              + IntToStr(xx29) + '.');
           exit;
         end;
         //k - the current number of tests
@@ -318,8 +321,8 @@ begin
             ShowMessage('Error in line ' + s +
               ' . An amount of matrices in the input data must be specified after the word ''Matrixin''')
           else
-            ShowMessage('Oшибка в строке ' +
-              s + ' . После слова ''Matrixin'' должно быть указано количество матриц во входном потоке.');
+            ShowMessage('Oшибка в строке ' + s +
+              ' . После слова ''Matrixin'' должно быть указано количество матриц во входном потоке.');
           exit;
         end;
         if program_sub and (length(s) > p + 8) and (s[p + 9] in ['0'..'9']) then
@@ -353,8 +356,8 @@ begin
             ShowMessage('Error in line ' + s +
               ' . An amount of matrices in the output data must be specified after the word ''Matrixout''')
           else
-            ShowMessage('Oшибка в строке ' +
-              s + ' . После слова ''Matrixout'' должно быть указано количество матриц в выходном потоке.');
+            ShowMessage('Oшибка в строке ' + s +
+              ' . После слова ''Matrixout'' должно быть указано количество матриц в выходном потоке.');
           exit;
         end;
         if program_sub and (length(s) > p + 9) and (s[p + 10] in ['0'..'9']) then
@@ -389,8 +392,8 @@ begin
             ShowMessage('Error in line ' + s +
               ' . An amount of arrays (1 - 9) in the input data must be specified after the word ''Arrayin''')
           else
-            ShowMessage('Oшибка в строке ' +
-              s + ' . После слова ''Arrayin'' должно быть указано количество массивов (1 - 9) во входном потоке.');
+            ShowMessage('Oшибка в строке ' + s +
+              ' . После слова ''Arrayin'' должно быть указано количество массивов (1 - 9) во входном потоке.');
           exit;
         end;
         if program_sub and (length(s) > p + 7) and (s[p + 8] in ['0'..'9']) then
@@ -425,8 +428,8 @@ begin
             ShowMessage('Error in line ' + s +
               ' . An amount of arrays (1 - 9) in the output data must be specified after the word ''Arrayout''')
           else
-            ShowMessage('Oшибка в строке ' +
-              s + ' . После слова ''Arrayout'' должно быть указано количество массивов (1 - 9) в выходном потоке.');
+            ShowMessage('Oшибка в строке ' + s +
+              ' . После слова ''Arrayout'' должно быть указано количество массивов (1 - 9) в выходном потоке.');
           exit;
         end;
         if program_sub and (length(s) > p + 8) and (s[p + 9] in ['0'..'9']) then
@@ -561,8 +564,8 @@ begin
         run_time_err := True;
       end;
       p := pos('Error', s);
-      if (arrayin > 0) and ((matrixin > 0) or (matrixout > 0)) or (arrayout > 0) and
-        ((matrixin > 0) or (matrixout > 0)) then
+      if (arrayin > 0) and ((matrixin > 0) or (matrixout > 0)) or
+        (arrayout > 0) and ((matrixin > 0) or (matrixout > 0)) then
       begin
         if en_rus then
           ShowMessage('Error. Input or output data cannot be both a one-dimensional array and a matrix.'
@@ -590,14 +593,15 @@ begin
       else
       begin
         Delete(s, p - 1, 1000);
-        if (pos('b', s) > 0) or (pos('c', s) > 0) or (pos('s', s) > 0) or (pos('i', s) > 0) and (pos('r', s) > 0) then
+        if (pos('b', s) > 0) or (pos('c', s) > 0) or (pos('s', s) > 0) or
+          (pos('i', s) > 0) and (pos('r', s) > 0) then
         begin
           if en_rus then
             ShowMessage('Error in line ' + s +
               ' . Only numerical data of type either integer or real can be sorted.')
           else
-            ShowMessage('Oшибка в строке ' +
-              s + ' . Copтировать можно только данные либо вещественного, либо целого типа.');
+            ShowMessage('Oшибка в строке ' + s +
+              ' . Copтировать можно только данные либо вещественного, либо целого типа.');
           exit;
         end;
         if pos('i', s) > 0 then
@@ -712,10 +716,12 @@ begin
           if en_rus then
             ShowMessage('Error. No program text was found after the first line.')
           else
-            ShowMessage('Ошибкa. Не найден текст программы после первой строки.');
+            ShowMessage(
+              'Ошибкa. Не найден текст программы после первой строки.');
           exit;
         end;
-      if ((copy(s, 1, 4) = 'Text') or (copy(s, 1, 4) = 'text')) and ((func_proc0 > 0) or program_sub) then
+      if ((copy(s, 1, 4) = 'Text') or (copy(s, 1, 4) = 'text')) and
+        ((func_proc0 > 0) or program_sub) then
       begin
         text_before := copy(s, 5, length(s));
         delete_blanks(text_before);
@@ -724,10 +730,12 @@ begin
         delete_blanks(text_after);
         text_before0 := text_before;
         text_after0 := text_after;
-        if (text_after = '') or (copy(text_after, length(text_after) - 3, 4) <> 'end.') then
+        if (text_after = '') or (copy(text_after, length(text_after) - 3, 4) <>
+          'end.') then
         begin
           if en_rus then
-            ShowMessage('Error in line ''' + text_after + '''. It must end with ''end.''')
+            ShowMessage('Error in line ''' + text_after +
+              '''. It must end with ''end.''')
           else
             ShowMessage('Oшибка в строке ' + text_after +
               '; oна должна заканчиваться символами ''end.''');
@@ -749,7 +757,8 @@ begin
         if text_after = '' then
         begin
           if en_rus then
-            ShowMessage('Error. A part of the program to be inserted after the function/procedure is empty.')
+            ShowMessage(
+              'Error. A part of the program to be inserted after the function/procedure is empty.')
           else
             ShowMessage(
               'Ошибкa. Часть программы, которая должна быть вставлена после процедуры/функции, является пустой.');
@@ -885,12 +894,14 @@ begin
         xx19 := xx16 * 2 + 2 + random(10) / 10;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        writeln(g, xx14: 1: 5, '  ', xx15: 1: 5, '  ', xx16: 1: 5, '  ', xx17: 1: 5, '  ',
+        writeln(g, xx14: 1: 5, '  ', xx15: 1: 5, '  ', xx16: 1: 5,
+          '  ', xx17: 1: 5, '  ',
           xx18: 1: 5, '  ', xx19: 1: 5, ' ');
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        writeln(g, (xx16 * xx18 - xx19 * xx15) / (xx14 * xx18 - xx17 * xx15): 1: 10, '  ',
+        writeln(g, (xx16 * xx18 - xx19 * xx15) / (xx14 * xx18 - xx17 * xx15):
+          1: 10, '  ',
           (xx14 * xx19 - xx17 * xx16) / (xx14 * xx18 - xx17 * xx15): 1: 10);
         closefile(g);
       end;
@@ -1009,7 +1020,8 @@ begin
         xx23 := -random(5) - 4;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        writeln(g, 1, ' ', xx21 + xx22 + xx23, ' ', xx21 * xx22 + (xx21 + xx22) * xx23, ' ', xx21 * xx22 * xx23);
+        writeln(g, 1, ' ', xx21 + xx22 + xx23, ' ', xx21 * xx22 +
+          (xx21 + xx22) * xx23, ' ', xx21 * xx22 * xx23);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
@@ -1068,11 +1080,13 @@ begin
         yy := (random(100) + 20) / 10;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        writeln(g, xx1: 1: 1, ' ', xx2: 1: 1, ' ', yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1);
+        writeln(g, xx1: 1: 1, ' ', xx2: 1: 1, ' ', yy1: 1: 1, ' ',
+          xx: 1: 1, ' ', yy: 1: 1);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        writeln(g, yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1, ' ', xx1: 1: 1, ' ', xx2: 1: 1);
+        writeln(g, yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1, ' ',
+          xx1: 1: 1, ' ', xx2: 1: 1);
         closefile(g);
       end;
 
@@ -1089,11 +1103,13 @@ begin
         yy := (random(100) + 20) / 10;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        writeln(g, '0 ', xx1: 1: 1, ' 0 0 ', xx2: 1: 1, ' 0 ', yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1);
+        writeln(g, '0 ', xx1: 1: 1, ' 0 0 ', xx2: 1: 1, ' 0 ', yy1: 1: 1,
+          ' ', xx: 1: 1, ' ', yy: 1: 1);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        writeln(g, xx1: 1: 1, ' ', xx2: 1: 1, ' ', yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1, ' 0 0 0 0');
+        writeln(g, xx1: 1: 1, ' ', xx2: 1: 1, ' ', yy1: 1: 1, ' ',
+          xx: 1: 1, ' ', yy: 1: 1, ' 0 0 0 0');
         closefile(g);
       end;
 
@@ -1110,11 +1126,13 @@ begin
         yy := -(random(100) + 20) / 10;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        writeln(g, xx1: 1: 1, ' 0 ', xx2: 1: 1, ' 0 ', yy1: 1: 1, ' ', xx: 1: 1, ' ', yy: 1: 1);
+        writeln(g, xx1: 1: 1, ' 0 ', xx2: 1: 1, ' 0 ', yy1: 1: 1, ' ',
+          xx: 1: 1, ' ', yy: 1: 1);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        writeln(g, xx2: 1: 1, ' ', yy: 1: 1, ' ', xx1: 1: 1, ' 0 0 ', yy1: 1: 1, ' ', xx: 1: 1);
+        writeln(g, xx2: 1: 1, ' ', yy: 1: 1, ' ', xx1: 1: 1, ' 0 0 ',
+          yy1: 1: 1, ' ', xx: 1: 1);
         closefile(g);
       end;
 
@@ -1156,12 +1174,14 @@ begin
         if random(100) < 50 then
         begin
           xx := 0;
-          writeln(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', yy1: 1: 0, ' ', xx2: 1: 0, ' ', yy1: 1: 0, ' ', yy2: 1: 0);
+          writeln(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', yy1: 1: 0, ' ',
+            xx2: 1: 0, ' ', yy1: 1: 0, ' ', yy2: 1: 0);
         end
         else
         begin
           xx := -1;
-          writeln(g, yy1: 1: 0, ' ', xx2: 1: 0, ' ', yy1: 1: 0, ' ', xx2 + 3: 1: 0, ' ', xx1: 1: 0, ' ', yy2: 1: 0);
+          writeln(g, yy1: 1: 0, ' ', xx2: 1: 0, ' ', yy1: 1: 0, ' ',
+            xx2 + 3: 1: 0, ' ', xx1: 1: 0, ' ', yy2: 1: 0);
         end;
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
@@ -1185,36 +1205,43 @@ begin
         if random(100) < 50 then
         begin
           xx := 0;
-          writeln(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 3: 1: 0,
+          writeln(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', xx1 + 3: 1: 0,
             ' ', xx1 + 4: 1: 0, ' ', xx1 + 5: 1: 0, ' ',
             xx1 + 7: 1: 0, ' ', xx1 + 9: 1: 0, ' ', xx1 + 12: 1: 0, ' ', xx1 + 13: 1: 0,
             ' ', xx1 + 14: 1: 0, ' ', xx1 + 17: 1: 0, ' ',
-            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0, ' ', xx1 + 18: 1: 0);
+            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0,
+            ' ', xx1 + 18: 1: 0);
         end
         else
         begin
           xx := -1;
-          writeln(g, xx1: 1: 0, ' ', xx1 + 21: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 3: 1: 0,
+          writeln(g, xx1: 1: 0, ' ', xx1 + 21: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', xx1 + 3: 1: 0,
             ' ', xx1 - 5: 1: 0, ' ', xx1 + 5: 1: 0, ' ',
             xx1 + 7: 1: 0, ' ', xx1 + 9: 1: 0, ' ', xx1 + 12: 1: 0, ' ', xx1 + 13: 1: 0,
             ' ', xx1 + 14: 1: 0, ' ', xx1 + 17: 1: 0, ' ',
-            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0, ' ', xx1 + 18: 1: 0);
+            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0,
+            ' ', xx1 + 18: 1: 0);
         end;
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
         if xx = 0 then
-          writeln(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 3: 1: 0,
+          writeln(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', xx1 + 3: 1: 0,
             ' ', xx1 + 4: 1: 0, ' ', xx1 + 5: 1: 0, ' ',
             xx1 + 7: 1: 0, ' ', xx1 + 9: 1: 0, ' ', xx1 + 12: 1: 0, ' ', xx1 + 13: 1: 0,
             ' ', xx1 + 14: 1: 0, ' ', xx1 + 17: 1: 0, ' ',
             xx1 + 19: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 - 3: 1: 0, ' ', xx1 + 18: 1: 0)
         else
-          writeln(g, xx1: 1: 0, ' ', xx1 - 5: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 3: 1: 0,
+          writeln(g, xx1: 1: 0, ' ', xx1 - 5: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', xx1 + 3: 1: 0,
             ' ', xx1 + 21: 1: 0, ' ', xx1 + 5: 1: 0, ' ',
             xx1 + 7: 1: 0, ' ', xx1 + 9: 1: 0, ' ', xx1 + 12: 1: 0, ' ', xx1 + 13: 1: 0,
             ' ', xx1 + 14: 1: 0, ' ', xx1 + 17: 1: 0, ' ',
-            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0, ' ', xx1 + 18: 1: 0);
+            xx1 - 3: 1: 0, ' ', xx1 + 11: 1: 0, ' ', xx1 + 19: 1: 0,
+            ' ', xx1 + 18: 1: 0);
         closefile(g);
       end;
 
@@ -1262,15 +1289,21 @@ begin
           xx2 := random(400) + 20;
           Assign(g, s1 + '/tmp/iii' + IntToStr(k));
           rewrite(g);
-          Write(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1 + 34: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0, ' ');
-          Write(g, xx2: 1: 0, ' ', xx2: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2: 1: 0, ' ', xx2: 1: 0, ' ');
-          Write(g, xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ');
+          Write(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1 + 34: 1: 0,
+            ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0, ' ');
+          Write(g, xx2: 1: 0, ' ', xx2: 1: 0, ' ', xx2 + 1: 1: 0, ' ',
+            xx2: 1: 0, ' ', xx2: 1: 0, ' ');
+          Write(g, xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ',
+            xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ');
           xx1 := random(400) + 20;
           xx3 := random(400) + 20;
           xx2 := random(400) + 20;
-          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1: 1: 0, ' ', xx1: 1: 0, ' ');
-          Write(g, xx2: 1: 0, ' ', xx2: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2: 1: 0, ' ');
-          writeln(g, xx3: 1: 0, ' ', -xx3: 1: 0, ' ', xx3: 1: 0, ' ', -xx3: 1: 0, ' ', -xx3: 1: 0);
+          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0,
+            ' ', xx1: 1: 0, ' ', xx1: 1: 0, ' ');
+          Write(g, xx2: 1: 0, ' ', xx2: 1: 0, ' ', xx2 + 1: 1: 0, ' ',
+            xx2 + 1: 1: 0, ' ', xx2: 1: 0, ' ');
+          writeln(g, xx3: 1: 0, ' ', -xx3: 1: 0, ' ', xx3: 1: 0, ' ',
+            -xx3: 1: 0, ' ', -xx3: 1: 0);
           closefile(g);
         end;
 
@@ -1281,15 +1314,21 @@ begin
           xx2 := random(400) + 20;
           Assign(g, s1 + '/tmp/iii' + IntToStr(k));
           rewrite(g);
-          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ', -xx1: 1: 0, ' ', -xx1 * 2: 1: 0, ' ');
-          Write(g, xx2: 1: 0, ' ', xx2 - 1: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2 - 1: 1: 0, ' ', -xx2: 1: 0, ' ');
-          Write(g, xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ');
+          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', -xx1: 1: 0, ' ', -xx1 * 2: 1: 0, ' ');
+          Write(g, xx2: 1: 0, ' ', xx2 - 1: 1: 0, ' ', xx2 + 1: 1: 0,
+            ' ', xx2 - 1: 1: 0, ' ', -xx2: 1: 0, ' ');
+          Write(g, xx3: 1: 0, ' ', xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ',
+            xx3 + 1: 1: 0, ' ', xx3: 1: 0, ' ');
           xx1 := random(400) + 20;
           xx3 := random(400) + 20;
           xx2 := random(400) + 20;
-          Write(g, xx1 * 2: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 - 1: 1: 0, ' ', xx1: 1: 0, ' ', xx1 * 2: 1: 0, ' ');
-          Write(g, xx2 - 2: 1: 0, ' ', xx2 - 20: 1: 0, ' ', xx2 - 32: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2 + 1: 1: 0, ' ');
-          writeln(g, xx3: 1: 0, ' ', xx3: 1: 0, ' ', xx3 - 1: 1: 0, ' ', xx3 - 22: 1: 0, ' ', xx3 - 24: 1: 0);
+          Write(g, xx1 * 2: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 -
+            1: 1: 0, ' ', xx1: 1: 0, ' ', xx1 * 2: 1: 0, ' ');
+          Write(g, xx2 - 2: 1: 0, ' ', xx2 - 20: 1: 0, ' ', xx2 -
+            32: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2 + 1: 1: 0, ' ');
+          writeln(g, xx3: 1: 0, ' ', xx3: 1: 0, ' ', xx3 - 1: 1: 0,
+            ' ', xx3 - 22: 1: 0, ' ', xx3 - 24: 1: 0);
           closefile(g);
         end;
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
@@ -1346,8 +1385,10 @@ begin
           Inc(xx13);
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx5: 1: 0, ' ', xx6: 1: 0, '  ');
-        writeln(g, xx7: 1: 0, ' ', xx8: 1: 0, ' ', xx9: 1: 0, ' ', xx10: 1: 0, ' ', xx11: 1: 0, ' ', xx12: 1: 0);
+        Write(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', xx3: 1: 0, ' ',
+          xx4: 1: 0, ' ', xx5: 1: 0, ' ', xx6: 1: 0, '  ');
+        writeln(g, xx7: 1: 0, ' ', xx8: 1: 0, ' ', xx9: 1: 0, ' ',
+          xx10: 1: 0, ' ', xx11: 1: 0, ' ', xx12: 1: 0);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
@@ -1366,12 +1407,16 @@ begin
         xx4 := random(100) + 24;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx1: 1: 0, ' ', xx1 - 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 12: 1: 0, ' ', xx1 + 15: 1: 0, ' ');
-        Write(g, xx2 - 11: 1: 0, ' ', xx2 - 9: 1: 0, ' ', xx2 + 1: 1: 0, ' ', xx2: 1: 0, ' ', xx2 + 15: 1: 0, ' ');
+        Write(g, xx1: 1: 0, ' ', xx1 - 1: 1: 0, ' ', xx1 + 1: 1: 0,
+          ' ', xx1 + 12: 1: 0, ' ', xx1 + 15: 1: 0, ' ');
+        Write(g, xx2 - 11: 1: 0, ' ', xx2 - 9: 1: 0, ' ', xx2 + 1: 1: 0,
+          ' ', xx2: 1: 0, ' ', xx2 + 15: 1: 0, ' ');
         if xx3 > xx4 then
-          writeln(g, xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx3 + xx4: 1: 0)
+          writeln(g, xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx3: 1: 0, ' ',
+            xx4: 1: 0, ' ', xx3 + xx4: 1: 0)
         else
-          writeln(g, -xx3 - 1: 1: 0, ' ', -xx3: 1: 0, ' ', xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx3: 1: 0);
+          writeln(g, -xx3 - 1: 1: 0, ' ', -xx3: 1: 0, ' ', xx3: 1: 0,
+            ' ', xx4: 1: 0, ' ', xx3: 1: 0);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
@@ -1393,15 +1438,21 @@ begin
         rewrite(g);
         if xx2 < 50 then
         begin
-          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ');
-          Write(g, xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 1: 1: 0, '  ');
-          writeln(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0, ' ', xx1 + 15: 1: 0);
+          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0,
+            ' ', xx1 + 2: 1: 0, ' ');
+          Write(g, xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 +
+            2: 1: 0, ' ', xx1 + 1: 1: 0, '  ');
+          writeln(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0,
+            ' ', xx1 + 15: 1: 0);
         end
         else
         begin
-          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 2: 1: 0, ' ');
-          Write(g, xx1 + 1: 1: 0, ' ', xx1: 1: 0, ' ', xx1 + 2: 1: 0, ' ', xx1 + 1: 1: 0, ' ');
-          writeln(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0, ' ', xx1 + 15: 1: 0);
+          Write(g, xx1: 1: 0, ' ', xx1 + 1: 1: 0, ' ', xx1 + 1: 1: 0,
+            ' ', xx1 + 2: 1: 0, ' ');
+          Write(g, xx1 + 1: 1: 0, ' ', xx1: 1: 0, ' ', xx1 + 2: 1: 0,
+            ' ', xx1 + 1: 1: 0, ' ');
+          writeln(g, xx1: 1: 0, ' ', xx1 + 10: 1: 0, ' ', xx1: 1: 0,
+            ' ', xx1 + 15: 1: 0);
         end;
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
@@ -1434,19 +1485,29 @@ begin
         xx13 := random(1000) - 250;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', xx3: 1: 0, ' ', xx4: 1: 0, ' ', xx5: 1: 0, ' ');
-        Write(g, xx6 + 1: 1: 0, ' ', xx7: 1: 0, ' ', xx8: 1: 0, ' ', xx9: 1: 0, ' ', xx10: 1: 0, ' ');
-        Write(g, xx11: 1: 0, ' ', xx12: 1: 0, ' ', -xx1: 1: 0, ' ', -xx2: 1: 0, ' ', -xx3: 1: 0, ' ');
-        Write(g, -xx4: 1: 0, ' ', -xx5 - 1: 1: 0, ' ', -xx6 + 1: 1: 0, ' ', -xx7: 1: 0, ' ', -xx8: 1: 0, ' ');
-        writeln(g, -xx9 - 1: 1: 0, ' ', -xx10: 1: 0, ' ', -xx11: 1: 0, ' ', -xx12: 1: 0, ' ', xx13: 1, ' ');
+        Write(g, xx1: 1: 0, ' ', xx2: 1: 0, ' ', xx3: 1: 0, ' ',
+          xx4: 1: 0, ' ', xx5: 1: 0, ' ');
+        Write(g, xx6 + 1: 1: 0, ' ', xx7: 1: 0, ' ', xx8: 1: 0, ' ',
+          xx9: 1: 0, ' ', xx10: 1: 0, ' ');
+        Write(g, xx11: 1: 0, ' ', xx12: 1: 0, ' ', -xx1: 1: 0, ' ',
+          -xx2: 1: 0, ' ', -xx3: 1: 0, ' ');
+        Write(g, -xx4: 1: 0, ' ', -xx5 - 1: 1: 0, ' ', -xx6 + 1: 1: 0,
+          ' ', -xx7: 1: 0, ' ', -xx8: 1: 0, ' ');
+        writeln(g, -xx9 - 1: 1: 0, ' ', -xx10: 1: 0, ' ', -xx11: 1: 0,
+          ' ', -xx12: 1: 0, ' ', xx13: 1, ' ');
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        Write(g, xx5: 1: 0, ' ', xx10: 1: 0, ' ', -xx3: 1: 0, ' ', -xx8: 1: 0, ' ', xx13: 1, ' ');
-        Write(g, xx4: 1: 0, ' ', xx9: 1: 0, ' ', -xx2: 1: 0, ' ', -xx7: 1: 0, ' ', -xx12: 1: 0, ' ');
-        Write(g, xx3: 1: 0, ' ', xx8: 1: 0, ' ', -xx1: 1: 0, ' ', -xx6 + 1: 1: 0, ' ', -xx11: 1: 0, ' ');
-        Write(g, xx2: 1: 0, ' ', xx7: 1: 0, ' ', xx12: 1: 0, ' ', -xx5 - 1: 1: 0, ' ', -xx10: 1: 0, ' ');
-        writeln(g, xx1: 1: 0, ' ', xx6 + 1: 1: 0, ' ', xx11: 1: 0, ' ', -xx4: 1: 0, ' ', -xx9 - 1: 1: 0, ' ');
+        Write(g, xx5: 1: 0, ' ', xx10: 1: 0, ' ', -xx3: 1: 0, ' ',
+          -xx8: 1: 0, ' ', xx13: 1, ' ');
+        Write(g, xx4: 1: 0, ' ', xx9: 1: 0, ' ', -xx2: 1: 0, ' ',
+          -xx7: 1: 0, ' ', -xx12: 1: 0, ' ');
+        Write(g, xx3: 1: 0, ' ', xx8: 1: 0, ' ', -xx1: 1: 0, ' ',
+          -xx6 + 1: 1: 0, ' ', -xx11: 1: 0, ' ');
+        Write(g, xx2: 1: 0, ' ', xx7: 1: 0, ' ', xx12: 1: 0, ' ',
+          -xx5 - 1: 1: 0, ' ', -xx10: 1: 0, ' ');
+        writeln(g, xx1: 1: 0, ' ', xx6 + 1: 1: 0, ' ', xx11: 1: 0,
+          ' ', -xx4: 1: 0, ' ', -xx9 - 1: 1: 0, ' ');
 
         closefile(g);
       end;
@@ -1510,13 +1571,14 @@ begin
         rewrite(g);
         Write(g, xx21: 1, ' ', xx22: 1, ' ', xx23: 1, ' ', xx24: 1, ' ', xx25: 1,
           ' ', xx26: 1, ' ', xx27: 1, ' ', xx28: 1,
-          ' ', 12 + xx24 div 7, xx21 + xx22: 1, ' ', 25 - xx25 div 10, ' ', 45 + xx26 div
-          3, ' ', xx23 div 5 + 122, ' ', 766 + xx21 div 2, ' ', -135 + xx21, ' ', -201 + xx21);
+          ' ', 12 + xx24 div 7, xx21 + xx22: 1, ' ', 25 - xx25 div
+          10, ' ', 45 + xx26 div 3, ' ', xx23 div 5 + 122, ' ', 766 +
+          xx21 div 2, ' ', -135 + xx21, ' ', -201 + xx21);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
-        Write(g, xx21 * xx21 + xx22 * xx22 + xx23 * xx23 + xx24 * xx24 + xx25 * xx25 + xx26 * xx26 +
-          xx27 * xx27 + xx28 * xx28);
+        Write(g, xx21 * xx21 + xx22 * xx22 + xx23 * xx23 + xx24 *
+          xx24 + xx25 * xx25 + xx26 * xx26 + xx27 * xx27 + xx28 * xx28);
         closefile(g);
       end;
 
@@ -1531,9 +1593,12 @@ begin
         xx33 := random(10) / 4 + 5;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx31: 1: 4, ' ', xx31 + 1: 1: 4, ' ', xx31 - 3: 1: 4, ' ', xx31 - 4: 1: 4, ' ',
-          xx32 + 4: 1: 4, ' ', xx32 + 1: 1: 4, ' ', xx32 - 3: 1: 4, ' ', xx32 - 52: 1: 4, ' ',
-          xx33: 1: 4, ' ', xx33 + 1: 1: 4, ' ', xx33 + 3: 1: 4, ' ', xx33 * 2: 1: 4, ' ');
+        Write(g, xx31: 1: 4, ' ', xx31 + 1: 1: 4, ' ', xx31 - 3: 1: 4,
+          ' ', xx31 - 4: 1: 4, ' ',
+          xx32 + 4: 1: 4, ' ', xx32 + 1: 1: 4, ' ', xx32 - 3: 1: 4,
+          ' ', xx32 - 52: 1: 4, ' ',
+          xx33: 1: 4, ' ', xx33 + 1: 1: 4, ' ', xx33 + 3: 1: 4, ' ',
+          xx33 * 2: 1: 4, ' ');
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
@@ -1560,17 +1625,20 @@ begin
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
         Write(g, xx21, ' ', xx22, ' ', xx23, ' ', xx24, ' ', xx25, ' ', xx26,
-          ' ', xx27, ' ', xx26 + xx25, ' ', xx21 + xx28, ' ', xx28, ' ', xx23 + xx28, ' ',
+          ' ', xx27, ' ', xx26 + xx25, ' ', xx21 + xx28, ' ', xx28,
+          ' ', xx23 + xx28, ' ',
           xx24 + xx25, ' ', xx28);
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
         if xx28 = 1 then
           Write(g, xx22, ' ', xx23, ' ', xx24, ' ', xx25, ' ', xx26, ' ', xx27,
-            ' ', xx26 + xx25, ' ', xx21 + xx28, ' ', xx28, ' ', xx23 + xx28, ' ', xx24 + xx25, ' ', xx21)
+            ' ', xx26 + xx25, ' ', xx21 + xx28, ' ', xx28, ' ', xx23 +
+            xx28, ' ', xx24 + xx25, ' ', xx21)
         else
           Write(g, xx23, ' ', xx24, ' ', xx25, ' ', xx26, ' ', xx27, ' ', xx26 + xx25,
-            ' ', xx21 + xx28, ' ', xx28, ' ', xx23 + xx28, ' ', xx24 + xx25, ' ', xx21, ' ', xx22);
+            ' ', xx21 + xx28, ' ', xx28, ' ', xx23 + xx28, ' ', xx24 +
+            xx25, ' ', xx21, ' ', xx22);
         closefile(g);
       end;
 
@@ -1597,7 +1665,8 @@ begin
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
         if xx36 < 0 then
-          Write(g, xx33: 1: 4, ' ', xx35: 1: 4, ' ', xx36: 1: 4, ' ', xx31: 1: 4, ' ', xx32: 1: 4,
+          Write(g, xx33: 1: 4, ' ', xx35: 1: 4, ' ', xx36: 1: 4, ' ',
+            xx31: 1: 4, ' ', xx32: 1: 4,
             ' ', xx34: 1: 4, ' ')
         else
           Write(g, xx33: 1: 4, ' ', xx35: 1: 4, ' ', xx31: 1: 4, ' ', xx32: 1: 4, ' ',
@@ -1662,7 +1731,8 @@ begin
           xx32 := abs(xx32)
         else
           xx32 := abs(xx34);
-        Write(g, (abs(xx31) + abs(xx35) + abs(xx33) + abs(xx34)) / (abs(xx31 + xx33) + xx32): 1: 9);
+        Write(g, (abs(xx31) + abs(xx35) + abs(xx33) + abs(xx34)) /
+          (abs(xx31 + xx33) + xx32): 1: 9);
         closefile(g);
       end;
       {A special random test for the task 12.5}
@@ -1853,8 +1923,8 @@ begin
         xx22 := random(40) + 5;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx21, ' ', -xx21, ' ', xx21 div 2, ' ', xx21 * 2, ' ', xx22, ' ',
-          -xx22, ' ', xx22 * 3, ' ', xx22 * 2, ' 0');
+        Write(g, xx21, ' ', -xx21, ' ', xx21 div 2, ' ', xx21 * 2,
+          ' ', xx22, ' ', -xx22, ' ', xx22 * 3, ' ', xx22 * 2, ' 0');
         closefile(g);
         Assign(g, s1 + '/tmp/ooo' + IntToStr(k));
         rewrite(g);
@@ -2095,7 +2165,8 @@ begin
         xx35 := random(17) / 2;
         Assign(g, s1 + '/tmp/iii' + IntToStr(k));
         rewrite(g);
-        Write(g, xx31: 1: 2, ' ', xx32: 1: 2, ' ', xx33: 1: 2, ' ', xx34: 1: 2, ' ', xx35: 1: 2,
+        Write(g, xx31: 1: 2, ' ', xx32: 1: 2, ' ', xx33: 1: 2, ' ',
+          xx34: 1: 2, ' ', xx35: 1: 2,
           ' ', xx36: 1: 2, ' ', xx37: 1: 2, ' ', xx38: 1: 2, ' ', xx39: 1: 2, ' ');
         xx21 := random(3) + 1;
         if not xx21 in [1..3] then
@@ -3100,7 +3171,8 @@ begin
         if xx21 = 1 then
         begin
           xx24 := random(20) + 65;
-          Write(g, 'wervc' + chr(xx24) + chr(2) + '.' + 'wervc' + chr(xx24) + chr(2) + '.');
+          Write(g, 'wervc' + chr(xx24) + chr(2) + '.' + 'wervc' +
+            chr(xx24) + chr(2) + '.');
           closefile(g);
         end
         else
@@ -3657,7 +3729,8 @@ begin
       end;
 
       //Special random tests for the tasks 16.15 and 16.18
-      if (chosen_task = '16_15-001') or (chosen_task = '16_18-003') or (chosen_task = '16_18-004') then
+      if (chosen_task = '16_15-001') or (chosen_task = '16_18-003') or
+        (chosen_task = '16_18-004') then
       begin
         number_of_tests := number_of_tests + 1;
         k := k + 1;
@@ -3925,8 +3998,10 @@ begin
           xx33 := random(1000) / 10 - 50;
           xx34 := random(1000) / 10 - 50;
           xx35 := random(1000) / 10 - 50;
-          Write(g, xx31: 1: 3, ' ', xx32: 1: 3, ' ', xx33: 1: 3, ' ', xx34: 1: 3, ' ', xx35: 1: 3, ' 1E20');
-          Write(g1, xx35: 1: 3, ' ', xx34: 1: 3, ' ', xx33: 1: 3, ' ', xx32: 1: 3, ' ', xx31: 1: 3);
+          Write(g, xx31: 1: 3, ' ', xx32: 1: 3, ' ', xx33: 1: 3, ' ',
+            xx34: 1: 3, ' ', xx35: 1: 3, ' 1E20');
+          Write(g1, xx35: 1: 3, ' ', xx34: 1: 3, ' ', xx33: 1: 3, ' ',
+            xx32: 1: 3, ' ', xx31: 1: 3);
           closefile(g);
           closefile(g1);
         end;

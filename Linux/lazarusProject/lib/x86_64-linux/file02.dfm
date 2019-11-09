@@ -74,7 +74,7 @@ object Form2: TForm2
     ItemHeight = 13
     TabOrder = 2
     Text = 'ComboBox1'
-    OnChange = ComboBox1Change
+    OnChange = ComboBox1Click
     OnClick = ComboBox1Click
     OnKeyDown = ComboBox1KeyDown
   end
@@ -86,7 +86,7 @@ object Form2: TForm2
     ItemHeight = 13
     TabOrder = 3
     Text = 'ComboBox2'
-    OnChange = ComboBox2Change
+    OnChange = ComboBox2Click
     OnClick = ComboBox2Click
     OnKeyDown = ComboBox2KeyDown
   end

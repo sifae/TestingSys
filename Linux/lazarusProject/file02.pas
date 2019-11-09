@@ -258,6 +258,7 @@ begin
 sender := tobject.newInstance;
 combo1text:='';combo2text:='';  b:=false;
 combo1index:=-1;combo2index:=-1;
+//chosen_chapter := 1;
 assign(f, current_dir+'/tmp/tests.ini'); reset(f);
 p:=ioresult;
 //showmessage(current_dir+'/test.ini'+'!'+inttostr(p));
@@ -375,13 +376,11 @@ end;
 if l>=0 then form2.ComboBox2.ItemIndex:=l;
 end;
 
-
-
 {Procedure of filling the array 'task_names'}
 procedure task_names_fill;//(chosen:string);
 var f:t_f;i:integer;s:string;b:boolean;
 begin
-showmessage('Task_names_fill');
+//showmessage('Task_names_fill');
 task_amount:=0;
 form2.combobox2.clear;
 pr_an:=false;
@@ -1728,7 +1727,7 @@ end;
 procedure TForm2.ComboBox2Click(Sender: TObject);
 var b:boolean;i1,p,i,k,j:integer;
 begin
-showmessage('ClickEvent');
+//showmessage('ClickEvent');
 if text_size then button8.click;
 if task_size then button9.click;
 
@@ -2261,7 +2260,7 @@ end;
 
 procedure TForm2.ComboBox1Change(Sender: TObject);
 begin
-//showMessage(Sender.UnitName);
+//showMessage(Sender.UnitName); //
 form2.combobox1.Text:=combo1text;
 form2.combobox1.ItemIndex:=combo1index;
 end;

@@ -8,7 +8,7 @@ uses
   //richmemo,
   Interfaces, // this includes the LCL widgetset
   Forms, file01, file02, file00, file09, file101, File_KillProcess,
-  testing_main, testing_utils;
+  testing_main, testing_utils,form3;
 
 {$R *.res}
 

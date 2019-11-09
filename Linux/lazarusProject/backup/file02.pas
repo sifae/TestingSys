@@ -5,7 +5,7 @@ interface
 uses
 cthreads, cmem, file00, LCLIntf, Messages, SysUtils, Classes, Variants,
 Graphics, Controls, Forms,
-Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, RichMemoUtils, Process;//;
+Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, RichMemoUtils, RichMemoRtf, Process;//;
 
 type
 TForm2 = class(TForm)
@@ -85,7 +85,8 @@ Form2: TForm2;
 
 
 const
-engrus = 'abcdefghijklmnjpqrstuvwxyzабвгдежзиклмнопрстуфхцчшщъыьэюя';
+engrus =
+  'abcdefghijklmnjpqrstuvwxyzабвгдежзиклмнопрстуфхцчшщъыьэюя';
 
 const
 ruscapsmall =
@@ -122,38 +123,70 @@ var
 begin
   if en_rus then
   begin
-    s := 'SOME PECULIARITIES OF MAKING PROGRAMS FOR THE AUTOMATED PROGRAM TESTING SYSTEM' +
+    s := 'SOME PECULIARITIES OF MAKING PROGRAMS FOR THE AUTOMATED PROGRAM TESTING SYSTEM'
+      + chr(13) + chr(10);
+    s := s + '1. Do not use blank characters in file and directory names.' +
       chr(13) + chr(10);
-    s := s + '1. Do not use blank characters in file and directory names.' + chr(13) + chr(10);
-    s := s + '2. Descriptions of tasks that are suggested in the System can be slightly different from those in the taskbook by Pilshchikov. Read the text to a task attentively before making a program for it.' + chr(13) + chr(10);
-    s := s + '3. Output exactly the information that is specified for the task. In particular, do not output any prompts like ''Input the array:'', ''The result is:'' and others.';
-    s := s + ' However, if you still want to use an additional output, place it on a separate line beginning with the characters ''{I}''. The System ignores such program lines.' + chr(13) + chr(10);
+    s := s +
+      '2. Descriptions of tasks that are suggested in the System can be slightly different from those in the taskbook by Pilshchikov. Read the text to a task attentively before making a program for it.' + chr(13) + chr(10);
+    s := s +
+      '3. Output exactly the information that is specified for the task. In particular, do not output any prompts like ''Input the array:'', ''The result is:'' and others.';
+    s := s +
+      ' However, if you still want to use an additional output, place it on a separate line beginning with the characters ''{I}''. The System ignores such program lines.' + chr(13) + chr(10);
     s := s + '4. Separate output numbers with blank characters. ' + chr(13) + chr(10);
-    s := s + '5. A complex number must be output as two real numbers without any brackets, characters ''+'' or ''i''.' + chr(13) + chr(10);
-    s := s + '6. Elements of a one-dimensional array must be output in ascending order of their indeces if the task does not specify a different output.' + chr(13) + chr(10);
-    s := s + '7. Elements of a matrix must be output in order of its rows if the task does not specify a different output.' + chr(13) + chr(10);
-    s := s + '8. The amount of terms of a sequence, the amount of elements of a one-dimensional array and the order of a square matrix must be defined as an integer constant with a posuitive value.' + chr(13) + chr(10);
-    s := s + '9. The amount of rows and columns of a rectangular matrix must be specified as two integer constants with positive values; the first constant denotes the amount of the rows and the second one denotes the amount of the columns.' + chr(13) + chr(10);
-    s := s + 'To guarantee a correct compilation of the program do not use any other constants for the tasks where these special constants are needed.' + chr(13) + chr(10);
-    s := s + '10. For setting a chapter number and a task number automatically, use filenames of the type ''_<chapter number>_<task number>-<subtask number (a three-digit integer)>_<any text>''. Examples: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.';
+    s := s +
+      '5. A complex number must be output as two real numbers without any brackets, characters ''+'' or ''i''.'
+      +
+      chr(13) + chr(10);
+    s := s +
+      '6. Elements of a one-dimensional array must be output in ascending order of their indeces if the task does not specify a different output.'
+      +
+      chr(13) + chr(10);
+    s := s +
+      '7. Elements of a matrix must be output in order of its rows if the task does not specify a different output.'
+      +
+      chr(13) + chr(10);
+    s := s +
+      '8. The amount of terms of a sequence, the amount of elements of a one-dimensional array and the order of a square matrix must be defined as an integer constant with a posuitive value.' + chr(13) + chr(10);
+    s := s +
+      '9. The amount of rows and columns of a rectangular matrix must be specified as two integer constants with positive values; the first constant denotes the amount of the rows and the second one denotes the amount of the columns.' + chr(13) + chr(10);
+    s := s +
+      'To guarantee a correct compilation of the program do not use any other constants for the tasks where these special constants are needed.'
+      +
+      chr(13) + chr(10);
+    s := s +
+      '10. For setting a chapter number and a task number automatically, use filenames of the type ''_<chapter number>_<task number>-<subtask number (a three-digit integer)>_<any text>''. Examples: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.';
   end
   else
   begin
     s := 'НЕКОТОРЫЕ ОСОБЕННОСТИ СОСТАВЛЕНИЯ ПРОГРАММ ДЛЯ СИСТЕМЫ АВТОМАТИЧЕСКОГО ТЕСТИРОВАНИЯ' + chr(13) + chr(10);
-    s := s + '1. Не используйте пробелы в именах файлов и каталогов.' +
+    s := s +
+      '1. Не используйте пробелы в именах файлов и каталогов.'
+      +
       chr(13) + chr(10);
-    s := s + '2. Формулировки задач, предложенныx в Системе, могут немного отличаться от формулировок, приведенных в задачнике Пильщикова. Внимательно прочтите текст задачи перед составлением программы. ' + chr(13) + chr(10);
-    s := s + '3. Выводите в точности ту информацию, которая указана в формулировке задачи. В частности, не выводите никаких поясняющиx сообщений типа ''Введите x='', ''Ответ:'' и т.д.';
-    s := s + ' Oднако, если Вы всe же хотите использовать дополнительный вывод, разместите егo в отдельной строке и начните с комментария ''{I}''. Система автоматически удаляет такие строки.' + chr(13) + chr(10);
-    s := s + '4. Выводимые числа разделяйте пробелами.' +
+    s := s +
+      '2. Формулировки задач, предложенныx в Системе, могут немного отличаться от формулировок, приведенных в задачнике Пильщикова. Внимательно прочтите текст задачи перед составлением программы. ' + chr(13) + chr(10);
+    s := s +
+      '3. Выводите в точности ту информацию, которая указана в формулировке задачи. В частности, не выводите никаких поясняющиx сообщений типа ''Введите x='', ''Ответ:'' и т.д.';
+    s := s +
+      ' Oднако, если Вы всe же хотите использовать дополнительный вывод, разместите егo в отдельной строке и начните с комментария ''{I}''. Система автоматически удаляет такие строки.' + chr(13) + chr(10);
+    s := s + '4. Выводимые числа разделяйте пробелами.'
+      +
       chr(13) + chr(10);
-    s := s + '5. Комлексное число должно быть выведено как совокупность двух вещественных чисeл без допoлнительных скобок, знаков ''+'' или ''i''.' + chr(13) + chr(10);
-    s := s + '6. Элементы одномерного массива должны быть выведены в порядке возрастания их индексов, если иное не указано в формулировке задачи.' + chr(13) + chr(10);
-    s := s + '7. Элементы матрицы должны быть выведены по строкам, если иное не указано в формулировке задачи.' + chr(13) + chr(10);
-    s := s + '8. Количество элементов последовательности, количество элементов одномерного массива и порядок квадратной матрицы должны быть заданы целой положительной констaнтой.' + chr(13) + chr(10);
-    s := s + '9. Koличества строк и столбцов прямоугольной матрицы должны быть заданы двумя целыми положительными константами; первая константа означает количество строк, вторая - количество столбцoв.' + chr(13) + chr(10);
-    s := s + 'Во избежание неправильной компиляции программы не следуeт описывать другие константы в задачах, требующих этих специальных констант.' + chr(13) + chr(10);
-    s := s + '10. Для автоматического определения Системой номера главы и номера задачи используйте имена файлов вида ''_<номер главы>_<номер задачи>-<номер подзадачи (3 цифры)>_<произвольный текст>''. Примеры: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.' + chr(13) + chr(10);
+    s := s +
+      '5. Комлексное число должно быть выведено как совокупность двух вещественных чисeл без допoлнительных скобок, знаков ''+'' или ''i''.' + chr(13) + chr(10);
+    s := s +
+      '6. Элементы одномерного массива должны быть выведены в порядке возрастания их индексов, если иное не указано в формулировке задачи.' + chr(13) + chr(10);
+    s := s +
+      '7. Элементы матрицы должны быть выведены по строкам, если иное не указано в формулировке задачи.' + chr(13) + chr(10);
+    s := s +
+      '8. Количество элементов последовательности, количество элементов одномерного массива и порядок квадратной матрицы должны быть заданы целой положительной констaнтой.' + chr(13) + chr(10);
+    s := s +
+      '9. Koличества строк и столбцов прямоугольной матрицы должны быть заданы двумя целыми положительными константами; первая константа означает количество строк, вторая - количество столбцoв.' + chr(13) + chr(10);
+    s := s +
+      'Во избежание неправильной компиляции программы не следуeт описывать другие константы в задачах, требующих этих специальных констант.' + chr(13) + chr(10);
+    s := s +
+      '10. Для автоматического определения Системой номера главы и номера задачи используйте имена файлов вида ''_<номер главы>_<номер задачи>-<номер подзадачи (3 цифры)>_<произвольный текст>''. Примеры: _16_18-003_Petrov.pas, _15_47_Ivanov.pas.' + chr(13) + chr(10);
   end;
   ShowMessage(s);
 end;
@@ -162,7 +195,8 @@ end;
 procedure richedit_fill;
 var
   f2, f: textfile;
-  s, sf: string;
+  s, rtfFilePath: string;
+  stream : TFileStream;
 var
   p1, p2: integer;
 label
@@ -171,23 +205,40 @@ begin
   form2.RichEdit1.Clear;
   if chosen_task = '' then
     exit;
-  sf := current_dir + '/tests/' + directory_names[chosen_chapter] + '/' + chosen_task;
+  rtfFilePath := current_dir + '/tests/' + directory_names[chosen_chapter] + '/' + chosen_task;
   if en_rus then
-    sf := sf + '_e.rtf'
+    rtfFilePath := rtfFilePath + '_e.rtf'
   else
-    sf := sf + '_r.rtf';
-  Assign(f, sf);
+    rtfFilePath := rtfFilePath + '_r.rtf';
+  //Assign(f, rtfFilePath);
   //showmessage (sf);
-  reset(f);
-  if ioresult <> 0 then
-    exit;
-  closefile(f);
-  ioresult;
-  reset(f);
-  ioresult;
-  form2.richedit1.Lines.LoadFromFile(sf);
-  closefile(f);
-  ioresult;
+  //reset(f);
+  //if ioresult <> 0 then
+  //  exit;
+  //closefile(f);
+  //ioresult;
+  //reset(f);
+  //ioresult;
+  //form2.richedit1.Lines.LoadFromFile(rtfFilePath);
+  //closefile(f);
+  //ioresult;
+
+  //Write the string into a stream
+  stream := nil;
+  stream := TFileStream.Create(Utf8ToAnsi(rtfFilePath), fmOpenRead or fmShareDenyNone);
+
+  //Load the stream into the RichEdit
+  //form2.richedit1.PlainText := False;
+  try
+    registerRtfLoader;
+    //MVCParserLoadStream(form2.RichEdit1, stream);
+    //showmessage(inttostr(ord(form2.richedit1.LoadRichText(stream))));
+    form2.richedit1.Rtf := 'ABCD';
+  except
+    //
+  end;
+  stream.Free;
+
   if not en_rus then
     exit;
   if func_proc0 > 0 then
@@ -240,7 +291,8 @@ begin
     if en_rus then
       s := copy(s, 1, p2 - 1) + 'WRITE A PASCAL PROGRAM. ' + copy(s, p2, length(s))
     else
-      s := copy(s, 1, p2 - 1) + 'Напиcать программу на Паскале. ' +
+      s := copy(s, 1, p2 - 1) +
+        'Напиcать программу на Паскале. ' +
         copy(s, p2, length(s));
   writeln(f2, s);
   while not (EOF(f)) do
@@ -314,7 +366,8 @@ var
   p, i: integer;
 begin
   Count := 0;
-  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] + '/claims.cde');
+  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] +
+    '/claims.cde');
   reset(f);
   if ioresult <> 0 then
     exit;
@@ -415,7 +468,7 @@ begin
     goto 1;
   end;
   readln(f, chosen_chapter);
-  ShowMessage(IntToStr(chosen_chapter));
+  //ShowMessage(IntToStr(chosen_chapter));
   if ioresult <> 0 then
   begin
     chosen_chapter := 0;
@@ -468,7 +521,6 @@ begin
   form2.combobox2.Clear;
   k := 0;
   setcurrentdir(current_dir);
-  //TODO: Fix bug
   p := findfirst(current_dir + '/tests/*', fadirectory, searchresult);
   if p <> 0 then
   begin
@@ -573,14 +625,17 @@ begin
     if (k > 1) and (k <= length(s) - 3) and (s[k + 1] = '0') then
     begin
       //showmessage(s+'!'+'@'+copy(s,k,3)+'#'+inttostr(k)+engrus[27]);
-      s := copy(s, 1, k) + engrus[26 * byte(not (en_rus)) + StrToInt(copy(s, k + 1, 3))] + copy(s, k + 4, 200);
+      s := copy(s, 1, k) + engrus[26 * byte(not (en_rus)) +
+        StrToInt(copy(s, k + 1, 3))] + copy(s, k + 4, 200);
     end;
     //Additional correcting
     p := pos('_', s);
-    if (p > 1) and (p < length(s)) and (s[p - 1] in ['0'..'9']) and (s[p + 1] in ['0'..'9']) then
+    if (p > 1) and (p < length(s)) and (s[p - 1] in ['0'..'9']) and
+      (s[p + 1] in ['0'..'9']) then
       s := copy(s, 1, p - 1) + '.' + copy(s, p + 1, 1000);
     p := pos('-', s);
-    if (p > 1) and (p < length(s)) and (s[p - 1] in ['0'..'9']) and (pos(s[p + 1], engrus) > 0) then
+    if (p > 1) and (p < length(s)) and (s[p - 1] in ['0'..'9']) and
+      (pos(s[p + 1], engrus) > 0) then
     begin
       Delete(s, p, 1);
       insert(' ', s, p);
@@ -615,9 +670,11 @@ begin
   filename := '';
   closefile(f);
   ioresult;
-  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] + '/claims.cde');
+  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] +
+    '/claims.cde');
   initializef(f, i_n_2, i_c_2, s_n_2, False);
-  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] + '/tests.cde');
+  assignfile(f, current_dir + '/tests/' + directory_names[chosen_chapter] +
+    '/tests.cde');
   //..'Tests_chapter_'+chosen+'.cde');
   //reset(f); if ioresult<>0 then showmessage(current_dir+'/tests'+directory_names[form2.ComboBox1.itemindex+1]+'/tests.cde');
 
@@ -629,7 +686,8 @@ begin
   begin
     b := readlnf(f, s);
     //showmessage('!'+s+'!');
-    if (s = '') or (s[1] <> '_') or (length(s) > 3) and (s[1] = '_') and (not (s[2] in ['0'..'9'])) then
+    if (s = '') or (s[1] <> '_') or (length(s) > 3) and (s[1] = '_') and
+      (not (s[2] in ['0'..'9'])) then
       continue;
     i := pos(';', s);
     if i > 0 then
@@ -877,7 +935,8 @@ begin
           s2 := copy(s2, 1, i - 1) + copy(s2, i + 1, 255);
           continue;
         end;
-        if (not (s2[i] in alphadigit + [chr(39)])) and (i < length(s2)) and (s2[i + 1] = ' ') then
+        if (not (s2[i] in alphadigit + [chr(39)])) and (i < length(s2)) and
+          (s2[i + 1] = ' ') then
         begin
           s2 := copy(s2, 1, i) + copy(s2, i + 2, 255);
           continue;
@@ -897,7 +956,8 @@ begin
       if b_comm1 and (s2[i] = '}') then
       begin
         b_comm1 := False;
-        if (i = 1) or (i = length(s2)) or (not (s2[i + 1] in alphadigit)) or (not (s2[i - 1] in alphadigit)) then
+        if (i = 1) or (i = length(s2)) or (not (s2[i + 1] in alphadigit)) or
+          (not (s2[i - 1] in alphadigit)) then
           Delete(s2, i, 1)
         else
           s2[i] := chr(32);
@@ -961,8 +1021,8 @@ begin
     Inc(j);
     repeat
       if (copy(s2, i, 5) = 'const') and (count_ap(s2, i) mod 2 = 0) and
-        ((i = 1) or (not (s2[i - 1] in alphadigit))) and ((i + 4 = length(s2)) or
-        (not (s2[i + 5] in alphadigit))) then
+        ((i = 1) or (not (s2[i - 1] in alphadigit))) and
+        ((i + 4 = length(s2)) or (not (s2[i + 5] in alphadigit))) then
       begin
         if i > 1 then
         begin
@@ -975,7 +1035,8 @@ begin
 
         k := k + 1;
         i1 := j;
-        if (i + 4 = length(s2)) or (pos('=', copy(s2, i, 200)) = 0) or (pos(';', copy(s2, i, 200)) = 0) then
+        if (i + 4 = length(s2)) or (pos('=', copy(s2, i, 200)) = 0) or
+          (pos(';', copy(s2, i, 200)) = 0) then
         begin
           readln(fi, s7);
           ioresult;
@@ -1017,17 +1078,20 @@ begin
           ioresult;
           //showmessage('!'+s2+'!');
 
-          if not ((copy(s2, 1, 4) = 'type') and ((length(s2) = 4) or (length(s2) > 4) and
-            (not (s2[5] in alphadigit))) or (copy(s2, 1, 5) = 'label') and
-            ((length(s2) = 5) or (length(s2) > 5) and (not (s2[6] in alphadigit))) or
-            (copy(s2, 1, 5) = 'begin') and ((length(s2) = 5) or (length(s2) > 5) and
-            (not (s2[6] in alphadigit))) or (copy(s2, 1, 8) = 'function') and
-            ((length(s2) = 8) or (length(s2) > 8) and (not (s2[9] in alphadigit))) or
-            (copy(s2, 1, 9) = 'procedure') and ((length(s2) = 9) or (length(s2) > 9) and
-            (not (s2[10] in alphadigit))) or (copy(s2, 1, 3) = 'var') and
-            ((length(s2) = 3) or (length(s2) > 3) and (not (s2[4] in alphadigit))) or
-            (copy(s2, 1, 5) = 'const') and ((length(s2) = 5) or (length(s2) > 5) and
-            (not (s2[6] in alphadigit)))) then
+          if not ((copy(s2, 1, 4) = 'type') and ((length(s2) = 4) or
+            (length(s2) > 4) and (not (s2[5] in alphadigit))) or
+            (copy(s2, 1, 5) = 'label') and ((length(s2) = 5) or
+            (length(s2) > 5) and (not (s2[6] in alphadigit))) or
+            (copy(s2, 1, 5) = 'begin') and ((length(s2) = 5) or
+            (length(s2) > 5) and (not (s2[6] in alphadigit))) or
+            (copy(s2, 1, 8) = 'function') and ((length(s2) = 8) or
+            (length(s2) > 8) and (not (s2[9] in alphadigit))) or
+            (copy(s2, 1, 9) = 'procedure') and ((length(s2) = 9) or
+            (length(s2) > 9) and (not (s2[10] in alphadigit))) or
+            (copy(s2, 1, 3) = 'var') and ((length(s2) = 3) or
+            (length(s2) > 3) and (not (s2[4] in alphadigit))) or
+            (copy(s2, 1, 5) = 'const') and ((length(s2) = 5) or
+            (length(s2) > 5) and (not (s2[6] in alphadigit)))) then
             s2 := 'const ' + s2;
           //showmessage('@'+s2+'!');
         end;
@@ -1060,7 +1124,8 @@ begin
     repeat
       {readln}
       if (copy(s2, i, 6) = 'readln') and bc and (count_ap(s2, i) mod 2 = 0) and
-        ((i = 1) or (not (s2[i - 1] in alphadigit))) and ((i + 5 = length(s2)) or (not (s2[i + 6] in alphadigit))) and
+        ((i = 1) or (not (s2[i - 1] in alphadigit))) and
+        ((i + 5 = length(s2)) or (not (s2[i + 6] in alphadigit))) and
         (count_ap(s2, i) mod 2 = 0) then
       begin
         Delete(s2, i + 4, 2);
@@ -1128,7 +1193,8 @@ begin
     i := 1;
     repeat
       if (copy(s2, i, 5) = 'begin') and ((i = 1) or (not (s2[i - 1] in alphadigit))) and
-        (count_ap(s2, i) mod 2 = 0) and ((length(s2) = i + 4) or (not (s2[i + 5] in alphadigit))) then
+        (count_ap(s2, i) mod 2 = 0) and ((length(s2) = i + 4) or
+        (not (s2[i + 5] in alphadigit))) then
       begin
         if l = 0 then
         begin
@@ -1138,7 +1204,8 @@ begin
         l := l + 1;
       end;
       if (copy(s2, i, 3) = 'end') and ((i = 1) or (not (s2[i - 1] in alphadigit))) and
-        (count_ap(s2, i) mod 2 = 0) and ((length(s2) = i + 2) or (not (s2[i + 3] in alphadigit))) then
+        (count_ap(s2, i) mod 2 = 0) and ((length(s2) = i + 2) or
+        (not (s2[i + 3] in alphadigit))) then
         l := l - 1;
       i := i + 1;
     until i >= length(s2);
@@ -1247,8 +1314,9 @@ begin
   end;
 
   //Analysis for the tasks processing external files, that is, 15.58 and the next.
-  if (chosen_task = '15_58') or (chosen_task = '15_59') or (chosen_task = '15_60') or
-    (chosen_task = '15_61') or (chosen_task = '15_62') or (copy(chosen_task, 1, 5) = '15_63') then
+  if (chosen_task = '15_58') or (chosen_task = '15_59') or
+    (chosen_task = '15_60') or (chosen_task = '15_61') or
+    (chosen_task = '15_62') or (copy(chosen_task, 1, 5) = '15_63') then
   begin
     bba := external_files;
     if not bba then
@@ -1319,7 +1387,8 @@ begin
       if func_proc = 1 then
       begin
         if en_rus then
-          form2.Memo1.Lines.add('Error. Variable declaration is not allowed before the function.')
+          form2.Memo1.Lines.add(
+            'Error. Variable declaration is not allowed before the function.')
         else
           form2.Memo1.Lines.add(
             'Ошибка. Oписание переменных перед функцией не допускается.');
@@ -1328,7 +1397,8 @@ begin
       if func_proc = 2 then
       begin
         if en_rus then
-          form2.Memo1.Lines.add('Error. Variable declaration is not allowed before the procedure.')
+          form2.Memo1.Lines.add(
+            'Error. Variable declaration is not allowed before the procedure.')
         else
           form2.Memo1.Lines.add(
             'Ошибка. Oписание переменных перед процедурой не допускается.');
@@ -1357,7 +1427,8 @@ begin
     if i9 = 1 then
     begin
       if en_rus then
-        form2.Memo1.Lines.add('Syntax errors were found in the program. Please, check your program.')
+        form2.Memo1.Lines.add(
+          'Syntax errors were found in the program. Please, check your program.')
       else
         form2.Memo1.Lines.add(
           'В программе были найдены синтаксические oшибки. Провepьте ее.');
@@ -1383,7 +1454,8 @@ begin
       if en_rus then
         form2.Memo1.Lines.Add('Error: no function calls were found.')
       else
-        form2.Memo1.Lines.Add('Oшибкa: нет обращений к функции.');
+        form2.Memo1.Lines.Add(
+          'Oшибкa: нет обращений к функции.');
     end;
     if ii > 1 then
     begin
@@ -1464,7 +1536,8 @@ begin
     end
     else
     begin
-      form2.memo1.Lines.add('Ошибка: использование массивов ');
+      form2.memo1.Lines.add(
+        'Ошибка: использование массивов ');
       form2.memo1.Lines.add('в этой задачe не допускается.');
     end;
   end;
@@ -1602,7 +1675,8 @@ begin
     end
     else
     begin
-      form2.memo1.Lines.add('Ошибка: в программе отсутствуют ');
+      form2.memo1.Lines.add(
+        'Ошибка: в программе отсутствуют ');
       form2.memo1.Lines.add('операторы цикла.');
     end;
   end;
@@ -1816,7 +1890,8 @@ begin
     while not EOF(f) do
     begin
       readln(f, s);
-      if (copy(s, 1, 5) = 'const') and ((k1 <= 1) and (consts[1, 2] <> 0) or (k1 < 1) and (consts[1, 2] = 0)) then
+      if (copy(s, 1, 5) = 'const') and ((k1 <= 1) and (consts[1, 2] <> 0) or
+        (k1 < 1) and (consts[1, 2] = 0)) then
       begin
         k1 := k1 + 1;
         p := pos('=', s);
@@ -1903,7 +1978,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp2''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp2. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp2. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1917,7 +1993,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp3''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp3. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp3. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1931,7 +2008,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp4''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp4. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp4. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1945,7 +2023,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp5''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp5. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp5. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1959,7 +2038,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp20''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp20. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp20. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1973,7 +2053,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp30''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp30. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp30. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -1987,7 +2068,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp40''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp40. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp40. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -2001,7 +2083,8 @@ begin
     if en_rus then
       ShowMessage('Fatal error. It is impossible to delete ''temp50''. Restart your computer.')
     else
-      ShowMessage('Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');
+      ShowMessage(
+        'Ошибка. Невозможно удалить файл temp50. Перезагрузите компьютер.');
     exit;
   end
   else
@@ -2054,25 +2137,25 @@ begin
     end; //of case
     if s3 = chr(1) then
     begin
-      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp2' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp3' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp4' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp5' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
+      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp2' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp3' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp4' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, 'fpc' + ' -vu -Sg w ' + current_dir + '/tmp/temp5' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
     end
     else
     begin
-      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp2' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp3' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp4' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp5' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
+      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp2' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp3' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp4' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s3 + ' -vu -Sg w ' + current_dir + '/tmp/temp5' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
     end;
     closefile(f);
     ioresult;
@@ -2106,8 +2189,8 @@ begin
   if not b then
   begin //not b
     if en_rus then
-      m := messagedlg('FPC-compiler was not found. Do you want to find it? ', mtError,
-        [mbYes, mbNo], 0)
+      m := messagedlg('FPC-compiler was not found. Do you want to find it? ',
+        mtError, [mbYes, mbNo], 0)
     else
       m := messagedlg(
         'FPC- компилятор не найден. Вы хотите найти его сами? ',
@@ -2167,7 +2250,8 @@ begin
         p2 := 0;
         break;
       end;
-      if ((current_dir[p3] <> s1[p3]) and (abs(Ord(current_dir[p3]) - Ord(s1[p3])) <> 32)) and
+      if ((current_dir[p3] <> s1[p3]) and
+        (abs(Ord(current_dir[p3]) - Ord(s1[p3])) <> 32)) and
         (s1[p3] in ['A'..'Z', 'a'..'z']) then
       begin
 
@@ -2209,14 +2293,14 @@ begin
       rewrite(f);
       if ioresult <> 0 then
         exit;
-      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp2' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp3' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp4' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
-      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp5' + s4 + '.pas > ' +
-        current_dir + '/tmp/result.txt');
+      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp2' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp3' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp4' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
+      writeln(f, s1 + ' -vu -Sg w ' + current_dir + '/tmp/temp5' +
+        s4 + '.pas > ' + current_dir + '/tmp/result.txt');
       closefile(f);
       ioresult;
     end;//of i2:=1 to 2
@@ -2244,19 +2328,22 @@ begin
       form3.Caption := 'Compilation';
       if program_sub then
         if i2 = 1 then
-          form3.label1.Caption := 'The main file is being compiled.' + chr(10) + 'Please, wait.'
+          form3.label1.Caption :=
+            'The main file is being compiled.' + chr(10) + 'Please, wait.'
         else
-          form3.label1.Caption := 'The file with the subprogram is being compiled.' +
-            chr(10) + 'Please, wait.'
+          form3.label1.Caption :=
+            'The file with the subprogram is being compiled.' + chr(10) + 'Please, wait.'
       else
-        form3.label1.Caption := 'The file is being compiled.' + chr(10) + 'Please, wait.';
+        form3.label1.Caption :=
+          'The file is being compiled.' + chr(10) + 'Please, wait.';
     end
     else
     begin
       form3.Caption := 'Компиляция';
       if program_sub then
         if i2 = 1 then
-          form3.label1.Caption := 'Основной файл компилируется. Ждите.'
+          form3.label1.Caption :=
+            'Основной файл компилируется. Ждите.'
         else
           form3.label1.Caption :=
             'Файл с подпрограммой компилируется. Ждите.'
@@ -2382,7 +2469,8 @@ begin
     begin
       set_initial_text(form2.Memo5);
       if not en_rus then
-        form2.memo1.Lines.add('Компиляция' + s45 + 'прошла успешно.')
+        form2.memo1.Lines.add('Компиляция' + s45 +
+          'прошла успешно.')
       else
         form2.memo1.Lines.add('The compilation' + s45 + 'was successful.');
     end
@@ -2408,12 +2496,14 @@ begin
         s44 := ''
       else
         s44 := '0';
-      fill_file_text_err(current_dir + '/tmp/temp1' + s44 + '.pas', current_dir + '/tmp/result.txt');
+      fill_file_text_err(current_dir + '/tmp/temp1' + s44 + '.pas',
+        current_dir + '/tmp/result.txt');
       if en_rus then
-        ShowMessage(' Errors were found while compiling the ' + s45 + '. It cannot be executed.')
+        ShowMessage(' Errors were found while compiling the ' + s45 +
+          '. It cannot be executed.')
       else
-        ShowMessage('Были ошибки при компиляции' + s45 +
-          '. Выполнение пpограммы невозможно. ');
+        ShowMessage('Были ошибки при компиляции' +
+          s45 + '. Выполнение пpограммы невозможно. ');
     end;
     if (k6 <> 0) or (k7 <> 0) or (k8 <> 0) or (k9 <> 0) then
       break;
@@ -2744,12 +2834,14 @@ memo3.Font.Name:='Courier New';
     assignfile(f, current_dir + '/tmp/temp0' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' + IntToStr(i) + ' >rrr' + IntToStr(i));
+    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' +
+      IntToStr(i) + ' >rrr' + IntToStr(i));
     closefile(f);
     assignfile(f, current_dir + '/tmp/temp00' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' + IntToStr(i) + ' >rrrr' + IntToStr(i));
+    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' +
+      IntToStr(i) + ' >rrrr' + IntToStr(i));
     closefile(f);
     deletefile(current_dir + '/tmp/iii' + IntToStr(i));
     deletefile(current_dir + '/tmp/ooo' + IntToStr(i));
@@ -2759,7 +2851,7 @@ memo3.Font.Name:='Courier New';
     deletefile(current_dir + '/tmp/rrrr' + IntToStr(i));
   end;
   //forming of the file temp0.sh - let us remove it for quite a while
-{assignfile(f,current_dir+'/temp0.sh'); rewrite(f);
+  {assignfile(f,current_dir+'/temp0.sh'); rewrite(f);
 writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp2.pas '+current_dir+'/tmp/result.txt');
 writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp3.pas '+current_dir+'/tmp/result.txt');
 closefile(f);}
@@ -2792,7 +2884,8 @@ begin
   if p > 0 then
     if en_rus then
     begin
-      ShowMessage('The path to the current directory contains blank characters. It is not allowed. Rename the directories.');
+      ShowMessage(
+        'The path to the current directory contains blank characters. It is not allowed. Rename the directories.');
       form1.Close;
     end
     else
@@ -2850,8 +2943,10 @@ begin
     'Увеличение / уменьшение размеров окна с тeкcтoм задачи ';
   form2.Button8.ShowHint := True;
   form2.Button9.ShowHint := True;
-  form2.Button10.Hint := 'Увеличение размеров окна с тестами ';
-  form2.Button11.Hint := 'Уменьшение размеров окна с тестами ';
+  form2.Button10.Hint :=
+    'Увеличение размеров окна с тестами ';
+  form2.Button11.Hint :=
+    'Уменьшение размеров окна с тестами ';
   form2.Button10.ShowHint := True;
   form2.Button11.ShowHint := True;
   form2.CheckBox2.Caption := 'Выводить только ошибки';
@@ -2925,7 +3020,8 @@ begin
   label1.Caption := 'Choose a group: ';
   label2.Caption := 'Choose a task: ';
   label3.Caption := 'Enter your file name ';
-  label4.Caption := 'F1 - Help      Send your reports to the email address: Novikov_57@mail.ru';
+  label4.Caption :=
+    'F1 - Help      Send your reports to the email address: Novikov_57@mail.ru';
   button3.Caption := 'Preliminary analysis and compilation';
   //button4.Caption:='Compilation';
   button5.Caption := 'Testing';
@@ -3053,15 +3149,12 @@ begin
   begin
     combobox2.ItemIndex := -1;
 
-
     //showmessage('###'+inttostr(task_amount));
     //showmessage('!! '+chosen_task+' @@  '+task_names[3]);
 
     for i1 := 1 to task_amount do
       if chosen_task = task_names[i1] then
       begin
-
-
         //showmessage('ssacscdasc');
 
         combobox2.ItemIndex := i1 - 1;
@@ -3304,7 +3397,8 @@ begin
     begin
       if en_rus then
       begin
-        ShowMessage('Warning: the path to the tested file contains blank characters. The file may not be compiled correctly.');
+        ShowMessage(
+          'Warning: the path to the tested file contains blank characters. The file may not be compiled correctly.');
       end
       else
       begin
@@ -3412,7 +3506,8 @@ begin
   begin
     if en_rus then
     begin
-      ShowMessage('Warning: the path to the tested file contains blank characters. The file may not be compiled correctly.');
+      ShowMessage(
+        'Warning: the path to the tested file contains blank characters. The file may not be compiled correctly.');
     end
     else
     begin
@@ -3564,13 +3659,10 @@ const
   _interval = 1;
 begin
   //exit;
-
-
   k1 := form2.Width;
   k2 := form2.Height;
 
   //showmessage('Resize!! '+inttostr(k1)+' '+inttostr(k2)+' '+inttostr(_width)+'  '+inttostr(_height)+' '+inttostr(current_width)+' '+inttostr(current_height));
-
 
   if k1 < _width * 0.8 then
   begin

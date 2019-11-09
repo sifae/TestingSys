@@ -5,7 +5,7 @@ interface
 uses
 cthreads, cmem, file00, LCLIntf, Messages, SysUtils, Classes, Variants,
 Graphics, Controls, Forms,
-Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, RichMemoUtils, Process;//;
+Dialogs, StdCtrls, ExtCtrls, ComCtrls, RichMemo, RichMemoUtils, RichMemoRtf, Process;//;
 
 type
 TForm2 = class(TForm)
@@ -195,7 +195,8 @@ end;
 procedure richedit_fill;
 var
   f2, f: textfile;
-  s, sf: string;
+  s, rtfFilePath: string;
+  stream : TFileStream;
 var
   p1, p2: integer;
 label
@@ -204,23 +205,39 @@ begin
   form2.RichEdit1.Clear;
   if chosen_task = '' then
     exit;
-  sf := current_dir + '/tests/' + directory_names[chosen_chapter] + '/' + chosen_task;
+  rtfFilePath := current_dir + '/tests/' + directory_names[chosen_chapter] + '/' + chosen_task;
   if en_rus then
-    sf := sf + '_e.rtf'
+    rtfFilePath := rtfFilePath + '_e.rtf'
   else
-    sf := sf + '_r.rtf';
-  Assign(f, sf);
+    rtfFilePath := rtfFilePath + '_r.rtf';
+  //Assign(f, rtfFilePath);
   //showmessage (sf);
-  reset(f);
-  if ioresult <> 0 then
-    exit;
-  closefile(f);
-  ioresult;
-  reset(f);
-  ioresult;
-  form2.richedit1.Lines.LoadFromFile(sf);
-  closefile(f);
-  ioresult;
+  //reset(f);
+  //if ioresult <> 0 then
+  //  exit;
+  //closefile(f);
+  //ioresult;
+  //reset(f);
+  //ioresult;
+  //form2.richedit1.Lines.LoadFromFile(rtfFilePath);
+  //closefile(f);
+  //ioresult;
+
+  //Write the string into a stream
+  stream := nil;
+  stream := TFileStream.Create(Utf8ToAnsi(rtfFilePath), fmOpenRead or fmShareDenyNone);
+
+  //Load the stream into the RichEdit
+  //form2.richedit1.PlainText := False;
+  try
+    registerRtfLoader;
+    //MVCParserLoadStream(form2.RichEdit1, stream);
+    form2.richedit1.LoadRichText(stream);
+  except
+    //
+  end;
+  stream.Free;
+
   if not en_rus then
     exit;
   if func_proc0 > 0 then
@@ -450,7 +467,7 @@ begin
     goto 1;
   end;
   readln(f, chosen_chapter);
-  ShowMessage(IntToStr(chosen_chapter));
+  //ShowMessage(IntToStr(chosen_chapter));
   if ioresult <> 0 then
   begin
     chosen_chapter := 0;
@@ -503,7 +520,6 @@ begin
   form2.combobox2.Clear;
   k := 0;
   setcurrentdir(current_dir);
-  //TODO: Fix bug
   p := findfirst(current_dir + '/tests/*', fadirectory, searchresult);
   if p <> 0 then
   begin
@@ -2834,7 +2850,7 @@ memo3.Font.Name:='Courier New';
     deletefile(current_dir + '/tmp/rrrr' + IntToStr(i));
   end;
   //forming of the file temp0.sh - let us remove it for quite a while
-{assignfile(f,current_dir+'/temp0.sh'); rewrite(f);
+  {assignfile(f,current_dir+'/temp0.sh'); rewrite(f);
 writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp2.pas '+current_dir+'/tmp/result.txt');
 writeln(f, current_dir+'/Pascal_compiler/2.0.4/bin/i386-win32/fpc.exe '+current_dir+'/tmp/temp3.pas '+current_dir+'/tmp/result.txt');
 closefile(f);}
@@ -3132,15 +3148,12 @@ begin
   begin
     combobox2.ItemIndex := -1;
 
-
     //showmessage('###'+inttostr(task_amount));
     //showmessage('!! '+chosen_task+' @@  '+task_names[3]);
 
     for i1 := 1 to task_amount do
       if chosen_task = task_names[i1] then
       begin
-
-
         //showmessage('ssacscdasc');
 
         combobox2.ItemIndex := i1 - 1;

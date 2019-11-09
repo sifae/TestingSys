@@ -1292,12 +1292,12 @@ label1.Left:=_width div 35;
 label1.font.Size:=_width div 80;if label1.font.Size<10 then label1.font.Size:=10;
 label1.font.Name:=_fontname;
 {Choosing a task}
-label2.top:=label1.Top+round(label1.Height*1.4);
+label2.top:=label1.Top+round(label1.Height*2.5);
 label2.Left:=label1.left;
 label2.font.Size:=label1.Font.Size;
 label2.font.Name:=label1.font.name;
 {Choosing a file name}
-label3.top:=label2.Top+round(label1.Height*1.5);
+label3.top:=label2.Top+round(label1.Height*2.6);
 label3.Left:=label1.left;
 label3.font.Size:=label1.Font.Size;
 label3.font.Name:=label1.font.name;
@@ -1311,16 +1311,16 @@ label4.font.Name:=label1.font.name;
 label4.Enabled:=true;
 
 //comboboxes
-combobox1.Left:=label1.Left+round(_width*0.15);
-combobox1.Top:=label1.Top-height div 250;
-//combobox1.height:=_height div 5;
+combobox1.Left:= label1.Left + round(_width*0.15);
+combobox1.Top := label1.Top - height div 250 ;
+//combobox1.height:=_height div 10;
 combobox1.Font.Name:=_fontname;
 combobox1.Font.Size:=label1.font.Size;
 combobox1.Clear;
 combobox1.Width:=_width div 2;
 combobox2.Left:=combobox1.left;
 combobox2.Top:=label2.Top-height div 250;
-//combobox2.height:=combobox1.Height;
+//combobox2.Height:=combobox1.Height;
 combobox2.Font.Name:=_fontname;
 combobox2.Font.Size:=combobox1.Font.Size;
 combobox2.Clear;

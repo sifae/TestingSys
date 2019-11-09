@@ -1,90 +1,96 @@
 object Form1: TForm1
-  Left = -32
-  Top = 115
-  Width = 1304
+  Left = 0
   Height = 675
+  Top = 66
+  Width = 1304
   Caption = '`'
+  ClientHeight = 675
+  ClientWidth = 1304
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
   OnClick = FormClick
   OnClose = FormClose
   OnCreate = FormCreate
   OnDblClick = FormDblClick
   OnKeyPress = FormKeyPress
   OnResize = FormResize
-  PixelsPerInch = 96
-  TextHeight = 13
+  LCLVersion = '2.0.4.0'
   object Label1: TLabel
     Left = 312
+    Height = 12
     Top = 280
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label1'
+    ParentColor = False
     OnClick = Label1Click
   end
   object Label2: TLabel
     Left = 360
+    Height = 12
     Top = 496
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label2'
+    ParentColor = False
     OnClick = Label2Click
   end
   object Label3: TLabel
     Left = 576
+    Height = 12
     Top = 520
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label3'
+    ParentColor = False
     OnClick = Label3Click
   end
   object Label4: TLabel
     Left = 208
+    Height = 12
     Top = 40
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label4'
+    ParentColor = False
     OnClick = Label4Click
   end
   object Label5: TLabel
     Left = 224
+    Height = 12
     Top = 72
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label5'
+    ParentColor = False
     OnClick = Label5Click
   end
   object Label6: TLabel
     Left = 624
+    Height = 12
     Top = 328
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label6'
+    ParentColor = False
   end
   object Label7: TLabel
     Left = 632
+    Height = 12
     Top = 336
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label7'
+    ParentColor = False
     OnClick = Label7Click
   end
   object Label8: TLabel
     Left = 424
+    Height = 12
     Top = 72
-    Width = 32
-    Height = 13
+    Width = 37
     Caption = 'Label8'
+    ParentColor = False
     OnClick = Label8Click
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 432
-    Top = 112
+    left = 432
+    top = 112
   end
 end

@@ -66,7 +66,9 @@
       <Unit6>
         <Filename Value="file01.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit6>
       <Unit7>
         <Filename Value="testing_utils.pas"/>

@@ -20,5 +20,5 @@ begin
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
   Form1.Show;
-  Application.Run;
+  Application.Run;  //   AAAAAA
 end.

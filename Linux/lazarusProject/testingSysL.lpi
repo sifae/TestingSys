@@ -123,6 +123,9 @@
       </Options>
     </Linking>
     <Other>
+      <Verbosity>
+        <ShowDebugInfo Value="True"/>
+      </Verbosity>
       <CustomOptions Value="-dUseCThreads"/>
     </Other>
   </CompilerOptions>

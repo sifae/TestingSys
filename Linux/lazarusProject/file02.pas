@@ -223,7 +223,7 @@ begin
   //closefile(f);
   //ioresult;
 
-  //Write the string into a stream
+  //Write the file into a stream
   stream := nil;
   stream := TFileStream.Create(Utf8ToAnsi(rtfFilePath), fmOpenRead or fmShareDenyNone);
 
@@ -242,7 +242,22 @@ begin
     exit;
   if func_proc0 > 0 then
     exit;
-  form2.richedit1.Lines.savetofile(current_dir + '/tmp/addtext.txt');
+
+  //Write the file into a stream
+  stream := nil;
+  stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext.txt'), fmOpenWrite or fmShareDenyNone);
+
+  //Load the stream into the RichEdit
+  //form2.richedit1.PlainText := False;
+  try
+    registerRtfSaver;
+    //MVCParserLoadStream(form2.RichEdit1, stream);
+    form2.richedit1.SaveRichText(stream);
+  except
+    //
+  end;
+  stream.Free;
+
   Assign(f, current_dir + '/tmp/addtext.txt');
   reset(f);
   if ioresult <> 0 then
@@ -308,16 +323,28 @@ begin
 
   //showmessage(inttostr(p1)+'  !! '+inttostr(p2));
 
-  form2.richedit1.Lines.LoadFromFile(current_dir + '/tmp/addtext1.txt');
+  //Write the file into a stream
+  stream := nil;
+  stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext1.txt'), fmOpenRead or fmShareDenyNone);
+
+  try
+    registerRtfLoader;
+    //MVCParserLoadStream(form2.RichEdit1, stream);
+    form2.richedit1.LoadRichText(stream);
+  except
+    //
+  end;
+  stream.Free;
+
   1:
     closefile(f);
-  ioresult;
-  closefile(f2);
-  ioresult;
-  erase(f);
-  ioresult;
-  erase(f2);
-  ioresult;
+    ioresult;
+    closefile(f2);
+    ioresult;
+    erase(f);
+    ioresult;
+    erase(f2);
+    ioresult;
 end;
 
 {procedure of initializing the encoded files: both tests.cde (b=true) and claims.cde (b=false)}
@@ -3248,7 +3275,7 @@ begin
   button10.Enabled := False;
   button11.Enabled := False;
   timer1.Enabled := False;
-  form3.Timer1.Enabled := False;
+  //form3.Timer1.Enabled := False;
   if chosen_task = '' then
   begin
     if en_rus then

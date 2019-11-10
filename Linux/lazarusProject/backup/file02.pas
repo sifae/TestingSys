@@ -243,18 +243,18 @@ begin
   if func_proc0 > 0 then
     exit;
 
-  //Write the file into a stream
-  stream := nil;
-  stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext.txt'), fmOpenRead or fmShareDenyNone);
-
   //Load the stream into the RichEdit
   //form2.richedit1.PlainText := False;
   try
+    //Write the file into a stream
+    stream := nil;
+    stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext.txt'), fmOpenWrite or fmShareDenyNone);
+
     registerRtfSaver;
     //MVCParserLoadStream(form2.RichEdit1, stream);
     form2.richedit1.SaveRichText(stream);
   except
-    //
+    //showmessage('Failed to open /tmp/addtext.txt');
   end;
   stream.Free;
 
@@ -323,16 +323,16 @@ begin
 
   //showmessage(inttostr(p1)+'  !! '+inttostr(p2));
 
-  //Write the file into a stream
-  stream := nil;
-  stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext1.txt'), fmOpenRead or fmShareDenyNone);
-
   try
+    //Write the file into a stream
+    stream := nil;
+    stream := TFileStream.Create(Utf8ToAnsi(current_dir + '/tmp/addtext1.txt'), fmOpenRead or fmShareDenyNone);
+
     registerRtfLoader;
     //MVCParserLoadStream(form2.RichEdit1, stream);
     form2.richedit1.LoadRichText(stream);
   except
-    //
+    //showmessage('Failed to open /tmp/addtext1.txt');
   end;
   stream.Free;
 
@@ -2612,12 +2612,12 @@ chapter_names[17,2]:='Trees ';}
     label1.font.Size := 10;
   label1.font.Name := _fontname;
   {Choosing a task}
-  label2.top := label1.Top + round(label1.Height * 2.5);
+  label2.top := label1.Top + round(label1.Height * 2.8);
   label2.Left := label1.left;
   label2.font.Size := label1.Font.Size;
   label2.font.Name := label1.font.Name;
   {Choosing a file name}
-  label3.top := label2.Top + round(label1.Height * 2.6);
+  label3.top := label2.Top + round(label1.Height * 2.9);
   label3.Left := label1.left;
   label3.font.Size := label1.Font.Size;
   label3.font.Name := label1.font.Name;
@@ -2955,6 +2955,8 @@ begin
   1:
     closefile(f);
   ioresult;
+  //closefile(f);
+  //form2.Close;
   form1.Close;
 end;
 

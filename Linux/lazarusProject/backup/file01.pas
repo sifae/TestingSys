@@ -62,7 +62,7 @@ var
   s, s2: string;
 begin
 
-  delete_temp;
+  //delete_temp;
   //form2 := Tform2.Create(self);
   if fileexists('./tmp/temp01.sh') then
   begin

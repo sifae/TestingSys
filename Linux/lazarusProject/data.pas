@@ -103,7 +103,7 @@ begin
   begin
     closefile(f);
     ioresult;
-    ShowMessage('Fatal error 1!');
+    ShowMessage('Choose task');
     exit;
   end;
   b := False;

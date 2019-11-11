@@ -2249,8 +2249,8 @@ begin
     for p2 := 1 to length(s1) do
       if s1[p2] in ['A'..'Z'] then
         s1[p2] := chr(Ord(s1[p2]) + 32);
-    if (length(s1) < 4) or (copy(s1, length(s1) - 2, 3) <> 'exe') then
-      exit;
+    //if (length(s1) < 4) or (copy(s1, length(s1) - 2, 3) <> 'exe') then
+    //  exit;
     closefile(f);
     ioresult;
     setcurrentdir(current_dir);
@@ -2550,7 +2550,7 @@ begin
   left := (screen.Width - _width) div 2;
   top := (screen.Height - _height) div 2;
   //Initializing of the array with the chapters' names - it is done before the choosing of a chapter
-{chapter_names[3,1]:='Ввод и вывод';
+  {chapter_names[3,1]:='Ввод и вывод';
 chapter_names[3,2]:='Input and output';
 chapter_names[4,1]:='Условный оператор ';
 chapter_names[4,2]:='Conditional statement';
@@ -2617,7 +2617,7 @@ chapter_names[17,2]:='Trees ';}
   label2.font.Size := label1.Font.Size;
   label2.font.Name := label1.font.Name;
   {Choosing a file name}
-  label3.top := label2.Top + round(label1.Height * 2.9);
+  label3.top := label2.Top + round(label1.Height * 2.8);
   label3.Left := label1.left;
   label3.font.Size := label1.Font.Size;
   label3.font.Name := label1.font.Name;

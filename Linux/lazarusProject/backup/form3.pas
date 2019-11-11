@@ -31,6 +31,7 @@ procedure TForm3.formcreate(sender: tobject);
   begin
     formUnite := Tform3.create(self);
     form1 := Tform1.create(self);
+    form1.Show;
     //form2 := TForm2.create(self);
     formUnite.show;
   end;

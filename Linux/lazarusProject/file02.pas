@@ -2249,8 +2249,8 @@ begin
     for p2 := 1 to length(s1) do
       if s1[p2] in ['A'..'Z'] then
         s1[p2] := chr(Ord(s1[p2]) + 32);
-    if (length(s1) < 4) or (copy(s1, length(s1) - 2, 3) <> 'exe') then
-      exit;
+    //if (length(s1) < 4) or (copy(s1, length(s1) - 2, 3) <> 'exe') then
+    //  exit;
     closefile(f);
     ioresult;
     setcurrentdir(current_dir);
@@ -2345,7 +2345,7 @@ begin
     //if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp0.sh'), nil, nil,sw_hide);
     //if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp00.sh'), nil, nil,sw_hide);
     if i2 = 1 then
-      k := executeScript(handle, PChar(current_dir + '/tmp/temp00.sh'));
+      k := executeScript(handle, PChar(current_dir + '/tmp/temp0.sh'));
     if i2 = 2 then
       k := executeScript(handle, PChar(current_dir + '/tmp/temp00.sh'));
 
@@ -2550,7 +2550,7 @@ begin
   left := (screen.Width - _width) div 2;
   top := (screen.Height - _height) div 2;
   //Initializing of the array with the chapters' names - it is done before the choosing of a chapter
-{chapter_names[3,1]:='Ввод и вывод';
+  {chapter_names[3,1]:='Ввод и вывод';
 chapter_names[3,2]:='Input and output';
 chapter_names[4,1]:='Условный оператор ';
 chapter_names[4,2]:='Conditional statement';

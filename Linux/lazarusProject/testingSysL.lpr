@@ -4,7 +4,7 @@ program testingSysL;
 
 uses
   cthreads,
-  cmem,
+  cmem,  Dialogs,
   //richmemo,
   Interfaces, // this includes the LCL widgetset
   Forms, file01, file02, file00, file09, file101, file03, File_KillProcess,

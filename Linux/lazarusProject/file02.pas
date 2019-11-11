@@ -2860,13 +2860,13 @@ memo3.Font.Name:='Courier New';
     assignfile(f, current_dir + '/tmp/temp0' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' +
+    writeln(f, './temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' +
       IntToStr(i) + ' >rrr' + IntToStr(i));
     closefile(f);
     assignfile(f, current_dir + '/tmp/temp00' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' +
+    writeln(f, './temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' +
       IntToStr(i) + ' >rrrr' + IntToStr(i));
     closefile(f);
     deletefile(current_dir + '/tmp/iii' + IntToStr(i));

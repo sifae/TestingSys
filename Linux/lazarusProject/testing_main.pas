@@ -11,6 +11,8 @@ implementation
 uses testing_utils, file02, file00, SysUtils, Dialogs, file09, Forms,
 file_executeScript, file_killprocess;
 
+{$I-,R+}
+
 {Testing}
 procedure testing(handle: THandle);
 

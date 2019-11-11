@@ -62,7 +62,7 @@ var
   s, s2: string;
 begin
 
-  delete_temp;
+  //delete_temp;
   //form2 := Tform2.Create(self);
   if fileexists('./tmp/temp01.sh') then
   begin
@@ -70,7 +70,9 @@ begin
     s2 :=
       ' The program is running already. If not, delete all files except directory.txt and p.txt in the subdirectory TMP and restart the program. ';
     ShowMessage(s + s2);
-    halt;
+    //Application.Terminate;
+    exit;
+    //halt;
   end;
 
   count_time := 0;
@@ -207,7 +209,7 @@ end;
 procedure TForm1.FormClose(Sender: TObject; var action1: TCloseAction);
 begin
   delete_temp;
-  //form1.Free;
+  form1.Close;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);

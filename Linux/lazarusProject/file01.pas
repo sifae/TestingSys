@@ -70,6 +70,8 @@ begin
     s2 :=
       ' The program is running already. If not, delete all files except directory.txt and p.txt in the subdirectory TMP and restart the program. ';
     ShowMessage(s + s2);
+    //Application.Terminate;
+    //exit;
     halt;
   end;
 
@@ -207,7 +209,7 @@ end;
 procedure TForm1.FormClose(Sender: TObject; var action1: TCloseAction);
 begin
   delete_temp;
-  //form1.Free;
+  form1.Close;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);

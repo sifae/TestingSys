@@ -3277,7 +3277,7 @@ begin
   button10.Enabled := False;
   button11.Enabled := False;
   timer1.Enabled := False;
-  //form3.Timer1.Enabled := False;
+  form3.Timer1.Enabled := False;
   if chosen_task = '' then
   begin
     if en_rus then

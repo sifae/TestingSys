@@ -2345,7 +2345,7 @@ begin
     //if i2=1 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp0.sh'), nil, nil,sw_hide);
     //if i2=2 then k:=ShellExecute(Handle, 'open',pchar(current_dir+'/tmp/temp00.sh'), nil, nil,sw_hide);
     if i2 = 1 then
-      k := executeScript(handle, PChar(current_dir + '/tmp/temp00.sh'));
+      k := executeScript(handle, PChar(current_dir + '/tmp/temp0.sh'));
     if i2 = 2 then
       k := executeScript(handle, PChar(current_dir + '/tmp/temp00.sh'));
 

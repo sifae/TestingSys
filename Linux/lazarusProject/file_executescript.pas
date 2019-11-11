@@ -20,10 +20,11 @@ function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
 
     // Set executable command
     //AProcess.Executable:= 'fpc';
-    AProcess.Executable := ShellScript;
+    //AProcess.Executable := 'chmod +rwx ' + ShellScript + ' && ';
+    //AProcess.Executable := AProcess.Executable + ShellScript;
 
-    // Set command parameters to '-vu -Sg w'. In fact, it run 'fpc -vu -Sg w':
-    //AProcess.Parameters.Add(' -vu -Sg w');
+    AProcess.Executable := '/usr/bin/bash';
+    AProcess.Parameters.Add(ShellScript);
 
     // We will define an option when the program
     // will be launched. This option ensures that our program

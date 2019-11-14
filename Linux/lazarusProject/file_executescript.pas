@@ -28,7 +28,7 @@ function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
 
     // We will define an option when the program
     // will be launched. This option ensures that our program
-    // will not continue until the program we started,
+    // will not continue until the program we starteds,
     // will not stop working.
     AProcess.Options := AProcess.Options + [poWaitOnExit];
 

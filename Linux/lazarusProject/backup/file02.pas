@@ -203,6 +203,7 @@ label
   1;
 begin
   form2.RichEdit1.Clear;
+  form2.richedit1.Font.Color := $FFFFFF;
   if chosen_task = '' then
     exit;
   rtfFilePath := current_dir + '/tests/' + directory_names[chosen_chapter] + '/' + chosen_task;
@@ -2682,6 +2683,7 @@ chapter_names[17,2]:='Trees ';}
   richedit1.Left := round(_width / 45);
   richedit1.Width := round(_width * 0.9);
   richedit1.top := button6.top + button6.Height + _height div 75;
+  richedit1.Font.Color := $000000;
   //richedit1.height:=round(height/6.5);
   richedit1.Height := round(Height / 5.8);
   richedit1.BorderWidth := 12; //It is indent
@@ -2860,13 +2862,13 @@ memo3.Font.Name:='Courier New';
     assignfile(f, current_dir + '/tmp/temp0' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' +
+    writeln(f, './temp' + IntToStr(2 + (i - 1) mod 4) + ' <iii' +
       IntToStr(i) + ' >rrr' + IntToStr(i));
     closefile(f);
     assignfile(f, current_dir + '/tmp/temp00' + IntToStr(i) + '.sh');
     rewrite(f);
     ioresult;
-    writeln(f, 'temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' +
+    writeln(f, './temp' + IntToStr(2 + (i - 1) mod 4) + '0 <iiii' +
       IntToStr(i) + ' >rrrr' + IntToStr(i));
     closefile(f);
     deletefile(current_dir + '/tmp/iii' + IntToStr(i));
@@ -2955,9 +2957,17 @@ begin
   1:
     closefile(f);
   ioresult;
-  //closefile(f);
+  closefile(f);
   //form2.Close;
+  delete_temp;
+  form2.Destroy;
   form1.Close;
+  //form1.Destroy;
+  //form1.Close;
+  //Application.Terminate;
+  //halt;
+  //exit;
+  //Application.Terminate;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);

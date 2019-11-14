@@ -1,6 +1,6 @@
 program testingSysL;
 
-{$mode objfpc}{$H+}
+{$H+}
 
 uses
   cthreads,
@@ -21,5 +21,9 @@ begin
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm3, Form3);
   Form1.Show;
-  Application.Run;
+  try
+     Application.Run;
+  except
+    showMessage('a');
+  end;
 end.

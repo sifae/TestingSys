@@ -23,7 +23,7 @@ function executeScript(var handle : THandle; ShellScript : PChar) : Integer;
     //AProcess.Executable := 'chmod +rwx ' + ShellScript + ' && ';
     //AProcess.Executable := AProcess.Executable + ShellScript;
 
-    AProcess.Executable := '/usr/bin/bash ';
+    AProcess.Executable := '/usr/bin/bash';
     AProcess.Parameters.Add(ShellScript);
 
     // We will define an option when the program

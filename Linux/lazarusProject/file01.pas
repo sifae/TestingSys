@@ -72,6 +72,7 @@ begin
     ShowMessage(s + s2);
     //Application.Terminate;
     //exit;
+    form1.Close;
     halt;
   end;
 
@@ -208,8 +209,13 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var action1: TCloseAction);
 begin
-  delete_temp;
-  form1.Close;
+  try
+    form1.Free;
+    delete_temp;
+  except
+    on E: Exception do
+      ShowMessage('An exception was raised: ' + E.Message);
+  end;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);
